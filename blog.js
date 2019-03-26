@@ -42,6 +42,7 @@ window.addEventListener("load", () => {
                 }
             });
             txt.parentElement.replaceChild(md, txt);
+            windnow.onmdload && windnow.onmdload();
         });
     });
 }, true);
