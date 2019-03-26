@@ -26,25 +26,25 @@ let addNode = (tag, css, html, parentNode) => {
     return nod;
 };
 
+addCss("/style.css");
 document.write(unescape("%3Cspan id='cnzz_stat_icon_1276688436'%3E%3C/span%3E%3Cscript src='https://s23.cnzz.com/z_stat.php%3Fid%3D1276688436%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
-document.write(`<small>(发布于 ${(document.head.querySelector('[name=modifydate]') | {}).content})</small>　<p>转载请注明原文地址： <a href='${location.href}'>${location.href}</a></p>`);
+document.write(`<p style="margin: 35px">转载请注明原文地址： <a href='${location.href}'>${location.href}</a>　<small>(${(document.head.querySelector('[name=modifydate]') | {content:"--"}).content})</small></p>`);
 
 window.addEventListener("load", () => {
-    addCss("/style.css");
     let head = addNode('nav', "top: 0;left: 0;width: 100%;height: 40px;padding: 0 20px;line-height: 40px;font-size:18px;white-space: nowrap;text-overflow: hidden;text-overflow: ellipsis;overflow: hidden;", `<a href='/index.html'>翻阅其它日志</a>　<div class='text-loop' style='display: inline-block;'>${document.title}</div>`, document.body);
     head.setAttribute("title", document.title);
 
     // 评论
-    addNode('div', "margin-right: 80px;", `<h2>留言</h2><div id="lv-container" data-id="city" data-uid="MTAyMC80MzM4Ny8xOTkyOA==">`, document.body);
+    addNode('div', "", `<h2>留言</h2><div id="lv-container" data-id="city" data-uid="MTAyMC80MzM4Ny8xOTkyOA==">`, document.body);
     addJs("https://cdn-city.livere.com/js/embed.dist.js", true);
 
     // 转换 markdown
     addCss("/marked.css");
-    addCss("https://cdn.bootcss.com/highlight.js/9.15.6/styles/atom-one-dark.min.css");
     addJs("https://cdn.bootcss.com/highlight.js/9.15.6/highlight.min.js", true, () => {
         addJs("https://cdn.jsdelivr.net/npm/marked/marked.min.js", false, () => {
             let txt = document.getElementById('md');
             let md = addNode("div");
+            md.className = "marked-panel";
             md.innerHTML = marked(txt.textContent, {
                 highlight: (code) => {
                     return hljs.highlightAuto(code).value;

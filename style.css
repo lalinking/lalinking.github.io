@@ -23,8 +23,11 @@ body > nav {
     transform: translateY(-100px);
 }
 
-/*.text-loop{animation: 10s wordsLoop linear infinite normal;}*/
-/*@keyframes wordsLoop {*/
-/*0% {transform: translateX(10px);}*/
-/*100% {transform: translateX(10px)}*/
-/*}*/
+.marked-panel {
+    margin: 5px 100px 0 36px;
+}
+
+#lv-container {
+    margin: 0 100px 0 36px;
+    max-width: 80%;
+}
