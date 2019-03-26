@@ -40,8 +40,8 @@ window.addEventListener("load", () => {
 
     // 转换 markdown
     addCss("/marked.css");
-    addCss("https://cdn.bootcss.com/highlight.js/8.7/styles/monokai_sublime.min.css");
-    addJs("https://cdn.bootcss.com/highlight.js/8.7/highlight.min.js", true, () => {
+    addCss("https://cdn.bootcss.com/highlight.js/9.15.6/styles/atom-one-dark.min.css");
+    addJs("https://cdn.bootcss.com/highlight.js/9.15.6/highlight.min.js", true, () => {
         addJs("https://cdn.jsdelivr.net/npm/marked/marked.min.js", false, () => {
             let txt = document.getElementById('md');
             let md = addNode("div");
