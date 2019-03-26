@@ -42,9 +42,7 @@ window.addEventListener("load", () => {
     addJs("https://cdn.jsdelivr.net/npm/marked/marked.min.js", false, () => {
         let md = document.getElementById('md');
         //md.className = "markdown-body";
-        md.innerHTML = marked(md.innerHTML, {
-          highlight: (code) => { return hljs.highlightAuto(code).value;}
-        });
+        md.innerHTML = marked(md.innerHTML);
         addJs("/nav.js", true);
     });
 //   });
