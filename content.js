@@ -37,13 +37,15 @@ window.addEventListener("load", () => {
   addNode('div', "margin-right: 80px;", `<h2>留言</h2><div id="lv-container" data-id="city" data-uid="MTAyMC80MzM4Ny8xOTkyOA==">`);
   addJs("https://cdn-city.livere.com/js/embed.dist.js", true);
   addCss("https://cdn.bootcss.com/github-markdown-css/3.0.1/github-markdown.min.css");
-//   addCss("https://cdn.bootcss.com/highlight.js/8.7/styles/monokai_sublime.min.css");
-//   addJs("https://cdn.bootcss.com/highlight.js/8.7/highlight.min.js", true, () => {
+  addCss("https://cdn.bootcss.com/highlight.js/8.7/styles/monokai_sublime.min.css");
+  addJs("https://cdn.bootcss.com/highlight.js/8.7/highlight.min.js", true, () => {
     addJs("https://cdn.jsdelivr.net/npm/marked/marked.min.js", false, () => {
         let md = document.getElementById('md');
         //md.className = "markdown-body";
-        md.innerHTML = marked(md.innerHTML);
+        md.innerHTML = marked(md.innerHTML, {
+          highlight: (code) => { return hljs.highlightAuto(code).value;}
+        });
         addJs("/nav.js", true);
     });
-//   });
+  });
 });
