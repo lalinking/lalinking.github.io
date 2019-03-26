@@ -18,11 +18,11 @@ let addCss = (src) => {
     j.rel = "stylesheet";
     document.getElementsByTagName("head")[0].appendChild(j);
 };
-let addNode = (tag, css, html, parentNode) => {
+let addNode = (tag, css, html) => {
     let nod = document.createElement(tag);
     nod.style = css;
     nod.innerHTML = html;
-    parentNode && parentNode.appendChild(nod);
+    document.body.appendChild(nod);
     return nod;
 };
 
