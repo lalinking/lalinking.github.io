@@ -29,9 +29,6 @@ let addNode = (tag, css, html, parentNode) => {
 addCss("/style.css");
 
 window.addEventListener("load", () => {
-    let head = addNode('nav', "top: 0;left: 0;width: 100%;height: 40px;padding: 0 20px;line-height: 40px;font-size:18px;white-space: nowrap;text-overflow: hidden;text-overflow: ellipsis;overflow: hidden;", `<a href='/index.html'>翻阅其它日志</a>　<div class='text-loop' style='display: inline-block;'>${document.title}</div>`, document.body);
-    head.setAttribute("title", document.title);
-
     // 转换 markdown
     addCss("/marked.css");
     addJs("https://cdn.bootcss.com/highlight.js/9.15.6/highlight.min.js", true, () => {
