@@ -20,12 +20,10 @@ let scrollfun = () => {
         }
     });
 };
-window.addEventListener("load", () => {
-    hs = document.querySelectorAll("h1,h2,h3,h4,h5,h6");
-    nav.style = `bottom: calc(50% - ${hs.length*20+6}px);right: 20px;z-index: 1314;width: 65px;padding: 6px;line-height: 40px;`;
-    document.body.appendChild(nav);
-    setNav();
-    scrollfun();
-});
 window.addEventListener("resize", setNav);
 window.addEventListener("scroll", scrollfun);
+hs = document.querySelectorAll("h1,h2,h3,h4,h5,h6");
+nav.style = `bottom: calc(50% - ${hs.length*20+6}px);right: 20px;z-index: 1314;width: 65px;padding: 6px;line-height: 40px;`;
+document.body.appendChild(nav);
+setNav();
+scrollfun();
