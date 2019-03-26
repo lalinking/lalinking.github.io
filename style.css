@@ -1,0 +1,8 @@
+a{text-decoration: none;}
+a:hover {box-shadow: 0 0 10px 0 #6065a0 !important;border-radius: 2px;padding: 2px;}
+body>nav{position: fixed;z-index: 1314 !important;background-color: rgb(249, 248, 247);vertical-align: middle;}
+.text-loop{animation: 10s wordsLoop linear infinite normal;}
+@keyframes wordsLoop {
+  0% {transform: translateX(10px);}
+  100% {transform: translateX(10px)}
+}
