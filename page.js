@@ -4,7 +4,7 @@ head.setAttribute("title", document.title);
 
 window.addEventListener("load", () => {
     // 评论
-    addNode('div', "", `<h2>留言</h2><div id="lv-container" data-id="city" data-uid="MTAyMC80MzM4Ny8xOTkyOA==">`);
+    addNode('div', "", `<h2>留言</h2><div id="lv-container" data-id="city" data-uid="MTAyMC80MzM4Ny8xOTkyOA==">loading ...</div>`);
     addJs("https://cdn-city.livere.com/js/embed.dist.js", true);
 
 });
