@@ -108,7 +108,7 @@
    }
    wx_body.innerHTML += '<div class="msg-panel top children-right right"><div class="msg-content right" style="">'+sender.innerText+'</div><div class="arrow-right"></div><div class="msg-icon-sender"></div></div>';
    wx_body.scrollTop=10000000;
-   base.get("http://www.tuling123.com/openapi/api",{key:"6b1570f33aad869165070b4c66f00b06",info:sender.innerText},function(r){
+   base.get("https://www.tuling123.com/openapi/api",{key:"6b1570f33aad869165070b4c66f00b06",info:sender.innerText},function(r){
    if (wx_body.childElementCount > 50) {
     wx_body.children[0].remove();
    }
