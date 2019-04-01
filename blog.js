@@ -57,7 +57,9 @@ window.addEventListener("load", () => {
                 txt.parentElement.replaceChild(md, txt);
                 window.onmdload && window.onmdload();
             } finally {
-                document.body.removeChild(document.getElementById("msg-panel"))
+                setTimeout(() => {
+                    document.body.removeChild(document.getElementById("msg-panel"))
+                }, 100);
             }
         });
     });
