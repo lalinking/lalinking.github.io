@@ -10,6 +10,7 @@ function setNav() {
         pos.push(h.offsetTop - 8);
     });
     nav.innerHTML = txt;
+    nav.style = `bottom: calc(50% - ${hs.length*20+6}px);right: 20px;z-index: 1314;width: 65px;padding: 6px;line-height: 40px;`;
 }
 let scrollfun = () => {
     let anchors = nav.querySelectorAll("a");
@@ -23,7 +24,6 @@ let scrollfun = () => {
 };
 window.addEventListener("resize", setNav);
 window.addEventListener("scroll", scrollfun);
-nav.style = `bottom: calc(50% - ${hs.length*20+6}px);right: 20px;z-index: 1314;width: 65px;padding: 6px;line-height: 40px;`;
 document.body.appendChild(nav);
 setNav();
 scrollfun();
