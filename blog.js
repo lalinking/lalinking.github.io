@@ -59,7 +59,7 @@ window.addEventListener("load", () => {
             } finally {
                 setTimeout(() => {
                     document.body.removeChild(document.getElementById("msg-panel"))
-                }, 100);
+                }, 300);
             }
         });
     });

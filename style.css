@@ -1,8 +1,8 @@
 /*加载动画*/
 .spinner {
-    width: 20%;
+    width: 30%;
     height: 20%;
-    margin: 20% 40%;
+    margin: 20% auto;
     background-color: #c57e7e;
     border-radius: 100%;
     -webkit-animation: scaleout 1.0s infinite ease-in-out;
