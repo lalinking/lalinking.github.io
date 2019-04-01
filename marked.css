@@ -20,8 +20,16 @@
 pre {
     background-color: #fbf9f7;
     word-break: break-word;
-    width: 100%;
     white-space: pre-wrap;
+    border-radius: 8px;
+}
+
+pre>code>div:first-child>div.line-start {
+    border-radius: 8px 0 0 0;
+}
+
+pre>code>div:last-child>div.line-start {
+    border-radius: 0 0 0 8px;
 }
 
 /*highlight*/
