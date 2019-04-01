@@ -17,7 +17,7 @@ let scrollfun = () => {
     pos.forEach((po,indx) => {
         let prt = anchors[indx].parentElement;
         prt.style = "";
-        if (po < window.pageYOffset + 40 {
+        if (po < window.pageYOffset + 40) {
             prt.style = "border-left: solid #b96598 3px;padding-left: 3px;";
         }
     });
