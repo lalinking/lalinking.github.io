@@ -45,6 +45,9 @@ window.addEventListener("load", () => {
                 let md = addNode("div");
                 md.className = "marked-panel";
                 md.innerHTML = marked(txt.textContent, {
+                    breaks: true,
+                    smartLists: true,
+                    smartypants: true,
                     highlight: (code) => {
                         let rs = hljs.highlightAuto(code).value.split(/\n/);
                         let result = "";

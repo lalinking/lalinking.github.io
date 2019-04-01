@@ -17,6 +17,10 @@
     padding-right: 8px;
 }
 
+p {
+    white-space: pre;
+}
+
 pre {
     background-color: #fbf9f7;
     word-break: break-word;
