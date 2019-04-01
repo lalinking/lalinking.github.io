@@ -40,17 +40,20 @@ window.addEventListener("load", () => {
     addCss("/marked.css");
     addJs("https://cdn.bootcss.com/highlight.js/9.15.6/highlight.min.js", true, () => {
         addJs("https://cdn.jsdelivr.net/npm/marked/marked.min.js", false, () => {
-            let txt = document.getElementById('md');
-            let md = addNode("div");
-            md.className = "marked-panel";
-            md.innerHTML = marked(txt.textContent, {
-                highlight: (code) => {
-                    return hljs.highlightAuto(code).value;
-                }
-            });
-            txt.parentElement.replaceChild(md, txt);
-            window.onmdload && window.onmdload();
-            document.body.removeChild(document.getElementById("msg-panel"))
+            try {
+                let txt = document.getElementById('md');
+                let md = addNode("div");
+                md.className = "marked-panel";
+                md.innerHTML = marked(txt.textContent, {
+                    highlight: (code) => {
+                        return hljs.highlightAuto(code).value;
+                    }
+                });
+                txt.parentElement.replaceChild(md, txt);
+                window.onmdload && window.onmdload();
+            } finally {
+                document.body.removeChild(document.getElementById("msg-panel"))
+            }
         });
     });
 }, true);
