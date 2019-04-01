@@ -1,8 +1,9 @@
 let pos = [];
-let hs;
 let nav = document.createElement('nav');
 function setNav() {
     let txt = '';
+    let hs = document.querySelectorAll("h1,h2,h3,h4,h5,h6");
+    pos.clear();
     hs.forEach((h, i) => {
         let _c = h.innerText.replace(/^(((\w\w)|(\w)|([^\x00-\xff])){2}).*$/, "$1");
         txt += `<div><a href='javascript:window.scrollTo(0,${h.offsetTop - 8})' title='${h.innerText}'>${h.innerText === _c ? _c : (_c + '..')}</a></div>`;
@@ -22,7 +23,6 @@ let scrollfun = () => {
 };
 window.addEventListener("resize", setNav);
 window.addEventListener("scroll", scrollfun);
-hs = document.querySelectorAll("h1,h2,h3,h4,h5,h6");
 nav.style = `bottom: calc(50% - ${hs.length*20+6}px);right: 20px;z-index: 1314;width: 65px;padding: 6px;line-height: 40px;`;
 document.body.appendChild(nav);
 setNav();
