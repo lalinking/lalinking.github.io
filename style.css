@@ -1,3 +1,24 @@
+/*加载动画*/
+.spinner {
+    width: 20%;
+    height: 20%;
+    margin: 20% 40%;
+    background-color: #c57e7e;
+    border-radius: 100%;
+    -webkit-animation: scaleout 1.0s infinite ease-in-out;
+    animation: scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes scaleout {
+      0% { -webkit-transform: scale(0.0) }
+    100% { -webkit-transform: scale(1.0); opacity: 0}
+}
+
+@keyframes scaleout {
+      0% { transform: scale(0.0);-webkit-transform: scale(0.0); }
+    100% { transform: scale(1.0); -webkit-transform: scale(1.0); opacity: 0; }
+}
+
 a {
     text-decoration: none;
     color: #bf4f3c;
@@ -14,11 +35,6 @@ body > nav {
     z-index: 1314 !important;
     background-color: #F8F9F7;
     vertical-align: middle;
-}
-
-#md {
-    height: 0;
-    width: 0;
 }
 
 .marked-panel {
