@@ -46,7 +46,12 @@ window.addEventListener("load", () => {
                 md.className = "marked-panel";
                 md.innerHTML = marked(txt.textContent, {
                     highlight: (code) => {
-                        return hljs.highlightAuto(code).value;
+                        let rs = hljs.highlightAuto(code).value.split(/\n/);
+                        let result = "";
+                        rs.forEach((e, i) => {
+                            result += `<div><div class='line-start'>${i + 1}</div><div class="line-body">${e}</div></div>`;
+                        });
+                        return result;
                     }
                 });
                 txt.parentElement.replaceChild(md, txt);
