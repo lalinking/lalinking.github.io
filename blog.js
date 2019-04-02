@@ -33,6 +33,7 @@ let addNode = (tag, css, html) => {
 };
 
 document.write("<div style='width: 100%;height: 100%;position: fixed;top: 0;left: 0;z-index: 10000;background: white;' id='msg-panel'><div class='spinner'></div></div>");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_1276688436'%3E%3C/span%3E%3Cscript src='https://s23.cnzz.com/z_stat.php%3Fid%3D1276688436%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));
 addCss("/style.css");
 window.addEventListener("load", () => {
     // 转换 markdown
