@@ -4,10 +4,16 @@ head.setAttribute("title", document.title);
 
 window.addEventListener("load", () => {
     // 评论
-    addNode('div', "margin: 100px 5px 0 36px;", `<h2>留言</h2><div id="lv-container" data-id="city" data-uid="MTAyMC80MzM4Ny8xOTkyOA=="><div id="plloadmsg">loading ...</div></div>`);
-    addJs("https://cdn-city.livere.com/js/embed.dist.js", true, () => {
-        let msgp = document.getElementById("plloadmsg");
-        msgp.parentElement.removeChild(msgp);
+    addNode('div', "margin: 100px 5px 0 36px;", `<h2>留言</h2><div id="vcomments"></div>`);
+    addJs("https://cdn1.lncld.net/static/js/3.0.4/av-min.js", true, () => {
+        addJs("https://unpkg.com/valine@1.3.6/dist/Valine.min.js", true, () => {
+            new Valine({
+                el: '#vcomments',
+                appId: 'TtiWfdzc3Pcwy62vcXJj4zKl-gzGzoHsz',
+                appKey: 'UzO9Cq4rVPLwyOKmolTwYAXo',
+                placeholder: "评论一下。\n欢迎在上方留下您的昵称、邮箱、主页。"
+            })
+        });
     });
 
 });
