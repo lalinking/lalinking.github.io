@@ -22,12 +22,12 @@
 a {
     text-decoration: none;
     color: #bf4f3c;
+    cursor: pointer;
 }
 
 a:hover {
     box-shadow: 0 0 10px 0 #6065a0 !important;
     border-radius: 2px;
-    padding: 2px;
 }
 
 body > nav {

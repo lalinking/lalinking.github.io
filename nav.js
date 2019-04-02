@@ -10,7 +10,7 @@ function setNav() {
         pos.push(h.offsetTop - 40);
     });
     nav.innerHTML = txt;
-    nav.style = `bottom: calc(50% - ${hs.length*20+6}px);right: 20px;z-index: 1314;width: 65px;padding: 6px;line-height: 40px;`;
+    nav.style = `bottom: calc(50% - ${hs.length*20+6}px);right: 20px;z-index: 1314;width: 48px;padding: 6px;line-height: 40px;`;
 }
 let scrollfun = () => {
     let anchors = nav.querySelectorAll("a");
