@@ -2,7 +2,7 @@ let pos = [];
 let nav = document.createElement('nav');
 function setNav() {
     let txt = '';
-    let hs = document.querySelectorAll("h1,h2,h3,h4,h5,h6");
+    let hs = document.querySelectorAll(".marked-panel>h1,.marked-panel>h2,.marked-panel>h3,.marked-panel>h4,.marked-panel>h5,.marked-panel>h6,.marked-panel+div>h2");
     pos.length = 0;
     hs.forEach((h) => {
         let _c = h.innerText.replace(/^(((\w\w)|(\w)|([^\x00-\xff])){2}).*$/, "$1");
