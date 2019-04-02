@@ -11,7 +11,8 @@ window.addEventListener("load", () => {
                 el: '#vcomments',
                 appId: 'TtiWfdzc3Pcwy62vcXJj4zKl-gzGzoHsz',
                 appKey: 'UzO9Cq4rVPLwyOKmolTwYAXo',
-                placeholder: "评论一下。\n欢迎在上方留下您的昵称、邮箱、主页。"
+                placeholder: "评论一下。\n欢迎在上方留下您的昵称、邮箱、主页。",
+                verify: true
             })
         });
     });
