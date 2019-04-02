@@ -1,4 +1,4 @@
-addNode("p", "margin: 35px" ,`转载请注明原文地址： <a href='${location.href}'>${location.href}</a>　<small>(${document.head.querySelector('[name=modifydate]').content})</small>`);
+addNode("p", "margin: 35px" ,`<br class="leancloud-visitors" id="page${location.pathname.replace(/[\/\.]/g,"-")}"/>转载请注明原文地址： <a href='${location.href}'>${location.href}</a><small>&nbsp;&nbsp;(&nbsp;创建于：${document.head.querySelector('[name=modifydate]').content}&nbsp;&nbsp;阅读量：<i class="leancloud-visitors-count">1</i>&nbsp;)</small>`);
 let head = addNode('nav', "top: 0;left: 0;width: 100%;height: 40px;padding: 0 20px;line-height: 40px;font-size:18px;white-space: nowrap;text-overflow: hidden;text-overflow: ellipsis;overflow: hidden;", `<a href='/index.html'>翻阅其它日志</a>　<div class='text-loop' style='display: inline-block;'>${document.title}</div>`);
 head.setAttribute("title", document.title);
 
@@ -12,7 +12,8 @@ window.addEventListener("load", () => {
                 appId: 'TtiWfdzc3Pcwy62vcXJj4zKl-gzGzoHsz',
                 appKey: 'UzO9Cq4rVPLwyOKmolTwYAXo',
                 placeholder: "评论一下。\n欢迎在上方留下您的昵称、邮箱、主页。",
-                verify: true
+                verify: true,
+                visitor: true
             })
         });
     });
