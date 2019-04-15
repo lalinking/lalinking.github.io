@@ -1,5 +1,5 @@
 safe: false
-keep_files:
+exclude:
   - 2018
   - 2019
 
