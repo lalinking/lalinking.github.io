@@ -24,7 +24,7 @@ let addJs = (src, async, cb) => {
 };
 let createNode = (tag, css, html) => {
     let nod = document.createElement(tag);
-    nod.style = css;
+    nod.className = css;
     nod.innerHTML = html;
     return nod;
 };
@@ -41,12 +41,20 @@ let onGetJson = json => {
         }
         onGetMd(txt);
     } else {
-        conf[p].title && (document.title = conf[p].title);
-        let cp = createNode("p", "margin: 35px", `<br/>转载请注明原文地址： <a href='${location.href}'>${location.href}</a><small>&nbsp;&nbsp;(&nbsp;创建于：${conf[p].modifydate}&nbsp;&nbsp;阅读量：<span class="leancloud-visitors" data-flag-title="${conf[p].title}" id="${p}"><i class="leancloud-visitors-count">--</i></span>&nbsp;)</small>`);
-        document.body.insertBefore(cp, document.body.childNodes[0]);
-        let head = createNode('nav', "top: 0;left: 0;width: 100%;height: 40px;padding: 0 20px;line-height: 40px;font-size:18px;white-space: nowrap;text-overflow: hidden;text-overflow: ellipsis;overflow: hidden;", `<a href='/index.html'>翻阅其它日志</a>　<div class='text-loop' style='display: inline-block;'>${document.title}</div>`);
-        head.setAttribute("title", document.title);
+        document.title = conf[p].title;
+        let head = createNode('nav', "head", `<a href='/index.html'>翻阅其它日志</a>　<div class='text-loop' style='display: inline-block;'>${conf[p].title}</div>`);
+        head.setAttribute("title", conf[p].title);
         document.body.appendChild(head);
+        let leadTxt = "<br/>";
+        leadTxt += `转载请注明原文地址： <a href='${location.href}'>${location.href}</a>`;
+        leadTxt += "<br/>";
+        leadTxt += `<small>&nbsp;&nbsp;创建于:&nbsp;${conf[p].modifydate}&nbsp;&nbsp;阅读量:&nbsp;<span class="leancloud-visitors" data-flag-title="${conf[p].title}" id="${p}"><i class="leancloud-visitors-count">--</i></span></small>`;
+        leadTxt += "<br/>";
+        leadTxt += `<small>&nbsp;&nbsp;关键词:&nbsp;<span class='keyword'>${conf[p].keywords.split(",").join("</span>&nbsp;&nbsp;<span class='keyword'>")}</span></small>`;
+        leadTxt += "<br/>";
+        leadTxt += `<small>&nbsp;&nbsp;说明:&nbsp;${conf[p].description}</small>`;
+        let cp = createNode("p", "lead-txt", leadTxt);
+        document.body.insertBefore(cp, document.body.childNodes[0]);
         let cm = createNode('div', "", `<h2>留言</h2><div id="vcomments"></div>`);
         cm.className = "comments-panel";
         document.body.appendChild(cm);
