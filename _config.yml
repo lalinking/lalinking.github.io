@@ -1,1 +1,3 @@
+safe: BOOL
 skip_render: *.md
+keep_files: [/2018, /2019]
