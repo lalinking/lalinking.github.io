@@ -1,1 +1,9 @@
-safe: BOOL
+static_files:
+  file:
+    path: /2018/java_auto_dateformater.md
+  file:
+    path: /2018/nodejs_template.md
+  file:
+    path: /2019/mybatis_300lines_interceptor.md
+  file:
+    path: /2019/regex_oftenused.md
