@@ -86,8 +86,8 @@ let onGetMd = txt => {
                     }
                 });
             } finally {
-                window.initNav && window.initNav();
                 setTimeout(() => {
+                    window.initNav && window.initNav();
                     document.body.removeChild(document.getElementById("msg-panel"))
                 }, 300);
             }
