@@ -1,2 +1,5 @@
 safe: BOOL
-keep_files: [/2018, /2019]
+keep_files:
+  - /2017
+  - /2018
+  - /2020
