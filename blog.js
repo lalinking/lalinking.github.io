@@ -53,6 +53,7 @@ let onGetJson = json => {
         addJs("https://cdn1.lncld.net/static/js/3.0.4/av-min.js", true, () => {
             addJs("https://unpkg.com/valine@1.3.6/dist/Valine.min.js", true, () => {
                 new Valine({
+                    path: p,
                     el: '#vcomments',
                     appId: 'TtiWfdzc3Pcwy62vcXJj4zKl-gzGzoHsz',
                     appKey: 'UzO9Cq4rVPLwyOKmolTwYAXo',
