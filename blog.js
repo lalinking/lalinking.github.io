@@ -52,7 +52,7 @@ let onGetJson = json => {
         leadTxt += "<br/>";
         leadTxt += `<small>&nbsp;&nbsp;关键词:&nbsp;<span class='keyword'>${conf[p].keywords.split(",").join("</span>&nbsp;&nbsp;<span class='keyword'>")}</span></small>`;
         leadTxt += "<br/>";
-        leadTxt += `<small>&nbsp;&nbsp;说明:&nbsp;${conf[p].description}</small>`;
+        leadTxt += `<small>&nbsp;&nbsp;说&nbsp;&nbsp;明:&nbsp;${conf[p].description}</small>`;
         let cp = createNode("p", "lead-txt", leadTxt);
         document.body.insertBefore(cp, document.body.childNodes[0]);
         let cm = createNode('div', "", `<h2>留言</h2><div id="vcomments"></div>`);
