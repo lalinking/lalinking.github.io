@@ -1,17 +1,3 @@
-<!doctype html>
-<html lang="zh">
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width initial-scale=1'>
-    <meta name='keywords' content="java,mybatis,插件,学习日志">
-    <meta name='description' content="Java mybatis 插件 通过一个类 300 行代码实现单表增删改查">
-    <meta name='modifydate' content='2019-03-07'>
-    <title>【Java mybatis 插件】 通过一个类 300 行代码实现单表增删改查</title>
-    <script src='/blog.js'></script>
-    <script src='/page.js'></script>
-</head>
-<body>
-<textarea id="md">
 ### 前提
 
   数据库表名、字段名均采用蛇形命名（即以下划线分隔单词）。
@@ -447,6 +433,3 @@ public class DynamicSQLInterceptor implements Interceptor {
 }
 
 ```
-</textarea>
-</body>
-</html>

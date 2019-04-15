@@ -1,4 +1,14 @@
 /*加载动画*/
+#msg-panel {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    background: white;
+}
+
 .spinner {
     width: 30%;
     height: 20%;
@@ -10,24 +20,36 @@
 }
 
 @-webkit-keyframes scaleout {
-      0% { -webkit-transform: scale(0.0) }
-    100% { -webkit-transform: scale(1.0); opacity: 0}
+    0% {
+        -webkit-transform: scale(0.0)
+    }
+    100% {
+        -webkit-transform: scale(1.0);
+        opacity: 0
+    }
 }
 
 @keyframes scaleout {
-      0% { transform: scale(0.0);-webkit-transform: scale(0.0); }
-    100% { transform: scale(1.0); -webkit-transform: scale(1.0); opacity: 0; }
+    0% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    }
+    100% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+        opacity: 0;
+    }
 }
 
 a {
+    cursor: pointer;
     text-decoration: none;
     color: #bf4f3c;
-    cursor: pointer;
+    animation: ease-in-out;
 }
 
 a:hover {
-    box-shadow: 0 0 10px 0 #6065a0 !important;
-    border-radius: 2px;
+    box-shadow: 0 2px 0 0 #6065a0 !important;
 }
 
 body > nav {
@@ -37,7 +59,7 @@ body > nav {
     vertical-align: middle;
 }
 
-.marked-panel {
+.marked-panel, .comments-panel {
     margin: 5px 100px 0 36px;
     min-width: 800px;
 }

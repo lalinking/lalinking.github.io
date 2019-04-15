@@ -2,7 +2,7 @@ let pos = [];
 let nav = document.createElement('nav');
 function setNav() {
     let txt = '';
-    let hs = document.querySelectorAll(".marked-panel>h1,.marked-panel>h2,.marked-panel>h3,.marked-panel>h4,.marked-panel>h5,.marked-panel>h6,.marked-panel+div>h2");
+    let hs = document.querySelectorAll(".marked-panel>h1,.marked-panel>h2,.marked-panel>h3,.marked-panel>h4,.marked-panel>h5,.marked-panel>h6,.comments-panel>h2");
     pos.length = 0;
     hs.forEach((h) => {
         let _c = h.innerText.replace(/^(((\w\w)|(\w)|([^\x00-\xff])){2}).*$/, "$1");
@@ -18,12 +18,14 @@ let scrollfun = () => {
         let prt = anchors[indx].parentElement;
         prt.style = "";
         if (po < window.pageYOffset + 40) {
-            prt.style = "border-left: solid #b96598 3px;padding-left: 3px;";
+            prt.style = "border-left: solid rgb(208, 186, 199) 3px;padding-left: 3px;";
         }
     });
 };
-window.addEventListener("resize", setNav);
-window.addEventListener("scroll", scrollfun);
+window.onresize = setNav;
+window.onscroll = scrollfun;
 document.body.appendChild(nav);
-setNav();
-scrollfun();
+window.initNav = () => {
+    setNav();
+    scrollfun();
+};

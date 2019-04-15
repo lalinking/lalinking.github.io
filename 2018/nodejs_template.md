@@ -1,17 +1,3 @@
-<!doctype html>
-<html lang="zh">
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width initial-scale=1'>
-    <meta name='keywords' content="Nodejs,Node,js,javascript,模板文件">
-    <meta name='description' content="Nodejs 新手造轮 - 模板文件">
-    <meta name='modifydate' content='2018-03-07'>
-    <title>Nodejs 新手造轮 - 模板文件</title>
-    <script src='/blog.js'></script>
-    <script src='/page.js'></script>
-</head>
-<body>
-<textarea id="md">
 ## 前言
 
   前段时间一朋友突然找我，让我帮忙做个微信后台，实现一波抽奖活动。正好我正学习了一周 Node 于是妥妥的拍胸脯答应了。
@@ -498,6 +484,3 @@ setTimeout(() => {
   });
 }, 100);
 ```
-</textarea>
-</body>
-</html>

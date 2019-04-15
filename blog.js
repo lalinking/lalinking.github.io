@@ -1,4 +1,14 @@
-
+let get = (url, cb) => {
+    let ajax = new XMLHttpRequest();
+    ajax.onreadystatechange = function () {
+        if (4 !== ajax.readyState) {
+            return;
+        }
+        cb && cb(ajax.responseText);
+    };
+    ajax.open("GET", url, true);
+    ajax.send();
+};
 let addJs = (src, async, cb) => {
     let j = document.createElement("script");
     j.src = src;
@@ -12,39 +22,56 @@ let addJs = (src, async, cb) => {
     };
     document.getElementsByTagName("head")[0].appendChild(j);
 };
-let addCss = (src) => {
-    let j = document.createElement("link");
-    j.href = src;
-    j.type = "text/css";
-    j.rel = "stylesheet";
-    j.async = true;
-    j.onload = j.onreadystatechange = () => {
-        if (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") {
-            console.log(`load: ${src}`);
-        }
-    };
-    document.getElementsByTagName("head")[0].appendChild(j);
-};
-let addNode = (tag, css, html) => {
+let createNode = (tag, css, html) => {
     let nod = document.createElement(tag);
     nod.style = css;
     nod.innerHTML = html;
-    document.body.appendChild(nod);
     return nod;
 };
 
-document.write("<div style='width: 100%;height: 100%;position: fixed;top: 0;left: 0;z-index: 10000;background: white;' id='msg-panel'><div class='spinner'></div></div>");
-addCss("/style.css");
-window.addEventListener("load", () => {
-    // 转换 markdown
-    addCss("/marked.css");
+let p = location.search.length ? location.search.substring(3) : "index.md";
+let onGetJson = json => {
+    let conf = JSON.parse(json);
+    if (p === "index.md") {
+        // 计算md
+        let txt = "## 文件列表";
+        for (let j in conf) {
+            let jp = conf[j];
+            txt += `\n* ${jp.modifydate} [${jp.title}](/?p=${j})`;
+        }
+        onGetMd(txt);
+    } else {
+        conf[p].title && (document.title = conf[p].title);
+        let cp = createNode("p", "margin: 35px", `<br/>转载请注明原文地址： <a href='${location.href}'>${location.href}</a><small>&nbsp;&nbsp;(&nbsp;创建于：${conf[p].modifydate}&nbsp;&nbsp;阅读量：<span class="leancloud-visitors" data-flag-title="${conf[p].title}" id="${p}"><i class="leancloud-visitors-count">--</i></span>&nbsp;)</small>`);
+        document.body.insertBefore(cp, document.body.childNodes[0]);
+        let head = createNode('nav', "top: 0;left: 0;width: 100%;height: 40px;padding: 0 20px;line-height: 40px;font-size:18px;white-space: nowrap;text-overflow: hidden;text-overflow: ellipsis;overflow: hidden;", `<a href='/index.html'>翻阅其它日志</a>　<div class='text-loop' style='display: inline-block;'>${document.title}</div>`);
+        head.setAttribute("title", document.title);
+        document.body.appendChild(head);
+        let cm = createNode('div', "", `<h2>留言</h2><div id="vcomments"></div>`);
+        cm.className = "comments-panel";
+        document.body.appendChild(cm);
+        addJs("https://cdn1.lncld.net/static/js/3.0.4/av-min.js", true, () => {
+            addJs("https://unpkg.com/valine@1.3.6/dist/Valine.min.js", true, () => {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'TtiWfdzc3Pcwy62vcXJj4zKl-gzGzoHsz',
+                    appKey: 'UzO9Cq4rVPLwyOKmolTwYAXo',
+                    placeholder: "评论一下。\n欢迎在上方留下您的昵称、邮箱、主页。",
+                    verify: true,
+                    visitor: true
+                })
+            });
+        });
+        addJs("/nav.js", true, window.initNav);
+    }
+};
+
+let onGetMd = txt => {
     addJs("https://cdn.bootcss.com/highlight.js/9.15.6/highlight.min.js", true, () => {
-        addJs("https://cdn.jsdelivr.net/npm/marked/marked.min.js", false, () => {
+        addJs("https://cdn.jsdelivr.net/npm/marked/marked.min.js", true, () => {
             try {
-                let txt = document.getElementById('md');
-                let md = addNode("div");
-                md.className = "marked-panel";
-                md.innerHTML = marked(txt.textContent, {
+                let md = document.querySelector(".marked-panel");
+                md.innerHTML = marked(txt, {
                     breaks: true,
                     smartLists: true,
                     smartypants: true,
@@ -57,13 +84,18 @@ window.addEventListener("load", () => {
                         return result;
                     }
                 });
-                txt.parentElement.replaceChild(md, txt);
-                window.onmdload && window.onmdload();
             } finally {
+                window.initNav && window.initNav();
                 setTimeout(() => {
                     document.body.removeChild(document.getElementById("msg-panel"))
                 }, 300);
             }
         });
     });
+};
+window.addEventListener("load", () => {
+    get("/index.json", onGetJson);
+    if (p !== "index.md") {
+        get(p, onGetMd);
+    }
 }, true);

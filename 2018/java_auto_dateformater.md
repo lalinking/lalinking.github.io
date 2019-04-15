@@ -1,17 +1,3 @@
-<!doctype html>
-<html lang="zh">
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width initial-scale=1'>
-    <meta name='keywords' content="java,String,Date,学习日志">
-    <meta name='description' content="Java 自适应的 String 转 Date 工具">
-    <meta name='modifydate' content='2018-11-09'>
-    <title>【Java】“自适应”的 String 转 Date 工具</title>
-    <script src='/blog.js'></script>
-    <script src='/page.js'></script>
-</head>
-<body>
-<textarea id="md">
 ## 功能
 
 动态地将 String 转换为 Date 对象。
@@ -166,6 +152,3 @@ public final class DateStrParser {
 	}
 }
 ```
-</textarea>
-</body>
-</html>
