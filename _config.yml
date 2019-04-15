@@ -1,1 +1,1 @@
-exclude: [/2018, /2019]
+safe: BOOL
