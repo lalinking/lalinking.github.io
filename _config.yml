@@ -1,5 +1,9 @@
-#keep_files:
-# - 2018
-# - 2019
+keep_files:
+ - 2018
+ - 2019
+
+exclude:
+ - 2018
+ - 2019
 
 markdown_ext: "md"
