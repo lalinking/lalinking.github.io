@@ -107,11 +107,11 @@ window.addEventListener("load", () => {
     if (p !== "index.md") {
         get(p, onGetMd);
     }
+
+    function resize() {
+        document.body.className = document.body.clientWidth > 800 ? "" : "wap";
+    }
+
+    resize();
+    window.addEventListener("resize", resize);
 }, true);
-
-function resize() {
-    document.body.className = document.body.clientWidth > 600 ? "" : "wap";
-}
-
-resize();
-window.addEventListener("resize", resize);
