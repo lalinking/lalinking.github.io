@@ -109,6 +109,9 @@ window.addEventListener("load", () => {
     }
 }, true);
 
-window.addEventListener("resize", () => {
+function resize() {
     document.body.className = document.body.clientWidth > 600 ? "" : "wap";
-});
+}
+
+resize();
+window.addEventListener("resize", resize);
