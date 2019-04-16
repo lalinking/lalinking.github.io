@@ -78,9 +78,19 @@ body > nav {
 
 .marked-panel, .comments-panel {
     margin: 5px 100px 0 36px;
-    min-width: 800px;
+    min-width: 500px;
 }
 
 #vcomments {
     margin: 0 100px 0 36px;
+}
+
+/* wap */
+.wap .marked-panel, .wap .comments-panel {
+    margin: 5px;
+    min-width: 0;
+}
+
+.wap #vcomments {
+    margin:  0 20px;
 }

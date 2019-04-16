@@ -22,8 +22,8 @@ let scrollfun = () => {
         }
     });
 };
-window.onresize = setNav;
-window.onscroll = scrollfun;
+window.addEventListener("resize", setNav);
+window.addEventListener("scroll", scrollfun);
 document.body.appendChild(nav);
 window.initNav = () => {
     setNav();

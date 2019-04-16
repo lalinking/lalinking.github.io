@@ -42,11 +42,11 @@ let onGetJson = json => {
         onGetMd(txt);
     } else {
         document.title = conf[p].title;
-        let head = createNode('nav', "head", `<a href='/index.html'>翻阅其它日志</a>　<div class='text-loop' style='display: inline-block;'>${conf[p].title}</div>`);
+        let head = createNode('nav', "head", `<a href='/index.html'>翻阅其它文件</a>　<div class='text-loop' style='display: inline-block;'>${conf[p].title}</div>`);
         head.setAttribute("title", conf[p].title);
         document.body.appendChild(head);
         let leadTxt = "<br/>";
-        leadTxt += `转载请注明原文地址： <a href='${location.href}'>${location.href}</a>`;
+        leadTxt += `转载请注明原文地址： <a href='${conf[p].href||location.href}'>${conf[p].href||location.href}</a>`;
         leadTxt += "<br/>";
         leadTxt += `<small>&nbsp;&nbsp;创建于:&nbsp;${conf[p].modifydate}&nbsp;&nbsp;阅读量:&nbsp;<span class="leancloud-visitors" data-flag-title="${conf[p].title}" id="${p}"><i class="leancloud-visitors-count">--</i></span></small>`;
         leadTxt += "<br/>";
@@ -108,3 +108,7 @@ window.addEventListener("load", () => {
         get(p, onGetMd);
     }
 }, true);
+
+window.addEventListener("resize", () => {
+    document.body.className = document.body.clientWidth > 600 ? "" : "wap";
+});
