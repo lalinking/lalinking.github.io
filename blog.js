@@ -84,8 +84,8 @@ let onGetMd = txt => {
                     breaks: true,
                     smartLists: true,
                     smartypants: true,
-                    highlight: (code) => {
-                        let rs = hljs.highlightAuto(code).value.split(/\n/);
+                    highlight: (code,lan) => {
+                        let rs = hljs.highlight(lan,code).value.split(/\n/);
                         let result = "";
                         rs.forEach((e, i) => {
                             result += `<div><div class='line-start'>${i + 1}</div><div class="line-body">${e}</div></div>`;
