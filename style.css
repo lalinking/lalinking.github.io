@@ -66,14 +66,23 @@ body > nav {
     height: 40px;
     padding: 0 20px;
     line-height: 40px;
-    font-size: 18px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
 }
 
 .lead-txt {
-    margin: 35px;
+    margin: 50px 40px 15px 40px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    line-height: 25px;
+}
+.lead-txt .keyword {
+    border-radius: 3px;
+    padding: 2px;
+    cursor: default;
+    box-shadow: 0 0 15px 0 #d6cbd4;
 }
 
 .marked-panel, .comments-panel {
@@ -86,11 +95,13 @@ body > nav {
 }
 
 /* wap */
+.wap {
+    font-size: 13px;
+}
 .wap .marked-panel, .wap .comments-panel {
     margin: 5px;
     min-width: 0;
 }
-
 .wap #vcomments {
     margin:  0 20px;
 }

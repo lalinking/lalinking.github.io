@@ -27,6 +27,7 @@ pre {
     word-break: break-word;
     white-space: pre-wrap;
     border-radius: 8px;
+    box-shadow: 0 0 15px -10px;
 }
 
 pre>code>div:first-child>div.line-start {
