@@ -123,7 +123,7 @@ let onGetMd = (txt) => {
         addJs("https://cdn.jsdelivr.net/npm/marked/marked.min.js", true, () => {
             try {
                 let md = document.querySelector(".marked-panel");
-                md.innerHTML = marked(indTxt + txt, {
+                md.innerHTML = marked(indTxt + "\n\n\n" + txt, {
                     breaks: true,
                     smartLists: true,
                     smartypants: true,
