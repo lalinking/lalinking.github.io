@@ -45,14 +45,14 @@ let onGetJson = json => {
         let head = createNode('nav', "head", `<a href='/index.html'>翻阅其它文件</a>　<div class='text-loop' style='display: inline-block;'>${conf[p].title}</div>`);
         head.setAttribute("title", conf[p].title);
         document.body.appendChild(head);
-        let leadTxt = "<br/>";
+        let leadTxt = "";
         leadTxt += `转载请注明原文地址： <a href='${conf[p].href||location.href}'>${conf[p].href||location.href}</a>`;
         leadTxt += "<br/>";
         leadTxt += `<small>&nbsp;&nbsp;创建于:&nbsp;${conf[p].modifydate}&nbsp;&nbsp;阅读量:&nbsp;<span class="leancloud-visitors" data-flag-title="${conf[p].title}" id="${p}"><i class="leancloud-visitors-count">--</i></span></small>`;
         leadTxt += "<br/>";
         leadTxt += `<small>&nbsp;&nbsp;关键词:&nbsp;<span class='keyword'>${conf[p].keywords.split(",").join("</span>&nbsp;&nbsp;<span class='keyword'>")}</span></small>`;
         leadTxt += "<br/>";
-        leadTxt += `<small>&nbsp;&nbsp;　说明:&nbsp;${conf[p].description}</small>`;
+        leadTxt += `<small>&nbsp;&nbsp;　说明:&nbsp;${conf[p].description||"无"}</small>`;
         let cp = createNode("p", "lead-txt", leadTxt);
         document.body.insertBefore(cp, document.body.childNodes[0]);
         let cm = createNode('div', "", `<h2>留言</h2><div id="vcomments"></div>`);
@@ -85,7 +85,13 @@ let onGetMd = txt => {
                     smartLists: true,
                     smartypants: true,
                     highlight: (code,lan) => {
-                        let rs = hljs.highlight(lan,code).value.split(/\n/);
+                        let c;
+                        if (lan) {
+                            c = hljs.highlight(lan,code).value;
+                        } else {
+                            c = hljs.highlightAuto(code).value;
+                        }
+                        let rs = c.split(/\n/);
                         let result = "";
                         rs.forEach((e, i) => {
                             result += `<div><div class='line-start'>${i + 1}</div><div class="line-body">${e}</div></div>`;
