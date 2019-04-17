@@ -1,3 +1,12 @@
+body {
+    background-color: #efefef;
+}
+
+body>* {
+    background-color: #fbf9f7;
+    padding: 10px;
+}
+
 /*加载动画*/
 #msg-panel {
     width: 100%;
@@ -75,7 +84,6 @@ body > nav {
     margin: 50px 40px 15px 40px;
     padding: 10px;
     background-color: #f9f9f9;
-    border-radius: 10px;
     line-height: 25px;
 }
 .lead-txt .keyword {
@@ -92,6 +100,15 @@ body > nav {
 
 #vcomments {
     margin: 0 100px 0 36px;
+}
+
+/*index 辅助样式*/
+a[href^="javascript:choiceKeyword('"][href$="')"] {
+    padding: 2px;
+}
+a.choiced {
+    background-color: #b4bd9b;
+    border-radius: 3px;
 }
 
 /* wap */

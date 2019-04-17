@@ -7,13 +7,13 @@
   },
   "2019/mybatis_300lines_interceptor.txt": {
     "title": "【Java mybatis 插件】 通过一个类 300 行代码实现单表增删改查",
-    "keywords": "java,mybatis,interceptor",
+    "keywords": "java,mybatis",
     "description": "Java mybatis 插件 通过一个类 300 行代码实现单表增删改查",
     "modifydate": "2019-03-07"
   },
   "2018/java_auto_dateformater.txt": {
     "title": "【Java】“自适应”的 String 转 Date 工具",
-    "keywords": "java,string,date",
+    "keywords": "java",
     "description": "Java 自适应的 String 转 Date 工具",
     "modifydate": "2018-11-09"
   },

@@ -30,29 +30,69 @@ let createNode = (tag, css, html) => {
 };
 
 let p = location.search.length ? location.search.substring(3) : "index.md";
+const keywords = new Set();
+const choiceKeyword = function (k) {
+    let ak = document.querySelector(`a[href="javascript:choiceKeyword('${k}')"]`);
+    if (keywords.has(k)) {
+        keywords.delete(k);
+        ak.className = "";
+        if (!keywords.size) {
+            document.querySelectorAll(`.marked-panel li`).forEach((li) => {
+                li.style.display = "";
+            });
+            return;
+        }
+    } else {
+        keywords.add(k);
+        ak.className = "choiced";
+    }
+    document.querySelectorAll(`.marked-panel li`).forEach((li) => {
+        li.style.display = "none";
+    });
+    keywords.forEach((k) => {
+        document.querySelectorAll(`.marked-panel li a[href*="#${k}"]`).forEach((a) => {
+            a.parentElement.style.display = "";
+        });
+    });
+};
+let getIndexMD = (conf) => {
+    let txt = "";
+    txt += "\n### 文件标签 \n   选中标签进行过滤\n\n  ";
+    let kws = new Set();
+    Object.values(conf).forEach(jp => {
+        jp.keywords && (jp.keywords.split(/\s*,\s*/).forEach(k => {
+            kws.add(k)
+        }))
+    });
+    kws.forEach((k) => {
+        txt += ` [${k}](javascript:choiceKeyword('${k}')) `;
+    });
+    txt += "\n### 文件列表";
+    for (let j in conf) {
+        let jp = conf[j];
+        txt += `\n* ${jp.modifydate} [${jp.title}](/?p=${j}#${jp.keywords.replace(/,/g,"#")})`;
+    }
+    return txt;
+};
 let onGetJson = json => {
     let conf = JSON.parse(json);
     if (p === "index.md") {
         // 计算md
-        let txt = "## 文件列表";
-        for (let j in conf) {
-            let jp = conf[j];
-            txt += `\n* ${jp.modifydate} [${jp.title}](/?p=${j})`;
-        }
+        let txt = getIndexMD(conf);
         onGetMd(txt);
     } else {
         document.title = conf[p].title;
-        let head = createNode('nav', "head", `<a href='/index.html'>翻阅其它文件</a>　<div class='text-loop' style='display: inline-block;'>${conf[p].title}</div>`);
+        let head = createNode('nav', "head", `<a href='/'>翻阅其它文件</a>　<div class='text-loop' style='display: inline-block;'>${conf[p].title}</div>`);
         head.setAttribute("title", conf[p].title);
         document.body.appendChild(head);
         let leadTxt = "";
-        leadTxt += `转载请注明原文地址： <a href='${conf[p].href||location.href}'>${conf[p].href||location.href}</a>`;
+        leadTxt += `转载请注明原文地址： <a href='${conf[p].href || location.href}'>${conf[p].href || location.href}</a>`;
         leadTxt += "<br/>";
         leadTxt += `<small>&nbsp;&nbsp;创建于:&nbsp;${conf[p].modifydate}&nbsp;&nbsp;阅读量:&nbsp;<span class="leancloud-visitors" data-flag-title="${conf[p].title}" id="${p}"><i class="leancloud-visitors-count">--</i></span></small>`;
         leadTxt += "<br/>";
         leadTxt += `<small>&nbsp;&nbsp;关键词:&nbsp;<span class='keyword'>${conf[p].keywords.split(",").join("</span>&nbsp;&nbsp;<span class='keyword'>")}</span></small>`;
         leadTxt += "<br/>";
-        leadTxt += `<small>&nbsp;&nbsp;　说明:&nbsp;${conf[p].description||"无"}</small>`;
+        leadTxt += `<small>&nbsp;&nbsp;　说明:&nbsp;${conf[p].description || "无"}</small>`;
         let cp = createNode("p", "lead-txt", leadTxt);
         document.body.insertBefore(cp, document.body.childNodes[0]);
         let cm = createNode('div', "", `<h2>留言</h2><div id="vcomments"></div>`);
@@ -74,7 +114,6 @@ let onGetJson = json => {
         addJs("/nav.js", true, window.initNav);
     }
 };
-
 let onGetMd = txt => {
     addJs("https://cdn.bootcss.com/highlight.js/9.15.6/highlight.min.js", true, () => {
         addJs("https://cdn.jsdelivr.net/npm/marked/marked.min.js", true, () => {
@@ -84,10 +123,10 @@ let onGetMd = txt => {
                     breaks: true,
                     smartLists: true,
                     smartypants: true,
-                    highlight: (code,lan) => {
+                    highlight: (code, lan) => {
                         let c;
                         if (lan) {
-                            c = hljs.highlight(lan,code).value;
+                            c = hljs.highlight(lan, code).value;
                         } else {
                             c = hljs.highlightAuto(code).value;
                         }
