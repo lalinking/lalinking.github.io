@@ -78,6 +78,8 @@ body > nav {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    background-color: #291515;
+    color: white;
 }
 
 .lead-txt {

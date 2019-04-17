@@ -32,7 +32,7 @@ window.addEventListener("load", function() {
 
 var base = base || {};
 
-base.get = function(url, par, call, syn) {
+base.getAjax = function(url, par, call, syn) {
  var ajax = new XMLHttpRequest();
  ajax.onreadystatechange = function() {
   if (call && 4 == ajax.readyState && 200 == ajax.status) {

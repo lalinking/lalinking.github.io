@@ -1,4 +1,4 @@
-let get = (url, cb) => {
+let getAjax = (url, cb) => {
     let ajax = new XMLHttpRequest();
     ajax.onreadystatechange = function () {
         if (4 !== ajax.readyState) {
@@ -29,7 +29,11 @@ let createNode = (tag, css, html) => {
     return nod;
 };
 
-let p = location.search.length ? location.search.substring(3) : "index.md";
+let p = location.search.length ? location.search.substring(3) : "index.txt";
+/**
+ * 引导页的目录
+ * @type {string}
+ */
 const keywords = new Set();
 const choiceKeyword = function (k) {
     let ak = document.querySelector(`a[href="javascript:choiceKeyword('${k}')"]`);
@@ -55,6 +59,7 @@ const choiceKeyword = function (k) {
         });
     });
 };
+let indTxt = "";
 let getIndexMD = (conf) => {
     let txt = "";
     txt += "\n### 文件标签 \n   选中标签进行过滤\n\n  ";
@@ -74,25 +79,24 @@ let getIndexMD = (conf) => {
     }
     return txt;
 };
-let onGetJson = json => {
+let onGetJson = (json) => {
     let conf = JSON.parse(json);
-    if (p === "index.md") {
+    if (p === "index.txt") {
         // 计算md
-        let txt = getIndexMD(conf);
-        onGetMd(txt);
+        indTxt = getIndexMD(conf);
     } else {
         document.title = conf[p].title;
         let head = createNode('nav', "head", `<a href='/'>翻阅其它文件</a>　<div class='text-loop' style='display: inline-block;'>${conf[p].title}</div>`);
         head.setAttribute("title", conf[p].title);
         document.body.appendChild(head);
         let leadTxt = "";
-        leadTxt += `转载请注明原文地址： <a href='${conf[p].href || location.href}'>${conf[p].href || location.href}</a>`;
-        leadTxt += "<br/>";
         leadTxt += `<small>&nbsp;&nbsp;创建于:&nbsp;${conf[p].modifydate}&nbsp;&nbsp;阅读量:&nbsp;<span class="leancloud-visitors" data-flag-title="${conf[p].title}" id="${p}"><i class="leancloud-visitors-count">--</i></span></small>`;
         leadTxt += "<br/>";
         leadTxt += `<small>&nbsp;&nbsp;关键词:&nbsp;<span class='keyword'>${conf[p].keywords.split(",").join("</span>&nbsp;&nbsp;<span class='keyword'>")}</span></small>`;
         leadTxt += "<br/>";
         leadTxt += `<small>&nbsp;&nbsp;　说明:&nbsp;${conf[p].description || "无"}</small>`;
+        leadTxt += "<br/><br/>";
+        leadTxt += `<i>转载请注明原文地址： <a href='${conf[p].href || location.href}'>${conf[p].href || location.href.replace(/#.*/,"")}</a></i>`;
         let cp = createNode("p", "lead-txt", leadTxt);
         document.body.insertBefore(cp, document.body.childNodes[0]);
         let cm = createNode('div', "", `<h2>留言</h2><div id="vcomments"></div>`);
@@ -114,12 +118,12 @@ let onGetJson = json => {
         addJs("/nav.js", true, window.initNav);
     }
 };
-let onGetMd = txt => {
+let onGetMd = (txt) => {
     addJs("https://cdn.bootcss.com/highlight.js/9.15.6/highlight.min.js", true, () => {
         addJs("https://cdn.jsdelivr.net/npm/marked/marked.min.js", true, () => {
             try {
                 let md = document.querySelector(".marked-panel");
-                md.innerHTML = marked(txt, {
+                md.innerHTML = marked(indTxt + txt, {
                     breaks: true,
                     smartLists: true,
                     smartypants: true,
@@ -148,10 +152,8 @@ let onGetMd = txt => {
     });
 };
 window.addEventListener("load", () => {
-    get("/index.json", onGetJson);
-    if (p !== "index.md") {
-        get(p, onGetMd);
-    }
+    getAjax("/index.json", onGetJson);
+    getAjax(p, onGetMd);
 
     function resize() {
         document.body.className = document.body.clientWidth > 800 ? "" : "wap";
