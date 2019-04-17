@@ -3,24 +3,28 @@
     "title": "【正则】 常用正则表达式整理",
     "keywords": "regex",
     "description": "整理一些常用的正则表达式",
-    "modifydate": "2019-03-13"
+    "modifydate": "2019-03-13",
+    "href": "https://ric-z.github.io?p=2019/regex_oftenused.txt"
   },
   "2019/mybatis_300lines_interceptor.txt": {
     "title": "【Java mybatis 插件】 通过一个类 300 行代码实现单表增删改查",
     "keywords": "java,mybatis",
-    "description": "Java mybatis 插件 通过一个类 300 行代码实现单表增删改查",
-    "modifydate": "2019-03-07"
+    "description": "工作中经常用到 mybatis,这个插件能根据 mapper 接口的签名自动生成 SQL！不过仅限于单表的增删改查。",
+    "modifydate": "2019-03-07",
+    "href": "https://ric-z.github.io?p=2019/mybatis_300lines_interceptor.txt"
   },
   "2018/java_auto_dateformater.txt": {
     "title": "【Java】“自适应”的 String 转 Date 工具",
     "keywords": "java",
-    "description": "Java 自适应的 String 转 Date 工具",
-    "modifydate": "2018-11-09"
+    "description": "预先注册可能用到的日期格式，之后可通过传入的字符串特征自动转换成 Date 对象，而不需要另外指定格式。",
+    "modifydate": "2018-11-09",
+    "href": "https://ric-z.github.io?p=2018/java_auto_dateformater.txt"
   },
   "2018/nodejs_template.txt": {
     "title": "【Nodejs】新手造轮 - 模板文件",
     "keywords": "nodejs",
-    "description": null,
-    "modifydate": "2018-03-07"
+    "description": "这个估计没人看，先记录着。",
+    "modifydate": "2018-03-07",
+    "href": "https://ric-z.github.io?p=2018/nodejs_template.txt"
   }
 }

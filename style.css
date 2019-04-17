@@ -59,6 +59,7 @@ a {
 
 a:hover {
     box-shadow: 0 2px 0 0 #6065a0 !important;
+    border-radius: 0 !important;
 }
 
 body > nav {
@@ -109,7 +110,7 @@ a[href^="javascript:choiceKeyword('"][href$="')"] {
     padding: 2px;
 }
 a.choiced {
-    background-color: #b4bd9b;
+    background-color: #dedfe8;
     border-radius: 3px;
 }
 
