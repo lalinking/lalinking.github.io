@@ -36,7 +36,7 @@ let p = location.search.length ? location.search.substring(3) : "index.txt";
  */
 const keywords = new Set();
 const choiceKeyword = function (k) {
-    let ak = document.querySelector(`a[href="javascript:choiceKeyword('${k}')"]`);
+    let ak = document.querySelector(`a[href="javascript:choiceKeyword('${encodeURI(k)}')"]`);
     if (keywords.has(k)) {
         keywords.delete(k);
         ak.className = "";
@@ -54,7 +54,7 @@ const choiceKeyword = function (k) {
         li.className = "hide";
     });
     keywords.forEach((k) => {
-        document.querySelectorAll(`.marked-panel li a[href*="#${k}"]`).forEach((a) => {
+        document.querySelectorAll(`.marked-panel li a[href*="#${encodeURI(k)}"]`).forEach((a) => {
             a.parentElement.className = "";
         });
     });
@@ -70,7 +70,7 @@ let getIndexMD = (conf) => {
         }))
     });
     kws.forEach((k) => {
-        txt += ` [${k}](javascript:choiceKeyword('${k}')) `;
+        txt += ` [${k}](javascript:choiceKeyword('${encodeURI(k)}')) `;
     });
     txt += "\n### 文件列表";
     for (let j in conf) {
