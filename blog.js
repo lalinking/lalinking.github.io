@@ -99,24 +99,24 @@ let onGetJson = (json) => {
         leadTxt += `<i>转载请注明原文地址： <a href='${conf[p].href || location.href}'>${conf[p].href || location.href.replace(/#.*/,"")}</a></i>`;
         let cp = createNode("p", "lead-txt", leadTxt);
         document.body.insertBefore(cp, document.body.childNodes[0]);
-        let cm = createNode('div', "", `<h2>留言</h2><div id="vcomments"></div>`);
-        cm.className = "comments-panel";
-        document.body.appendChild(cm);
-        addJs("https://cdn1.lncld.net/static/js/3.0.4/av-min.js", true, () => {
-            addJs("https://unpkg.com/valine@1.3.6/dist/Valine.min.js", true, () => {
-                new Valine({
-                    path: p,
-                    el: '#vcomments',
-                    appId: 'TtiWfdzc3Pcwy62vcXJj4zKl-gzGzoHsz',
-                    appKey: 'UzO9Cq4rVPLwyOKmolTwYAXo',
-                    placeholder: "评论一下。\n欢迎在上方留下您的昵称、邮箱、主页。",
-                    verify: true,
-                    visitor: true
-                })
-            });
-        });
         addJs("/nav.js", true, window.initNav);
     }
+    let cm = createNode('div', "", `<h2>留言</h2><div id="vcomments"></div>`);
+    cm.className = "comments-panel";
+    document.body.appendChild(cm);
+    addJs("https://cdn1.lncld.net/static/js/3.0.4/av-min.js", true, () => {
+        addJs("https://unpkg.com/valine@1.3.6/dist/Valine.min.js", true, () => {
+            new Valine({
+                path: p,
+                el: '#vcomments',
+                appId: 'TtiWfdzc3Pcwy62vcXJj4zKl-gzGzoHsz',
+                appKey: 'UzO9Cq4rVPLwyOKmolTwYAXo',
+                placeholder: "评论一下。\n欢迎在上方留下您的昵称、邮箱、主页。",
+                verify: true,
+                visitor: true
+            })
+        });
+    });
 };
 let onGetMd = (txt) => {
     addJs("https://cdn.bootcss.com/highlight.js/9.15.6/highlight.min.js", true, () => {
