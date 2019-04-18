@@ -1,13 +1,20 @@
 {
+  "2019/java_threadpool01.txt": {
+    "title": "【Java】自动阻塞的线程池",
+    "keywords": "java,线程",
+    "description": "定义最大线程数，线程池满后阻塞主线程。任务全部执行完后自动关闭线程。",
+    "modifydate": "2019-04-18",
+    "href": "https://ric-z.github.io?p=2019/java_threadpool01.txt"
+  },
   "2019/regex_oftenused.txt": {
-    "title": "【正则】 常用正则表达式整理",
+    "title": "【正则】常用正则表达式整理",
     "keywords": "regex",
     "description": "整理一些常用的正则表达式",
     "modifydate": "2019-03-13",
     "href": "https://ric-z.github.io?p=2019/regex_oftenused.txt"
   },
   "2019/mybatis_300lines_interceptor.txt": {
-    "title": "【Java mybatis 插件】 通过一个类 300 行代码实现单表增删改查",
+    "title": "【Java mybatis 插件】通过一个类 300 行代码实现单表增删改查",
     "keywords": "java,mybatis",
     "description": "工作中经常用到 mybatis,这个插件能根据 mapper 接口的签名自动生成 SQL！不过仅限于单表的增删改查。",
     "modifydate": "2019-03-07",

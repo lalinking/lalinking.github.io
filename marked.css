@@ -38,6 +38,10 @@ pre>code>div:last-child>div.line-start {
     border-radius: 0 0 0 8px;
 }
 
+.mermaid {
+    padding: 20px;
+}
+
 /*highlight*/
 .hljs {
     display: block;

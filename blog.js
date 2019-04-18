@@ -119,35 +119,42 @@ let onGetJson = (json) => {
     });
 };
 let onGetMd = (txt) => {
-    addJs("https://cdn.bootcss.com/highlight.js/9.15.6/highlight.min.js", true, () => {
-        addJs("https://cdn.jsdelivr.net/npm/marked/marked.min.js", true, () => {
-            try {
-                let md = document.querySelector(".marked-panel");
-                md.innerHTML = marked(indTxt + "\n\n\n" + txt, {
-                    breaks: true,
-                    smartLists: true,
-                    smartypants: true,
-                    highlight: (code, lan) => {
-                        let c;
-                        if (lan) {
-                            c = hljs.highlight(lan, code).value;
-                        } else {
-                            c = hljs.highlightAuto(code).value;
+    addJs("https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js", true, () => {
+        addJs("https://cdn.bootcss.com/highlight.js/9.15.6/highlight.min.js", true, () => {
+            addJs("https://cdn.jsdelivr.net/npm/marked/marked.min.js", true, () => {
+                try {
+                    let md = document.querySelector(".marked-panel");
+                    md.innerHTML = marked(indTxt + "\n\n\n" + txt, {
+                        breaks: true,
+                        smartLists: true,
+                        smartypants: true,
+                        highlight: (code, lan) => {
+                            if ("mermaid" === lan) {
+                                return `<div class="mermaid">${code}</div>`;
+                            } else {
+                                let c;
+                                if (hljs.getLanguage(lan)) {
+                                    c = hljs.highlight(lan, code).value;
+                                } else {
+                                    c = hljs.highlightAuto(code).value;
+                                }
+                                let rs = c.split(/\n/);
+                                let result = "";
+                                rs.forEach((e, i) => {
+                                    result += `<div><div class='line-start'>${i + 1}</div><div class="line-body">${e}</div></div>`;
+                                });
+                                return result;
+                            }
                         }
-                        let rs = c.split(/\n/);
-                        let result = "";
-                        rs.forEach((e, i) => {
-                            result += `<div><div class='line-start'>${i + 1}</div><div class="line-body">${e}</div></div>`;
-                        });
-                        return result;
-                    }
-                });
-            } finally {
-                setTimeout(() => {
-                    window.initNav && window.initNav();
-                    document.body.removeChild(document.getElementById("msg-panel"))
-                }, 300);
-            }
+                    });
+                    mermaid.init();
+                } finally {
+                    setTimeout(() => {
+                        window.initNav && window.initNav();
+                        document.body.removeChild(document.getElementById("msg-panel"))
+                    }, 300);
+                }
+            });
         });
     });
 };
