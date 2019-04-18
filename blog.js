@@ -42,7 +42,7 @@ const choiceKeyword = function (k) {
         ak.className = "";
         if (!keywords.size) {
             document.querySelectorAll(`.marked-panel li`).forEach((li) => {
-                li.style.display = "";
+                li.className = "";
             });
             return;
         }
@@ -51,11 +51,11 @@ const choiceKeyword = function (k) {
         ak.className = "choiced";
     }
     document.querySelectorAll(`.marked-panel li`).forEach((li) => {
-        li.style.display = "none";
+        li.className = "hide";
     });
     keywords.forEach((k) => {
         document.querySelectorAll(`.marked-panel li a[href*="#${k}"]`).forEach((a) => {
-            a.parentElement.style.display = "";
+            a.parentElement.className = "";
         });
     });
 };
@@ -86,7 +86,7 @@ let onGetJson = (json) => {
         indTxt = getIndexMD(conf);
     } else {
         document.title = conf[p].title;
-        let head = createNode('nav', "head", `<a href='/'>翻阅其它文件</a>　<div class='text-loop' style='display: inline-block;'>${conf[p].title}</div>`);
+        let head = createNode('nav', "head", `<a href='/' style="vertical-align: top;">翻阅其它文件</a>　<span class='text-title'>${conf[p].title}</span>`);
         head.setAttribute("title", conf[p].title);
         document.body.appendChild(head);
         let leadTxt = "";
