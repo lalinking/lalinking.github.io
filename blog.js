@@ -75,7 +75,7 @@ let getIndexMD = (conf) => {
     txt += "\n### 文件列表";
     for (let j in conf) {
         let jp = conf[j];
-        txt += `\n* ${jp.modifydate} [${jp.title}](/?p=${j}#${jp.keywords.replace(/,/g,"#")})`;
+        txt += `\n* ${jp.modifydate} [${jp.title}](/?p=${j}#${encodeURI(jp.keywords).replace(/,/g,"#")})`;
     }
     return txt;
 };
