@@ -55,7 +55,7 @@ const choiceKeyword = function (k) {
     });
     keywords.forEach((k) => {
         document.querySelectorAll(`.marked-panel li a[href*="#${encodeURI(k)}"]`).forEach((a) => {
-            a.parentElement.className = "";
+            a.parentElement.parentElement.className = "";
         });
     });
 };
@@ -75,7 +75,7 @@ let getIndexMD = (conf) => {
     txt += "\n### 文件列表";
     for (let j in conf) {
         let jp = conf[j];
-        txt += `\n* ${jp.modifydate} [${jp.title}](/?p=${j}#${encodeURI(jp.keywords).replace(/,/g,"#")})`;
+        txt += `\n1. <small>(${jp.modifydate})</small> [${jp.title}](/?p=${j}#${encodeURI(jp.keywords).replace(/,/g,"#")})\n   <small>${jp.description}</small>`;
     }
     return txt;
 };
@@ -124,7 +124,10 @@ let onGetMd = (txt) => {
             addJs("https://cdn.jsdelivr.net/npm/marked/marked.min.js", true, () => {
                 try {
                     let md = document.querySelector(".marked-panel");
-                    md.innerHTML = marked(indTxt + "\n\n\n" + txt, {
+                    marked.Renderer.prototype.listitem = (litxt) => {
+                        return `<li><div class="li-body">${litxt}</div></li>`;
+                    };
+                    md.innerHTML = marked(indTxt + "\n" + txt, {
                         breaks: true,
                         smartLists: true,
                         smartypants: true,

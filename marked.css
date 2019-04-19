@@ -1,5 +1,5 @@
 /*markdown*/
-.line-start {
+.marked-panel .line-start {
     width: 35px;
     display: table-cell;
     color: #0f117b;
@@ -12,33 +12,76 @@
     user-select: none;
 }
 
-.line-body {
+.marked-panel .line-body {
     display: table-cell;
     padding-left: 8px;
     padding-right: 8px;
 }
-
-p {
-    white-space: pre-wrap;
+.marked-panel p, .marked-panel pre {
+    margin: 10px 20px 5px 20px;
 }
 
-pre {
+.marked-panel p {
+    white-space: pre-wrap;
+    text-indent: 20px;
+}
+
+.marked-panel li {
+    list-style-type: none;
+    display: block;
+    margin: 4px;
+}
+
+.marked-panel li:hover {
+    border-left: whitesmoke solid 2px;
+}
+
+.marked-panel li > .li-body {
+    display: inline-block;
+    cursor: default;
+}
+
+.marked-panel ol {
+    counter-reset: sectioncounter;
+    padding: 5px 0;
+}
+
+.marked-panel li:before {
+    width: 50px;
+    display: inline-block;
+    margin-right: 12px;
+    text-align: right;
+    color: #181cd6;
+    vertical-align: super;
+}
+.marked-panel ul > li:before {
+    content: ' - ';
+    font-size: xx-large;
+}
+.marked-panel ol > li:before {
+    content: counter(sectioncounter) ' - ';
+    counter-increment: sectioncounter;
+    font-size: large;
+}
+
+.marked-panel pre {
     background-color: #fbf9f7;
     word-break: break-word;
     white-space: pre-wrap;
     border-radius: 8px;
     box-shadow: 0 0 15px -10px;
+    z-index: 3;
 }
 
-pre>code>div:first-child>div.line-start {
+.marked-panel pre > code > div:first-child > div.line-start {
     border-radius: 8px 0 0 0;
 }
 
-pre>code>div:last-child>div.line-start {
+.marked-panel pre > code > div:last-child > div.line-start {
     border-radius: 0 0 0 8px;
 }
 
-.mermaid {
+.marked-panel .mermaid {
     padding: 20px;
 }
 
