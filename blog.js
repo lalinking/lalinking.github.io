@@ -1,4 +1,4 @@
-let getAjax = (url, cb) => {
+const getAjax = (url, cb) => {
     let ajax = new XMLHttpRequest();
     ajax.onreadystatechange = function () {
         if (4 !== ajax.readyState) {
@@ -9,7 +9,7 @@ let getAjax = (url, cb) => {
     ajax.open("GET", url, true);
     ajax.send();
 };
-let addJs = (src, async, cb) => {
+const addJs = (src, async, cb) => {
     let j = document.createElement("script");
     j.src = src;
     j.async = !!async;
@@ -22,12 +22,34 @@ let addJs = (src, async, cb) => {
     };
     document.getElementsByTagName("head")[0].appendChild(j);
 };
-let createNode = (tag, css, html) => {
+const createNode = (tag, css, html) => {
     let nod = document.createElement(tag);
     nod.className = css;
     nod.innerHTML = html;
     return nod;
 };
+const funDownload = function (content, filename) {
+    // 创建隐藏的可下载链接
+    let eleLink = document.createElement('a');
+    eleLink.download = filename;
+    eleLink.style.display = 'none';
+    // 字符内容转变成blob地址
+    let blob = new Blob([content]);
+    eleLink.href = URL.createObjectURL(blob);
+    // 触发点击
+    document.body.appendChild(eleLink);
+    eleLink.click();
+    // 然后移除
+    document.body.removeChild(eleLink);
+};
+
+function copyToClipboard(text,cb,errcb) {
+    if (!navigator.clipboard) {
+        errcb("copy fail.");
+        return;
+    }
+    navigator.clipboard.writeText(text).then(cb,errcb);
+}
 
 let p = location.search.length ? location.search.substring(3) : "index.txt";
 /**
@@ -120,7 +142,7 @@ let onGetJson = (json) => {
 };
 let onGetMd = (txt) => {
     addJs("https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js", true, () => {
-        addJs("https://cdn.bootcss.com/highlight.js/9.15.6/highlight.min.js", true, () => {
+        addJs("/prism.js", true, () => {
             addJs("https://cdn.jsdelivr.net/npm/marked/marked.min.js", true, () => {
                 try {
                     let md = document.querySelector(".marked-panel");
@@ -135,14 +157,11 @@ let onGetMd = (txt) => {
                             if ("mermaid" === lan) {
                                 return `<div class="mermaid">${code}</div>`;
                             } else {
-                                let c;
-                                if (hljs.getLanguage(lan)) {
-                                    c = hljs.highlight(lan, code).value;
-                                } else {
-                                    c = hljs.highlightAuto(code).value;
-                                }
+                                let c = Prism.highlight(code, Prism.languages[lan], lan);
                                 let rs = c.split(/\n/);
-                                let result = "";
+                                let expand = rs.length > 20 ? "<a onclick='this.parentElement.parentElement.parentElement.style.maxHeight=\"none\"; this.style.display=\"none\"'>expand</a>" : "";
+                                let copy = `<a onclick="let txt = '';this.parentElement.parentElement.querySelectorAll('.line-body').forEach(e=>{txt+=e.textContent+'\\n'});copyToClipboard(txt,()=>{this.innerText='copyed'},(err)=>{this.innerText='wrong: '+err})">copy</a>`;
+                                let result = `<div class="tool-bar">${copy}${expand}</div>`;
                                 rs.forEach((e, i) => {
                                     result += `<div><div class='line-start'>${i + 1}</div><div class="line-body">${e}</div></div>`;
                                 });
