@@ -158,7 +158,7 @@ let onGetMd = (txt) => {
                                 let expand = "<a onclick='this.parentElement.parentElement.parentElement.style.maxHeight=\"none\"; this.parentElement.style.display=\"none\"'>expand</a>";
                                 return `<div class="tool-bar">${expand}</div><div class="mermaid">${code}</div>`;
                             } else {
-                                let c = Prism.highlight(code, Prism.languages[lan], lan);
+                                let c = lan? Prism.highlight(code, Prism.languages[lan], lan) : code;
                                 let rs = c.split(/\n/);
                                 let expand = rs.length > 20 ? "<a onclick='this.parentElement.parentElement.parentElement.parentElement.style.maxHeight=\"none\"; this.style.display=\"none\"'>expand</a>" : "";
                                 let download = `<a onclick="let txt = '';this.parentElement.parentElement.parentElement.querySelectorAll('code>div:not(:first-child) .line-body').forEach(e=>{txt+=e.textContent+'\\n'});funDownload(txt, '*.${lan}')">download</a>`;

@@ -40,7 +40,7 @@ $(!arg1){[list: arg1,split: / ] arg1 arg2.name arg2.size()}
     {name:"ric z",roles:["man","coder"]}
     我的模板文件可以这样编写：
 
-```HTML
+```html
 ...
   <label>Name: </label><span>${name}</span>
   <label>Role Count: </label><span>${roles.length}</span>
@@ -49,7 +49,7 @@ $(!arg1){[list: arg1,split: / ] arg1 arg2.name arg2.size()}
 ```
   实际输出：
 
-```HTML
+```html
   <label>Name: </label><span>ric z</span>
   <label>Role Count: </label><span>2</span>
   <label>Roles: </label><span>man / coder</span>
@@ -58,7 +58,7 @@ $(!arg1){[list: arg1,split: / ] arg1 arg2.name arg2.size()}
 2. 微信自动回复我要返回一个图文链接
     模板文件 return_artiicles.xml:
 
-```XML
+```xml
 <xml>
   <ToUserName><![CDATA[${`toUser`}]]></ToUserName>
   <FromUserName><![CDATA[${`fromUser`}]]></FromUserName>
@@ -86,7 +86,7 @@ $(!arg1){[list: arg1,split: / ] arg1 arg2.name arg2.size()}
 
   输出内容：
 
-```XML
+```xml
 <xml>
   <ToUserName><![CDATA[]]></ToUserName>
   <FromUserName><![CDATA[]]></FromUserName>
@@ -450,7 +450,7 @@ function Template() {
 
   测试代码：
 
-```Javascript
+```javascript
 "use strict"
 // 定义全局对象
 Object.defineProperty(global, "Bean", {
