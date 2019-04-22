@@ -155,13 +155,15 @@ let onGetMd = (txt) => {
                         smartypants: true,
                         highlight: (code, lan) => {
                             if ("mermaid" === lan) {
-                                return `<div class="mermaid">${code}</div>`;
+                                let expand = "<a onclick='this.parentElement.parentElement.parentElement.style.maxHeight=\"none\"; this.parentElement.style.display=\"none\"'>expand</a>";
+                                return `<div class="tool-bar">${expand}</div><div class="mermaid">${code}</div>`;
                             } else {
                                 let c = Prism.highlight(code, Prism.languages[lan], lan);
                                 let rs = c.split(/\n/);
-                                let expand = rs.length > 20 ? "<a onclick='this.parentElement.parentElement.parentElement.style.maxHeight=\"none\"; this.style.display=\"none\"'>expand</a>" : "";
-                                let copy = `<a onclick="let txt = '';this.parentElement.parentElement.querySelectorAll('.line-body').forEach(e=>{txt+=e.textContent+'\\n'});copyToClipboard(txt,()=>{this.innerText='copyed'},(err)=>{this.innerText='wrong: '+err})">copy</a>`;
-                                let result = `<div class="tool-bar">${copy}${expand}</div>`;
+                                let expand = rs.length > 20 ? "<a onclick='this.parentElement.parentElement.parentElement.parentElement.style.maxHeight=\"none\"; this.style.display=\"none\"'>expand</a>" : "";
+                                let download = `<a onclick="let txt = '';this.parentElement.parentElement.parentElement.querySelectorAll('code>div:not(:first-child) .line-body').forEach(e=>{txt+=e.textContent+'\\n'});funDownload(txt, '*.${lan}')">download</a>`;
+                                let copy = `<a onclick="let txt = '';this.parentElement.parentElement.parentElement.querySelectorAll('code>div:not(:first-child) .line-body').forEach(e=>{txt+=e.textContent+'\\n'});copyToClipboard(txt,()=>{this.innerText='copyed'},(err)=>{this.innerText='wrong: '+err})">copy</a>`;
+                                let result = `<div><div class='line-start'> :</div><div class="line-body tool-bar">${copy}${download}${expand}</div></div>`;
                                 rs.forEach((e, i) => {
                                     result += `<div><div class='line-start'>${i + 1}</div><div class="line-body">${e}</div></div>`;
                                 });

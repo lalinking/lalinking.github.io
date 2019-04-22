@@ -1,15 +1,15 @@
 /*markdown*/
 .tool-bar {
-    background-color: #e4d5c6;
     padding: 0 10px;
     user-select: none;
 }
 .tool-bar a {
     margin-left: 15px;
+    color: #2f5c7d;
 }
 
 .marked-panel pre:hover .tool-bar {
-    display: block;
+    background-color: #e4d5c6;
 }
 
 .marked-panel .line-start {
