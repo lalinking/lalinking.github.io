@@ -1,4 +1,4 @@
-/*markdown*/
+
 .tool-bar {
     padding: 0 20px 0 10px !important;
     user-select: none;
@@ -57,9 +57,10 @@
     cursor: default;
 }
 
-.marked-panel ol {
+.marked-panel ol,.marked-panel ul {
     counter-reset: sectioncounter;
     padding: 5px 0;
+    margin: 0;
 }
 
 .marked-panel li:before {
