@@ -1,7 +1,9 @@
 /*markdown*/
 .tool-bar {
-    padding: 0 10px;
+    padding: 0 20px 0 10px !important;
     user-select: none;
+    border-radius: 0 0 4px 0;
+    font-weight: bolder;
 }
 .tool-bar a {
     margin-left: 15px;
