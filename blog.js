@@ -155,7 +155,7 @@ let onGetMd = (txt) => {
                         smartypants: true,
                         highlight: (code, lan) => {
                             if ("mermaid" === lan) {
-                                let expand = "<a onclick='this.parentElement.parentElement.parentElement.style.maxHeight=\"none\"; this.parentElement.style.display=\"none\"'>expand</a>";
+                                let expand = "<a onclick='this.parentElement.parentElement.parentElement.parentElement.style.maxHeight=\"none\"; this.parentElement.style.display=\"none\"'>expand</a>";
                                 return `<div><div class="line-body tool-bar">${expand}</div><div class="mermaid">${code}</div></div>`;
                             } else {
                                 let c = lan? Prism.highlight(code, Prism.languages[lan], lan) : code;
