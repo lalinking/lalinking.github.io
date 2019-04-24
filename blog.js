@@ -54,7 +54,7 @@ function copyToClipboard(text, cb, errcb) {
 let search = ((function () {
     let URLParams = {p: "File List", t: "index.txt"};
     let aParams = decodeURI(document.location.search).substr(1).split('&');
-    for (i = 0; i < aParams.length; i++) {
+    for (let i = 0; i < aParams.length; i++) {
         let aParam = aParams[i].split('=');
         URLParams[aParam[0]] = aParam[1];
     }
@@ -170,18 +170,19 @@ let onGetMd = (txt) => {
                         smartypants: true,
                         highlight: (code, lan) => {
                             if ("mermaid" === lan) {
-                                let expand = "<a onclick='this.parentElement.parentElement.parentElement.parentElement.style.maxHeight=\"none\"; this.parentElement.style.display=\"none\"'>expand</a>";
-                                return `<div><div class="line-body tool-bar">${expand}</div><div class="mermaid">${code}</div></div>`;
+                                return `<div class="mermaid">${code}</div>`;
                             } else {
                                 let c = lan ? Prism.highlight(code, Prism.languages[lan], lan) : code;
                                 let rs = c.split(/\n/);
-                                let expand = rs.length > 20 ? "<a onclick='this.parentElement.parentElement.parentElement.parentElement.style.maxHeight=\"none\"; this.style.display=\"none\"'>expand</a>" : "";
-                                let download = `<a onclick="let txt = '';this.parentElement.parentElement.parentElement.querySelectorAll('code>div:not(:first-child) .line-body').forEach(e=>{txt+=e.textContent+'\\n'});funDownload(txt, '*.${lan}')">download</a>`;
-                                let copy = `<a onclick="let txt = '';this.parentElement.parentElement.parentElement.querySelectorAll('code>div:not(:first-child) .line-body').forEach(e=>{txt+=e.textContent+'\\n'});copyToClipboard(txt,()=>{this.innerText='copyed'},(err)=>{this.innerText='wrong: '+err})">copy</a>`;
-                                let result = `<div><div class='line-start'> :</div><div class="line-body tool-bar">${copy}${download}${expand}</div></div>`;
+                                let expand = rs.length > 30 ? "<a onclick='this.parentElement.parentElement.parentElement.className=\"\"; this.style.display=\"none\"'>expand</a>" : "";
+                                let download = `<a onclick="funDownload(decodeURIComponent('${encodeURIComponent(code)}'), '*.${lan}')">download</a>`;
+                                let copy = `<a onclick="copyToClipboard(decodeURIComponent('${encodeURIComponent(code)}'),()=>{this.innerText='copyed'},(err)=>{this.innerText='wrong: '+err})">copy</a>`;
+                                let result = `<div class='${rs.length > 30 ? 'cospand' : ''}'>`;
+                                result += `<div><div class='line-start'> :</div><div class="line-body tool-bar">${copy}${download}${expand}</div></div>`;
                                 rs.forEach((e, i) => {
                                     result += `<div><div class='line-start'>${i + 1}</div><div class="line-body">${e}</div></div>`;
                                 });
+                                result += "</div>";
                                 return result;
                             }
                         }

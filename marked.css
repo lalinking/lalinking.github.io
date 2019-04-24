@@ -63,7 +63,7 @@
     margin: 0;
 }
 
-.marked-panel li:before {
+.marked-panel li::before {
     width: 50px;
     display: inline-block;
     margin: 2px 12px 0 0;
@@ -73,26 +73,42 @@
     font-size: large;
 }
 
-.marked-panel ul > li:before {
+.marked-panel ul > li::before {
     content: ' + ';
 }
 
-.marked-panel ol > li:before {
+.marked-panel ol > li::before {
     content: counter(sectioncounter) ' - ';
     counter-increment: sectioncounter;
 }
+.marked-panel pre code>div.cospand {
+    max-height: 304px;
+    overflow: hidden;
+    position: relative;
+}
 
+.marked-panel pre code>div.cospand::after {
+    content: " .... ";
+    font-weight: bolder;
+    text-align: center;
+    position: absolute;
+    display: block;
+    top: 280px;
+    opacity: 0.9;
+    background-color: rgba(241, 230, 230, 0.7);
+    width: 100%;
+    box-shadow: 0 0 25px 10px #f3e8e8;
+    border-radius: 0 0 10px 10px;
+}
 .marked-panel pre {
     background-color: #fbf9f7;
     word-break: break-word;
     white-space: pre-wrap;
     border-radius: 3px 3px 8px 8px;
     box-shadow: 0 0 15px -10px;
-    max-height: 504px;
-    overflow: hidden;
 }
 
-.marked-panel pre > code > div:last-child > div.line-start {
+.marked-panel pre > code > div > div:last-child > div.line-start {
     border-radius: 0 0 0 8px;
 }
 
