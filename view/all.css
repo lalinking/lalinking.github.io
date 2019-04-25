@@ -1,0 +1,38 @@
+body {
+    background-color: #efefef;
+}
+
+body > * {
+    background-color: #fbf9f7;
+    padding: 10px;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #bf4f3c;
+    animation: ease-in-out;
+}
+
+a:hover {
+    box-shadow: 0 2px 0 0 #6065a0 !important;
+    border-radius: 0 !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+/* wap */
+.wap {
+    font-size: 13px;
+}
+
+.wap .marked-panel, .wap .comments-panel {
+    margin: 5px;
+    min-width: 0;
+}
+
+.wap #vcomments {
+    margin: 0 20px;
+}

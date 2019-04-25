@@ -1,8 +1,9 @@
 let pos = [];
 let nav = document.createElement('nav');
+nav.style = 'position: fixed;z-index: 1314 !important;background-color: #F8F9F7;vertical-align: middle;bottom: 40%;right: 20px;z-index: 1314;width: 48px;padding: 6px;line-height: 40px;';
 function setNav() {
     let txt = '';
-    let hs = document.querySelectorAll(".marked-panel>h1,.marked-panel>h2,.marked-panel>h3,.marked-panel>h4,.marked-panel>h5,.marked-panel>h6,.comments-panel>h2");
+    let hs = document.querySelectorAll(".showtonav");
     pos.length = 0;
     hs.forEach((h) => {
         let _c = h.innerText.replace(/^(((\w\w)|(\w)|([^\x00-\xff])){2}).*$/, "$1");
@@ -10,7 +11,7 @@ function setNav() {
         pos.push(h.offsetTop - 40);
     });
     nav.innerHTML = txt;
-    nav.style = `bottom: calc(50% - ${hs.length*20+6}px);right: 20px;z-index: 1314;width: 48px;padding: 6px;line-height: 40px;`;
+    nav.style.bottom = `calc(50% - ${hs.length*20+6}px)`;
 }
 let scrollfun = () => {
     let anchors = nav.querySelectorAll("a");

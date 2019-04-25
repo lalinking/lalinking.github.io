@@ -1,65 +1,4 @@
-const getAjax = (url, cb) => {
-    let ajax = new XMLHttpRequest();
-    ajax.onreadystatechange = function () {
-        if (4 !== ajax.readyState) {
-            return;
-        }
-        cb && cb(ajax.responseText);
-    };
-    ajax.open("GET", url, true);
-    ajax.send();
-};
-const addJs = (src, async, cb) => {
-    let j = document.createElement("script");
-    j.src = src;
-    j.async = !!async;
-    j.onload = j.onreadystatechange = () => {
-        if (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") {
-            console.log(`load: ${src}`);
-            cb && cb();
-            j.onload = j.onreadystatechange = null;
-        }
-    };
-    document.getElementsByTagName("head")[0].appendChild(j);
-};
-const createNode = (tag, css, html) => {
-    let nod = document.createElement(tag);
-    nod.className = css;
-    nod.innerHTML = html;
-    return nod;
-};
-const funDownload = function (content, filename) {
-    // 创建隐藏的可下载链接
-    let eleLink = document.createElement('a');
-    eleLink.download = filename;
-    eleLink.style.display = 'none';
-    // 字符内容转变成blob地址
-    let blob = new Blob([content]);
-    eleLink.href = URL.createObjectURL(blob);
-    // 触发点击
-    document.body.appendChild(eleLink);
-    eleLink.click();
-    // 然后移除
-    document.body.removeChild(eleLink);
-};
 
-function copyToClipboard(text, cb, errcb) {
-    if (!navigator.clipboard) {
-        errcb("copy fail.");
-        return;
-    }
-    navigator.clipboard.writeText(text).then(cb, errcb);
-}
-
-let search = ((function () {
-    let URLParams = {p: "File List", t: "index.txt"};
-    let aParams = decodeURI(document.location.search).substr(1).split('&');
-    for (let i = 0; i < aParams.length; i++) {
-        let aParam = aParams[i].split('=');
-        URLParams[aParam[0]] = aParam[1];
-    }
-    return URLParams;
-})());
 /**
  * 引导页的目录
  * @type {string}
@@ -199,7 +138,7 @@ let onGetMd = (txt) => {
     });
 };
 window.addEventListener("load", () => {
-    getAjax("/index.json", onGetJson);
+    getAjax("/.json", onGetJson);
     getAjax(search.t, onGetMd);
 
     function resize() {
