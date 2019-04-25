@@ -138,7 +138,7 @@ let onGetMd = (txt) => {
     });
 };
 window.addEventListener("load", () => {
-    getAjax("/.json", onGetJson);
+    getAjax("/_.json", onGetJson);
     getAjax(search.t, onGetMd);
 
     function resize() {

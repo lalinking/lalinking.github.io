@@ -1,5 +1,5 @@
 window.addEventListener("load", () => {
-    utils.getAjax("/data/.json", json => {
+    utils.getAjax("/data/_.json", json => {
         let mds = JSON.parse(json).md.lis;
         let md = mds.find(_md => _md.path === utils.search.path);
         md.readcount = '--';

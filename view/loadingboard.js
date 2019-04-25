@@ -1,12 +1,13 @@
 document.write('<style type="text/css">');
 document.write('#msg-panel {                                         ');
-document.write('    width: 100%;                                     ');
-document.write('    height: 100%;                                    ');
+document.write('    width: 100% !important;                                     ');
+document.write('    height: 100% !important;                                    ');
 document.write('    position: fixed;                                 ');
-document.write('    top: 0;                                          ');
-document.write('    left: 0;                                         ');
+document.write('    top: 0 !important;                                          ');
+document.write('    left: 0 !important;                                         ');
 document.write('    z-index: 10000;                                  ');
 document.write('    background: white;                               ');
+document.write('    margin: 0 !important;                               ');
 document.write('}                                                    ');
 document.write('                                                     ');
 document.write('.spinner {                                           ');
