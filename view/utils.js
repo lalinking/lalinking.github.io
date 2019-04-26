@@ -4,6 +4,7 @@
 Array.prototype.insert = function (index, item) {
     this.splice(index, 0, item);
 };
+window.MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
 
 Object.defineProperty(window, "utils", {
     value: {
@@ -63,7 +64,7 @@ Object.defineProperty(window, "utils", {
         },
         language: (navigator.language || navigator.userLanguage),
         search: ((function () {
-            let URLParams = {p: "File List", t: "index.txt"};
+            let URLParams = {};
             let aParams = decodeURI(document.location.search).substr(1).split('&');
             for (let i = 0; i < aParams.length; i++) {
                 let aParam = aParams[i].split('=');

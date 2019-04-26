@@ -34,7 +34,9 @@ window.addEventListener("load", () => {
         Object.values(pacs).forEach(pac => {
             let olhtml = '';
             pac.lis.forEach(li => {
-                olhtml += `<li data-labels=",${li.keywords},"><small>${li.modifydate}&nbsp;&nbsp;</small><a href="/view/md/md.html?path=${li.path}" onclick="${li.private ? "return prompt('code?')==='private'" : "return true"}">${li.title}</a><div>${li.description}</div></li>`;
+                let _s = pac.search ? `?${pac.search}=${li[pac.search]}` : "";
+                let _c = li.private ? "return prompt('code?')==='private'" : "return true";
+                olhtml += `<li data-labels=",${li.keywords},"><small>${li.modifydate}&nbsp;&nbsp;</small><a href="${pac.page}${li.page || ""}${_s}" onclick="${_c}">${li.title}</a><div>${li.description}</div></li>`;
                 li.keywords && (li.keywords.split(/\s*,\s*/).forEach(k => {
                     kws.add(k)
                 }))

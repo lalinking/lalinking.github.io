@@ -1,6 +1,8 @@
 {
   "md": {
     "ol_name": "文档列表",
+    "page": "/view/md/md.php",
+    "search": "path",
     "lis": [
       {
         "path": "2019/java_threadpool01.md",
@@ -37,6 +39,23 @@
         "keywords": "nodejs",
         "description": "这个估计没人看，先记录着。",
         "modifydate": "2018-03-07"
+      }
+    ]
+  },
+  "h5_tool": {
+    "ol_name": "在线工具",
+    "lis": []
+  },
+  "html_test": {
+    "ol_name": "test",
+    "page": "/view/_/",
+    "lis": [
+      {
+        "private": true,
+        "page": "wx_yuki/wx.html",
+        "title": "Yuki 调试器",
+        "description": "Yuki 调试器",
+        "modifydate": "2015-12-03"
       }
     ]
   }
