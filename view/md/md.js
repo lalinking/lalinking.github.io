@@ -1,12 +1,12 @@
 window.addEventListener("load", () => {
-    utils.getAjax("/data/_.json", json => {
+    utils.getAjax("/data/info.json", json => {
         let mds = JSON.parse(json).md.lis;
         let md = mds.find(_md => _md.path === utils.search.path);
         md.readcount = '--';
         md.href = "https://ric-z.github.com?path=" + utils.search.path;
         utils.bind(md, document);
 
-        utils.getAjax("/data/.md/" + utils.search.path, txt => {
+        utils.getAjax("/data/md_page/" + utils.search.path, txt => {
             try {
                 let mdPanel = utils.$(".marked-panel")[0];
                 marked.Renderer.prototype.heading = (htxt, level) => {
