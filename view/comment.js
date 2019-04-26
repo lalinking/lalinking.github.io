@@ -3,8 +3,8 @@ let count = utils.createNode('span', "hide", `<span class="leancloud-visitors" d
 document.body.appendChild(count);
 window.addEventListener("load", () => {
     utils.$(".leancloud-visitors-count", count)[0].addEventListener("change", () => {console.log("visit count: " + this.value)});
-    utils.addJs("https://cdn1.lncld.net/static/js/3.0.4/av-min.js", true, () => {
-        utils.addJs("https://unpkg.com/valine@1.3.6/dist/Valine.min.js", true, () => {
+    utils.addJs("//cdn1.lncld.net/static/js/3.0.4/av-min.js", true, () => {
+        utils.addJs("//unpkg.com/valine@latest/dist/Valine.min.js", true, () => {
             new Valine({
                 path: utils.search.path,
                 el: '#vcomments',
