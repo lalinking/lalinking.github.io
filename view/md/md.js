@@ -1,19 +1,22 @@
+let pageinfo = {
+    readcount: '--'
+};
+function ongetvisitcount(count) {
+    pageinfo.readcount = count;
+}
 window.addEventListener("load", () => {
     utils.getAjax("/data/info.json", json => {
         let mds = JSON.parse(json).md.lis;
-        let md = mds.find(_md => _md.path === utils.search.path);
-        md.readcount = '--';
-        md.href = "https://ric-z.github.com?path=" + utils.search.path;
-        utils.bind(md, document);
+        Object.assign(pageinfo, mds.find(_md => _md.path === utils.search.path));
+        pageinfo.href = "https://ric-z.github.com?path=" + utils.search.path;
+        utils.bind(pageinfo, document);
+        document.title = pageinfo.title;
 
         utils.getAjax("/data/md_page/" + utils.search.path, txt => {
             try {
                 let mdPanel = utils.$(".marked-panel")[0];
                 marked.Renderer.prototype.heading = (htxt, level) => {
                     return `<h${level} class="showtonav">${htxt}</h${level}>`;
-                };
-                marked.Renderer.prototype.listitem = (litxt) => {
-                    return `<li><div class="li-body">${litxt}</div></li>`;
                 };
                 mdPanel.innerHTML = marked(txt, {
                     breaks: true,

@@ -81,19 +81,23 @@
     padding-right: 8px;
 }
 
-.marked-panel p, .marked-panel pre {
+.marked-panel>p, .marked-panel pre {
     margin: 10px 20px 5px 20px;
 }
 
-.marked-panel p {
+.marked-panel>p {
     white-space: pre-wrap;
     text-indent: 20px;
+}
+.marked-panel li>p {
+    display: inline-block;
+    margin: 0;
 }
 
 .marked-panel li {
     list-style-type: none;
-    display: block;
     margin: 4px;
+    display: flex;
 }
 
 .marked-panel li:hover {

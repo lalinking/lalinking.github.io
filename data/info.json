@@ -31,6 +31,7 @@
         "modifydate": "2018-11-09"
       },
       {
+        "private": true,
         "path": "2018/nodejs_template.md",
         "title": "【Nodejs】新手造轮 - 模板文件",
         "keywords": "nodejs",

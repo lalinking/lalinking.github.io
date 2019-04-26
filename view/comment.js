@@ -1,12 +1,15 @@
-
-let count = utils.createNode('span', "hide", `<span class="leancloud-visitors" data-flag-title="${document.title}" id="${utils.search.path}"><input class="leancloud-visitors-count"/></span>`);
+let count = utils.createNode('span', "hide", `<i class="leancloud-visitors" data-flag-title="${document.title}" id="${utils.search.path}"><i class="leancloud-visitors-count"/></i>`);
 document.body.appendChild(count);
 window.addEventListener("load", () => {
-    utils.$(".leancloud-visitors-count", count)[0].addEventListener("change", () => {console.log("visit count: " + this.value)});
-    utils.addJs("//cdn1.lncld.net/static/js/3.0.4/av-min.js", true, () => {
-        utils.addJs("//unpkg.com/valine@latest/dist/Valine.min.js", true, () => {
+    let observer = new MutationObserver(() => {
+        let textContent = utils.$(".leancloud-visitors-count", count)[0].textContent;
+        textContent && window.ongetvisitcount && ongetvisitcount(textContent)
+    });
+    observer.observe(utils.$(".leancloud-visitors-count", count)[0], {characterData: true});
+    utils.addJs("/3rd-lib/av-min.3.0.4.js", true, () => {
+        utils.addJs("/3rd-lib/Valine.min.1.3.6.js", true, () => {
             new Valine({
-                path: utils.search.path,
+                path: utils.search.path || "unknow",
                 el: '#vcomments',
                 appId: 'TtiWfdzc3Pcwy62vcXJj4zKl-gzGzoHsz',
                 appKey: 'UzO9Cq4rVPLwyOKmolTwYAXo',
