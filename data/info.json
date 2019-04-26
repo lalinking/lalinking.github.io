@@ -3,35 +3,35 @@
     "ol_name": "文档列表",
     "lis": [
       {
-        "path": "2019/java_threadpool01.txt",
+        "path": "2019/java_threadpool01.md",
         "title": "【Java】自动阻塞的线程池",
         "keywords": "java,线程",
         "description": "定义最大线程数，线程池满后阻塞主线程。任务全部执行完后自动关闭线程。",
         "modifydate": "2019-04-18"
       },
       {
-        "path": "2019/regex_oftenused.txt",
+        "path": "2019/regex_oftenused.md",
         "title": "【正则】常用正则表达式整理",
         "keywords": "regex",
         "description": "整理一些常用的正则表达式",
         "modifydate": "2019-03-13"
       },
       {
-        "path": "2019/mybatis_300lines_interceptor.txt",
+        "path": "2019/mybatis_300lines_interceptor.md",
         "title": "【Java mybatis 插件】通过一个类 300 行代码实现单表增删改查",
         "keywords": "java,mybatis",
         "description": "工作中经常用到 mybatis,这个插件能根据 mapper 接口的签名自动生成 SQL！不过仅限于单表的增删改查。",
         "modifydate": "2019-03-07"
       },
       {
-        "path": "2018/java_auto_dateformater.txt",
+        "path": "2018/java_auto_dateformater.md",
         "title": "【Java】“自适应”的 String 转 Date 工具",
         "keywords": "java",
         "description": "预先注册可能用到的日期格式，之后可通过传入的字符串特征自动转换成 Date 对象，而不需要另外指定格式。",
         "modifydate": "2018-11-09"
       },
       {
-        "path": "2018/nodejs_template.txt",
+        "path": "2018/nodejs_template.md",
         "title": "【Nodejs】新手造轮 - 模板文件",
         "keywords": "nodejs",
         "description": "这个估计没人看，先记录着。",
