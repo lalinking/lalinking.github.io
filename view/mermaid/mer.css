@@ -1,0 +1,32 @@
+#typein {
+    resize: vertical;
+    min-height: 120px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px 0;
+    margin: 0;
+    font-family: unset;
+    list-style-type: none;
+    counter-reset: sectioncounter;
+    white-space: pre-wrap;
+}
+
+#typein li::before {
+    content: counter(sectioncounter) '　';
+    counter-increment: sectioncounter;
+    width: 50px;
+    display: inline-block;
+    text-align: right;
+    min-width: 35px;
+    color: #0f117b;
+    font-style: initial;
+    padding-right: 8px;
+    font-size: 10px;
+    user-select: none;
+}
+#typein > li {
+    margin: 0 30px;
+}
+#typein > li:focus {
+    border-bottom: 1px dashed gray;
+}

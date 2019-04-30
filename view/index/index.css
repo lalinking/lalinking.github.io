@@ -5,12 +5,6 @@
     padding: 5px;
 }
 
-body > div {
-    margin: 5px 100px 0 36px;
-    min-width: 500px;
-    border-radius: 3px;
-}
-
 a.choiced {
     background-color: #dedfe8;
     border-radius: 3px;

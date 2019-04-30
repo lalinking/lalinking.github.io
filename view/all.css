@@ -7,6 +7,29 @@ body > * {
     padding: 10px;
 }
 
+body > div {
+    margin: 5px 100px 0 36px;
+    min-width: 500px;
+    border-radius: 3px;
+}
+
+.head {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    padding: 0 20px;
+    line-height: 40px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    background-color: #291515;
+    color: white;
+    position: fixed;
+    z-index: 1314 !important;
+    vertical-align: middle;
+}
+
 a {
     cursor: pointer;
     text-decoration: none;

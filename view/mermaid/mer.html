@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
+    <link href="/view/all.css" type="text/css" rel="stylesheet">
+    <link href="/3rd-lib/prism.css" type="text/css" rel="stylesheet">
+    <script src='/view/utils.js'></script>
+    <script src='./mer.js'></script>
+    <link href="./mer.css" type="text/css" rel="stylesheet">
+    <script src='/view/loadingboard.js'></script>
+    <script src='/3rd-lib/mermaid.min.8.0.0.js'></script>
+    <script src='/3rd-lib/prism.js'></script>
+    <script src='/view/comment.js' async></script>
+    <title>在线绘图工具</title>
+</head>
+<body>
+<nav class="head"><a href="/" style="vertical-align: top;">首页</a>　<span class="text-title">在线绘图工具</span>　<small>当前访问量:&nbsp;<i name="readcount">--</i></small></nav>
+<br/><br/>
+<div>
+    <div class="mermaid"></div>
+</div>
+<div>
+    <div class="tool-bar"></div>
+    <ol id="typein" contenteditable="true" disabled="true" ><li><br/></li></ol>
+</div>
+<div class="comments-panel"><h2 class="showtonav">留言</h2><div id="vcomments"></div></div>
+</body>
+</html>
