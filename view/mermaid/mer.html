@@ -17,12 +17,23 @@
 <body>
 <nav class="head"><a href="/" style="vertical-align: top;">首页</a>　<span class="text-title">在线绘图工具</span>　<small>当前访问量:&nbsp;<i name="readcount">--</i></small></nav>
 <br/><br/>
-<div>
-    <div class="mermaid"></div>
+<div style="position: relative">
+    <div class="tool-bar">
+        <a href="javascript: showDemo('base-flow')">Basic flowchart</a>
+        <a href="javascript: showDemo('large-flow')">Large flowchart</a>
+        <a href="javascript: showDemo('base-sequence')">Basic Sequence</a>
+        <a href="javascript: showDemo('all-sequence')">All(1) Sequence</a>
+        <a href="javascript: showDemo('all2-sequence')">All(2) Sequence</a>
+    </div>
+    <ol id="source-input" class="mermaid-source" contenteditable="true"><li><br/></li></ol>
+    <ol id="source-output" class="mermaid-source"><li><br/></li></ol>
 </div>
 <div>
-    <div class="tool-bar"></div>
-    <ol id="typein" contenteditable="true" disabled="true" ><li><br/></li></ol>
+    <div class="tool-bar">
+        <a href="javascript: ">export png</a>
+        <a href="javascript: ">export svg</a>
+    </div>
+    <div class="mermaid-view mermaid"></div>
 </div>
 <div class="comments-panel"><h2 class="showtonav">留言</h2><div id="vcomments"></div></div>
 </body>

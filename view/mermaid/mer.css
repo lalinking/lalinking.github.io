@@ -1,4 +1,4 @@
-#typein {
+.mermaid-source {
     resize: vertical;
     min-height: 120px;
     background-color: white;
@@ -11,7 +11,13 @@
     white-space: pre-wrap;
 }
 
-#typein li::before {
+.tool-bar > a {
+    margin: 0 10px;
+    font-weight: bold;
+    color: green;
+}
+
+.mermaid-source li::before {
     content: counter(sectioncounter) '　';
     counter-increment: sectioncounter;
     width: 50px;
@@ -24,9 +30,23 @@
     font-size: 10px;
     user-select: none;
 }
-#typein > li {
-    margin: 0 30px;
+.mermaid-source > li {
+    margin: 0 10px;
 }
-#typein > li:focus {
+.mermaid-source > li:focus {
     border-bottom: 1px dashed gray;
+}
+
+#source-input {
+    position: absolute;
+    opacity: 0;
+    width: calc(100% - 20px);
+}
+
+#source-input:focus {
+    opacity: 1 !important;
+}
+
+.mermaid-view {
+    text-align: center;
 }
