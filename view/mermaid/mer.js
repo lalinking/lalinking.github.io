@@ -1,4 +1,9 @@
 let change;
+
+function ongetvisitcount(count) {
+    utils.$("#readcount")[0].innerText = count;
+}
+
 window.addEventListener("load", () => {
     let intpanel = utils.$("#source-input")[0];
     let outpanel = utils.$("#source-output")[0];

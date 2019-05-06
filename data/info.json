@@ -44,7 +44,15 @@
   },
   "h5_tool": {
     "ol_name": "在线工具",
-    "lis": []
+    "page": "/view/",
+    "lis": [
+      {
+        "page": "mermaid/mer.html",
+        "title": "在线绘图工具",
+        "description": "绘制流程图、时序图、甘特图，导出为 PNG、SVG",
+        "modifydate": "2019-05-06"
+      }
+    ]
   },
   "html_test": {
     "ol_name": "test",
