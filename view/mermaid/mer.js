@@ -1,5 +1,5 @@
 let change;
-
+utils.search.pageid = "mermaid_page";
 function ongetvisitcount(count) {
     utils.$("#readcount")[0].innerText = count;
 }
