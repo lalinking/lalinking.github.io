@@ -4,6 +4,7 @@ let pageinfo = {
 function ongetvisitcount(count) {
     pageinfo.readcount = count;
 }
+var codes = {};
 window.addEventListener("load", () => {
     utils.getAjax("/data/info.json", json => {
         let mds = JSON.parse(json).md.lis;
@@ -26,13 +27,15 @@ window.addEventListener("load", () => {
                         if ("mermaid" === lan) {
                             return `<div class="mermaid">${code}</div>`;
                         } else {
+                            let _id = 'i' + Math.random().toString(36).substr(2);
+                            codes[_id] = code;
                             let c = lan ? Prism.highlight(code, Prism.languages[lan], lan) : code;
                             let rs = c.split(/\n/);
                             let expand = rs.length > 30 ? "<a onclick='this.parentElement.parentElement.parentElement.className=\"\"; this.style.display=\"none\"'>expand</a>" : "";
-                            let download = `<a onclick="utils.download(decodeURIComponent('${encodeURIComponent(code)}'), '*.${lan}')">download</a>`;
-                            let copy = `<a onclick="utils.copyToClipboard(decodeURIComponent('${encodeURIComponent(code)}'),()=>{this.innerText='copyed'},(err)=>{this.innerText='wrong: '+err})">copy</a>`;
+                            let download = `<a onclick="utils.download(codes[this.parentElement.getAttribute('data-codeid')], '*.${lan}')">download</a>`;
+                            let copy = `<a onclick="utils.copyToClipboard(codes[this.parentElement.getAttribute('data-codeid')],()=>{this.innerText='copyed'},(err)=>{this.innerText='wrong: '+err})">copy</a>`;
                             let result = `<div class='${rs.length > 30 ? 'cospand' : ''}'>`;
-                            result += `<div><div class='line-start'> :</div><div class="line-body tool-bar">${copy}${download}${expand}</div></div>`;
+                            result += `<div><div class='line-start'> :</div><div class="line-body tool-bar" data-codeid="${_id}">${copy}${download}${expand}</div></div>`;
                             rs.forEach((e, i) => {
                                 result += `<div><div class='line-start'>${i + 1}</div><div class="line-body">${e}</div></div>`;
                             });
