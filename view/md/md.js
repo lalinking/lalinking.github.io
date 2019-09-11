@@ -31,7 +31,7 @@ window.addEventListener("load", () => {
                             codes[_id] = code;
                             let c = lan ? Prism.highlight(code, Prism.languages[lan], lan) : code;
                             let rs = c.split(/\n/);
-                            let expand = rs.length > 30 ? "<a onclick='this.parentElement.parentElement.parentElement.className=\"\"; this.style.display=\"none\"'>expand</a>" : "";
+                            let expand = rs.length > 30 ? "<a onclick='this.parentElement.parentElement.parentElement.className=\"\"; this.style.display=\"none\";initNav()'>expand</a>" : "";
                             let download = `<a onclick="utils.download(codes[this.parentElement.getAttribute('data-codeid')], '*.${lan}')">download</a>`;
                             let copy = `<a onclick="utils.copyToClipboard(codes[this.parentElement.getAttribute('data-codeid')],()=>{this.innerText='copyed'},(err)=>{this.innerText='wrong: '+err})">copy</a>`;
                             let result = `<div class='${rs.length > 30 ? 'cospand' : ''}'>`;
