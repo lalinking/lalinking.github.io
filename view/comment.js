@@ -16,7 +16,8 @@ window.addEventListener("load", () => {
                 appKey: 'UzO9Cq4rVPLwyOKmolTwYAXo',
                 placeholder: "评论一下。\n欢迎在上方留下您的昵称、邮箱、主页。",
                 verify: true,
-                visitor: true
+                visitor: true,
+                region: "us"
             })
         });
     });
