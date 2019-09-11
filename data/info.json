@@ -12,6 +12,13 @@
         "modifydate": "2019-04-18"
       },
       {
+        "path": "2019/java_threadpool01.md",
+        "title": "【Java】自动阻塞的线程池-new",
+        "keywords": "java,线程",
+        "description": "定义最大线程数，线程池满后阻塞主线程。任务全部执行完后自动关闭线程。",
+        "modifydate": "2019-09-11"
+      },
+      {
         "path": "2019/regex_oftenused.md",
         "title": "【正则】常用正则表达式整理",
         "keywords": "regex",
