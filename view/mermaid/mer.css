@@ -39,14 +39,14 @@
     border-bottom: 1px dashed gray;
 }
 
-#source-input:focus {
-    height: auto;
-    overflow: hidden;
-}
-
 #source-input {
     height: 120px;
     overflow: auto;
+}
+
+#source-input:focus {
+    height: auto;
+    overflow: hidden;
     position: absolute;
 }
 
