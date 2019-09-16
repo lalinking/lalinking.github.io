@@ -42,6 +42,7 @@
 #source-input {
     height: 120px;
     overflow: auto;
+    position: absolute;
 }
 
 #source-input:focus {
