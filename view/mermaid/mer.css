@@ -1,6 +1,7 @@
 .mermaid-source {
     resize: vertical;
     min-height: 120px;
+    width: calc(100% - 20px);
     background-color: white;
     border-radius: 5px;
     padding: 10px 0;
@@ -39,13 +40,13 @@
 }
 
 #source-input {
-    position: absolute;
-    opacity: 0;
-    width: calc(100% - 20px);
+    height: 120px;
+    overflow: auto;
 }
 
 #source-input:focus {
-    opacity: 1 !important;
+    height: auto;
+    overflow: hidden;
 }
 
 .mermaid-view {
