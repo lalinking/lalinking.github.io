@@ -39,15 +39,15 @@
     border-bottom: 1px dashed gray;
 }
 
+#source-input:focus {
+    height: auto;
+    overflow: hidden;
+}
+
 #source-input {
     height: 120px;
     overflow: auto;
     position: absolute;
-}
-
-#source-input:focus {
-    height: auto;
-    overflow: hidden;
 }
 
 .mermaid-view {
