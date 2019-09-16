@@ -6,18 +6,10 @@ function ongetvisitcount(count) {
 
 window.addEventListener("load", () => {
     let intpanel = utils.$("#source-input")[0];
-    let outpanel = utils.$("#source-output")[0];
     let viewpanel = utils.$(".mermaid-view")[0];
     let hilight = (code) => {
         return Prism.highlight(code, Prism.languages.markdown, "markdown");
     };
-    let observer = new MutationObserver(e => {
-        outpanel.innerHTML = "";
-        utils.$("li", intpanel).forEach(_li => {
-            outpanel.appendChild(utils.createNode("li", "", hilight(_li.textContent)));
-        });
-    });
-    observer.observe(intpanel, {subtree: true, childList: true, characterData: true});
     intpanel.addEventListener('paste', (e) => {
         e.returnValue = false;
         e.preventDefault();
