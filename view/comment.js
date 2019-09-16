@@ -6,20 +6,23 @@ window.addEventListener("load", () => {
         let textContent = utils.$(".leancloud-visitors-count", count)[0].textContent;
         textContent && window.ongetvisitcount && ongetvisitcount(textContent)
     });
-    observer.observe(utils.$(".leancloud-visitors-count", count)[0], {subtree: true,childList: true,characterData: true,characterDataOldValue: true});
-    utils.addJs("/3rd-lib/av-min.3.0.4.js", true, () => {
-        utils.addJs("/3rd-lib/Valine.min.1.3.6.js", true, () => {
-            new Valine({
-                path: pageid,
-                el: '#vcomments',
-                appId: '751qUy7vopNoxdoECmRgMGbo-MdYXbMMI',
-                appKey: 'SlzOdYaXhKYhqPl20XIr2ost',
-                placeholder: "评论一下。\n欢迎在上方留下您的昵称、邮箱、主页。",
-                verify: true,
-                visitor: true,
-                region: "us"
-            })
-        });
+    observer.observe(utils.$(".leancloud-visitors-count", count)[0], {
+        subtree: true,
+        childList: true,
+        characterData: true,
+        characterDataOldValue: true
+    });
+    utils.addJs("/3rd-lib/Valine.min.1.3.js", true, () => {
+        new Valine({
+            path: pageid,
+            el: '#vcomments',
+            appId: '751qUy7vopNoxdoECmRgMGbo-MdYXbMMI',
+            appKey: 'SlzOdYaXhKYhqPl20XIr2ost',
+            placeholder: "评论一下。\n欢迎在上方留下您的昵称、邮箱、主页。",
+            verify: true,
+            visitor: true,
+            region: "us"
+        })
     });
 });
 
