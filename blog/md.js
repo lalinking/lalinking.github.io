@@ -13,7 +13,7 @@ window.addEventListener("load", () => {
         utils.bind(pageinfo, document);
         document.title = pageinfo.title;
 
-        utils.getAjax("/blog/data/md_page/" + utils.search.path, txt => {
+        utils.getAjax("/blog/data/" + utils.search.path, txt => {
             try {
                 let mdPanel = utils.$(".marked-panel")[0];
                 marked.Renderer.prototype.heading = (htxt, level) => {
