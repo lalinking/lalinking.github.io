@@ -12,6 +12,7 @@ window.addEventListener("load", () => {
         characterData: true,
         characterDataOldValue: true
     });
+    utils.addCss("https://unpkg.com/gitalk/dist/gitalk.css");
     utils.addJs("https://unpkg.com/gitalk/dist/gitalk.min.js", true, () => {
         new Gitalk({
             clientID: 'ac11b4f772aa66353b05',

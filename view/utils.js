@@ -19,6 +19,20 @@ Object.defineProperty(window, "utils", {
             ajax.open("GET", url, true);
             ajax.send();
         },
+        addCss: (src, async, cb) => {
+            let j = document.createElement("style");
+            j.type = "text/css";
+            j.src = src;
+            j.async = !!async;
+            j.onload = j.onreadystatechange = () => {
+                if (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") {
+                    console.log(`load: ${src}`);
+                    cb && cb();
+                    j.onload = j.onreadystatechange = null;
+                }
+            };
+            document.getElementsByTagName("head")[0].appendChild(j);
+        },
         addJs: (src, async, cb) => {
             let j = document.createElement("script");
             j.src = src;
