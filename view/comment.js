@@ -12,17 +12,16 @@ window.addEventListener("load", () => {
         characterData: true,
         characterDataOldValue: true
     });
-    utils.addJs("/3rd-lib/Valine.min.1.3.js", true, () => {
-        new Valine({
-            path: pageid,
-            el: '#vcomments',
-            appId: '751qUy7vopNoxdoECmRgMGbo-MdYXbMMI',
-            appKey: 'SlzOdYaXhKYhqPl20XIr2ost',
-            placeholder: "评论一下。\n欢迎在上方留下您的昵称、邮箱、主页。",
-            verify: true,
-            visitor: true,
-            region: "us"
-        })
+    utils.addJs("https://unpkg.com/gitalk/dist/gitalk.min.js", true, () => {
+        new Gitalk({
+            clientID: 'ac11b4f772aa66353b05',
+            clientSecret: '2869c3cb252bdef896ab0d0252729580c396f18e',
+            repo: 'ric2cn.github.io',
+            owner: 'ric2cn',
+            admin: ['ric2cn'],
+            id: location.pathname,
+            distractionFreeMode: false
+        }).render('vcomments')
     });
 });
 
