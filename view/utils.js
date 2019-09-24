@@ -22,8 +22,9 @@ Object.defineProperty(window, "utils", {
         addCss: (src, async, cb) => {
             let j = document.createElement("style");
             j.type = "text/css";
-            j.src = src;
+            j.href = src;
             j.async = !!async;
+            j.rel = "stylesheet";
             j.onload = j.onreadystatechange = () => {
                 if (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") {
                     console.log(`load: ${src}`);
