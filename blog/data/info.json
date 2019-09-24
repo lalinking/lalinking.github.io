@@ -1,7 +1,7 @@
 {
   "md": {
     "ol_name": "文档列表",
-    "page": "/view/md/md.html",
+    "page": "/blog/md.html",
     "search": "path",
     "lis": [
       {
@@ -51,7 +51,7 @@
   },
   "h5_tool": {
     "ol_name": "在线工具",
-    "page": "/view/",
+    "page": "/tools/",
     "lis": [
       {
         "page": "mermaid/mer.html",
@@ -62,8 +62,8 @@
     ]
   },
   "html_test": {
-    "ol_name": "test",
-    "page": "/view/_/",
+    "ol_name": "未分类",
+    "page": "/oth/",
     "lis": [
       {
         "private": true,
