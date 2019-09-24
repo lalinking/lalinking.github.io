@@ -6,14 +6,14 @@ function ongetvisitcount(count) {
 }
 var codes = {};
 window.addEventListener("load", () => {
-    utils.getAjax("/data/info.json", json => {
+    utils.getAjax("/blog/data/info.json", json => {
         let mds = JSON.parse(json).md.lis;
         Object.assign(pageinfo, mds.find(_md => _md.path === utils.search.path));
         pageinfo.href = "https://ric-z.github.com?path=" + utils.search.path;
         utils.bind(pageinfo, document);
         document.title = pageinfo.title;
 
-        utils.getAjax("/data/md_page/" + utils.search.path, txt => {
+        utils.getAjax("/blog/data/md_page/" + utils.search.path, txt => {
             try {
                 let mdPanel = utils.$(".marked-panel")[0];
                 marked.Renderer.prototype.heading = (htxt, level) => {
