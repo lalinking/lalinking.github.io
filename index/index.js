@@ -26,7 +26,7 @@ const choiceKeyword = function (k) {
 
 window.addEventListener("load", () => {
     // 初始化 文件列表
-    utils.getAjax("/data/info.json", json => {
+    utils.getAjax("/md/data/info.json", json => {
         let labelPanel = utils.$("#label_panel")[0];
         let indexPanel = utils.$("#index_panel")[0];
         let pacs = JSON.parse(json);

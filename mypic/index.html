@@ -71,20 +71,20 @@
  window.addEventListener('load', function(){
   var s = getComputedStyle(document.getElementById("word"))["height"];
   picPlayer.imgHeight = window.innerHeight - 20 - parseInt(s,10);
-  picPlayer.addPic("img/pic1-1.jpg", 1000);
-  picPlayer.addPic("img/pic1-2.jpg", 1000);
-  picPlayer.addPic("img/pic2-1.jpg", 1000);
-  picPlayer.addPic("img/pic2-2.jpg", 1000);
-  picPlayer.addPic("img/pic3-1.jpg", 1000);
-  picPlayer.addPic("img/pic3-2.jpg", 1000);
-  picPlayer.addPic("img/pic3-3.jpg", 1000);
-  picPlayer.addPic("img/pic4.jpg", 1000);
-  picPlayer.addPic("img/pic5-1.jpg", 1000);
-  picPlayer.addPic("img/pic5-2.jpg", 1000);
-  picPlayer.addPic("img/pic5-3.jpg", 1000);
-  picPlayer.addPic("img/pic6-1.jpg", 1000);
-  picPlayer.addPic("img/pic6-2.jpg", 1000);
-  picPlayer.addPic("img/pic7.jpg", 1000);
+  picPlayer.addPic("/mypic/img/pic1-1.jpg", 1000);
+  picPlayer.addPic("/mypic/img/pic1-2.jpg", 1000);
+  picPlayer.addPic("/mypic/img/pic2-1.jpg", 1000);
+  picPlayer.addPic("/mypic/img/pic2-2.jpg", 1000);
+  picPlayer.addPic("/mypic/img/pic3-1.jpg", 1000);
+  picPlayer.addPic("/mypic/img/pic3-2.jpg", 1000);
+  picPlayer.addPic("/mypic/img/pic3-3.jpg", 1000);
+  picPlayer.addPic("/mypic/img/pic4.jpg", 1000);
+  picPlayer.addPic("/mypic/img/pic5-1.jpg", 1000);
+  picPlayer.addPic("/mypic/img/pic5-2.jpg", 1000);
+  picPlayer.addPic("/mypic/img/pic5-3.jpg", 1000);
+  picPlayer.addPic("/mypic/img/pic6-1.jpg", 1000);
+  picPlayer.addPic("/mypic/img/pic6-2.jpg", 1000);
+  picPlayer.addPic("/mypic/img/pic7.jpg", 1000);
   
   document.getElementById("board").onclick = function(){
    picPlayer.play();
