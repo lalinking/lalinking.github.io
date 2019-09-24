@@ -20,7 +20,7 @@ Object.defineProperty(window, "utils", {
             ajax.send();
         },
         addCss: (src, async, cb) => {
-            let j = document.createElement("style");
+            let j = document.createElement("link");
             j.type = "text/css";
             j.href = src;
             j.async = !!async;
