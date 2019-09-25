@@ -1,5 +1,9 @@
 let pageinfo = {
-    readcount: '--'
+    title: 'no one',
+    modifydate: 'long long ago',
+    readcount: '--',
+    keywords: '--',
+    description: '--'
 };
 function ongetvisitcount(count) {
     pageinfo.readcount = count;
@@ -9,7 +13,7 @@ window.addEventListener("load", () => {
     utils.getAjax("/blog/data/info.json", json => {
         let mds = JSON.parse(json).md.lis;
         Object.assign(pageinfo, mds.find(_md => _md.path === utils.search.path));
-        pageinfo.href = "https://ric-z.github.com?path=" + utils.search.path;
+        pageinfo.href = "https://ric2cn.github.io/blog/md.html?path=" + utils.search.path;
         utils.bind(pageinfo, document);
         document.title = pageinfo.title;
 
