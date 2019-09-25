@@ -1,5 +1,6 @@
 body {
     background-color: #efefef;
+    margin: 0 10px 0 200px;
 }
 
 body > * {
