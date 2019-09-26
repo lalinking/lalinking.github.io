@@ -100,17 +100,14 @@
 }
 
 .marked-panel li::before {
-    width: 50px;
-    display: inline-block;
+    width: 8px;
     margin: 2px 12px 0 0;
-    text-align: right;
     color: #181cd6;
-    vertical-align: top;
     font-size: large;
 }
 
 .marked-panel ul > li::before {
-    content: ' + ';
+    content: ' * ';
 }
 
 .marked-panel ol > li::before {
