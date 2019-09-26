@@ -22,7 +22,7 @@
 $(!arg1){[list: arg1,split: / ] arg1 arg2.name arg2.size()}
     ①         ②           ③       ④       ⑤         ⑥
 ```
-
+说明：  
  ① *写!* 时表示该参数 *为空* 时，花括号内文本有效参与拼接，*不写!* 时表示 *不为空* 时花括号内文本才有效参与拼接。
  ② 传入数组型参数时，花括号内的文本会动态的拼接，arg1 此时必须为一个数组。指定该参数作为循环的对象。 且后续的 arg1 指当前取出的 arg1中的元素。
  ③ 传入数组型参数时，两次拼接的衔接字符。
@@ -35,7 +35,7 @@ $(!arg1){[list: arg1,split: / ] arg1 arg2.name arg2.size()}
 
 
 ## 举例
-1. 假如我需要在页面上显示一个用户的名字和角色。
+假如我需要在页面上显示一个用户的名字和角色。
     我传入一个参数：
     {name:"ric z",roles:["man","coder"]}
     我的模板文件可以这样编写：
@@ -55,7 +55,7 @@ $(!arg1){[list: arg1,split: / ] arg1 arg2.name arg2.size()}
   <label>Roles: </label><span>man / coder</span>
 ```
 
-2. 微信自动回复我要返回一个图文链接
+微信自动回复我要返回一个图文链接
     模板文件 return_artiicles.xml:
 
 ```xml

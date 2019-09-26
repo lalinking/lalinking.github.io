@@ -84,10 +84,6 @@
     display: flex;
 }
 
-.marked-panel li:hover {
-    border-left: whitesmoke solid 2px;
-}
-
 .marked-panel li > .li-body {
     display: inline-block;
     cursor: default;
@@ -100,7 +96,7 @@
 }
 
 .marked-panel li::before {
-    width: 8px;
+    width: 20px;
     margin: 2px 12px 0 0;
     color: #181cd6;
     font-size: large;
@@ -111,7 +107,7 @@
 }
 
 .marked-panel ol > li::before {
-    content: counter(sectioncounter) ' - ';
+    content: counter(sectioncounter) '′';
     counter-increment: sectioncounter;
 }
 .marked-panel pre code>div.cospand {
