@@ -47,3 +47,8 @@
     padding: 5px 0;
     margin: 0;
 }
+
+.left_panel hr {
+    border: none;
+    border-top: 5px solid #efefef;
+}
