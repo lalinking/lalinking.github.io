@@ -74,14 +74,13 @@
     text-indent: 20px;
 }
 .marked-panel li>p {
-    display: inline-block;
+    display: inline;
     margin: 0;
 }
 
 .marked-panel li {
     list-style-type: none;
     margin: 4px;
-    display: flex;
 }
 
 .marked-panel li > .li-body {
