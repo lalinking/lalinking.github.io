@@ -5,18 +5,63 @@ let pageinfo = {
     keywords: '--',
     description: '--'
 };
+
 function ongetvisitcount(count) {
     pageinfo.readcount = count;
 }
-var codes = {};
+
+function expandCode(dom, event) {
+    dom.className = "";
+    initNav();
+}
+
+function downloadCode(dom, event) {
+    event.stopPropagation();
+    event.returnValue = false;
+    utils.download(codes[dom.parentElement.getAttribute('data-codeid')], '*.${lan}');
+    return false;
+}
+
+function copyCode(dom, event) {
+    event.stopPropagation();
+    event.returnValue = false;
+    utils.copyToClipboard(codes[dom.parentElement.getAttribute('data-codeid')], () => {
+        dom.innerText = 'copyed'
+    }, (err) => {
+        dom.innerText = 'wrong: ' + err
+    });
+    return false;
+}
+
+function highlight(code, lan) {
+    if ("mermaid" === lan) {
+        return `<div class="mermaid">${code}</div>`;
+    } else {
+        let _id = 'i' + Math.random().toString(36).substr(2);
+        codes[_id] = code;
+        let c = lan ? Prism.highlight(code, Prism.languages[lan], lan) : code;
+        let rs = c.split(/\n/);
+        let download = `<a onclick="return downloadCode(this, event)">download</a>`;
+        let copy = `<a onclick="return copyCode(this, event);">copy</a>`;
+        let result = `<div onclick="expandCode(this, event)" class='${rs.length > 30 ? 'cospand' : ''}'>`;
+        result += `<div><div class='line-start'> :</div><div class="line-body tool-bar" data-codeid="${_id}">${copy}${download}</div></div>`;
+        rs.forEach((e, i) => {
+            result += `<div><div class='line-start'>${i + 1}</div><div class="line-body">${e}</div></div>`;
+        });
+        result += "</div>";
+        return result;
+    }
+}
+
+let codes = {};
 window.addEventListener("load", () => {
     utils.getAjax("/blog/data/info.json", json => {
         let mds = JSON.parse(json).md.lis;
         Object.assign(pageinfo, mds.find(_md => _md.path === utils.search.path));
         pageinfo.href = "https://ric2cn.github.io/blog/md.html?path=" + utils.search.path;
         utils.bind(pageinfo, document);
-        document.title = pageinfo.title;
 
+        document.title = pageinfo.title;
         utils.getAjax("/blog/data/" + utils.search.path, txt => {
             try {
                 let mdPanel = utils.$(".marked-panel")[0];
@@ -27,26 +72,7 @@ window.addEventListener("load", () => {
                     breaks: true,
                     smartLists: true,
                     smartypants: true,
-                    highlight: (code, lan) => {
-                        if ("mermaid" === lan) {
-                            return `<div class="mermaid">${code}</div>`;
-                        } else {
-                            let _id = 'i' + Math.random().toString(36).substr(2);
-                            codes[_id] = code;
-                            let c = lan ? Prism.highlight(code, Prism.languages[lan], lan) : code;
-                            let rs = c.split(/\n/);
-                            let expand = rs.length > 30 ? "<a onclick='this.parentElement.parentElement.parentElement.className=\"\"; this.style.display=\"none\";initNav()'>expand</a>" : "";
-                            let download = `<a onclick="utils.download(codes[this.parentElement.getAttribute('data-codeid')], '*.${lan}')">download</a>`;
-                            let copy = `<a onclick="utils.copyToClipboard(codes[this.parentElement.getAttribute('data-codeid')],()=>{this.innerText='copyed'},(err)=>{this.innerText='wrong: '+err})">copy</a>`;
-                            let result = `<div class='${rs.length > 30 ? 'cospand' : ''}'>`;
-                            result += `<div><div class='line-start'> :</div><div class="line-body tool-bar" data-codeid="${_id}">${copy}${download}${expand}</div></div>`;
-                            rs.forEach((e, i) => {
-                                result += `<div><div class='line-start'>${i + 1}</div><div class="line-body">${e}</div></div>`;
-                            });
-                            result += "</div>";
-                            return result;
-                        }
-                    }
+                    highlight: highlight
                 });
                 mermaid.init();
             } finally {
