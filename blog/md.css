@@ -1,3 +1,6 @@
+.marked-panel h1, .marked-panel h2 {
+    margin-top: 50px;
+}
 
 .text-title {
     display: inline-block;
