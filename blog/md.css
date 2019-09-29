@@ -95,7 +95,7 @@
 }
 
 .marked-panel li::before {
-    margin: 2px 12px 0 10px;
+    margin: 0 10px 0 15px;
     color: #181cd6;
     vertical-align: middle;
     font-size: large;

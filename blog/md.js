@@ -77,7 +77,6 @@ window.addEventListener("load", () => {
                 mermaid.init();
             } finally {
                 initNav();
-                hideLoadingBoard();
             }
         });
 

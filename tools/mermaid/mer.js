@@ -52,7 +52,6 @@ window.addEventListener("load", () => {
             viewpanel.innerHTML = `<pre>${e}</pre>`;
         }
     }, 300);
-    hideLoadingBoard();
 });
 
 function showDemo(demoName) {
