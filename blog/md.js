@@ -35,7 +35,8 @@ function copyCode(dom, event) {
 
 function highlight(code, lan) {
     if ("mermaid" === lan) {
-        return `<div class="mermaid">${code}</div>`;
+        window.needMermaid = true;
+        return `<div class="mermaid" data-status="0">${code}</div>`;
     } else {
         let _id = 'i' + Math.random().toString(36).substr(2);
         codes[_id] = code;
@@ -60,7 +61,6 @@ window.addEventListener("load", () => {
         Object.assign(pageinfo, mds.find(_md => _md.path === utils.search.path));
         pageinfo.href = "https://ric2cn.github.io/blog/md.html?path=" + utils.search.path;
         utils.bind(pageinfo, document);
-
         document.title = pageinfo.title;
         utils.getAjax("/blog/data/" + utils.search.path, txt => {
             try {
@@ -74,12 +74,16 @@ window.addEventListener("load", () => {
                     smartypants: true,
                     highlight: highlight
                 });
-                mermaid.init();
+                if (window.needMermaid) {
+                    utils.addJs("https://unpkg.com/mermaid@8.3.1/dist/mermaid.min.js", true, () => {
+                        mermaid.init();
+                        utils.$(".marked-panel [data-status='0']").forEach(div => {div.setAttribute("data-status", "1")});
+                    });
+                }
             } finally {
                 initNav();
             }
         });
-
 
     });
 });
