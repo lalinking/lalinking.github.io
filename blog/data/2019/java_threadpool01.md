@@ -5,7 +5,6 @@
 主线程即任务生产线程，消费线程则是连接池中的线程。
 
 
-
 ### 图解
 
 ```mermaid
@@ -22,22 +21,17 @@ sequenceDiagram
         activate client
         pool ->> main: 继续提交下一个任务
       else 线程池满
-        
         pool ->> pool: 主线程等待（阻塞）
-        opt 一个消费线程运行结束
-          client -x pool: 唤起主线程（取消阻塞）
-          activate pool
-          pool ->> main: 继续提交下一个任务
-        end
-        
+      end 
+
+      opt 一个消费线程运行结束
+        client -x pool: 唤起主线程（取消阻塞）
+        activate pool
+        pool ->> main: 继续提交下一个任务
       end
- 
+
     end
-
 ```
-
-
-
 
 
 ### 使用
@@ -61,9 +55,6 @@ sequenceDiagram
         }
     }
 ```
-
-
-
 
 
 ### 代码
