@@ -40,6 +40,7 @@
     border-radius: 0 0 4px 0;
     font-weight: bolder;
 }
+
 .tool-bar a {
     margin-left: 15px;
     color: #2f5c7d;
@@ -68,15 +69,16 @@
     padding-right: 8px;
 }
 
-.marked-panel>p, .marked-panel pre {
+.marked-panel > p, .marked-panel pre {
     margin: 10px 20px 5px 20px;
 }
 
-.marked-panel>p {
+.marked-panel > p {
     white-space: pre-wrap;
     text-indent: 20px;
 }
-.marked-panel li>p {
+
+.marked-panel li > p {
     display: inline;
     margin: 0;
 }
@@ -91,7 +93,7 @@
     cursor: default;
 }
 
-.marked-panel ol,.marked-panel ul {
+.marked-panel ol, .marked-panel ul {
     counter-reset: sectioncounter;
     padding: 5px 0;
     margin: 0;
@@ -112,17 +114,19 @@
     content: counter(sectioncounter) '′';
     counter-increment: sectioncounter;
 }
-.marked-panel pre code>div.cospand {
+
+.marked-panel pre code > div.cospand {
     max-height: 304px;
     overflow: hidden;
     position: relative;
     pointer-events: none;
 }
-.marked-panel pre code>div.cospand>div a {
+
+.marked-panel pre code > div.cospand > div a {
     pointer-events: auto;
 }
 
-.marked-panel pre code>div.cospand::after {
+.marked-panel pre code > div.cospand::after {
     cursor: pointer;
     pointer-events: auto;
     content: "click to expand";
@@ -137,6 +141,7 @@
     box-shadow: 0 0 25px 10px #f3e8e8;
     border-radius: 0 0 10px 10px;
 }
+
 .marked-panel pre {
     background-color: #fbf9f7;
     word-break: break-word;
@@ -151,6 +156,10 @@
 
 .marked-panel .mermaid {
     padding: 20px;
+}
+
+.marked-panel .mermaid[data-status='1'] {
+    text-align: center;
 }
 
 .marked-panel:hover .mermaid[data-status='0']::before {
