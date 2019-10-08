@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
+    <meta name="keywords" content="bt,magnet,tracker,魔法链接,加速下载">
+    <meta name="description" content="更新 magnet tracker 服务器，增加下载速度。每日更新服务器列表。">
+    <title>Magnet 魔链激活，加速下载</title>
+    <script src='/lib/loadingboard.js'></script>
+    <link href="/lib/page.css" type="text/css" rel="stylesheet">
+    <script src='/lib/page.js'></script>
+    <script src='/tools/magnet/mag.js'></script>
+    <link href='/tools/magnet/mag.css' type="text/css" rel="stylesheet">
+    <link href='/lib/left.css' type="text/css" rel="stylesheet">
+    <script src='/lib/left.js' async></script>
+    <script src='/lib/comment.js'></script>
+</head>
+<body>
+<div>
+    <textarea id="input_magnet" placeholder="请输入 Magnet 地址" onkeyup="getMagnet()"></textarea>
+    <div style="font-size: smaller;">
+        &nbsp;&nbsp;<input id="use_older" type="checkbox" checked onchange="getMagnet()"/>保留原来的 Tracker &nbsp;&nbsp;
+        &nbsp;&nbsp;<input id="use_ip" type="checkbox" onchange="getMagnet()"/>使用 IP Tracker &nbsp;&nbsp;
+        &nbsp;&nbsp;<a id="copy_btn" href="javascript:copyRes()" class="hide">拷贝结果</a>
+    </div>
+    <br>
+    <div><span id="msg">&nbsp;</span></div>
+    <div id="output_magnet" class="hide">&nbsp;</div>
+</div>
+<div id="vcomments"></div>
+</body>
+</html>
