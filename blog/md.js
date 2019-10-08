@@ -1,6 +1,6 @@
 let pageinfo = {
     title: 'Unnamed Page',
-    modifydate: 'long long ago',
+    modifydate: '--',
     readcount: '--',
     keywords: '--',
     description: '--'
@@ -45,7 +45,7 @@ function highlight(code, lan) {
         let download = `<a onclick="return downloadCode(this, event)">download</a>`;
         let copy = `<a onclick="return copyCode(this, event);">copy</a>`;
         let result = `<div onclick="expandCode(this, event)" class='${rs.length > 30 ? 'cospand' : ''}'>`;
-        result += `<div><div class='line-start'> :</div><div class="line-body tool-bar" data-codeid="${_id}">${copy}${download}</div></div>`;
+        result += `<div><div class='line-start'></div><div class="line-body tool-bar" data-codeid="${_id}">${copy}${download}</div></div>`;
         rs.forEach((e, i) => {
             result += `<div><div class='line-start'>${i + 1}</div><div class="line-body">${e}</div></div>`;
         });
