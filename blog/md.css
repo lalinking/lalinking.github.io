@@ -2,13 +2,6 @@
     margin-top: 50px;
 }
 
-.text-title {
-    display: inline-block;
-    width: calc(100% - 130px);
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
 .lead-txt, .marked-panel, .comments-panel {
     margin: 5px 100px 0 36px;
     min-width: 500px;

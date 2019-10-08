@@ -40,6 +40,13 @@ body > div {
     vertical-align: middle;
 }
 
+.head .text-title {
+    display: inline-block;
+    width: calc(100% - 130px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 a {
     cursor: pointer;
     text-decoration: none;
