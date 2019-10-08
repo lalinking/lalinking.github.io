@@ -1,5 +1,5 @@
 let pageinfo = {
-    title: 'no one',
+    title: 'Unnamed Page',
     modifydate: 'long long ago',
     readcount: '--',
     keywords: '--',
