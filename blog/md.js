@@ -56,7 +56,7 @@ function highlight(code, lan) {
 
 let codes = {};
 window.addEventListener("load", () => {
-    utils.getAjax("/blog/data/info.json", json => {
+    utils.getAjax("/info.json", json => {
         let mds = JSON.parse(json).md.lis;
         Object.assign(pageinfo, mds.find(_md => _md.path === utils.search.path));
         pageinfo.href = "https://ric2cn.github.io/blog/md.html?path=" + utils.search.path;
