@@ -44,14 +44,21 @@
 </style>
 </head>
 <body style="overflow: hidden;">
+ <audio class="hide" src="/oth/mypic/backgroundsound.mp3" id="music" preload="auto" controls loop hidden autoplay="autoplay"></audio>
  <div style="text-align: center;">
-  <div id="myCanvas"><img></img></div>
+  <div id="myCanvas"><img/></div>
  </div>
  <div id="board"></div>
  <div id="word" style="text-align: center;padding: auto;margin: auto;">　 </div>
- <!-- <audio id="muzic" preload src="http://192.168.8.17//ddexcontent/00/000/34-MP3-320K-FTD.mp3"></audio> -->
 </body>
 <script type="text/javascript">
+ var played = false;
+ document.addEventListener('touchstart',function(){
+  if (played === false) {
+   played = true;
+   document.getElementById('music').play();
+  }
+ });
  var c = document.getElementById("myCanvas");
 // var cxt = c.getContext("2d");
  var picPlayer = new PicPlayer(c);
@@ -88,6 +95,10 @@
   
   document.getElementById("board").onclick = function(){
    picPlayer.play();
+   if (played === false) {
+    played = true;
+    document.getElementById('music').play();
+   }
   };
  });
 
