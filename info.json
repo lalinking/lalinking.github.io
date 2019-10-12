@@ -14,6 +14,12 @@
         "title": "magnet 魔链激活",
         "description": "magnet 魔链激活，更新服务器信息，获取更快的下载速度",
         "modifydate": "2019-10-08"
+      },
+      {
+        "page": "pic/pic.html",
+        "title": "图片转字符画/像素画",
+        "description": "图片转字符画/像素画",
+        "modifydate": "2019-10-08"
       }
     ]
   },
