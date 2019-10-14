@@ -5,9 +5,12 @@
 }
 
 #output_pic {
+    margin: 0;
+    padding: 0;
     line-height: 12px;
     white-space: pre;
     font-size: 12px;
     outline: none;
-    background-color: white;
+    overflow: auto;
+    transform-origin: 0 0;
 }

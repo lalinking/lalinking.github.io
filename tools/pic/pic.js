@@ -103,7 +103,19 @@ function draw() {
         }
         cls.push(p);
     }
-    utils.$("#output_pic")[0].innerText = cls.join('');
+    let outputPic = utils.$("#output_pic")[0];
+    outputPic.style.overflow = "";
+    outputPic.innerText = cls.join('');
+        let w1 = outputPic.scrollWidth;
+        let pStyle = utils.getComputedStyle(outputPic.parentElement);
+        let w2 = parseInt(pStyle.width);
+        if (w1 > w2 ) {
+            let number = w2 / w1;
+            outputPic.style.transform = `scale(${number}) `;
+            console.log(outputPic.offsetLeft);
+            // outputPic.style.marginLeft = -(outputPic.offsetLeft * number)/2 + "px";
+        }
+        outputPic.style.overflow = "unset";
 }
 
 function copyRes() {
