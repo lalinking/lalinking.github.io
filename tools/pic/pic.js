@@ -97,7 +97,7 @@ function draw() {
             if (_abs < abs) {
                 abs = _abs;
             } else {
-                p = pLis[ind + nav * j - nav].str;
+                p = pLis[ind + nav * j - nav] ? pLis[ind + nav * j - nav].str : p;
                 break;
             }
         }
