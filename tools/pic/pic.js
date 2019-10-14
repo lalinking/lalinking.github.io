@@ -31,7 +31,7 @@ function initStrs() {
         }
         pLis.push({str: chars[j], size: ps});
         pLis.sort((a, b) => {
-            return a.size - b.size
+            return b.size - a.size
         });
         pLis.forEach((t, i) => {
             if (i < pLis.length - 1 && t.size === pLis[i + 1].size) {
