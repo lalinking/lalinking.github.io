@@ -1,7 +1,15 @@
+#input_panel > * {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 auto;
+}
 
 #output_pic {
     line-height: 12px;
     white-space: pre;
     font-size: 12px;
     outline: none;
+    border: 1px solid darkgrey;
+    display: inline-block;
+    padding: 2px;
 }
