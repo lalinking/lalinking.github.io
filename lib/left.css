@@ -4,7 +4,26 @@
     margin: 0;
     left: 12px;
     width: 200px;
-    min-width: 200px !important;
+    transition-property: width,height;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+}
+
+.left_panel::before {
+    display: block;
+    font-size: 14px;
+    cursor: pointer;
+    content: "点击收起 ←";
+    width: 100%;
+    text-align: right;
+}
+
+.left_panel[style^="width"] small {
+    display: none;
+}
+
+.left_panel[style^="width"]::before {
+    content: "点击展开 →";
 }
 
 #label_panel a {
