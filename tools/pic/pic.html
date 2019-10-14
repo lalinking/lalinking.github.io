@@ -22,7 +22,7 @@
         <div style="width: 40%;">
             &nbsp;&nbsp;<input id="input_pic" type="file" value="选择图片" onchange="showPreview();"/>
             <br>
-            &nbsp;&nbsp;选择字符：<input type="text" size="30" id="input_char" placeholder="用于生成字符画的字符" value="~!@#$%&*()-=+ abcdefghijklmnopqrstuvwxyz<>?/\|" onchange="initStrs();draw()"/>
+            &nbsp;&nbsp;选择字符：<input type="text" size="42" id="input_char" placeholder="用于生成字符画的字符" value="~!@#$%&*()-=+ abcdefghijklmnopqrstuvwxyz<>?/\|" onchange="initStrs();draw()"/>
             <br>
             &nbsp;&nbsp;选择分辩率：
             <input style="width: 50px;" type="number" value="50" size="3" step="5" onchange='utils.$("#canvas_img")[0].setAttribute("width", this.value);draw()'>
@@ -40,7 +40,7 @@
     <canvas class="hide" id="canvas_char" width="20" height="20"></canvas>
     <canvas class="hide" id="canvas_img" width="50" height="50"></canvas>
     <div style="text-align: center;">
-        <div id="output_pic" contenteditable="true"></div>
+        <pre id="output_pic" contenteditable="true"></pre>
     </div>
 </div>
 <div id="vcomments"></div>
