@@ -1,5 +1,7 @@
 
 #output_pic {
-    line-height: 6px;
+    line-height: 12px;
     white-space: pre;
+    font-size: 12px;
+    outline: none;
 }

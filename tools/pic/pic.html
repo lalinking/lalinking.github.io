@@ -21,14 +21,18 @@
     <div>
         &nbsp;&nbsp;<input id="input_pic" type="file" value="选择图片" onchange="showPreview();"/>
         <br>
-        &nbsp;&nbsp;选择字符：<input type="text" size="50" id="input_char" placeholder="用于生成字符画的字符" value="~!@#$%&*()-=+ abcdefghijklmnopqrstuvwxyz<>?/\|" onchange="initStrs()"/>
+        &nbsp;&nbsp;选择字符：<input type="text" size="50" id="input_char" placeholder="用于生成字符画的字符" value="~!@#$%&*()-=+ abcdefghijklmnopqrstuvwxyz<>?/\|" onchange="initStrs();draw()"/>
         <br>
-        &nbsp;&nbsp;<a id="copy_btn" href="javascript:copyRes()">拷贝结果</a>
+        &nbsp;&nbsp;选择分辩率：
+        <input type="number" value="50" size="3" step="5" onchange='utils.$("#canvas_img")[0].setAttribute("width", this.value);draw()'>
+        X
+        <input type="number" value="50" size="3" step="5" onchange='utils.$("#canvas_img")[0].setAttribute("height", this.value);draw()'>
+        <br>
+        &nbsp;&nbsp;<a id="copy_btn" href="javascript:copyRes()">拷贝结果</a>&nbsp;&nbsp;<span id="msg">&nbsp;</span>
     </div>
     <br>
-    <div><span id="msg">&nbsp;</span></div>
     <canvas class="hide" id="canvas_char" width="20" height="20"></canvas>
-    <canvas class="hide" id="canvas_img" width="100" height="100"></canvas>
+    <canvas class="hide" id="canvas_img" width="50" height="50"></canvas>
     <div>
         <img id="img" onload="draw()" style="height: 100px;width: 100px;"/>
         <pre id="output_pic" contenteditable="true" style=""></pre>

@@ -14,9 +14,10 @@ function showPreview() {
 }
 
 function initStrs() {
+    pLis.length = 0;
     let charCanvas = utils.$("#canvas_char")[0];
     let ctx = charCanvas.getContext('2d');
-    let chars = utils.$("#input_char")[0].value;
+    let chars = toDBC(utils.$("#input_char")[0].value);
     for (let j = 0; j < chars.length; j++) {
         ctx.clearRect(0, 0, charCanvas.width, charCanvas.height);
         ctx.fillStyle = "black";
@@ -42,6 +43,20 @@ function initStrs() {
             t.maxP = Math.round(t.size * pLis.avgp);
         });
     }
+}
+
+function toDBC(str) {
+    let result = "";
+    const len = str.length;
+    for (let i = 0; i < len; i++) {
+        let cCode = str.charCodeAt(i);
+        //全角与半角相差（除空格外）：65248(十进制)
+        cCode = (cCode >= 0x0021 && cCode <= 0x007E) ? (cCode + 65248) : cCode;
+        //处理空格
+        cCode = (cCode === 0x0020) ? 0x03000 : cCode;
+        result += String.fromCharCode(cCode);
+    }
+    return result;
 }
 
 function draw() {
