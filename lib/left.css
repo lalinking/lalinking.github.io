@@ -1,9 +1,9 @@
 .left_panel {
     position: absolute;
-    top: 50px;
+    top: 3em;
     margin: 0;
-    left: 12px;
-    width: 200px;
+    left: 0.4em;
+    width: 12.5em;
 }
 
 .left_panel::before {
