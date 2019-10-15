@@ -1,5 +1,5 @@
 let pLis = [];
-
+utils.search.pageid = "pic_page";
 /* 图片预览 */
 function showPreview() {
     let file = utils.$("#input_pic")[0];
