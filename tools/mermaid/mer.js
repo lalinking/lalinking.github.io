@@ -5,12 +5,13 @@ function ongetvisitcount(count) {
 }
 
 window.addEventListener("load", () => {
+    showDemo('base-flow');
     let intpanel = utils.$("#source-input")[0];
     let viewpanel = utils.$(".mermaid-view")[0];
     let hilight = (code) => {
         return Prism.highlight(code, Prism.languages.markdown, "markdown");
     };
-    intpanel.addEventListener('paste', (e) => {
+    intpanel.addEventListener('paste', e => {
         e.returnValue = false;
         e.preventDefault();
         e.stopPropagation();
@@ -30,13 +31,12 @@ window.addEventListener("load", () => {
             change = true;
         }
     });
-    intpanel.addEventListener('keyup', (e) => {
+    intpanel.addEventListener('keyup', e => {
         if ((e.keyCode === 8 || e.keyCode === 46) && intpanel.childElementCount === 0) {
             intpanel.innerHTML = "<li><br/></li>";
         }
         change = true;
     });
-
     setInterval(() => {
         if (!change) return;
         change = false;
@@ -79,8 +79,6 @@ function showDemo(demoName) {
                 "<li><br/></li>" +
                 "<li>    %% Comments after double percent signs</li>" +
                 "<li>    e((Inner / circle&#60;br/&#62;and some odd &#60;br/&#62;special characters)) --> f(,.?!+-*ز)</li>" +
-                "<li><br/></li>" +
-                "<li>    cyr[Cyrillic]-->cyr2((Circle shape Начало));</li>" +
                 "<li><br/></li>" +
                 "<li>     classDef green fill:#9f6,stroke:#333,stroke-width:2px;</li>" +
                 "<li>     classDef orange fill:#f96,stroke:#333,stroke-width:4px;</li>" +

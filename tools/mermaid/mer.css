@@ -4,8 +4,8 @@
     width: calc(100% - 20px);
     background-color: white;
     border-radius: 5px;
-    padding: 10px 0;
-    margin: 0;
+    padding: 10px 3px;
+    margin: 10px 0;
     font-family: unset;
     list-style-type: none;
     counter-reset: sectioncounter;
@@ -46,8 +46,6 @@
 
 #source-input:focus {
     height: auto;
-    overflow: hidden;
-    position: absolute;
 }
 
 .mermaid-view {
