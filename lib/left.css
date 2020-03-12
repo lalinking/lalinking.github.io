@@ -4,6 +4,7 @@
     margin: 0;
     left: 0.4em;
     width: 12.5em;
+    pointer-events: none;
 }
 
 .left_panel::before {
@@ -13,6 +14,11 @@
     content: "点击收起 ←";
     width: 100%;
     text-align: right;
+    pointer-events: auto;
+}
+
+.left_panel a {
+    pointer-events: auto;
 }
 
 .left_panel[style^="width"] small {
