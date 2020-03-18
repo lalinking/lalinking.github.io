@@ -1,0 +1,57 @@
+html, body {
+    margin: 1% 10%;
+}
+
+.mermaid-source {
+    resize: vertical;
+    min-height: 120px;
+    width: calc(100% - 20px);
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px 3px;
+    margin: 10px 0;
+    font-family: unset;
+    list-style-type: none;
+    counter-reset: sectioncounter;
+    white-space: pre-wrap;
+}
+
+.tool-bar > a {
+    margin: 0 10px;
+    font-weight: bold;
+    color: green;
+    white-space: nowrap;
+}
+
+.mermaid-source li::before {
+    content: counter(sectioncounter) '　';
+    counter-increment: sectioncounter;
+    width: 50px;
+    display: inline-block;
+    text-align: right;
+    min-width: 35px;
+    color: #0f117b;
+    font-style: initial;
+    padding-right: 8px;
+    font-size: 10px;
+    user-select: none;
+}
+.mermaid-source > li {
+    margin: 0 10px;
+}
+.mermaid-source > li:focus {
+    border-bottom: 1px dashed gray;
+}
+
+#source-input {
+    height: 120px;
+    overflow: auto;
+}
+
+#source-input:focus {
+    height: auto;
+}
+
+.mermaid-view {
+    text-align: center;
+}

@@ -1,0 +1,24 @@
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: #efefef;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #855f7e;
+    border-radius: 3px;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #e8dede;
+}
+
+.hide {
+    display: none !important;
+}
+
+a:hover {
+    cursor: pointer;
+}
