@@ -1,5 +1,5 @@
-let content = $("#content-panel")[0];
-let childWin = $("#child-win")[0];
+let content = $("#topic-panel")[0];
+let childWin = $("#view-win")[0];
 let headTitle = $("#header-title")[0];
 getAjax("https://raw.githubusercontent.com/zhric/notes/master/list", txt => {
     let tList = txt.split(/[\r\n]+/);

@@ -16,7 +16,7 @@ html, body {
 }
 
 .hide {
-    display: none !important;
+    display: none;
 }
 
 a:hover {

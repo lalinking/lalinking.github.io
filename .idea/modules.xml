@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ric2cn.github.io.iml" filepath="$PROJECT_DIR$/.idea/ric2cn.github.io.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/zhric.iml" filepath="$PROJECT_DIR$/.idea/zhric.iml" />
     </modules>
   </component>
 </project>
