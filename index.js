@@ -27,7 +27,6 @@ content.addEventListener("click", e => {
     if (!src) {
         return;
     }
-    initComment(src);
     headTitle.innerText = e.target.innerText;
     document.title = e.target.innerText;
     childWin.className = "";
@@ -35,6 +34,7 @@ content.addEventListener("click", e => {
     e.returnValue = false;
     e.preventDefault();
     e.stopPropagation();
+    initComment(src);
     if (src.endsWith(".md")) {
         src = "/md/_.html?src=" + encodeURIComponent(src)
     }
