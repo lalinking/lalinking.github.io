@@ -14,8 +14,8 @@ observer.observe($(".leancloud-visitors-count", count)[0], {
 addCss("https://unpkg.com/gitalk/dist/gitalk.css");
 addJs("https://unpkg.com/gitalk/dist/gitalk.min.js", true, () => {
     new Gitalk({
-        clientID: 'ac11b4f772aa66353b05',
-        clientSecret: '1a02c81325bd721fb2effe8e3723b5d1a38f048d',
+        clientID: '7b9679434b225da457ea',
+        clientSecret: 'd0367170ba5aca675670eb66f6e25689e905bd07',
         repo: 'zhric.github.io',
         owner: 'zhric',
         admin: ['zhric'],
