@@ -10,7 +10,6 @@ function initComment(pageid) {
             owner: 'zhric',
             admin: ['zhric'],
             id: pageid,
-            createIssueManually: true,
             distractionFreeMode: true
         }).render('vcomments')
     })
