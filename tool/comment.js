@@ -9,7 +9,7 @@ function initComment(pageid) {
             repo: 'zhric.github.io',
             owner: 'zhric',
             admin: ['zhric'],
-            id: pageid,
+            id: pageid.length > 50 ? pageid.substr(pageid.length - 50, 50) : pageid,
             distractionFreeMode: true
         }).render('vcomments')
     })
