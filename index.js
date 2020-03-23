@@ -28,17 +28,17 @@ content.addEventListener("click", e => {
         return;
     }
     initComment(src);
-    if (src.endsWith(".md")) {
-        src = "/md/_.html?src=" + encodeURIComponent(src)
-    }
     headTitle.innerText = e.target.innerText;
     document.title = e.target.innerText;
     childWin.className = "";
-    childWin.src = src;
     content.className = "hide";
     e.returnValue = false;
     e.preventDefault();
-    e.stopPropagation()
+    e.stopPropagation();
+    if (src.endsWith(".md")) {
+        src = "/md/_.html?src=" + encodeURIComponent(src)
+    }
+    childWin.src = src
 });
 
 function home() {
