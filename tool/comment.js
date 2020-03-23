@@ -2,6 +2,10 @@ addCss("https://unpkg.com/gitalk/dist/gitalk.css");
 
 function initComment(pageid) {
     document.getElementById("vcomments").innerHTML = "";
+    let pageKey = pageid.replace(/https?:\/\//i, "");
+    while (pageKey.length > 50) {
+        pageKey = pageKey.substr(pageKey.indexOf("/") + 1)
+    }
     addJs("https://unpkg.com/gitalk/dist/gitalk.min.js", false, () => {
         new Gitalk({
             clientID: '7b9679434b225da457ea',
@@ -9,7 +13,7 @@ function initComment(pageid) {
             repo: 'zhric.github.io',
             owner: 'zhric',
             admin: ['zhric'],
-            id: pageid.length > 50 ? pageid.substr(pageid.length - 50, 50) : pageid,
+            id: pageKey,
             distractionFreeMode: true
         }).render('vcomments')
     })
