@@ -27,6 +27,7 @@ content.addEventListener("click", e => {
     if (!src) {
         return;
     }
+    initComment(src);
     if (src.endsWith(".md")) {
         src = "/md/_.html?src=" + encodeURIComponent(src)
     }
@@ -35,17 +36,16 @@ content.addEventListener("click", e => {
     childWin.className = "";
     childWin.src = src;
     content.className = "hide";
-    childWin.addEventListener("load", winLoad);
     e.returnValue = false;
     e.preventDefault();
-    e.stopPropagation();
+    e.stopPropagation()
 });
-
-function winLoad() {
-    console.log("loaded")
-}
 
 function home() {
     childWin.className = "hide";
-    content.className = ""
+    content.className = "";
+    childWin.src = "";
+    initComment("https://zhric.github.io")
 }
+
+home();

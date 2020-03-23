@@ -30,28 +30,22 @@ html, body {
 
 #content-panel {
     height: 86vh;
-    overflow: auto;
 }
 
-#topic-panel {
-    padding: 0 12vw;
-}
-
-#view-win {
+#topic-panel, #view-win {
     padding: 0;
     margin: 0;
     border: none;
-    width: 100%;
     height: 100%;
+    overflow: auto;
 }
 
-.item-panel {
-    width: 21.3vw;
-    float: right;
-    margin: 2vh 1vw;
-    padding: 1vh 1vw;
-    background-color: aliceblue;
-    border-radius: 8px;
+#view-win {
+    width: 100%;
+}
+
+#topic-panel, #vcomments {
+    padding: 0 12vw;
 }
 
 @media only screen and (max-width: 800px) {
@@ -64,6 +58,15 @@ html, body {
     .item-panel {
         width: 70vw;
     }
+}
+
+.item-panel {
+    width: 21.3vw;
+    float: right;
+    margin: 2vh 1vw;
+    padding: 1vh 1vw;
+    background-color: aliceblue;
+    border-radius: 8px;
 }
 
 .item-title {
