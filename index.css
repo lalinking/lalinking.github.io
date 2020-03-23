@@ -29,7 +29,11 @@ html, body {
 }
 
 #content-panel {
-    height: 86vh;
+    height: calc(94vh - 3rem);
+}
+
+#content-panel > div {
+    padding: 0 12vw;
 }
 
 #topic-panel, #view-win {
@@ -42,10 +46,6 @@ html, body {
 
 #view-win {
     width: 100%;
-}
-
-#topic-panel, #vcomments {
-    padding: 0 12vw;
 }
 
 @media only screen and (max-width: 800px) {
@@ -92,7 +92,20 @@ html, body {
 }
 
 #footer-panel {
-    height: 8vh;
+    height: 3rem;
     min-height: 40px;
     background-color: rgba(11, 1, 30, 0.96);
+}
+
+#vcomments {
+    margin: -1.25em 10vw 0;
+    color: wheat;
+}
+
+#footer-panel:hover {
+    overflow: auto;
+    position: fixed;
+    height: 70vh;
+    width: 100%;
+    bottom: 0;
 }
