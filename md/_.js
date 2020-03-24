@@ -44,7 +44,7 @@ let showMDText = txt => {
         highlight: highlight
     });
     if (window.needMermaid) {
-        addJs("/3rd-lib/mermaid.js", true, () => {
+        addJs("/3rd-lib/mermaid/mermaid.js", true, () => {
             mermaid.init();
             $(".marked-panel [data-status='0']").forEach(div => {
                 div.setAttribute("data-status", "1")

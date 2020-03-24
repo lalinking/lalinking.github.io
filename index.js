@@ -8,12 +8,16 @@ getAjax("https://zhric.github.io/.db/list", txt => {
         let line = tList[i];
         if (startReg.test(line)) {
             let src = line.replace(startReg, "$1");
-            let needOpen = ("#" + src) === location.hash;
+            let pageKey = src.replace(/^https?:\/\/zhric\.github\.io(\/\.db)?\/?/, "");
+            while (pageKey.length > 50 && pageKey.indexOf("/") > 0) {
+                pageKey = pageKey.substr(pageKey.indexOf("/") + 1)
+            }
+            let needOpen = ("#" + pageKey) === location.hash;
             let title = tList[++i];
             let desc = tList[++i];
             let date = tList[++i];
             let _div = $$(`<div class='item-panel'>
-                                    <div class='item-title ${needOpen ? "needOpen" : ""}' data-src='${src}'>${title}</div>
+                                    <div class='item-title ${needOpen ? "needOpen" : ""}' data-key="${pageKey}" data-src='${src}'>${title}</div>
                                     <div class="item-content">${desc}</div>
                                     <div class="item-date">${date}</div>
                                  </div>`);
@@ -32,7 +36,6 @@ getAjax("https://zhric.github.io/.db/list", txt => {
 function openChildWin(src) {
     childWin.className = "";
     content.className = "hide";
-    initComment(src.replace(/^https?:\/\/zhric\.github\.io(\/\.db)?\/?/, ""));
     if (src.endsWith(".md")) {
         src = "/md/_.html?src=" + encodeURIComponent(src)
     }
@@ -46,16 +49,14 @@ content.addEventListener("click", e => {
     }
     headTitle.innerText = e.target.innerText;
     document.title = e.target.innerText;
-    e.returnValue = false;
-    e.preventDefault();
-    e.stopPropagation();
-    location.href = location.origin + "#" + src;
-    openChildWin(src)
+    openChildWin(src);
+    let pageKey = e.target.getAttribute("data-key");
+    location.href = location.origin + "#" + pageKey;
+    initComment(pageKey)
 });
 
 function home() {
     location.href = "https://zhric.github.io";
-
 }
 
 if (!location.hash) {
