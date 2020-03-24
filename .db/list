@@ -1,0 +1,28 @@
+# https://zhric.github.io/.db/java/java_auto_dateformater.md
+  【Java】“自适应”的 String 转 Date 工具
+  预先注册可能用到的日期格式，之后可通过传入的字符串特征自动转换成 Date 对象，而不需要另外指定格式。
+  2018-11-09
+# https://zhric.github.io/.db/java/mybatis_300lines_interceptor.md
+  【Java mybatis 插件】通过一个类 300 行代码实现单表增删改查
+  工作中经常用到 mybatis,这个插件能根据 mapper 接口的签名自动生成 SQL！不过仅限于单表的增删改查。
+  2019-03-07
+# https://zhric.github.io/.db/java/threadpool02.md
+  【Java】自动阻塞的线程池
+  定义最大线程数，线程池满后阻塞主线程。任务全部执行完后自动关闭线程。
+  2019-09-11
+# https://zhric.github.io/.db/othe/regex_oftenused.md
+  【正则】常用正则表达式整理
+  整理一些常用的正则表达式
+  2019-03-13
+# https://zhric.github.io/webtool/mermaid/mer.html
+  在线绘图工具
+  绘制流程图、时序图、甘特图，导出为 PNG、SVG
+  2019-05-06
+# https://zhric.github.io/webtool/magnet/mag.html
+  magnet 魔链激活
+  magnet 魔链激活，更新服务器信息，获取更快的下载速度
+  2019-10-08
+# https://zhric.github.io/webtool/pic/pic.html
+  图片转字符画
+  图片转字符画
+  2019-10-08
