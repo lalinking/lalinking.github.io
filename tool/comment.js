@@ -1,12 +1,16 @@
-addCss("https://unpkg.com/gitalk/dist/gitalk.css");
+addCss("/3rd-lib/gitalk.css");
 
+let pageKey;
 function initComment(pageid) {
     document.getElementById("vcomments").innerHTML = "";
-    let pageKey = pageid.replace(/https?:\/\//i, "");
-    while (pageKey.length > 50) {
+    pageKey = pageid.replace(/https?:\/\//i, "");
+    while (pageKey.length > 50 && pageKey.indexOf("/") > 0) {
         pageKey = pageKey.substr(pageKey.indexOf("/") + 1)
     }
-    addJs("https://unpkg.com/gitalk/dist/gitalk.min.js", false, () => {
+    if (pageKey.length > 50) {
+        pageKey = pageKey.substr(pageKey.length - 50)
+    }
+    addJs("/3rd-lib/gitalk.js", false, () => {
         new Gitalk({
             clientID: '7b9679434b225da457ea',
             clientSecret: 'd0367170ba5aca675670eb66f6e25689e905bd07',

@@ -1,7 +1,7 @@
 let content = $("#topic-panel")[0];
 let childWin = $("#view-win")[0];
 let headTitle = $("#header-title")[0];
-getAjax("https://raw.githubusercontent.com/zhric/notes/master/list", txt => {
+getAjax("https://zhric.github.io/.db/list", txt => {
     let tList = txt.split(/[\r\n]+/);
     for (let i = 0; i < tList.length; i++) {
         let startReg = /^#\s*(.*?)\s*$/;
@@ -32,7 +32,7 @@ getAjax("https://raw.githubusercontent.com/zhric/notes/master/list", txt => {
 function openChildWin(src) {
     childWin.className = "";
     content.className = "hide";
-    initComment(src);
+    initComment(src.replace(/^https?:\/\/zhric\.github\.io(\/\.db)?\/?/, ""));
     if (src.endsWith(".md")) {
         src = "/md/_.html?src=" + encodeURIComponent(src)
     }
@@ -59,5 +59,5 @@ function home() {
 }
 
 if (!location.hash) {
-    initComment("https://zhric.github.io")
+    initComment("home")
 }

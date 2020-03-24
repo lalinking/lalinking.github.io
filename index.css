@@ -95,6 +95,7 @@ html, body {
     height: 3rem;
     min-height: 40px;
     background-color: rgba(11, 1, 30, 0.96);
+    transition: height 300ms;
 }
 
 #vcomments {
