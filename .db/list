@@ -1,4 +1,4 @@
-# https://zhric.github.io/.db/java/java_auto_dateformater.md
+# https://zhric.github.io/.db/java/auto_dateformater.md
   【Java】“自适应”的 String 转 Date 工具
   预先注册可能用到的日期格式，之后可通过传入的字符串特征自动转换成 Date 对象，而不需要另外指定格式。
   2018-11-09
