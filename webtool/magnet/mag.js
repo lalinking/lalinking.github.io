@@ -13,7 +13,7 @@ function getMagnet() {
         msg.innerText = "您输入的不是 magnet 链接";
         return
     }
-    let url = `https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best${use_ip.checked ? "_ip" : ""}.txt`;
+    let url = `https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all${use_ip.checked ? "_ip" : ""}.txt`;
     msg.innerText = "正在获取 Tracker 列表，请稍等 ……";
     getAjax(url, trs => {
         let trsList = trs.trim().split(/\s*[\r\n]\s*/);
