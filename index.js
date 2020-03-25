@@ -16,7 +16,7 @@ getAjax("https://zhric.github.io/.db/list", txt => {
             let title = tList[++i];
             let desc = tList[++i];
             let date = tList[++i];
-            needOpen = ("#" + pageKey) === search.target;
+            needOpen = pageKey === search.target;
             if (needOpen) {
                 openTitle = title;
                 openSrc = src;
