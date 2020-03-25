@@ -48,21 +48,21 @@ html, body {
     width: 100%;
 }
 
-@media only screen and (max-width: 800px) {
-    .item-panel {
-        width: 33vw;
-    }
-}
+/*@media only screen and (max-width: 800px) {*/
+/*    .item-panel {*/
+/*        width: 33vw;*/
+/*    }*/
+/*}*/
 
-@media only screen and (max-width: 500px) {
-    .item-panel {
-        width: 70vw;
-    }
-}
+/*@media only screen and (max-width: 500px) {*/
+/*    .item-panel {*/
+/*        width: 70vw;*/
+/*    }*/
+/*}*/
 
 .item-panel {
-    width: 21.3vw;
-    float: right;
+    /*width: 21.3vw;*/
+    /*float: right;*/
     margin: 2vh 1vw;
     padding: 1vh 1vw;
     background-color: aliceblue;
