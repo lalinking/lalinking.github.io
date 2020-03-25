@@ -92,21 +92,21 @@ html, body {
 }
 
 #footer-panel {
+    position: fixed;
     height: 3rem;
     min-height: 40px;
     background-color: rgba(11, 1, 30, 0.96);
     transition: height 300ms;
+    width: 100%;
+    bottom: 0;
+}
+
+#footer-panel:hover {
+    overflow: auto;
+    height: 70vh;
 }
 
 #vcomments {
     margin: -1.25em 10vw 0;
     color: wheat;
-}
-
-#footer-panel:hover {
-    overflow: auto;
-    position: fixed;
-    height: 70vh;
-    width: 100%;
-    bottom: 0;
 }
