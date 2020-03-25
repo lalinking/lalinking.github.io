@@ -1,5 +1,5 @@
-.marked-panel, .comments-panel {
-    margin: 0 10%;
+.marked-panel {
+    margin: 0 10% 1rem;
 }
 
 .marked-panel h1, .marked-panel h2 {
