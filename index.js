@@ -57,7 +57,7 @@ content.addEventListener("click", e => {
         return;
     }
     let pageKey = e.target.getAttribute("data-key");
-    location.href = location.origin + "?target=" + pageKey;
+    location.href = location.origin + "?target=" + encodeURIComponent(pageKey);
 });
 
 function home() {
