@@ -3,6 +3,7 @@ let childWin = $("#view-win")[0];
 let headTitle = $("#header-title")[0];
 getAjax("https://zhric.github.io/.db/list", txt => {
     let tList = txt.split(/[\r\n]+/);
+    let needOpen, openTitle, openSrc, openPageKey;
     for (let i = 0; i < tList.length; i++) {
         let startReg = /^#\s*(.*?)\s*$/;
         let line = tList[i];
@@ -12,10 +13,16 @@ getAjax("https://zhric.github.io/.db/list", txt => {
             while (pageKey.length > 50 && pageKey.indexOf("/") > 0) {
                 pageKey = pageKey.substr(pageKey.indexOf("/") + 1)
             }
-            let needOpen = ("#" + pageKey) === location.hash;
             let title = tList[++i];
             let desc = tList[++i];
             let date = tList[++i];
+            needOpen = ("#" + pageKey) === needOpen || search.target;
+            if (needOpen) {
+                openTitle = title;
+                openSrc = src;
+                openPageKey = pageKey;
+                break
+            }
             let _div = $$(`<div class='item-panel'>
                                     <div class='item-title ${needOpen ? "needOpen" : ""}' data-key="${pageKey}" data-src='${src}'>${title}</div>
                                     <div class="item-content">${desc}</div>
@@ -25,11 +32,13 @@ getAjax("https://zhric.github.io/.db/list", txt => {
         }
     }
     hideLoadingBoard();
-    let needOpen = $(".needOpen");
-    if (needOpen.length === 1) {
-        setTimeout(() => {
-            needOpen[0].click()
-        }, 100)
+    if (needOpen) {
+        headTitle.innerText = openTitle;
+        document.title = openTitle;
+        openChildWin(openSrc);
+        initComment(openPageKey)
+    } else {
+        initComment("home")
     }
 });
 
@@ -47,18 +56,10 @@ content.addEventListener("click", e => {
     if (!src) {
         return;
     }
-    headTitle.innerText = e.target.innerText;
-    document.title = e.target.innerText;
-    openChildWin(src);
     let pageKey = e.target.getAttribute("data-key");
-    location.href = location.origin + "#" + pageKey;
-    initComment(pageKey)
+    location.href = location.origin + "?target=" + pageKey;
 });
 
 function home() {
     location.href = "https://zhric.github.io";
-}
-
-if (!location.hash) {
-    initComment("home")
 }
