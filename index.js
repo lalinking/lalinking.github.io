@@ -24,7 +24,7 @@ getAjax("https://zhric.github.io/.db/list", txt => {
                 break
             }
             let _div = $$(`<div class='item-panel'>
-                                    <div class='item-title ${needOpen ? "needOpen" : ""}' data-key="${pageKey}" data-src='${src}'>${title}</div>
+                                    <div class='item-title' data-key="${pageKey}" data-src='${src}'>${title}</div>
                                     <div class="item-content">${desc}</div>
                                     <div class="item-date">${date}</div>
                                  </div>`);
