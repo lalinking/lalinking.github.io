@@ -1,24 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset='UTF-8'>
-    <meta  name='viewport' content='width=device-width initial-scale=1'>
-    <title>whocare</title>
-    <script src="/upgrade.js"></script>
-    <script src="/tool/loadingboard.js"></script>
-    <link href="/upgrade.css" type="text/css" rel="stylesheet">
-    <link href="/index.css" type="text/css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <link href="resource/main.css" type="text/css" rel="stylesheet">
+    <link href="resource/md.css" type="text/css" rel="stylesheet">
+    <link href="3rd-lib/gitalk/gitalk.css" type="text/css" rel="stylesheet">
+    <link href="3rd-lib/prism/prism.css" type="text/css" rel="stylesheet">
+    <script src="resource/upgrade.js"></script>
+    <title>打工姿态 -> 学习姿态</title>
 </head>
 <body>
-<div id="header-panel"><span id="btn-home" onclick="home()">首页</span><span id="header-title"></span></div>
-<div id="content-panel">
-    <div id="topic-panel"></div>
-    <iframe class="hide" id="view-win"></iframe>
+<noscript></noscript>
+<div id="header"></div>
+<div id="main">
+    <div id="board" class="curb">
+        <div class="face front">
+            <div id="bookshelf"><div id="bookshelf_left"></div><div id="bookshelf_inner"></div><div id="bookshelf_right"></div></div>
+            <div class="talk" data-click="talk_switch" tabindex="1"><i class="icon close" data-click="talk_close"></i><div id="talk"></div></div>
+        </div>
+        <div class="face back"></div>
+    </div>
+    <div id="tools">
+        <div class='icon index_close' data-click='index_close' title="回到桌面"></div>
+    </div>
 </div>
-<div id="footer-panel">
-    <div id="vcomments"></div>
-</div>
+<div id="foot"></div>
 </body>
-    <script src='/tool/comment.js'></script>
-    <script src="/index.js"></script>
+<script src="resource/pageInit.js"></script>
+<script src="3rd-lib/gitalk/gitalk.js"></script>
+<script src="3rd-lib/markedjs/marked.js"></script>
+<script src="3rd-lib/mermaid/mermaid.js"></script>
+<script src="3rd-lib/prism/prism.js"></script>
+<script data-runat="init"></script>
 </html>
