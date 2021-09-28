@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 	<meta charset="UTF-8">
-	<meta name="keywords" content="杂记">
+	<meta name="keywords" content="Java 笔记">
 	<meta name="description" content="预先注册可能用到的日期格式，之后可通过传入的字符串特征自动转换成 Date 对象，而不需要另外指定格式。">
 	<meta name="author" content="lalinking">
 	<meta name="copyright" content="lalinking">
@@ -242,11 +242,13 @@ public final class DateUtil {
 <script src="/3rd-lib/mermaid/mermaid.js"></script>
 <script src="/3rd-lib/prism/prism.js"></script>
 <script data-runat="init">
-	initBookShelf('{"maxThickness":1,"maxHeight":2,"P855214":{"BookName":"杂记","contents":[{"FileTitle":"杂记一则","BookName":"杂记","Title":"“自适应”的 String 转 Date 工具","Date":"2018-11-09","Description":"预先注册可能用到的日期格式，之后可通过传入的字符串特征自动转换成 Date 对象，而不需要另外指定格式。","FilePath":"java/dateFormatter.md"}]}}');
+	initBookShelf('{"maxThickness":1,"maxHeight":7,"M-154268230":{"BookId":"M-154268230","BookName":"Java 笔记","contents":[{"FileTitle":"杂记一则","BookName":"Java 笔记","Title":"“自适应”的 String 转 Date 工具","Date":"2018-11-09","Description":"预先注册可能用到的日期格式，之后可通过传入的字符串特征自动转换成 Date 对象，而不需要另外指定格式。","Keywords":"java,DateFormat","FilePath":"java/dateFormatter.md"}]}}');
 	var mdContent = $("noscript")[0].innerText;
 	if (mdContent.length) {
-		$("#P855214").setAttribute("data-status", "post_loading");
-		setMdTxt(mdContent);
+		$("#M-154268230").setAttribute("data-status", "post_loading");
+		showPost("java/dateFormatter.md", "杂记一则", "2018-11-09", mdContent);
+	} else {
+		initTalk("index.html");
 	}
 </script>
 </html>
