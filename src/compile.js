@@ -109,7 +109,7 @@ function compilePostFileToHTML(postPath) {
 	var _ms = _res.meta;
 	_ms.BookKey = _res.bookKey;
 	_ms.Content = _res.content;
-	_ms.Keywords = _ms.BookName;
+	_ms.Keywords = _ms.Keywords || _ms.BookName;
 	_ms.bookInfos = JSON.stringify(bookInfos);
 	var _txts = fs.readFileSync(dirRepo + "/src/page.html").toString().split(new RegExp("[\r\n]"));
 	for (var _index = 0; _index < _txts.length; _index ++) {
