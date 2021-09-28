@@ -133,7 +133,7 @@ listPostFiles(dirPosts, compilePostFileToHTML);
 var _ms = {};
 _ms.BookKey = null;
 _ms.Description = "蓝领王的个人笔记博客";
-_ms.Content = "蓝领王的个人笔记博客";
+_ms.Content = "";
 _ms.Keywords = "蓝领王,笔记";
 _ms.bookInfos = JSON.stringify(bookInfos);
 var _txts = fs.readFileSync(dirRepo + "/src/page.html").toString().split(new RegExp("[\r\n]"));

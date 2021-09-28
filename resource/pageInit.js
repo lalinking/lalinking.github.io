@@ -89,8 +89,8 @@ function initBookShelf(metaInfo) {
 function initTalk(path) {
     document.getElementById("talk").innerHTML = "";
     let gitalk = new Gitalk({
-        clientID: '7b9679434b225da457ea',
-        clientSecret: 'd0367170ba5aca675670eb66f6e25689e905bd07',
+        clientID: 'e9916f89337aaa12bfe4',
+        clientSecret: '1f87c979b3410722449b079e84e0da0470f7344c',
         repo: 'lalinking.github.io',
         owner: 'lalinking',
         admin: ['lalinking'],
