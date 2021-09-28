@@ -86,19 +86,18 @@ function initBookShelf(metaInfo) {
     bookShelf.style.width = left + "rem";
 }
 
-function initTalk(path) {
+function initTalk(path, title) {
     document.getElementById("talk").innerHTML = "";
-    let gitalk = new Gitalk({
+    new Gitalk({
         clientID: 'e9916f89337aaa12bfe4',
         clientSecret: '1f87c979b3410722449b079e84e0da0470f7344c',
         repo: 'lalinking.github.io',
         owner: 'lalinking',
         admin: ['lalinking'],
         id: stringToHashKey(path),
-        distractionFreeMode: true,
-		proxy: 'https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token'
-    });
-    gitalk.render('talk');
+		title: title,
+        distractionFreeMode: true
+    }).render('talk');
 }
 /* 页面渲染 */
 function setMdTxt(txt) {
@@ -118,7 +117,7 @@ function setMdTxt(txt) {
 
 function showPost(filePath, _title, _date, _txt) {
     // 加载留言
-    initTalk(filePath);
+    initTalk(filePath, _title);
     $(".book[data-status=post_loading] .p4")[0].innerHTML = "";
     let _infoDom = document.createElement("DIV");
     _infoDom.className = "post-meta";
@@ -182,10 +181,10 @@ document.body.addEventListener("click", e => {
         $(".book[data-status^=index_], .book[data-status=post_loading], .book[data-status=post_loaded]").setAttribute("data-status", "close");
         $("#board").css("transform", "rotateX(55deg)");
         setTimeout(function() {$("#board").css("transform", "")}, 500);
-        initTalk("index.html");
+        initTalk("index.html", "首页");
     } else if (clk == "post_close") {
         $(".book[data-status=post_loaded]").setAttribute("data-status", "index_reopen");
-        initTalk("index.html");
+        initTalk("index.html", "首页");
     } else if (clk == "talk_switch") {
         $(".talk").setAttribute("data-status", "show");
     } else if (clk == "talk_close") {
