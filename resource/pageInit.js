@@ -10,7 +10,6 @@ function stringToHashKey(str) {
     return hash > 0 ? ("P" + hash) : ("M" + hash);
 }
 function initBookShelf(metaInfo) {
-    initTalk("");
     let bookInfos = JSON.parse(metaInfo);
     let bookShelf = $("#bookshelf_inner")[0];
     let maxThickness = bookInfos.maxThickness;
@@ -182,10 +181,10 @@ document.body.addEventListener("click", e => {
         $(".book[data-status^=index_], .book[data-status=post_loading], .book[data-status=post_loaded]").setAttribute("data-status", "close");
         $("#board").css("transform", "rotateX(55deg)");
         setTimeout(function() {$("#board").css("transform", "")}, 500);
-        initTalk("");
+        initTalk("index.html");
     } else if (clk == "post_close") {
         $(".book[data-status=post_loaded]").setAttribute("data-status", "index_reopen");
-        initTalk("");
+        initTalk("index.html");
     } else if (clk == "talk_switch") {
         $(".talk").setAttribute("data-status", "show");
     } else if (clk == "talk_close") {

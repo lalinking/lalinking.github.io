@@ -43,6 +43,8 @@
 	if (mdContent.length) {
 		$("#null").setAttribute("data-status", "post_loading");
 		showPost("#{FilePath}", "#{FileTitle}", "#{Date}", mdContent);
+	} else {
+		initTalk("index.html");
 	}
 </script>
 </html>
