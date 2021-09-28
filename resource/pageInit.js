@@ -18,6 +18,7 @@ function initBookShelf(metaInfo) {
     let left = 0;
     for (let b in bookInfos) {
         let book = bookInfos[b];
+		if (typeof book != "object" || !book.BookName) {continue;}
         let bookDiv = document.createElement("DIV");
         bookDiv.className = "book curb";
         // 计算书的三维
