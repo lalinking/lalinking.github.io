@@ -13,8 +13,8 @@ function initBookShelf(metaInfo) {
     initTalk("");
     let bookInfos = JSON.parse(metaInfo);
     let bookShelf = $("#bookshelf_inner")[0];
-    let maxThickness = 0;
-    let maxHeight = 0;
+    let maxThickness = bookInfos.maxThickness;
+    let maxHeight = bookInfos.maxHeight;
     let left = 0;
     for (let b in bookInfos) {
         let book = bookInfos[b];
