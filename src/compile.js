@@ -94,7 +94,7 @@ function compilePostFileToMD(postPath) {
 	if (bookInfos[_bookKey]) {
 		bookInfos[_bookKey].contents.push(_res.meta);
 	} else {
-		bookInfos[_bookKey] = {BookName: _res.meta.BookName, contents: [_res.meta]};
+		bookInfos[_bookKey] = {BookId: _bookKey, BookName: _res.meta.BookName, contents: [_res.meta]};
 	}
 	var _fullPath = path.resolve(dirRepo + "/.posts/" + _res.meta.FilePath, '..');
 	mkdirsSync(_fullPath);
