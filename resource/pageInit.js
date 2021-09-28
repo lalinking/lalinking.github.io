@@ -102,6 +102,7 @@ function initTalk(path) {
 }
 /* 页面渲染 */
 function setMdTxt(txt) {
+	console.log(txt);
 	let html = marked(txt, {
 		breaks: true,
 		smartLists: true,
