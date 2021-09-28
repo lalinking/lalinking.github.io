@@ -96,7 +96,8 @@ function initTalk(path) {
         owner: 'lalinking',
         admin: ['lalinking'],
         id: stringToHashKey(path),
-        distractionFreeMode: true
+        distractionFreeMode: true,
+		proxy: 'https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token'
     });
     gitalk.render('talk');
 }
