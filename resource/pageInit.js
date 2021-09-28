@@ -117,6 +117,8 @@ function setMdTxt(txt) {
 }
 
 function showPost(filePath, _title, _date, _txt) {
+    // 加载留言
+    initTalk(filePath);
     $(".book[data-status=post_loading] .p4")[0].innerHTML = "";
     let _infoDom = document.createElement("DIV");
     _infoDom.className = "post-meta";
@@ -132,8 +134,6 @@ function showPost(filePath, _title, _date, _txt) {
     } else if (filePath.endsWith(".html")) {
         // 加载 iframe
     }
-    // 加载留言
-    initTalk(filePath);
 }
 let codes = {};
 function copyCode(dom) {
