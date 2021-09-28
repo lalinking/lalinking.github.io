@@ -65,6 +65,7 @@ function listPostFiles(_path, _callBack) {
 }
 
 function getPostFileMetaInfo(postPath) {
+	if (!fs.existsSync(postPath)) {return {};}
 	var _txts = fs.readFileSync(postPath).toString().split(new RegExp("[\r\n]"));
 	var _flag = 0;
 	var _reg = new RegExp("^\-{5,}$");
@@ -126,5 +127,21 @@ function compilePostFileToHTML(postPath) {
 
 // 获取元数据 & 编译博文
 listPostFiles(dirPosts, compilePostFileToMD);
-// console.log("load bookInfos: {}", JSON.stringify(bookInfos));
+console.log("load bookInfos: \n{}", JSON.stringify(bookInfos));
 listPostFiles(dirPosts, compilePostFileToHTML);
+// 生成 index
+var _ms = {};
+_ms.BookKey = null;
+_ms.Content = "蓝领王的个人笔记博客";
+_ms.Keywords = "蓝领王,笔记";
+_ms.bookInfos = JSON.stringify(bookInfos);
+var _txts = fs.readFileSync(dirRepo + "/src/page.html").toString().split(new RegExp("[\r\n]"));
+for (var _index = 0; _index < _txts.length; _index ++) {
+	var _line = _txts[_index];
+	for (var _p in _ms) {
+		if (!_p) {continue;}
+		_line = _line.replace(new RegExp("\#\{" + _p + "\}", "g"), _ms[_p]);
+	}
+	_txts[_index] = _line;
+}
+fs.writeFileSync(dirRepo + "/index.html", _txts.join("\n"));

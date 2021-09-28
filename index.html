@@ -1,35 +1,48 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <link href="resource/main.css" type="text/css" rel="stylesheet">
-    <link href="resource/md.css" type="text/css" rel="stylesheet">
-    <link href="3rd-lib/gitalk/gitalk.css" type="text/css" rel="stylesheet">
-    <link href="3rd-lib/prism/prism.css" type="text/css" rel="stylesheet">
-    <script src="resource/upgrade.js"></script>
-    <title>打工姿态 -> 学习姿态</title>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="蓝领王,笔记">
+	<meta name="description" content="#{Description}">
+	<meta name="author" content="lalinking">
+	<meta name="copyright" content="lalinking">
+	<link href="/resource/main.css" type="text/css" rel="stylesheet">
+	<link href="/resource/md.css" type="text/css" rel="stylesheet">
+	<link href="/3rd-lib/gitalk/gitalk.css" type="text/css" rel="stylesheet">
+	<link href="/3rd-lib/prism/prism.css" type="text/css" rel="stylesheet">
+	<script src="/resource/upgrade.js"></script>
+	<title>打工姿态 -> 学习姿态</title>
 </head>
 <body>
-<noscript></noscript>
+<noscript>
+蓝领王的个人笔记博客
+</noscript>
 <div id="header"></div>
 <div id="main">
-    <div id="board" class="curb">
-        <div class="face front">
-            <div id="bookshelf"><div id="bookshelf_left"></div><div id="bookshelf_inner"></div><div id="bookshelf_right"></div></div>
-            <div class="talk" data-click="talk_switch" tabindex="1"><i class="icon close" data-click="talk_close"></i><div id="talk"></div></div>
-        </div>
-        <div class="face back"></div>
-    </div>
-    <div id="tools">
-        <div class='icon index_close' data-click='index_close' title="回到桌面"></div>
-    </div>
+	<div id="board" class="curb">
+		<div class="face front">
+			<div id="bookshelf"><div id="bookshelf_left"></div><div id="bookshelf_inner"></div><div id="bookshelf_right"></div></div>
+			<div class="talk" data-click="talk_switch" tabindex="1"><i class="icon close" data-click="talk_close"></i><div id="talk"></div></div>
+		</div>
+		<div class="face back"></div>
+	</div>
+	<div id="tools">
+		<div class='icon index_close' data-click='index_close' title="回到桌面"></div>
+	</div>
 </div>
 <div id="foot"></div>
 </body>
-<script src="resource/pageInit.js"></script>
-<script src="3rd-lib/gitalk/gitalk.js"></script>
-<script src="3rd-lib/markedjs/marked.js"></script>
-<script src="3rd-lib/mermaid/mermaid.js"></script>
-<script src="3rd-lib/prism/prism.js"></script>
-<script data-runat="init"></script>
+<script src="/resource/pageInit.js"></script>
+<script src="/3rd-lib/gitalk/gitalk.js"></script>
+<script src="/3rd-lib/markedjs/marked.js"></script>
+<script src="/3rd-lib/mermaid/mermaid.js"></script>
+<script src="/3rd-lib/prism/prism.js"></script>
+<script data-runat="init">
+	initBookShelf('{"maxThickness":1,"maxHeight":2,"P855214":{"BookName":"杂记","contents":[{"FileTitle":"杂记一则","BookName":"杂记","Title":"“自适应”的 String 转 Date 工具","Date":"2018-11-09","Description":"预先注册可能用到的日期格式，之后可通过传入的字符串特征自动转换成 Date 对象，而不需要另外指定格式。","FilePath":"java/dateFormatter.md"}]}}');
+	var mdContent = $("noscript")[0].innerText;
+	if (mdContent.length) {
+		$("#null").setAttribute("data-status", "post_loading");
+		setMdTxt(mdContent);
+	}
+</script>
 </html>
