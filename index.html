@@ -42,7 +42,7 @@
 	var mdContent = $("noscript")[0].innerText;
 	if (mdContent.length) {
 		$("#null").setAttribute("data-status", "post_loading");
-		setMdTxt(mdContent);
+		showPost("#{FilePath}", "#{FileTitle}", "#{Date}", mdContent);
 	}
 </script>
 </html>

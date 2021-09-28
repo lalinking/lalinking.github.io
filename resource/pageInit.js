@@ -116,7 +116,7 @@ function setMdTxt(txt) {
 	$(".book[data-status=post_loading]").setAttribute("data-status", "post_loaded");
 }
 
-function showPost(filePath, _title, _date) {
+function showPost(filePath, _title, _date, _txt) {
     $(".book[data-status=post_loading] .p4")[0].innerHTML = "";
     let _infoDom = document.createElement("DIV");
     _infoDom.className = "post-meta";
@@ -124,7 +124,11 @@ function showPost(filePath, _title, _date) {
     $(".book[data-status=post_loading] .p4")[0].append(_infoDom);
     if (filePath.endsWith(".md")) {
         // markdown 文件
-        ajax("/.posts/" + filePath).then(setMdTxt).catch(showNetError);
+		if (_txt) {
+			setMdTxt(_txt)
+		} else {
+			ajax("/.posts/" + filePath).then(setMdTxt).catch(showNetError);
+		}
     } else if (filePath.endsWith(".html")) {
         // 加载 iframe
     }
