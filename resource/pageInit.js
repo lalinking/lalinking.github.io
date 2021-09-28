@@ -20,7 +20,7 @@ function initBookShelf(metaInfo) {
         let book = bookInfos[b];
 		if (typeof book != "object" || !book.BookName) {continue;}
         let bookDiv = document.createElement("DIV");
-		bookDiv.setAttribute("id", book.BookId);
+		bookDiv.setAttribute("id", b);
         bookDiv.className = "book curb";
         // 计算书的三维
         let thickness = book.contents.length / maxThickness * 5.5 + 2;
