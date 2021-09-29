@@ -100,6 +100,10 @@ div {box-sizing: border-box;}
 }
 .talk:not(:focus-within) #talk {
 	pointer-events: none;
+    overflow: hidden;
+}
+.talk :not(.markdown-body) {
+    user-select: none;
 }
 /* 绘制桌面 */
 #board {
@@ -536,6 +540,8 @@ div {box-sizing: border-box;}
 
 /* 动画效果：留言板 */
 .talk:focus-within {
+	padding: 1rem 2rem;
+	overflow: auto;
 	animation: kf_talkOpen 0.3s forwards;
 }
 @keyframes kf_talkOpen {
@@ -576,9 +582,10 @@ div {box-sizing: border-box;}
 		outline: none;
 	}
 }
-.talk {
+.talk:not(:focus-within) {
+	padding: 0 2rem;
+	overflow: hidden;
 	animation: kf_talkClose 0.3s forwards;
-	padding: 2rem;
 }
 @keyframes kf_talkClose {
 	0% {
