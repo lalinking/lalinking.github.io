@@ -1,4 +1,3 @@
-Prism.highlightAll = function() {};
 /* 框架渲染 */
 function stringToHashKey(str) {
     if (str.length === 0) return "N0";
@@ -102,7 +101,6 @@ function initTalk(path, title) {
 }
 /* 页面渲染 */
 function setMdTxt(txt) {
-	console.log(txt);
 	let html = marked(txt, {
 		breaks: true,
 		smartLists: true,
