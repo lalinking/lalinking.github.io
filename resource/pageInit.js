@@ -94,6 +94,7 @@ function initTalk(path, title) {
         repo: 'lalinking.github.io',
         owner: 'lalinking',
         admin: ['lalinking'],
+		pagerDirection: 'last',
         id: stringToHashKey(path),
 		title: title,
         distractionFreeMode: true
@@ -108,7 +109,7 @@ function setMdTxt(txt) {
 		highlight: highlight
 	});
 	let markedPanel = document.createElement("DIV");
-	markedPanel.className = "marked-panel";
+	markedPanel.className = "marked-panel content-panel";
 	markedPanel.innerHTML = html;
 	$(".book[data-status=post_loading] .p4")[0].append(markedPanel);
 	$(".book[data-status=post_loading]").setAttribute("data-status", "post_loaded");
@@ -131,6 +132,11 @@ function showPost(filePath, _title, _date, _txt) {
 		}
     } else if (filePath.endsWith(".html")) {
         // 加载 iframe
+		let _if = document.createElement("IFRAME");
+		_if.className = "content-panel";
+		$(".book[data-status=post_loading] .p4")[0].append(_if);
+		_if.setAttribute("src", filePath);
+		$(".book[data-status=post_loading]").setAttribute("data-status", "post_loaded");
     }
 }
 let codes = {};
@@ -197,5 +203,6 @@ document.body.addEventListener("click", e => {
 });
 
 function showNetError(netError) {
-    console.error(netError)
+    console.error(netError);
+	alert(netError);
 }

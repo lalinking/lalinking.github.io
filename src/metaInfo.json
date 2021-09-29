@@ -1,1 +1,22 @@
-{"maxThickness":0,"maxHeight":0}
+{
+    "maxThickness": 1,
+    "maxHeight": 1,
+    "webPages": {
+        "BookId": "webPages",
+        "BookName": "自娱自乐",
+        "contents": [{
+                "FileTitle": "magnet 魔链增加 tracker",
+                "Date": "2019-10-08",
+                "Description": "magnet 魔链增加 tracker，更新服务器信息，获取更快的下载速度",
+                "Keywords": "magnet,tracker",
+                "FilePath": "/page/magnet/mag.html"
+            }, {
+                "FileTitle": "图片转字符画",
+                "Date": "2019-10-08",
+                "Description": "图片转字符画",
+                "Keywords": "图片,字符画",
+                "FilePath": "/page/pic/pic.html"
+            }
+        ]
+    }
+}
