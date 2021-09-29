@@ -1,3 +1,4 @@
+Prism.highlightAll = function() {};
 /* 框架渲染 */
 function stringToHashKey(str) {
     if (str.length === 0) return "N0";
@@ -178,6 +179,9 @@ document.body.addEventListener("click", e => {
         let _date = e.target.getAttribute("data-date");
         showPost(e.target.getAttribute("data-src"), _title, _date);
     } else if (clk == "index_close") {
+		if (location.pathname != "/") {
+			location.pathname = "/";
+		}
         $(".book[data-status^=index_], .book[data-status=post_loading], .book[data-status=post_loaded]").setAttribute("data-status", "close");
         $("#board").css("transform", "rotateX(55deg)");
         setTimeout(function() {$("#board").css("transform", "")}, 500);
