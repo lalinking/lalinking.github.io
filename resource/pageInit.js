@@ -59,7 +59,7 @@ function initBookShelf(metaInfo) {
         // 生成目录
         let _index = `<div class='title'>${book.BookName}</div><ul>`;
         book.contents.forEach(m => {
-            _index += `<li><a data-click="post_load" id="${m.key}" data-keywords="${m.Keywords}" data-date="${m.Date}" data-src="${m.FilePath}" href="javascript:void(0)" title="${m.FileDesc}">${m.FileTitle}</a></li>`;
+            _index += `<li><a data-click="post_load" data-keywords="${m.Keywords}" data-date="${m.Date}" data-src="${m.FilePath}" href="javascript:void(0)" title="${m.Description}">${m.FileTitle}</a></li>`;
         });
         bookFront.innerHTML = _index;
 
