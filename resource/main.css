@@ -160,7 +160,7 @@ div {box-sizing: border-box;}
 	transform-origin: bottom center;
 	transform: rotateX(-65deg);
 }
-#bookshelf_left:before {
+#bookshelf_left::before {
 	content: " ";
 	height: 5rem;
 	width: 3rem;
@@ -173,7 +173,7 @@ div {box-sizing: border-box;}
 	transform-style: preserve-3d;
 	box-shadow: inset 1rem 0 0rem 1rem #6b6bcf;
 }
-#bookshelf_right:after {
+#bookshelf_right::after {
 	content: " ";
 	height: 5rem;
 	width: 3rem;

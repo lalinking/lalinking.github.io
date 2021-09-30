@@ -112,6 +112,7 @@ function setMdTxt(txt) {
 	markedPanel.className = "marked-panel content-panel";
 	markedPanel.innerHTML = html;
 	$(".book[data-status=post_loading] .p4")[0].append(markedPanel);
+	if (window.needMermaid) {mermaid.init();}
 	$(".book[data-status=post_loading]").setAttribute("data-status", "post_loaded");
 }
 
@@ -155,7 +156,7 @@ function expandCode(dom) {
 function highlight(code, lan) {
     if ("mermaid" === lan) {
         window.needMermaid = true;
-        return `<div class="mermaid" data-status="0">${code}</div>`;
+        return `<div class="mermaid">${code}</div>`;
     } else {
         let _id = 'i' + Math.random().toString(36).substr(2);
         codes[_id] = code;
