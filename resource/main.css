@@ -251,6 +251,7 @@ div {box-sizing: border-box;}
 	font-size: 1rem;
 	font-weight: bold;
 	color: var(--font-color);
+	background-image: linear-gradient(to bottom, var(--border-color) 2%, transparent 20%, transparent 80%, var(--border-color) 98%), linear-gradient(to right, var(--border-color) 2%, transparent 20%, transparent 80%, var(--border-color) 98%);
 }
 .book > .right {
 	width: var(--book-thickness);
@@ -283,9 +284,9 @@ div {box-sizing: border-box;}
 	background-color: var(--background-color);
 }
 .book:nth-child(3n+1) {
-	--border-color: #f9c6c6;
-	--background-color: #dfeaf2;
-	--font-color: #32b152;
+	--border-color: #a8a900;
+	--background-color: #0a5f9d;
+	--font-color: #f8c009;
 }
 .book:nth-child(3n+2) {
 	--border-color: #6d6b5c;
@@ -305,7 +306,7 @@ div {box-sizing: border-box;}
 	background-color: snow;
 	background-repeat: no-repeat;
 	/* background-image: linear-gradient(to bottom, #000000, snow);;/* border-image: linear-gradient(var(--background-color), snow); */
-	background-image: linear-gradient(to bottom, var(--border-color) 0, var(--background-color) 1.5rem, transparent 30%,transparent 90%, var(--border-color) 100%), linear-gradient(to right, var(--border-color) 0, var(--background-color) 1.5rem, transparent 20%, transparent 30%, transparent 70%, var(--background-color) calc(100% - 1.5rem),var(--border-color) 100%);
+	background-image: linear-gradient(to bottom, var(--border-color) 0.5rem, transparent 1.5rem, transparent calc(100% - 2rem), var(--border-color) 100%), linear-gradient(to right, var(--border-color) 0.5rem, transparent 1.5rem, transparent calc(100% - 2rem), var(--border-color) 100%);
 	/* border-image-slice: 10; */
 	padding: 1rem;
 	/* box-shadow: 0 0 8rem 8rem inset var(--border-color); */
