@@ -48,7 +48,7 @@ div {box-sizing: border-box;}
 .curb .face {
 	transform-style: preserve-3d;
 	border: 0.5rem solid transparent;
-	border-color: #a1a095;
+	border-color: var(--border-color);
 	position: absolute;
 	backface-visibility: inherit;
 }
@@ -153,7 +153,6 @@ div {box-sizing: border-box;}
 	height: 15rem;
 	background-color: #7d7dd9;
 	box-shadow: 0px 20px 4rem 0.2rem grey;
-	/* background-image: radial-gradient(#463a3a, #622e2e00); */
 	display: inline-block;
 	border-radius: 7px;
 	position: relative;
@@ -250,6 +249,8 @@ div {box-sizing: border-box;}
 	user-select: none;
 	font-size: 1rem;
 	font-weight: bold;
+	color: var(--font-color);
+	background-image: linear-gradient(to bottom, var(--border-color) 2%, transparent 20%, transparent 80%, var(--border-color) 98%), linear-gradient(to right, var(--border-color) 2%, transparent 20%, transparent 80%, var(--border-color) 98%);
 }
 .book > .right {
 	width: var(--book-thickness);
@@ -279,15 +280,35 @@ div {box-sizing: border-box;}
 }
 /* 书皮默认颜色 */
 .book > .front, .book > .back, .book > .left {
-	background-color: snow;
+	background-color: var(--background-color);
+}
+.book:nth-child(3n+1) {
+	--border-color: #a8a900;
+	--background-color: #0a5f9d;
+	--font-color: #f8c009;
+}
+.book:nth-child(3n+2) {
+	--border-color: #6d6b5c;
+	--background-color: #3c4516;
+	--font-color: #ffffff;
+}
+.book:nth-child(3n+3) {
+	--border-color: #f3edb0;
+	--background-color: #e3e8cd;
+	--font-color: #603f3f;
 }
 
 /* 书本目录 */
 .book[data-status^=index_] .front:not(.page) {
-	border-width: 1.5rem;
-	border-bottom: none;
-	/* padding: 2rem; */
-	/* box-shadow: 0 0 6px 2.5rem inset grey; */
+	/* border-width: 1.5rem; */
+	border: none;
+	background-color: snow;
+	background-repeat: no-repeat;
+	/* background-image: linear-gradient(to bottom, #000000, snow);;/* border-image: linear-gradient(var(--background-color), snow); */
+	background-image: linear-gradient(to bottom, var(--border-color) 0.5rem, transparent 1.5rem, transparent calc(100% - 2rem), var(--border-color) 100%), linear-gradient(to right, var(--border-color) 0.5rem, transparent 1.5rem, transparent calc(100% - 2rem), var(--border-color) 100%);
+	/* border-image-slice: 10; */
+	padding: 1rem;
+	/* box-shadow: 0 0 8rem 8rem inset var(--border-color); */
 }
 .book[data-status^=index_] .front:not(.page) .title {font-size: 1rem;margin: 1rem 0;height: 2rem;text-align: center;color: #000000;}
 .book[data-status^=index_] .front:not(.page) ul {
@@ -295,6 +316,8 @@ div {box-sizing: border-box;}
 	padding: 0;
 	height: calc(100% - 4rem);
 	/* background: linear-gradient(snow, #e0e1dd); */
+	/* background-repeat: no-repeat; */
+	/* background-image: linear-gradient(to bottom, #000000, snow); */
 	list-style-position: inside;
 	list-style-type: circle;
 	overflow-x: hidden;
@@ -335,7 +358,7 @@ div {box-sizing: border-box;}
 	border-radius: 3px;
 	padding: 0.5rem 2rem 1rem 2rem;
 	height: 3rem;
-	background: linear-gradient(#dce0e0, transparent);
+	background: linear-gradient(var(--background-color), transparent);
 }
 .post-title {
 	font-size: 1.1rem;
@@ -349,12 +372,17 @@ div {box-sizing: border-box;}
 	width: calc(100% - 0.5rem);
 	border-radius: 3px;
 	border: none;
-	border-left: 1px solid grey;
-	border-right: 1px solid grey;
+	border-left: 1px solid var(--border-color);
+	border-right: 1px solid var(--border-color);
 	/* overflow: auto; */
 }
 .book:not([data-status=post_loaded]) .p4 {
 	visibility: hidden;
+}
+.content-panel {
+	width: 100%;
+	height: calc(100% - 3.5rem);
+	border: none;
 }
 /* 按钮 */
 .icon {
@@ -523,16 +551,16 @@ div {box-sizing: border-box;}
 		border-right: 1px solid black;
 		transform: translateZ(var(--book-thickness)) rotateY(-50deg);
 		box-shadow: 10px 20px 20px 0px grey;
-		background-color: #f2eaea;
+		background-color: var(--background-color);
 	}
 	90% {
 		transform: translateZ(var(--book-thickness)) rotateY(-90deg);
 		box-shadow: 19px 20px 20px 0px #0a0909;
-		background-color: #eeebe9;
+		background-color: var(--background-color);
 	}
 	100% {
 		transform: translateZ(var(--book-thickness)) rotateY(-181deg);
-		background-color: #e6e3e0;
+		background-color: var(--background-color);
 		border-left: none;
 		border-bottom: none;
 	}
