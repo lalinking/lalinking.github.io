@@ -3,8 +3,6 @@
     padding: 1rem;
     display: block;
     overflow: auto;
-    height: calc(100% - 3.5rem);
-    width: 100%;
 }
 
 .marked-panel h1, .marked-panel h2 {
