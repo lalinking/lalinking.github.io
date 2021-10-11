@@ -278,7 +278,7 @@ div {box-sizing: border-box;}
 	background-size: 100% 2px;
 	background-repeat-x: no-repeat;
 }
-/* 书皮默认颜色 */
+/* 书皮颜色 */
 .book > .front, .book > .back, .book > .left {
 	background-color: var(--background-color);
 }
@@ -358,7 +358,7 @@ div {box-sizing: border-box;}
 	border-radius: 3px;
 	padding: 0.5rem 2rem 1rem 2rem;
 	height: 3rem;
-	background: linear-gradient(var(--background-color), transparent);
+	background: linear-gradient(var(--background-color) -3rem, transparent);
 }
 .post-title {
 	font-size: 1.1rem;
@@ -386,19 +386,19 @@ div {box-sizing: border-box;}
 }
 /* 按钮 */
 .icon {
-	display: inline-flex;
+	display: block;
 	--size: 2rem;
 	height: var(--size);
 	width: var(--size);
 	background-repeat: no-repeat;
 	background-size: var(--size) var(--size);
 	cursor: pointer;
-	flex-wrap: nowrap;
-	flex-direction: column;
-	align-content: center;
-	justify-content: center;
-	align-items: center;
-	font-style: unset;
+	/* flex-wrap: nowrap; */
+	/* flex-direction: column; */
+	/* align-content: center; */
+	/* justify-content: center; */
+	/* align-items: center; */
+	/* font-style: unset; */
 }
 .index_close {
 	background-image: url("/resource/bookshelf.png");
@@ -547,20 +547,20 @@ div {box-sizing: border-box;}
 		background-color: snow;
 	}
 	70% {
-		border-top: 1px solid black;
+		/* border-top: 1px solid black; */
 		border-right: 1px solid black;
 		transform: translateZ(var(--book-thickness)) rotateY(-50deg);
 		box-shadow: 10px 20px 20px 0px grey;
-		background-color: var(--background-color);
+		background-color: #e4dede;
 	}
 	90% {
 		transform: translateZ(var(--book-thickness)) rotateY(-90deg);
 		box-shadow: 19px 20px 20px 0px #0a0909;
-		background-color: var(--background-color);
+		background-color: #aba8a8;
 	}
 	100% {
 		transform: translateZ(var(--book-thickness)) rotateY(-181deg);
-		background-color: var(--background-color);
+		background-color: #e4e3e3;
 		border-left: none;
 		border-bottom: none;
 	}
