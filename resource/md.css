@@ -28,6 +28,7 @@
 .tool-bar a {
     margin-left: 15px;
     color: #2f5c7d;
+    cursor: pointer;
 }
 
 .marked-panel pre:hover .tool-bar {

@@ -82,6 +82,7 @@ function getPostFileMetaInfo(postPath) {
 		var _sp = _line.trim().split(new RegExp("\\s*:\\s*"));
 		_meta[_sp[0]] = _sp[1];
 	}
+	_meta.Description = _meta.Description || _meta.FileTitle;
 	_meta.FilePath = postPath.substr(dirPosts.length);
 	var _bookKey = stringToHashKey(_meta.BookName);
 	return {bookKey: _bookKey, meta: _meta, content: _txts.join("\n")};

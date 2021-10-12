@@ -162,8 +162,8 @@ function highlight(code, lan) {
         codes[_id] = code;
         let c = lan ? Prism.highlight(code, Prism.languages[lan], lan) : code;
         let rs = c.split(/\n/);
-        let copy = `<a onclick="return copyCode(this);">copy</a>`;
-        let result = `<div onclick="expandCode(this)" class='${rs.length > 30 ? 'cospand' : ''}'>`;
+        let copy = `<a data-click="copyCode">copy</a>`;
+        let result = `<div data-click="expandCode" class='${rs.length > 30 ? 'cospand' : ''}'>`;
         result += `<div><div class='line-start'></div><div class="line-body tool-bar" data-codeid="${_id}">${copy}</div></div>`;
         rs.forEach((e, i) => {
             result += `<div><div class='line-start'>${i + 1}</div><div class="line-body">${e}</div></div>`;
@@ -173,7 +173,7 @@ function highlight(code, lan) {
     }
 }
 
-document.body.addEventListener("click", e => {
+window.addEventListener("click", e => {
     let clk = e.target.getAttribute("data-click");
     if (!clk) {return;}
     if (clk == "index_open") {
@@ -198,8 +198,12 @@ document.body.addEventListener("click", e => {
         $(".talk").setAttribute("data-status", "show");
     } else if (clk == "talk_close") {
         $(".talk")[0].blur();
+    } else if (clk == "copyCode") {
+        copyCode(e.target);
+    } else if (clk == "expandCode") {
+        expandCode(e.target);
     } else {
-        alert(clk);
+        console.log(clk);
     }
 });
 
