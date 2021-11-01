@@ -16,6 +16,12 @@
                 "Description": "图片转字符画",
                 "Keywords": "图片,字符画",
                 "FilePath": "/page/pic/pic.html"
+            }, {
+                "FileTitle": "图灵机器人实用",
+                "Date": "2015-10-12",
+                "Description": "调用图灵机器人的api实现自动聊天",
+                "Keywords": "图灵机器人",
+                "FilePath": "/page/wx_yuki/wx.html"
             }
         ]
     }
