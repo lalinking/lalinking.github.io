@@ -86,7 +86,7 @@
      </div>
      <div id="typer" class="middle height=30px background-color=#FFFFFF row font-size=-2">
       <span onclick="menu.className=menu.className.replace('hidden',''); typer.className+=' hidden';" class="click width=30px height=30px" style="background: url(img/keyboard.jpg) 0;"> </span>
-      <span id="sender" contenteditable="true" class="font-size=-3 height=16px width=238px overflow=hidden border-bottom color=black"></span>
+      <span id="sender" contenteditable="true" class="font-size=-3 height=16px width=238px overflow=hidden border-bottom color=black" onkeydown="if(event.keyCode == 13){send();}"></span>
       <span class="click border-radius=5px font-size=-5px padding=4px background-color=green color=white" onclick="send();">发送</span>
      </div>
     </div>
