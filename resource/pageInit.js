@@ -112,7 +112,7 @@ function setMdTxt(txt) {
 	markedPanel.className = "marked-panel content-panel";
 	markedPanel.innerHTML = html;
 	$(".book[data-status=post_loading] .p4")[0].append(markedPanel);
-	if (window.needMermaid) {mermaid.init();}
+	if (window.needMermaid && window.mermaid) {mermaid.init();}
 	$(".book[data-status=post_loading]").setAttribute("data-status", "post_loaded");
 }
 
