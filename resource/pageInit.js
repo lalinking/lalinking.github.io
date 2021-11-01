@@ -151,7 +151,7 @@ function copyCode(dom) {
     return false;
 }
 function expandCode(dom) {
-    dom.className = "";
+    dom.parentElement.parentElement.parentElement.className = "";
 }
 function highlight(code, lan) {
     if ("mermaid" === lan) {
@@ -162,10 +162,10 @@ function highlight(code, lan) {
         codes[_id] = code;
         let c = lan ? Prism.highlight(code, Prism.languages[lan], lan) : code;
         let rs = c.split(/\n/);
-        let copy = `<a data-click="copyCode">copy</a>`;
-        let result = `<div data-click="expandCode" class='${rs.length > 30 ? 'cospand' : ''}'>`;
-        result += `<div><div class='line-start'></div><div class="line-body tool-bar" data-codeid="${_id}">${copy}</div></div>`;
+        let result = `<div class='${rs.length > 20 ? 'cospand' : ''}'>`;
+        result += `<div><div class='line-start'></div><div class="line-body tool-bar" data-codeid="${_id}"><a data-click="copyCode" >copy</a><a class="hide" data-click='expandCode'>expand</a></div></div>`;
         rs.forEach((e, i) => {
+			if (i == 20) {result += "<div data-click='expandCode' class='expandMsg'>... ...</div>";}
             result += `<div><div class='line-start'>${i + 1}</div><div class="line-body">${e}</div></div>`;
         });
         result += "</div>";
