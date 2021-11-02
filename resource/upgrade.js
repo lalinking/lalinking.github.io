@@ -88,6 +88,27 @@ window.$F = (obj, dom) => {
 		})
 	}
 };
+window.addJs = (src, async, cb) => {
+    let jsList = document.getElementsByTagName("script");
+    for (let i = 0; i < jsList.length; i++) {
+        let js = jsList[i];
+        if (js.src === src) {
+            console.log(`js loaded: ${src}`);
+            return cb && cb();
+        }
+    }
+    let j = document.createElement("script");
+    j.src = src;
+    j.async = !!async;
+    j.onload = j.onreadystatechange = () => {
+        if (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") {
+            console.log(`load: ${src}`);
+            cb && cb();
+            j.onload = j.onreadystatechange = null;
+        }
+    };
+    document.getElementsByTagName("head")[0].appendChild(j);
+};
 window.copyToClipboard = (text) => {
 	return new Promise((resolve, reject) => {
 		let input = document.createElement('textarea')

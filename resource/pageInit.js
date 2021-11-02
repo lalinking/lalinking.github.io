@@ -115,13 +115,10 @@ function setMdTxt(txt) {
 	$(".book[data-status=post_loading] .p4")[0].append(markedPanel);
 	$(".book[data-status=post_loading]").setAttribute("data-status", "post_loaded");
 	if (window.needMermaid) {
-		if (window.mermaid) {
-			mermaid.init();
-		} else if ($("script[src='/3rd-lib/mermaid/mermaid.js']").length == 0) {
-			let se = document.createElement("script");
-			se.src = "/3rd-lib/mermaid/mermaid.js";
-			document.body.appendChild(se);
-		}
+		// 会受动画的影响而减小画布宽度，所以延迟加载
+		setTimeout(() => {
+			addJs('/3rd-lib/mermaid/mermaid.js', true, mermaid.init);
+		}, 300);
 	}
 }
 
