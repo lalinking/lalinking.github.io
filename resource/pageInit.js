@@ -117,7 +117,7 @@ function setMdTxt(txt) {
 	if (window.needMermaid) {
 		// 会受动画的影响而减小画布宽度，所以延迟加载
 		setTimeout(() => {
-			addJs('/3rd-lib/mermaid/mermaid.js', true, mermaid.init);
+			addJs('/3rd-lib/mermaid/mermaid.js', true, () => {mermaid.init()});
 		}, 300);
 	}
 }
