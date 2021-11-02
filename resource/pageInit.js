@@ -98,7 +98,7 @@ function initTalk(path, title, desc) {
 		distractionFreeMode: false,
 		id: stringToHashKey(path),
 		title: title,
-		body: `${desc || $("head [name=description]")[0].getAttribute("content")}\n link: ${location.origin}/page/${path}`
+		body: `${desc || $("head [name=description]")[0].getAttribute("content")}\n link: ${location.origin}${path.startsWith("/page/") ? "" : "/page/"}${path}`
 	}).render('talk');
 }
 /* 页面渲染 */
