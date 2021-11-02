@@ -94,6 +94,9 @@ function compilePostFileToMD(postPath) {
 	var _bookKey = _res.bookKey;
 	if (bookInfos[_bookKey]) {
 		bookInfos[_bookKey].contents.push(_res.meta);
+		bookInfos[_bookKey].contents.sort(function(p1, p2) {
+			return new Date(p2["Date"]).getTime() - new Date(p1["Date"]).getTime();
+		});
 	} else {
 		bookInfos[_bookKey] = {BookId: _bookKey, BookName: _res.meta.BookName, contents: [_res.meta]};
 	}
@@ -128,6 +131,7 @@ function compilePostFileToHTML(postPath) {
 
 // 获取元数据 & 编译博文
 listPostFiles(dirPosts, compilePostFileToMD);
+// 按时间倒序排列博文
 console.log("load bookInfos: \n{}", JSON.stringify(bookInfos));
 listPostFiles(dirPosts, compilePostFileToHTML);
 // 生成 index
