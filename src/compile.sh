@@ -12,5 +12,6 @@ git -C "$POSTS_DIR" pull origin master
 node "$DIR/src/compile.js" "$POSTS_DIR" "$DIR"
 # 推送更新
 git -C "$DIR" add *
+git -C "$DIR" add .posts/
 git -C "$DIR" commit -m "from compile.sh"
 git -C "$DIR" push
