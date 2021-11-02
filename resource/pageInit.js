@@ -94,12 +94,11 @@ function initTalk(path, title, desc) {
 		repo: 'lalinking.github.io',
 		owner: 'lalinking',
 		admin: ['lalinking'],
-		createIssueManually: true,
 		pagerDirection: 'last',
 		distractionFreeMode: false,
 		id: stringToHashKey(path),
 		title: title,
-		body: `${desc || $("head [name=description]")[0].getAttribute("content")}\n link: ${location.origin}/${path}`
+		body: `${desc || $("head [name=description]")[0].getAttribute("content")}\n link: ${location.origin}/page/${path}`
 	}).render('talk');
 }
 /* 页面渲染 */
