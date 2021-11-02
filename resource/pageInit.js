@@ -112,8 +112,16 @@ function setMdTxt(txt) {
 	markedPanel.className = "marked-panel content-panel";
 	markedPanel.innerHTML = html;
 	$(".book[data-status=post_loading] .p4")[0].append(markedPanel);
-	if (window.needMermaid && window.mermaid) {mermaid.init();}
 	$(".book[data-status=post_loading]").setAttribute("data-status", "post_loaded");
+	if (window.needMermaid) {
+		if (window.mermaid) {
+			mermaid.init();
+		} else if ($("script[src='/3rd-lib/mermaid/mermaid.js']").length == 0) {
+			let se = document.createElement("script");
+			se.src = "/3rd-lib/mermaid/mermaid.js";
+			document.body.appendChild(se);
+		}
+	}
 }
 
 function showPost(filePath, _title, _date, _txt) {
