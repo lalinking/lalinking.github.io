@@ -77,6 +77,10 @@
     cursor: default;
 }
 
+.marked-panel pre code div:not(:first-child):hover {
+	background-color: beige;
+}
+
 .marked-panel ol, .marked-panel ul {
     counter-reset: sectioncounter;
     padding: 0.3em 1.5em;
