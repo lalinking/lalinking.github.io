@@ -2,7 +2,7 @@
 ::-webkit-scrollbar {
 	width: 6px;
 	background-color: white;
-	height: 6px;
+	height: 10px;
 }
 ::-webkit-scrollbar-thumb {
 	background-color: #c9d6f0;
@@ -27,7 +27,8 @@ html, body {
 	background-color: white;
 	height: 100%;
 	width: 100%;
-	overflow: hidden;
+	overflow-y: hidden;
+	overflow-x: auto;
 	box-sizing: border-box;
 }
 div {box-sizing: border-box;}
