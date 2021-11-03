@@ -44,7 +44,7 @@
     padding-right: 8px;
     line-height: 20px;
     font-size: 10px;
-    background-color: antiquewhite;
+    background-color: #f1ede9;
     user-select: none;
 }
 
@@ -79,7 +79,7 @@
 
 .marked-panel ol, .marked-panel ul {
     counter-reset: sectioncounter;
-    padding: 5px 0;
+    padding: 0.3em 1.5em;
     margin: 0;
 }
 
@@ -99,39 +99,23 @@
     counter-increment: sectioncounter;
 }
 
-.marked-panel pre code > div.cospand {
-	overflow: hidden;
-}
-
 .marked-panel pre a:hover {
 	color: red;
 }
 
-.marked-panel pre code > div.cospand > div a[data-click='expandCode'] {
-    display: inline-block !important;
-}
-
-.marked-panel pre code div.expandMsg {
+.marked-panel code .expandMsg {
     font-weight: bolder;
     text-align: center;
-    line-height: 1.5rem;
     opacity: 0.95;
-    background-color: rgba(241, 230, 230, 0.7);
     width: 100%;
-    box-shadow: 0 0 25px 10px #f3e8e8;
-    pointer-events: none;
-    height: 1.5rem;
+    box-shadow: 0 0 3rem 2rem rgb(241 230 230 / 70%);
+    height: 0;
     color: black;
-    margin-top: -1.3rem;
-    display: none;
+    margin: -0.5rem 0 0.2rem 0;
 }
 
-.marked-panel pre code > div.cospand .expandMsg {
-	display: block;
-}
-
-.marked-panel pre code > div.cospand .expandMsg ~ div {
-	display: none;
+.marked-panel code .expandMsg ~ div {
+	display: none !important;
 }
 
 .marked-panel pre {
@@ -139,8 +123,9 @@
     word-break: break-word;
     white-space: pre-wrap;
     border-radius: 3px 3px 8px 8px;
-    box-shadow: 0 0 15px -10px;
-    margin: 1rem 2rem 2rem;
+    /* box-shadow: 0 0 15px -10px; */
+    margin: 1.5rem 2rem;
+    overflow: hidden;
 }
 
 .marked-panel pre > code > div > div:last-child > div.line-start {
@@ -149,13 +134,10 @@
 
 .marked-panel .mermaid {
     padding: 20px;
-}
-
-.marked-panel .mermaid[data-status='1'] {
     text-align: center;
 }
 
-.mermaid[data-status='0']::before {
+.mermaid[data-status='init']::before {
     display: block;
     margin: -20px;
     text-align: center;

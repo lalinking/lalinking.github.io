@@ -22,7 +22,16 @@ window.fireEvent = (dom, name, detail, bubbles, cancelable) => {
 		dom.fireEvent(e);
 	}
 };
-
+window.stringToHashKey = (str) => {
+	if (str.length === 0) return "N0";
+	var hash = 0, i, chr;
+	for (i = 0; i < str.length; i++) {
+		chr   = str.charCodeAt(i);
+		hash  = ((hash << 5) - hash) + chr;
+		hash |= 0;
+	}
+	return hash > 0 ? ("P" + hash) : ("M" + hash);
+};
 window.ajax = (url, data, method) => {
 	return new Promise((resolve, reject) => {
 		let ajax = new XMLHttpRequest();
@@ -89,20 +98,16 @@ window.$F = (obj, dom) => {
 	}
 };
 window.addJs = (src, async, cb) => {
-    let jsList = document.getElementsByTagName("script");
-    for (let i = 0; i < jsList.length; i++) {
-        let js = jsList[i];
-        if (js.src === src) {
-            console.log(`js loaded: ${src}`);
-            return cb && cb();
-        }
-    }
+	let jid = stringToHashKey(src);
+    let jsExisted = document.getElementById(jid);
+	if (jsExisted) {return cb && cb();}
     let j = document.createElement("script");
     j.src = src;
+	j.setAttribute("id", jid);
     j.async = !!async;
     j.onload = j.onreadystatechange = () => {
         if (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") {
-            console.log(`load: ${src}`);
+            console.log(`load js: ${src}`);
             cb && cb();
             j.onload = j.onreadystatechange = null;
         }

@@ -1,14 +1,4 @@
 /* 框架渲染 */
-function stringToHashKey(str) {
-	if (str.length === 0) return "N0";
-	var hash = 0, i, chr;
-	for (i = 0; i < str.length; i++) {
-		chr   = str.charCodeAt(i);
-		hash  = ((hash << 5) - hash) + chr;
-		hash |= 0;
-	}
-	return hash > 0 ? ("P" + hash) : ("M" + hash);
-}
 function initBookShelf(metaInfo) {
 	let bookInfos = JSON.parse(metaInfo);
 	let bookShelf = $("#bookshelf_inner")[0];
@@ -86,20 +76,23 @@ function initBookShelf(metaInfo) {
 	bookShelf.style.width = left + "rem";
 }
 
+let gitalkConfig = {
+	clientID: 'e9916f89337aaa12bfe4',
+	clientSecret: '1f87c979b3410722449b079e84e0da0470f7344c',
+	repo: 'lalinking.github.io',
+	owner: 'lalinking',
+	admin: ['lalinking'],
+	pagerDirection: 'last',
+	distractionFreeMode: false
+};
 function initTalk(path, title, desc) {
 	document.getElementById("talk").innerHTML = "";
-	new Gitalk({
-		clientID: 'e9916f89337aaa12bfe4',
-		clientSecret: '1f87c979b3410722449b079e84e0da0470f7344c',
-		repo: 'lalinking.github.io',
-		owner: 'lalinking',
-		admin: ['lalinking'],
-		pagerDirection: 'last',
-		distractionFreeMode: false,
-		id: stringToHashKey(path),
-		title: title,
-		body: `${desc || $("head [name=description]")[0].getAttribute("content")}\n link: ${location.origin}${path.startsWith("/page/") ? "" : "/page/"}${path}`
-	}).render('talk');
+	gitalkConfig.id = stringToHashKey(path);
+	gitalkConfig.title = title;
+	gitalkConfig.body = `${desc || $("head [name=description]")[0].getAttribute("content")}\n link: ${location.origin}${path.startsWith("/page/") ? "" : "/page/"}${path}`;
+	addJs('/3rd-lib/gitalk/gitalk.js', true, () => {
+		new Gitalk(gitalkConfig).render('talk');
+	});
 }
 /* 页面渲染 */
 function setMdTxt(txt) {
@@ -117,7 +110,10 @@ function setMdTxt(txt) {
 	if (window.needMermaid) {
 		// 会受动画的影响而减小画布宽度，所以延迟加载
 		setTimeout(() => {
-			addJs('/3rd-lib/mermaid/mermaid.js', true, () => {mermaid.init()});
+			addJs('/3rd-lib/mermaid/mermaid.js', true, () => {
+				mermaid.init();
+				$(".marked-panel .mermaid").setAttribute("data-status", "loaded");
+			});
 		}, 300);
 	}
 }
@@ -157,24 +153,27 @@ function copyCode(dom) {
 	return false;
 }
 function expandCode(dom) {
-	dom.parentElement.parentElement.parentElement.className = "";
+	dom.className = "hide";
+	$(".marked-panel code .expandMsg", dom.parentElement.parentElement.parentElement).remove();
 }
 function highlight(code, lan) {
 	if ("mermaid" === lan) {
 		window.needMermaid = true;
-		return `<div class="mermaid">${code}</div>`;
+		return `<div class="mermaid" data-status='init'>${code}</div>`;
 	} else {
 		let _id = 'i' + Math.random().toString(36).substr(2);
 		codes[_id] = code;
 		let c = lan ? Prism.highlight(code, Prism.languages[lan], lan) : code;
 		let rs = c.split(/\n/);
-		let result = `<div class='${rs.length > 20 ? 'cospand' : ''}'>`;
-		result += `<div><div class='line-start'></div><div class="line-body tool-bar" data-codeid="${_id}"><a data-click="copyCode" >copy</a><a class="hide" data-click='expandCode'>expand</a></div></div>`;
+		let result = `<div><div class='line-start'></div><div class="line-body tool-bar" data-codeid="${_id}"><a data-click="copyCode" >copy</a>`
+		if (rs.length > 20) {
+			result += "<a data-click='expandCode'>expand</a>";
+		}
+		result += "</div></div>";
 		rs.forEach((e, i) => {
 			if (i == 20) {result += "<div data-click='expandCode' class='expandMsg'>... ...</div>";}
 			result += `<div><div class='line-start'>${i + 1}</div><div class="line-body">${e}</div></div>`;
 		});
-		result += "</div>";
 		return result;
 	}
 }
