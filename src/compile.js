@@ -161,3 +161,4 @@ for (var _index = 0; _index < _txts.length; _index ++) {
 	_txts[_index] = _line;
 }
 fs.writeFileSync(dirRepo + "/index.html", _txts.join("\n"));
+console.log("compile done.");

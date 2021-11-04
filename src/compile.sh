@@ -13,5 +13,9 @@ node "$DIR/src/compile.js" "$POSTS_DIR" "$DIR"
 # 推送更新
 git -C "$DIR" add *
 git -C "$DIR" add .posts/
+git -C "$DIR" add 3rd-lib/
+git -C "$DIR" add page/
+git -C "$DIR" add resource/
+git -C "$DIR" add src/
 git -C "$DIR" commit -m "from compile.sh"
 git -C "$DIR" push
