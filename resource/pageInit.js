@@ -86,8 +86,10 @@ let gitalkConfig = {
 	distractionFreeMode: false
 };
 function initTalk(path, title, desc) {
+	let newId = stringToHashKey(path);
+	if (newId == gitalkConfig.id) {return}
 	document.getElementById("talk").innerHTML = "";
-	gitalkConfig.id = stringToHashKey(path);
+	gitalkConfig.id = newId;
 	gitalkConfig.title = title;
 	gitalkConfig.body = `${desc || $("head [name=description]")[0].getAttribute("content")}\n link: ${location.origin}${path.startsWith("/page/") ? "" : "/page/"}${path}`;
 	addJs('/3rd-lib/gitalk/gitalk.js', true, () => {
