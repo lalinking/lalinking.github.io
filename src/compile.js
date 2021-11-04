@@ -4,6 +4,18 @@ const path = require('path');
 const dirPosts = process.argv[2];
 const dirRepo = process.argv[3];
 
+const getNowStr = function() {
+	var _date = new Date();
+	var _str = _date.getFullYear();
+	_str += _date.getMonth() < 10 ? ("-0" + _date.getMonth()) : "-" + _date.getMonth();
+	_str += _date.getDate() < 10 ? ("-0" + _date.getDate()) : "-" + _date.getDate();
+	_str += _date.getHours() < 10 ? (" 0" + _date.getHours()) : " " + _date.getHours();
+	_str += _date.getMinutes() < 10 ? (":0" + _date.getMinutes()) : ":" + _date.getMinutes();
+	_str += _date.getSeconds() < 10 ? (":0" + _date.getSeconds()) : ":" + _date.getSeconds();
+	return _str;
+};
+const compileTime = getNowStr();
+
 // 控制日志格式
 (function() {
 	var log = console.log;
@@ -17,9 +29,7 @@ const dirRepo = process.argv[3];
 	};
 	console.log = function() {
 		var _date = new Date();
-		var _str = '[' + process.pid + '] ';
-		_str += _date.getFullYear() + '-' + (_date.getMonth() + 1) + '-' + _date.getDate() + ' ';
-		_str += _date.getHours() + ':' + _date.getMinutes() + ':' + _date.getSeconds() + '.' + _date.getMilliseconds();
+		var _str = '[' + process.pid + '] ' + getNowStr();
 		log.call(console, _str + ' ' + argumentToString(arguments));
 	}
 })(console);
@@ -49,7 +59,7 @@ console.log("posts path:\t{}", dirPosts);
 console.log("repo path:\t{}", dirRepo);
 
 const bookInfos = JSON.parse(fs.readFileSync(dirRepo + "/src/metaInfo.json",'utf-8'));
-console.log("load bookInfos: {}", JSON.stringify(bookInfos));
+console.log("load bookInfos: {}", JSON.stringify(bookInfos, null, 4));
 
 // 遍历博文
 function listPostFiles(_path, _callBack) {
@@ -132,7 +142,7 @@ function compilePostFileToHTML(postPath) {
 // 获取元数据 & 编译博文
 listPostFiles(dirPosts, compilePostFileToMD);
 // 按时间倒序排列博文
-console.log("load bookInfos: \n{}", JSON.stringify(bookInfos));
+console.log("load bookInfos: \n{}", JSON.stringify(bookInfos, null, 4));
 listPostFiles(dirPosts, compilePostFileToHTML);
 // 生成 index
 var _ms = {};

@@ -80,7 +80,6 @@ Spring-Cloud 中各个角色、工具或组件都可以基于 Spring-Boot 来快
         <lombok.version>1.16.18</lombok.version>
         <spring.boot.version>2.2.6.RELEASE</spring.boot.version>
         <spring.cloud.version>Hoxton.SR1</spring.cloud.version>
-        <ultimate.model.version>1.0-SNAPSHOT</ultimate.model.version>
     </properties>
 
     <!--此处仅定义引入包的版本号，不负责引入。子项目引入相关包时不再需要指定version-->
@@ -105,11 +104,6 @@ Spring-Cloud 中各个角色、工具或组件都可以基于 Spring-Boot 来快
                 <artifactId>lombok</artifactId>
                 <optional>true</optional>
                 <version>${lombok.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.ultimate</groupId>
-                <artifactId>model</artifactId>
-                <version>${ultimate.model.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -299,10 +293,6 @@ receiver-metadata pom.xml
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.ultimate</groupId>
-            <artifactId>model</artifactId>
         </dependency>
     </dependencies>
 
