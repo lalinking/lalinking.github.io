@@ -14,7 +14,6 @@ const getNowStr = function() {
 	_str += _date.getSeconds() < 10 ? (":0" + _date.getSeconds()) : ":" + _date.getSeconds();
 	return _str;
 };
-const compileTime = getNowStr();
 
 // 控制日志格式
 (function() {
@@ -125,6 +124,7 @@ function compilePostFileToHTML(postPath) {
 	_ms.Content = _res.content;
 	_ms.Keywords = _ms.Keywords || _ms.BookName;
 	_ms.bookInfos = JSON.stringify(bookInfos);
+	_ms.compileTime = getNowStr();
 	var _txts = fs.readFileSync(dirRepo + "/src/page.html").toString().split(new RegExp("[\r\n]"));
 	for (var _index = 0; _index < _txts.length; _index ++) {
 		var _line = _txts[_index];
