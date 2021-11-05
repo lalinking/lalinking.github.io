@@ -37,7 +37,7 @@
 <script src="/3rd-lib/markedjs/marked.js"></script>
 <script src="/3rd-lib/prism/prism.js"></script>
 <script data-runat="init">
-	console.log("fresh at: ${compileTime}");
+	console.log("fresh at: #{compileTime}");
 	var mdContent = $("noscript")[0].innerText;
 	if (mdContent.length) {
 		$("#null").setAttribute("data-status", "post_loading");
