@@ -4,17 +4,6 @@ const path = require('path');
 const dirPosts = process.argv[2];
 const dirRepo = process.argv[3];
 
-const getNowStr = function() {
-	var _date = new Date();
-	var _str = _date.getFullYear();
-	_str += _date.getMonth() < 10 ? ("-0" + _date.getMonth()) : "-" + _date.getMonth();
-	_str += _date.getDate() < 10 ? ("-0" + _date.getDate()) : "-" + _date.getDate();
-	_str += _date.getHours() < 10 ? (" 0" + _date.getHours()) : " " + _date.getHours();
-	_str += _date.getMinutes() < 10 ? (":0" + _date.getMinutes()) : ":" + _date.getMinutes();
-	_str += _date.getSeconds() < 10 ? (":0" + _date.getSeconds()) : ":" + _date.getSeconds();
-	return _str;
-};
-
 // 控制日志格式
 (function() {
 	var log = console.log;
@@ -27,8 +16,7 @@ const getNowStr = function() {
 		return _str
 	};
 	console.log = function() {
-		var _date = new Date();
-		var _str = '[' + process.pid + '] ' + getNowStr();
+		var _str = '[' + process.pid + '] ' + new Date().toISOString();
 		log.call(console, _str + ' ' + argumentToString(arguments));
 	}
 })(console);
@@ -124,7 +112,7 @@ function compilePostFileToHTML(postPath) {
 	_ms.Content = _res.content;
 	_ms.Keywords = _ms.Keywords || _ms.BookName;
 	_ms.bookInfos = JSON.stringify(bookInfos);
-	_ms.compileTime = getNowStr();
+	_ms.compileTime = new Date().toISOString();
 	var _txts = fs.readFileSync(dirRepo + "/src/page.html").toString().split(new RegExp("[\r\n]"));
 	for (var _index = 0; _index < _txts.length; _index ++) {
 		var _line = _txts[_index];
