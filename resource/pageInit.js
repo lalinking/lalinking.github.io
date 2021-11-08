@@ -159,13 +159,15 @@ function expandCode(dom) {
 	$(".marked-panel code .expandMsg", dom.parentElement.parentElement.parentElement).remove();
 }
 function highlight(code, lan) {
+	// 因个人书写习惯，做一些兼容
+	if (lan == "sh") {lan == "bash"}
 	if ("mermaid" === lan) {
 		window.needMermaid = true;
 		return `<div class="mermaid" data-status='init'>${code}</div>`;
 	} else {
 		let _id = 'i' + Math.random().toString(36).substr(2);
 		codes[_id] = code;
-		let c = lan ? Prism.highlight(code, Prism.languages[lan], lan) : code;
+		let c = Prism.languages[lan] ? Prism.highlight(code, Prism.languages[lan], lan) : code;
 		let rs = c.split(/\n/);
 		let result = `<div><div class='line-start'></div><div class="line-body tool-bar" data-codeid="${_id}"><a data-click="copyCode" >copy</a>`
 		if (rs.length > 20) {
