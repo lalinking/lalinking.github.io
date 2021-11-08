@@ -15,7 +15,7 @@
 ### 编辑一个启动脚本
   ~/jre8Docker/run_jar.sh
 
-```bash
+```sh
 #!/bin/sh
 
 echo "start up."
@@ -97,7 +97,7 @@ CMD date && \
 
 ### Build 创建镜像
 
-```bash
+```sh
 cd ~/jre8Docker/
 # -f : 指定 Dockerfile 路径
 # -t ：指定 name:tag
@@ -106,7 +106,7 @@ docker build -f ./Dockerfile -t jar_runner:open-jre8 .
 
 ### 使用镜像创建并运行容器
 
-```bash
+```sh
 # -m : 限制内存不超过256m （测试过低于 256m jar 可能起不来）
 # -p : 映射端口 宿主端口:容器端口
 # -v : 映射路径 宿主路径:容器路径
