@@ -30,7 +30,7 @@
 ### 编辑一个启动脚本
   ~/jre8Docker/run_jar.sh
 
-```sh
+```bash
 #!/bin/sh
 
 echo "start up."
@@ -155,7 +155,7 @@ docker run -p 2001:80 -m 256m -v ~/docker/volume/eureka:/usr/java/workpath --nam
 	var mdContent = $("noscript")[0].innerText;
 	if (mdContent.length) {
 		$("#M-154268230").setAttribute("data-status", "post_loading");
-		setTimeout(() => {showPost("java/docker-jre8.md", "创建 docker jre8 镜像", "2021-11-04", mdContent);}, 100);
+		setTimeout(() => {showPost("java/docker-jre8.md", "创建 docker jre8 镜像", "2021-11-04", mdContent);}, 0);
 	} else {
 		initTalk("index.html", "首页");
 	}

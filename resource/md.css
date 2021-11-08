@@ -129,6 +129,12 @@
     /* box-shadow: 0 0 15px -10px; */
     margin: 1.5rem 2rem;
     overflow: hidden;
+    line-height: 1.5;
+    text-shadow: 0 1px #fff;
+    font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+    font-size: 1em;
+    text-align: left;
+    tab-size: 4;
 }
 
 .marked-panel pre > code > div > div:last-child > div.line-start {
