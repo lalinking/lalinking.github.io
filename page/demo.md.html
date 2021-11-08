@@ -193,7 +193,7 @@ erDiagram
 	var mdContent = $("noscript")[0].innerText;
 	if (mdContent.length) {
 		$("#P35186368").setAttribute("data-status", "post_loading");
-		showPost("demo.md", "demo", "2019-12-19", mdContent);
+		setTimeout(() => {showPost("demo.md", "demo", "2019-12-19", mdContent);}, 100);
 	} else {
 		initTalk("index.html", "首页");
 	}

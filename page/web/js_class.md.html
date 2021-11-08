@@ -104,7 +104,7 @@ myCatInstance.say("喵喵喵");               // Cat say: 喵喵喵
 	var mdContent = $("noscript")[0].innerText;
 	if (mdContent.length) {
 		$("#P665848904").setAttribute("data-status", "post_loading");
-		showPost("web/js_class.md", "Js 简单实现类与继承", "2019-05-27", mdContent);
+		setTimeout(() => {showPost("web/js_class.md", "Js 简单实现类与继承", "2019-05-27", mdContent);}, 100);
 	} else {
 		initTalk("index.html", "首页");
 	}

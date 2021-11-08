@@ -40,7 +40,7 @@
 	var mdContent = $("noscript")[0].innerText;
 	if (mdContent.length) {
 		$("#null").setAttribute("data-status", "post_loading");
-		showPost("#{FilePath}", "#{FileTitle}", "#{Date}", mdContent);
+		setTimeout(() => {showPost("#{FilePath}", "#{FileTitle}", "#{Date}", mdContent);}, 100);
 	} else {
 		initTalk("index.html", "首页");
 	}
