@@ -112,7 +112,7 @@ CMD date && \
 
 ### Build 创建镜像
 
-```sh
+```bash
 cd ~/jre8Docker/
 # -f : 指定 Dockerfile 路径
 # -t ：指定 name:tag
@@ -121,7 +121,7 @@ docker build -f ./Dockerfile -t jar_runner:open-jre8 .
 
 ### 使用镜像创建并运行容器
 
-```sh
+```bash
 # -m : 限制内存不超过256m （测试过低于 256m jar 可能起不来）
 # -p : 映射端口 宿主端口:容器端口
 # -v : 映射路径 宿主路径:容器路径
@@ -155,11 +155,7 @@ docker run -p 2001:80 -m 256m -v ~/docker/volume/eureka:/usr/java/workpath --nam
 	var mdContent = $("noscript")[0].innerText;
 	if (mdContent.length) {
 		$("#M-154268230").setAttribute("data-status", "post_loading");
-<<<<<<< HEAD
-		setTimeout(() => {showPost("java/docker-jre8.md", "创建 docker jre8 镜像", "2021-11-04", mdContent);}, 0);
-=======
 		setTimeout(() => {showPost("java/docker-jre8.md", "创建 docker jre8 镜像", "2021-11-04", mdContent);}, 200);
->>>>>>> cc7f5e1f1b14ffd087d16f29fc37ba8373b95fd6
 	} else {
 		initTalk("index.html", "首页");
 	}

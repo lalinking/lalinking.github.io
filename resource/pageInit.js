@@ -159,8 +159,6 @@ function expandCode(dom) {
 	$(".marked-panel code .expandMsg", dom.parentElement.parentElement.parentElement).remove();
 }
 function highlight(code, lan) {
-	// 因个人书写习惯，做一些兼容
-	if (lan == "sh") {lan == "bash"}
 	if ("mermaid" === lan) {
 		window.needMermaid = true;
 		return `<div class="mermaid" data-status='init'>${code}</div>`;
