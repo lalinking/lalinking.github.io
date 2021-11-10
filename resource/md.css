@@ -1,80 +1,81 @@
 .marked-panel {
-    font-size: 0.8rem;
-    padding: 1rem;
-    display: block;
-    overflow: auto;
+	font-size: 0.8rem;
+	padding: 1rem;
+	display: block;
+	overflow: auto;
 }
 
 .marked-panel h1, .marked-panel h2 {
-    margin-top: 15px;
-    position: sticky;
+	margin-top: 15px;
+	position: sticky;
 }
 
 .marked-panel hr {
-    font-size: 0;
-    height: 0.1rem;
-    margin: 1rem;
-    border: none;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(38 37 34), rgba(0, 0, 0, 0));
+	font-size: 0;
+	height: 0.1rem;
+	margin: 1rem;
+	border: none;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(38 37 34), rgba(0, 0, 0, 0));
 }
 
 .tool-bar {
-    padding: 0 20px 0 10px !important;
-    user-select: none;
-    border-radius: 0 0 4px 0;
-    font-weight: bolder;
+	padding: 0 20px 0 10px !important;
+	user-select: none;
+	border-radius: 0 0 4px 0;
+	font-weight: bolder;
 }
 
 .tool-bar a {
-    margin-left: 15px;
-    color: #2f5c7d;
-    cursor: pointer;
+	margin-left: 15px;
+	color: #2f5c7d;
+	cursor: pointer;
 }
 
 .marked-panel pre:hover .tool-bar {
-    background-color: #e4d5c6;
+	background-color: #e4d5c6;
 }
 
 .marked-panel .line-start {
-    min-width: 35px;
-    display: table-cell;
-    color: #0f117b;
-    font-style: initial;
-    text-align: right;
-    padding-right: 8px;
-    line-height: 20px;
-    font-size: 10px;
-    background-color: #f1ede9;
-    user-select: none;
+	min-width: 35px;
+	display: table-cell;
+	color: #0f117b;
+	font-style: initial;
+	text-align: right;
+	padding-right: 8px;
+	line-height: 20px;
+	font-size: 10px;
+	background-color: #f1ede9;
+	user-select: none;
 }
 
 .marked-panel .line-body {
-    display: table-cell;
-    padding-left: 8px;
-    padding-right: 8px;
+	display: table-cell;
+	padding-left: 8px;
+	padding-right: 8px;
 }
 
 .marked-panel > p, .marked-panel pre {
-    margin: 0 0 3px 1.2em;
+	margin: 0 0 3px 1.2em;
 }
 
 .marked-panel > p {
-    white-space: pre-wrap;
+	white-space: pre-wrap;
+	font-size: 0.86rem;
 }
 
 .marked-panel li > p {
-    display: inline;
-    margin: 0;
+	display: inline;
+	margin: 0;
 }
 
 .marked-panel li {
-    list-style-type: none;
-    margin: 4px;
+	list-style-type: none;
+	margin: 4px;
 }
 
 .marked-panel li > .li-body {
-    display: inline-block;
-    cursor: default;
+	display: inline-block;
+	cursor: default;
 }
 
 .marked-panel pre code div:not(:first-child):hover {
@@ -82,25 +83,25 @@
 }
 
 .marked-panel ol, .marked-panel ul {
-    counter-reset: sectioncounter;
-    padding: 0.3em 1.5em;
-    margin: 0;
+	counter-reset: sectioncounter;
+	padding: 0.3em 1.5em;
+	margin: 0;
 }
 
 .marked-panel li::before {
-    margin: 0 10px 0 15px;
-    color: #181cd6;
-    vertical-align: middle;
-    font-size: large;
+	margin: 0 10px 0 15px;
+	color: #181cd6;
+	vertical-align: middle;
+	font-size: large;
 }
 
 .marked-panel ul > li::before {
-    content: ' * ';
+	content: ' * ';
 }
 
 .marked-panel ol > li::before {
-    content: counter(sectioncounter) '′';
-    counter-increment: sectioncounter;
+	content: counter(sectioncounter) '′';
+	counter-increment: sectioncounter;
 }
 
 .marked-panel pre a:hover {
@@ -108,14 +109,14 @@
 }
 
 .marked-panel code .expandMsg {
-    font-weight: bolder;
-    text-align: center;
-    opacity: 0.95;
-    width: 100%;
-    box-shadow: 0 0 3rem 2rem rgb(241 230 230 / 70%);
-    height: 0;
-    color: black;
-    margin: -0.5rem 0 0.2rem 0;
+	font-weight: bolder;
+	text-align: center;
+	opacity: 0.95;
+	width: 100%;
+	box-shadow: 0 0 3rem 2rem rgb(241 230 230 / 70%);
+	height: 0;
+	color: black;
+	margin: -0.5rem 0 0.2rem 0;
 }
 
 .marked-panel code .expandMsg ~ div {
@@ -123,35 +124,35 @@
 }
 
 .marked-panel pre {
-    word-break: break-word;
-    white-space: pre-wrap;
-    border-radius: 3px 3px 8px 8px;
-    /* box-shadow: 0 0 15px -10px; */
-    margin: 1.5rem 2rem;
-    overflow: hidden;
-    line-height: 1.5;
-    text-shadow: 0 1px #fff;
-    font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
-    font-size: 1em;
-    text-align: left;
-    tab-size: 4;
+	word-break: break-word;
+	white-space: pre-wrap;
+	border-radius: 3px 3px 8px 8px;
+	/* box-shadow: 0 0 15px -10px; */
+	margin: 1.5rem 2rem;
+	overflow: hidden;
+	line-height: 1.5;
+	text-shadow: 0 1px #fff;
+	font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+	font-size: 1em;
+	text-align: left;
+	tab-size: 4;
 }
 
 .marked-panel pre > code > div > div:last-child > div.line-start {
-    border-radius: 0 0 0 8px;
+	border-radius: 0 0 0 8px;
 }
 
 .marked-panel .mermaid {
-    padding: 20px;
-    text-align: center;
-    position: relative;
+	padding: 20px;
+	text-align: center;
+	position: relative;
 }
 
 .mermaid[data-status='init']::before {
-    display: block;
-    position: absolute;
-    text-align: center;
-    background-color: #e4d5c6;
-    border-radius: 0 0 4px 0;
-    content: ' Initializing image, please wait... ';
+	display: block;
+	position: absolute;
+	text-align: center;
+	background-color: #e4d5c6;
+	border-radius: 0 0 4px 0;
+	content: ' Initializing image, please wait... ';
 }
