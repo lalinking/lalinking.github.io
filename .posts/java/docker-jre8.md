@@ -133,8 +133,7 @@ EXPOSE 8080
  
 # docker 容器启动时运行的命令，这个脚本会将指定路径（含子路径）的 jar 包全部启动
 # 遇到一个问题，docker 的机制 0 号进程退出会导致整个容器终端，因此加一个 tail -f 防止退出
-CMD date && \
- sh /usr/java/run_all_jar.sh > /usr/java/startup.log && \
+CMD sh /usr/java/run_all_jar.sh > /usr/java/startup.log && \
  tail -f /usr/java/startup.log
 ```
 
