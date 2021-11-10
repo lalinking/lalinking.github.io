@@ -1,6 +1,6 @@
 # 功能
 
-1. 基于 alpine:3.8 编辑一个可运行 jre8 的镜像。（保证镜像体积最小）
+1. 基于 openjdk 编辑一个可运行 jre8 的镜像。（保证镜像体积最小）
 2. 容器启动时，自动启动 jar 包。约定容器内 /usr/java/workpath/ 路径作为 jar 的路径，并且支持多个 jar 的情况。 jar 可以直接放在 /usr/java/workpath/ 也可以在 /usr/java/workpath/*/ 。
 3. 支持带参数的启动 jar。约定在 jar 统计路径下放置一个 jvm.args 文件，读取里面第一行作为启动参数。如果没有这个 jvm.args 文件，则使用一个默认值，不要报错。
 
@@ -19,8 +19,7 @@
 #!/bin/sh
 
 echo "start up."
-# 打印下 java 版本
-java -version
+date
 
 # 执行jar
 #  如果路径下有 jvm.args 文件，则读取里面的参数
@@ -41,7 +40,6 @@ runjar()
 
 # 遍历 /usr/workpath/ 下的 jar
 count1=`ls /usr/java/workpath/*.jar 2>/dev/null| wc -w`
-echo "/usr/java/workpath/*.jar count: $count1"
 if [ $count1 -eq 1 ]
 then
     for jarfile1 in `ls /usr/java/workpath/*.jar`
@@ -50,9 +48,8 @@ then
     done
 fi
 
-# 遍历 /usr/workpath/*/ 下的 jar
+# 遍历 /usr/java/workpath/*/ 下的 jar
 count2=`ls ls /usr/java/workpath/*/*.jar 2>/dev/null| wc -w`
-echo "/usr/java/workpath/*/*.jar count: $count2"
 if [ $count2 -gt 0 ]
 then
     for jarfile2 in `ls /usr/java/workpath/*/*.jar`
@@ -63,6 +60,52 @@ fi
 
 echo "start up done."
 ```
+
+* 更新 *
+有时候不需要启动全部 jar，而且有的 jar （比如 nacos）自带启动脚本，因此上面这个脚本就不合适了。
+改成调用 /usr/java/workpath/startup.sh，且文件不存在时自动生成一个。
+```bash
+#!/bin/sh
+
+echo "start up."
+date
+
+startup_file="/usr/java/workpath/startup.sh"
+if [ ! -f $startup_file ]; then
+  echo "$startup_file not exists. do initial."
+  echo "#!/bin/sh"                                                       > $startup_file
+  echo ""                                                               >> $startup_file
+  echo "# 执行jar"                                                      >> $startup_file
+  echo "#  如果路径下有 jvm.args 文件，则读取里面的参数"                >> $startup_file
+  echo "#  如果没有 jvm.args 文件，则使用默认参数： -server"            >> $startup_file
+  echo "runjar()"                                                       >> $startup_file
+  echo "{"                                                              >> $startup_file
+  echo "    run_file=\$1"                                               >> $startup_file
+  echo "    run_path=\$\(dirname \$run_file\)"                          >> $startup_file
+  echo "    jvmArgs=\"-server\""                                        >> $startup_file
+  echo "    if \[ -f \"\$run_path/jvm.args\" \]; then"                  >> $startup_file
+  echo "        jvmArgs=\$\(head -n 1 \$run_path/jvm.args\)"            >> $startup_file
+  echo "    fi"                                                         >> $startup_file
+  echo "    echo \"run: \$1, args: \$jvmArgs\""                         >> $startup_file
+  echo "	# 这里必须先 cd 到路径，不然 springboot 读取配置文件有问题" >> $startup_file
+  echo "    cd /usr/java/workpath/"                                     >> $startup_file
+  echo "    cd \$run_path"                                              >> $startup_file
+  echo "    java \$jvmArgs -jar \$run_file >> \$run_path/vmlog 2>&1 &"  >> $startup_file
+  echo "}"                                                              >> $startup_file
+  echo ""                                                               >> $startup_file
+  echo "# 示例"                                                         >> $startup_file
+  echo "# runjar \"/usr/java/workpath/sample.jar\""                     >> $startup_file
+fi
+
+# 授予执行权限
+if [ ! -x $startup_file ]; then
+  echo "give +x to $startup_file"
+  chmod +x $startup_file
+fi
+
+sh $startup_file
+```
+
 
 ### 创建 Dockerfile
   ~/jre8Docker/Dockerfile
