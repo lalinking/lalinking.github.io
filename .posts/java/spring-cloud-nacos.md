@@ -354,3 +354,7 @@ cd /usr/java/workpath/nacos/ && bash ./bin/startup.sh -m standalone
 
 然后再启动容器，会看到生成了 logs 文件夹，查看一下 nacos/logs/start.out，看有没有报错。
 第一次启动会生成各种文件，所需要的时间比较久。没有报错的话可以打开浏览器访问控制台 http://localhost:8001/nacos 用户名和密码都是 nacos
+
+### 服务注册客户端
+
+
