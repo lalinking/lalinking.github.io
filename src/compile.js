@@ -46,7 +46,6 @@ console.log("posts path:\t{}", dirPosts);
 console.log("repo path:\t{}", dirRepo);
 
 const bookInfos = JSON.parse(fs.readFileSync(dirRepo + "/src/metaInfo.json",'utf-8'));
-console.log("load bookInfos: {}", JSON.stringify(bookInfos, null, 4));
 
 // 遍历博文
 function listPostFiles(_path, _callBack) {
@@ -91,6 +90,7 @@ function compilePostFileToMD(postPath) {
 	var _bookKey = _res.bookKey;
 	if (bookInfos[_bookKey]) {
 		bookInfos[_bookKey].contents.push(_res.meta);
+		// 按时间倒序排列博文
 		bookInfos[_bookKey].contents.sort(function(p1, p2) {
 			return new Date(p2["Date"]).getTime() - new Date(p1["Date"]).getTime();
 		});
@@ -129,8 +129,6 @@ function compilePostFileToHTML(postPath) {
 
 // 获取元数据 & 编译博文
 listPostFiles(dirPosts, compilePostFileToMD);
-// 按时间倒序排列博文
-console.log("load bookInfos: \n{}", JSON.stringify(bookInfos, null, 4));
 listPostFiles(dirPosts, compilePostFileToHTML);
 // 生成 index
 var _ms = {};
