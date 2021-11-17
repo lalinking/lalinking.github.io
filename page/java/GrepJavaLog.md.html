@@ -2,8 +2,8 @@
 <html lang="zh">
 <head>
 	<meta charset="UTF-8">
-	<meta name="keywords" content="java,spring cloud,概念">
-	<meta name="description" content="spring cloud 微服务概念总结">
+	<meta name="keywords" content="bash,日志,java">
+	<meta name="description" content="Linux 服务器下利用 grep+awk 实现按关键字搜索日志，并按线程号分组显示且支持高亮">
 	<meta name="author" content="lalinking">
 	<meta name="copyright" content="lalinking">
 	<link href="/resource/main.css" type="text/css" rel="stylesheet">
@@ -13,33 +13,95 @@
 	<title>打工姿态 -> 学习姿态</title>
 </head>
 <body>
-<noscript># Spring-Cloud 微服务学习日志
+<noscript>Linux 服务器下利用 grep+awk 实现按关键字搜索日志，并按线程号分组显示且支持高亮。
+注日期格式：
 
-[TOC]
+```
+18:48:51.143 [http-nio-8081-exec-273] INFO  com.c.m.p.ChangeProducer:44 - 输出的日志
+```
 
-## 各种概念与组件
+// TODO
+如果输出的日志存在换行，因找不到线程号，所以换行的内容不能被搜索到。
+异常日志都有换行，所以异常日志都搜索不到。
 
-### 服务发现 eureka/nacos
-服务发现有三个角色，服务提供者、服务消费者和服务中介。
-服务中介是联系服务提供者和服务消费者的桥梁。
-服务提供者将自己提供的服务地址注册到服务中介，服务消费者从服务中介那里查找自己想要的服务的地址，然后享受这个服务。
-服务中介提供多个服务，每个服务对应多个服务提供者。
+```bash
+#!/bin/bash
 
-### 配置管理 spring-cloud-config/nacos
-在统一的地方管理配置文件。
-通过 svn、git 或控制台管理配置文件（nacos 是 mysql）。
-nacos 示例：https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/nacos-example/nacos-config-example/readme-zh.md
+# 找出所有日志文件
+pathlist=(`find /release_sw/$1/logs/ -name "*.log" |xargs ls -1t |grep ^/` )
+echo "已找到如下文件，输入文件序号"
 
-### 服务网关 Spring Cloud Gateway
-使用非阻塞 API，支持 WebSockets，支持限流等新特性。
-介绍说明：https://cloud.tencent.com/developer/article/1540535
+# 搜索的关键字，后面可以重新输入
+searchstr=$3
+# 搜索的范围
+showlines=$2
+if [ ! "$showlines" ]; then
+	showlines=50
+	echo "$showlines"
+fi
 
-### 服务熔断
+# 从文件搜索、打印结果的函数
+searchfile()
+{
+	echo "扫描：$1"
+	read -p "输入 搜索的字符串（当前为 $searchstr）: " newsearchstr
+	if [ "$newsearchstr" ]; then
+		searchstr="$newsearchstr"
+	fi
+	
+	echo "搜索：$searchstr"
+	# 搜索得到行号
+	greplist=(`fgrep --color=never -n "$searchstr" $1 | egrep --color=never -e "^[0-9]+" -o`)
+	for(( i=0; i<${#greplist[@]}; i++ ))
+	do
+		# 获取前后若干行的内容
+		startline=$((${greplist[$i]}-$showlines))
+		endline=$((${greplist[$i]}+$showlines))
+		echo -e "\n\n搜索行数范围： $startline ~ $endline；$(($i/2)) / $((${#greplist[@]}/2))"
+		# 获取线程号，从这一行开始，向上遍历取到第一个
+		# 将这些行的内容按线程号过滤，打印出来
+		awk "NR>${startline} && NR<${endline}" $1 | fgrep -C $showlines --color=always "$searchstr"
+		#awk "NR>${startline} && NR<${endline}" $1 | fgrep --color=always -F "${greplist[$i+1]}" | fgrep -C $showlines --color=always "$searchstr"
+	done
+}
 
-### 负载均衡
+# 主函数，一直询问选择哪个文件进行搜索
+doask()
+{
+	for(( i=1; i<=${#pathlist[@]}; i++ ))
+	do
+		echo $i: ${pathlist[$i-1]}
+	done
 
+	read -p "输入需要扫描的文件序号（0 退出）: " pathindex
+	if [ ! $pathindex ]; then
+		echo "Bye"
+		exit 0
+	fi
+	if [ $pathindex -lt "1" ]; then
+		echo "Bye"
+		exit 0
+	fi
+	path=${pathlist[$pathindex-1]}
+	if [ $path ]; then
+		searchfile "$path"
+	else
+		echo "无效输入"
+	fi
+	read -p "继续搜索？（回车继续，其他则退出）: " continues
+	if [ $continues ]; then
+		echo "Bye"
+		exit 0
+	fi
+	doask
+}
 
-</noscript>
+if [ ${#pathlist[@]} > 1 ]; then
+	doask
+else
+	searchfile "${pathlist[0]}"
+fi
+```</noscript>
 <div id="header"></div>
 <div id="main">
 	<div id="board" class="curb">
@@ -66,7 +128,7 @@ nacos 示例：https://github.com/alibaba/spring-cloud-alibaba/blob/master/sprin
 	var mdContent = $("noscript")[0].innerText;
 	if (mdContent.length) {
 		$("#M-154268230").setAttribute("data-status", "post_loading");
-		setTimeout(() => {showPost("java/spring-cloud-ls.md", "Spring-Cloud 微服务各种概念", "2019-11-21", mdContent);}, 200);
+		setTimeout(() => {showPost("java/GrepJavaLog.md", "bash 脚本实现按关键字搜索日志，并按线程号分组显示且支持高亮", "2021-11-17", mdContent);}, 200);
 	} else {
 		initTalk("index.html", "首页");
 	}
