@@ -770,7 +770,7 @@ _getpid()
 }
 _log()
 {
-	printf "[%5d]-" $$ && echo "[$(TZ=UTC-8 date '+%Y-%m-%d %H:%M:%S')]: $@"
+	echo "$(printf '[%5d]-' $$)[$(TZ=UTC-8 date '+%Y-%m-%d %H:%M:%S')]: $@"
 }
 # 利用文件锁，让程序同一时间只有一个在运行
 lockit()
