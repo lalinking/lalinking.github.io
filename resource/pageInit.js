@@ -1,6 +1,5 @@
 /* 框架渲染 */
-function initBookShelf(metaInfo) {
-	let bookInfos = JSON.parse(metaInfo);
+function initBookShelf(bookInfos) {
 	let bookShelf = $("#bookshelf_inner")[0];
 	let maxThickness = bookInfos.maxThickness;
 	let maxHeight = bookInfos.maxHeight;

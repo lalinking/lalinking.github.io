@@ -6,6 +6,7 @@
 	<meta name="description" content="#{Description}">
 	<meta name="author" content="lalinking">
 	<meta name="copyright" content="lalinking">
+	<link href="/resource/upgrade.css" type="text/css" rel="stylesheet">
 	<link href="/resource/main.css" type="text/css" rel="stylesheet">
 	<link href="/resource/md.css" type="text/css" rel="stylesheet">
 	<link href="/3rd-lib/gitalk/gitalk.css" type="text/css" rel="stylesheet">
@@ -32,7 +33,8 @@
 <script src="/resource/upgrade.js"></script>
 <script src="/resource/pageInit.js"></script>
 <script>
-	initBookShelf('#{bookInfos}');
+	var bookInfos = JSON.parse('#{bookInfos}');
+	initBookShelf(bookInfos);
 </script>
 <script src="/3rd-lib/markedjs/marked.js"></script>
 <script src="/3rd-lib/prism/prism.js"></script>
@@ -42,7 +44,24 @@
 		$("##{BookKey}").setAttribute("data-status", "post_loading");
 		setTimeout(() => {showPost("#{FilePath}", "#{FileTitle}", "#{Date}", mdContent);}, 200);
 	} else {
-		initTalk("index.html", "首页");
+		var page = location.search.replace(/^.*path=([^&]*).*$/, "$1");
+		if (page && page.length && page != location.search) {
+			for (let b in bookInfos) {
+				let book = bookInfos[b];
+				if (typeof book != "object" || !book.BookName) {continue;}
+				book.contents.every((m) => {
+					if (m.FilePath == page) {
+						$("#" + b).setAttribute("data-status", "post_loading");
+						setTimeout(() => {showPost(m.FilePath, m.FileTitle, m.Date);}, 200);
+						return false;
+					} else {
+						return true;
+					}
+				})
+			}
+		} else {
+			initTalk("index.html", "首页");
+		}
 	}
 </script>
 </html>

@@ -1,0 +1,48 @@
+/* 公用 */
+::-webkit-scrollbar {
+	width: 6px;
+	background-color: white;
+	height: 10px;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #c9d6f0;
+	border-radius: 3px;
+}
+html {
+	* {
+		scrollbar-color:#f33 green;
+		scrollbar-width:thin;
+	}
+}
+
+html {
+	 font-size: 16px;
+}
+body {
+	font-size: 13px;
+}
+html, body {
+	margin: 0;
+	padding: 0;
+	background-color: white;
+	height: 100%;
+	width: 100%;
+	overflow-y: hidden;
+	overflow-x: auto;
+	box-sizing: border-box;
+}
+div {box-sizing: border-box;}
+.hide {
+	/* animation: hide 1s forwards; */
+	display: none !important;
+}
+@keyframes hide {
+	0%  {opacity: 1;}
+	99% {opacity: 0;}
+	100% {opacity: 0; display: none !important;}
+}
+.remove {
+	animation: remove 0.3s forwards;
+}
+@keyframes remove { from {opacity: 1;} to {opacity: 0;} }
+.transition-all {transition: all .3s ease-in;}
