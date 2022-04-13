@@ -126,6 +126,7 @@ function compilePostFileToHTML(postPath) {
 	var _fullPath = path.resolve(dirRepo + "/page/" + version + "/" + _res.meta.FilePath, '..');
 	mkdirsSync(_fullPath);
 	fs.writeFileSync(dirRepo + "/page/" + version + "/" + _res.meta.FilePath + ".html", _txts.join("\n"));
+	fs.writeFileSync(dirRepo + "/page/" + _res.meta.FilePath + ".html", _txts.join("\n"));
 }
 
 // 获取元数据 & 编译博文
