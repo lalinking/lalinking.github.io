@@ -3,6 +3,7 @@ const path = require('path');
 
 const dirPosts = process.argv[2];
 const dirRepo = process.argv[3];
+const version = process.argv[4];
 
 // 控制日志格式
 (function() {
@@ -113,7 +114,7 @@ function compilePostFileToHTML(postPath) {
 	_ms.Keywords = _ms.Keywords || _ms.BookName;
 	_ms.bookInfos = JSON.stringify(bookInfos);
 	_ms.compileTime = new Date().toISOString();
-	var _txts = fs.readFileSync(dirRepo + "/src/page.html").toString().split(new RegExp("[\r\n]"));
+	var _txts = fs.readFileSync(dirRepo + "/src/page-" + version +".html").toString().split(new RegExp("[\r\n]"));
 	for (var _index = 0; _index < _txts.length; _index ++) {
 		var _line = _txts[_index];
 		for (var _p in _ms) {
@@ -122,9 +123,9 @@ function compilePostFileToHTML(postPath) {
 		}
 		_txts[_index] = _line;
 	}
-	var _fullPath = path.resolve(dirRepo + "/page/" + _res.meta.FilePath, '..');
+	var _fullPath = path.resolve(dirRepo + "/page/" + version + "/" + _res.meta.FilePath, '..');
 	mkdirsSync(_fullPath);
-	fs.writeFileSync(dirRepo + "/page/" + _res.meta.FilePath + ".html", _txts.join("\n"));
+	fs.writeFileSync(dirRepo + "/page/" + version + "/" + _res.meta.FilePath + ".html", _txts.join("\n"));
 }
 
 // 获取元数据 & 编译博文
@@ -137,7 +138,7 @@ _ms.Description = "蓝领王的个人笔记博客";
 _ms.Content = "";
 _ms.Keywords = "蓝领王,笔记";
 _ms.bookInfos = JSON.stringify(bookInfos);
-var _txts = fs.readFileSync(dirRepo + "/src/page.html").toString().split(new RegExp("[\r\n]"));
+var _txts = fs.readFileSync(dirRepo + "/src/page" + version + ".html").toString().split(new RegExp("[\r\n]"));
 for (var _index = 0; _index < _txts.length; _index ++) {
 	var _line = _txts[_index];
 	for (var _p in _ms) {
@@ -146,5 +147,6 @@ for (var _index = 0; _index < _txts.length; _index ++) {
 	}
 	_txts[_index] = _line;
 }
+fs.writeFileSync(dirRepo + "/index" + version + ".html", _txts.join("\n"));
 fs.writeFileSync(dirRepo + "/index.html", _txts.join("\n"));
 console.log("compile done.");

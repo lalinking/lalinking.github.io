@@ -361,10 +361,10 @@
 	/* font-style: unset; */
 }
 .index_close {
-	background-image: url("/resource/bookshelf.png");
+	background-image: url("/resource/v1/bookshelf.png");
 }
 .index_close:hover {
-	background-image: url("/resource/bookshelfHover.png");
+	background-image: url("/resource/v1/bookshelfHover.png");
 	transform: rotate(8deg);
 }
 .icon.close {
@@ -372,10 +372,10 @@
 	left: 1rem;
 	top: 1rem;
 	position: absolute;
-	background-image: url("/resource/close.png");
+	background-image: url("/resource/v1/close.png");
 }
 .icon.close:hover {
-	background-image: url("/resource/closeHover.png");
+	background-image: url("/resource/v1/closeHover.png");
 	transform: rotate(8deg);
 }
 

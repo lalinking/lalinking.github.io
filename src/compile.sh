@@ -15,7 +15,7 @@ git config https.proxy https://127.0.0.1:10809
 # 代码保持最新
 git pull origin master
 # 生成博文
-node "./src/compile.js" "$POSTS_DIR" "$DIR"
+node "./src/compile.js" "$POSTS_DIR" "$DIR" "v1"
 # 推送更新
 git add *
 git add .posts/
