@@ -1,0 +1,32 @@
+#main {height: 100%;width: 100%;overflow: hidden;}
+#bord {box-sizing: border-box;overflow: visible;height: calc(100% - 6rem);width: 100%;margin-top: 1rem;margin-left: -6rem;background-color: #40684d;/* border: 10px solid darkgrey; */border-image: linear-gradient(to right, #65655e, #c8ccc1) 1;border-radius: 5px;box-shadow: inset 0 0 0.2rem 1rem #8a7b57;position: relative;}
+/* 黑板边框划痕 */
+#sp_top {height: 0.7rem !important;width: 47rem;position: absolute;border-radius: 1rem;border-bottom: 0.3rem solid #17161575;}
+#sp_bottom {bottom: 0.3rem;height: 0.7rem !important;
+    width: 47rem;
+    position: absolute;
+    border-radius: 0.2rem;
+    border-bottom: 0.2rem solid #17161575;}
+#bord > div {height: 100%;}
+#bord #left {width: 40rem;height: calc(100% + 0.5rem);position: absolute;margin-top: -0.4rem;background-color: #508360;margin-left: -8rem;border-radius: 3px;box-shadow: inset 0 0 0.1rem 1rem #b2a176;transition: margin-left 300ms;z-index: 3;}
+#bord #left:hover {margin-left: 8rem;}
+#bord #center {width: calc(100% - 33rem);top: 1rem;right: 1rem;height: calc(100% - 2rem);background-color: #4b6855;box-sizing: border-box;border-radius: 3px;position: absolute;z-index: 1;}
+#bord #right {}
+/* 黑板擦 */
+#bord #eraser{position: absolute;height: 2rem;width: 1.6rem;border-radius: 3px;margin: 1.5rem 1.5rem 1.5rem 33rem;background-color: #c6c6a3;box-shadow: inset 0 0 0px 1px saddlebrown;z-index: 2;transform: rotate(339deg);bottom: -0.3rem;right: 0;}
+
+/* 动画 */
+@keyframes clean_center {
+    0% {right: 0;bottom: 0;}
+    10% {right: 60%;bottom:80%}
+    20% {right: 0;bottom:80%}
+    30% {right: 60%;bottom:60%}
+    40% {right: 60%;bottom:60%}
+
+    100% {right: 0;bottom: 0;}
+}
+
+/* 测试 */
+#bord #eraser {
+    animation: clean_center 5s infinite;
+}
