@@ -41,7 +41,7 @@
 	var mdContent = $("noscript")[0].innerText;
 	var currentInfo = {src: "#{FilePath}", title: "#{FileTitle}", date: "#{Date}", keywords: "#{Keywords}", desc: "#{Description}", id: stringToHashKey("#{FilePath}")};
 	if (mdContent.length) {
-		showPost(currentInfo, mdContent);
+		setTimeout(() => {showPost(currentInfo, mdContent)}, 200);
 	} else {
 		currentInfo.src = "index.html";
 		currentInfo.title = "首页";
