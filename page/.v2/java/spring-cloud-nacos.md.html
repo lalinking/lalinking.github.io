@@ -401,7 +401,7 @@ cd /usr/java/workpath/nacos/ && bash ./bin/startup.sh -m standalone
 	var mdContent = $("noscript")[0].innerText;
 	var currentInfo = {src: "java/spring-cloud-nacos.md", title: "Spring-Cloud nacos 学习笔记", date: "2021-11-10", keywords: "java,spring cloud,nacos", desc: "spring cloud nacos 学习笔记", id: stringToHashKey("java/spring-cloud-nacos.md")};
 	if (mdContent.length) {
-		showPost(currentInfo, mdContent);
+		setTimeout(() => {showPost(currentInfo, mdContent)}, 200);
 	} else {
 		currentInfo.src = "index.html";
 		currentInfo.title = "首页";

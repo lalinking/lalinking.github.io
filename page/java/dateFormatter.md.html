@@ -245,7 +245,7 @@ public final class DateUtil {
 	var mdContent = $("noscript")[0].innerText;
 	var currentInfo = {src: "java/dateFormatter.md", title: "“自适应”的 String 转 Date 工具", date: "2018-11-09", keywords: "java,DateFormat", desc: "预先注册可能用到的日期格式，之后可通过传入的字符串特征自动转换成 Date 对象，而不需要另外指定格式。", id: stringToHashKey("java/dateFormatter.md")};
 	if (mdContent.length) {
-		showPost(currentInfo, mdContent);
+		setTimeout(() => {showPost(currentInfo, mdContent)}, 200);
 	} else {
 		currentInfo.src = "index.html";
 		currentInfo.title = "首页";

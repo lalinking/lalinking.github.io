@@ -1201,7 +1201,7 @@ done
 	var mdContent = $("noscript")[0].innerText;
 	var currentInfo = {src: "oth/asus_ac66ub1.md", title: "华硕路由器折腾日记", date: "2021-11-18", keywords: "asus router,华硕路由器", desc: "华硕路由器折腾日记：安装entware环境，开机自动执行脚本，安装下载工具、上网工具，微信通知，定时调度功能等。", id: stringToHashKey("oth/asus_ac66ub1.md")};
 	if (mdContent.length) {
-		showPost(currentInfo, mdContent);
+		setTimeout(() => {showPost(currentInfo, mdContent)}, 200);
 	} else {
 		currentInfo.src = "index.html";
 		currentInfo.title = "首页";
