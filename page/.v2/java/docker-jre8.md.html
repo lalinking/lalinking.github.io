@@ -206,7 +206,7 @@ docker run -p 2001:80 -m 256m -v ~/docker/volume/eureka:/usr/java/workpath --nam
 	var mdContent = $("noscript")[0].innerText;
 	var currentInfo = {src: "java/docker-jre8.md", title: "创建 docker jre8 镜像", date: "2021-11-04", keywords: "java,jre8,docker,Dockerfile", desc: "通过 Dockerfile 创建一个镜像，并设置一个启动脚本让容器启动时自动启动 jar 包，并且支持带参数的启动。", id: stringToHashKey("java/docker-jre8.md")};
 	if (mdContent.length) {
-		showPost(currentInfo, mdContent);
+		setTimeout(() => {showPost(currentInfo, mdContent)}, 200);
 	} else {
 		currentInfo.src = "index.html";
 		currentInfo.title = "首页";

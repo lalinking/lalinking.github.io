@@ -67,7 +67,7 @@ nacos 示例：https://github.com/alibaba/spring-cloud-alibaba/blob/master/sprin
 	var mdContent = $("noscript")[0].innerText;
 	var currentInfo = {src: "java/spring-cloud-ls.md", title: "Spring-Cloud 微服务各种概念", date: "2019-11-21", keywords: "java,spring cloud,概念", desc: "spring cloud 微服务概念总结", id: stringToHashKey("java/spring-cloud-ls.md")};
 	if (mdContent.length) {
-		showPost(currentInfo, mdContent);
+		setTimeout(() => {showPost(currentInfo, mdContent)}, 200);
 	} else {
 		currentInfo.src = "index.html";
 		currentInfo.title = "首页";

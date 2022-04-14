@@ -601,7 +601,7 @@ Eureka 配置项分为三大块，instance、client、server。
 	var mdContent = $("noscript")[0].innerText;
 	var currentInfo = {src: "java/spring-cloud-eureka.md", title: "Spring-Cloud 微服务学习日志 (Eureka)", date: "2019-11-21", keywords: "java,spring cloud,eureka", desc: "spring cloud 微服务配置与应用 (Eureka)", id: stringToHashKey("java/spring-cloud-eureka.md")};
 	if (mdContent.length) {
-		showPost(currentInfo, mdContent);
+		setTimeout(() => {showPost(currentInfo, mdContent)}, 200);
 	} else {
 		currentInfo.src = "index.html";
 		currentInfo.title = "首页";

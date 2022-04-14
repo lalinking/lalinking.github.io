@@ -527,7 +527,7 @@ setTimeout(() => {
 	var mdContent = $("noscript")[0].innerText;
 	var currentInfo = {src: "web/nodejs_template.md", title: "NodeJs 简单实现“模板文件”", date: "2018-03-07", keywords: "node,template", desc: "简单的字符串模板实现", id: stringToHashKey("web/nodejs_template.md")};
 	if (mdContent.length) {
-		showPost(currentInfo, mdContent);
+		setTimeout(() => {showPost(currentInfo, mdContent)}, 200);
 	} else {
 		currentInfo.src = "index.html";
 		currentInfo.title = "首页";

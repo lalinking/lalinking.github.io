@@ -129,7 +129,7 @@ fi
 	var mdContent = $("noscript")[0].innerText;
 	var currentInfo = {src: "java/GrepJavaLog.md", title: "bash 脚本实现按关键字搜索日志，并按线程号分组显示且支持高亮", date: "2021-11-17", keywords: "bash,日志,java", desc: "Linux 服务器下利用 grep+awk 实现按关键字搜索日志，并按线程号分组显示且支持高亮", id: stringToHashKey("java/GrepJavaLog.md")};
 	if (mdContent.length) {
-		showPost(currentInfo, mdContent);
+		setTimeout(() => {showPost(currentInfo, mdContent)}, 200);
 	} else {
 		currentInfo.src = "index.html";
 		currentInfo.title = "首页";

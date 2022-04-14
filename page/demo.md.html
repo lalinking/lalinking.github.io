@@ -189,7 +189,7 @@ erDiagram
 	var mdContent = $("noscript")[0].innerText;
 	var currentInfo = {src: "demo.md", title: "demo", date: "2019-12-19", keywords: "demo,markdown", desc: "一个博文的demo", id: stringToHashKey("demo.md")};
 	if (mdContent.length) {
-		showPost(currentInfo, mdContent);
+		setTimeout(() => {showPost(currentInfo, mdContent)}, 200);
 	} else {
 		currentInfo.src = "index.html";
 		currentInfo.title = "首页";
