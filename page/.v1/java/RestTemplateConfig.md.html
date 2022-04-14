@@ -2,8 +2,8 @@
 <html lang="zh">
 <head>
 	<meta charset="UTF-8">
-	<meta name="keywords" content="bash,日志,java">
-	<meta name="description" content="Linux 服务器下利用 grep+awk 实现按关键字搜索日志，并按线程号分组显示且支持高亮">
+	<meta name="keywords" content="java,SpringBoot,RestTemplate">
+	<meta name="description" content="RestTemplate 日志打印请求和返回内容">
 	<meta name="author" content="lalinking">
 	<meta name="copyright" content="lalinking">
 	<link href="/resource/upgrade.css" type="text/css" rel="stylesheet">
@@ -14,95 +14,121 @@
 	<title>打工姿态 -> 学习姿态</title>
 </head>
 <body>
-<noscript>Linux 服务器下利用 grep+awk 实现按关键字搜索日志，并按线程号分组显示且支持高亮。
-注日期格式：
+<noscript>## 功能
 
+RestTemplate 发起请求前，打印请求消息体；收到应答时，打印返回内容。并且不影响后续程序的读取和解析。
+某些请求不打印日志，避免泄露机密信息。
+这里认为 RestTemplate 只用来做 http api 交互，即请求体和响应体都是文本。
+
+## 使用
+
+SpringBoot 注入配置 Bean 即可。
+
+## 原理
+
+RestTemplate 有拦截器机制，利用拦截器机制可打印请求的发送和应答内容。
+其中应答内容需要从流中读取，但这样会影响后续代码的读取和解析（流读取过一次以后就没了）。因此对响应流进行封装，重写读取方法，这样在流真正被读取内容时同步得获取到响应内容。
+
+## 源码
+
+```java
+    @Bean
+    public RestTemplate getRestTemplate() {
+        final RestTemplate restTemplate = new RestTemplate();
+        // 设置一个拦截器打印前后请求日志
+        restTemplate.setInterceptors(Collections.singletonList((request, body, execution) -> {
+            // 内部的一个标志，这样的请求不要打印内容，否则泄露密码
+            boolean trace = !"NO".equals(request.getHeaders().getFirst("Trace"));
+            log.info("Rest Start\n  Url: {}\n  Body: {}", request.getURI().toURL(), trace ? new String(body, StandardCharsets.UTF_8) : "****");
+            final long before = System.currentTimeMillis();
+            ClientHttpResponse response = execution.execute(request, body);
+            if (!trace) {
+                log.info("Rest Done\n  Use time: {}\n  Response: ****", System.currentTimeMillis() - before);
+                return response;
+            }
+            // 封装一个对象，以便能在不影响后续处理的情况下打印返回结果
+            return new ClientHttpResponse() {
+                final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+                @Override
+                public HttpHeaders getHeaders() {
+                    return response.getHeaders();
+                }
+
+                @Override
+                public InputStream getBody() throws IOException {
+                    // 封装一个流，监听读取事件
+                    final InputStream bodyInputStream = response.getBody();
+                    return new InputStream() {
+                        @Override
+                        public int read() throws IOException {
+                            final int read = bodyInputStream.read();
+                            if (read != -1) {
+                                outputStream.write(read);
+                            }
+                            return read;
+                        }
+
+                        @Override
+                        public long skip(long n) throws IOException {
+                            return bodyInputStream.skip(n);
+                        }
+
+                        @Override
+                        public int available() throws IOException {
+                            return bodyInputStream.available();
+                        }
+
+                        @Override
+                        public void close() throws IOException {
+                            bodyInputStream.close();
+                            outputStream.close();
+                            // 文件读取结束了，打印读到的内容
+                            log.info("Rest Done\n  Use time: {}\n  Response: {}", System.currentTimeMillis() - before, outputStream.toString("utf-8"));
+                        }
+
+                        @Override
+                        public synchronized void mark(int readlimit) {
+                            bodyInputStream.mark(readlimit);
+                        }
+
+                        @Override
+                        public synchronized void reset() throws IOException {
+                            bodyInputStream.reset();
+                        }
+
+                        @Override
+                        public boolean markSupported() {
+                            return bodyInputStream.markSupported();
+                        }
+                    };
+                }
+
+                @Override
+                public HttpStatus getStatusCode() throws IOException {
+                    return response.getStatusCode();
+                }
+
+                @Override
+                public int getRawStatusCode() throws IOException {
+                    return response.getRawStatusCode();
+                }
+
+                @Override
+                public String getStatusText() throws IOException {
+                    return response.getStatusText();
+                }
+
+                @Override
+                public void close() {
+                    response.close();
+                }
+            };
+        }));
+        return restTemplate;
+    }
 ```
-18:48:51.143 [http-nio-8081-exec-273] INFO  com.c.m.p.ChangeProducer:44 - 输出的日志
-```
-
-// TODO
-如果输出的日志存在换行，因找不到线程号，所以换行的内容不能被搜索到。
-异常日志都有换行，所以异常日志都搜索不到。
-
-```bash
-#!/bin/bash
-
-# 找出所有日志文件
-pathlist=(`find /release_sw/$1/logs/ -name "*.log" |xargs ls -1t |grep ^/` )
-echo "已找到如下文件，输入文件序号"
-
-# 搜索的关键字，后面可以重新输入
-searchstr=$3
-# 搜索的范围
-showlines=$2
-if [ ! "$showlines" ]; then
-	showlines=50
-	echo "$showlines"
-fi
-
-# 从文件搜索、打印结果的函数
-searchfile()
-{
-	echo "扫描：$1"
-	read -p "输入 搜索的字符串（当前为 $searchstr）: " newsearchstr
-	if [ "$newsearchstr" ]; then
-		searchstr="$newsearchstr"
-	fi
-	
-	echo "搜索：$searchstr"
-	# 搜索得到行号
-	greplist=(`fgrep --color=never -n "$searchstr" $1 | egrep --color=never -e "^[0-9]+" -o`)
-	for(( i=0; i<${#greplist[@]}; i++ ))
-	do
-		# 获取前后若干行的内容
-		startline=$((${greplist[$i]}-$showlines))
-		endline=$((${greplist[$i]}+$showlines))
-		echo -e "\n\n搜索行数范围： $startline ~ $endline；$(($i/2)) / $((${#greplist[@]}/2))"
-		# 获取线程号，从这一行开始，向上遍历取到第一个
-		# 将这些行的内容按线程号过滤，打印出来
-		awk "NR>${startline} && NR<${endline}" $1 | fgrep -C $showlines --color=always "$searchstr"
-		#awk "NR>${startline} && NR<${endline}" $1 | fgrep --color=always -F "${greplist[$i+1]}" | fgrep -C $showlines --color=always "$searchstr"
-	done
-}
-
-# 主函数，一直询问选择哪个文件进行搜索
-doask()
-{
-	for(( i=1; i<=${#pathlist[@]}; i++ ))
-	do
-		echo $i: ${pathlist[$i-1]}
-	done
-
-	read -p "输入需要扫描的文件序号（0 退出）: " pathindex
-	if [ ! $pathindex ]; then
-		echo "Bye"
-		exit 0
-	fi
-	if [ $pathindex -lt "1" ]; then
-		echo "Bye"
-		exit 0
-	fi
-	path=${pathlist[$pathindex-1]}
-	if [ $path ]; then
-		searchfile "$path"
-	else
-		echo "无效输入"
-	fi
-	read -p "继续搜索？（回车继续，其他则退出）: " continues
-	if [ $continues ]; then
-		echo "Bye"
-		exit 0
-	fi
-	doask
-}
-
-if [ ${#pathlist[@]} > 1 ]; then
-	doask
-else
-	searchfile "${pathlist[0]}"
-fi
-```</noscript>
+</noscript>
 <div id="header"></div>
 <div id="main">
 	<div id="board" class="curb">
@@ -130,7 +156,7 @@ fi
 	var mdContent = $("noscript")[0].innerText;
 	if (mdContent.length) {
 		$("#M-154268230").setAttribute("data-status", "post_loading");
-		setTimeout(() => {showPost("java/GrepJavaLog.md", "bash 脚本实现按关键字搜索日志，并按线程号分组显示且支持高亮", "2021-11-17", mdContent);}, 200);
+		setTimeout(() => {showPost("java/RestTemplateConfig.md", "RestTemplate 日志打印请求和返回内容", "2022-04-14", mdContent);}, 200);
 	} else {
 		var page = location.search.replace(/^.*path=([^&]*).*$/, "$1");
 		if (page && page.length && page != location.search) {
