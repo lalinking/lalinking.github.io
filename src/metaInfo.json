@@ -1,6 +1,11 @@
 {
     "maxThickness": 1,
     "maxHeight": 1,
+    "M-154268230": {
+        "BookId": "M-154268230",
+        "BookName": "Java 笔记",
+        "contents": []
+    },
     "P35186368": {
         "BookId": "P35186368",
         "BookName": "课外题",
@@ -17,7 +22,7 @@
                 "Keywords": "图片,字符画",
                 "FilePath": "/page/pic/pic.html"
             }, {
-                "FileTitle": "图灵机器人实用",
+                "FileTitle": "图灵机器人试用",
                 "Date": "2015-10-12",
                 "Description": "调用图灵机器人的api实现自动聊天",
                 "Keywords": "图灵机器人",
