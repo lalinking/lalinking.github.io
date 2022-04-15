@@ -99,17 +99,27 @@ window.$F = (obj, dom) => {
 };
 window.addJs = (src, async, cb) => {
 	let jid = stringToHashKey(src);
-    let jsExisted = document.getElementById(jid);
-	if (jsExisted) {return cb && cb();}
-    let j = document.createElement("script");
-    j.src = src;
-	j.setAttribute("id", jid);
-    j.async = !!async;
+    let j = document.getElementById(jid);
+	if (j) {
+	    // 这里可能还没加载完
+	    if ("loaded" == j.getAttribute("data-status")) {return cb && cb();}
+	} else {
+        j = document.createElement("script");
+        j.src = src;
+        j.setAttribute("id", jid);
+        j.async = !!async;
+	}
+	let oldFun = j.onload;
     j.onload = j.onreadystatechange = () => {
         if (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") {
-            console.log(`load js: ${src}`);
+            if (oldFun) {
+                oldFun();
+            } else {
+                console.log("loaded js: " + src);
+                j.setAttribute("data-status", "loaded");
+                j.onload = j.onreadystatechange = null;
+            }
             cb && cb();
-            j.onload = j.onreadystatechange = null;
         }
     };
     document.getElementsByTagName("head")[0].appendChild(j);
