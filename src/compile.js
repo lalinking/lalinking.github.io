@@ -195,7 +195,7 @@ postInfos.forEach(function(pinfo) {
 });
 // 生成 index
 var indexInfo = {};
-indexInfo.FilePath = "index.html";
+indexInfo.FilePath = "index";
 indexInfo.Description = "蓝领王的个人笔记博客";
 indexInfo.Content = "";
 indexInfo.Keywords = "蓝领王,笔记";
