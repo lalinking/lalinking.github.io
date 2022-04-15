@@ -68,7 +68,7 @@ function initBookShelf(bookInfos) {
 /* 显示一个博文 */
 function showPost(info, txt) {
     let startTime = Date.now();
-    let bord = $("#bord")[0];
+    let bord = document.body;
     bord.className = "loading";
     let filePath = info.src;
     $("#left_content li.active").delClass("active");
@@ -106,7 +106,7 @@ function setMdTxt(txt, startTime) {
     }
     let endTime = Date.now();
     let sleep = 1000 - ((endTime - startTime) % 1000);
-    setTimeout(() => {$("#bord")[0].className = "";}, sleep);
+    setTimeout(() => {document.body.className = "";}, sleep);
 }
 function setHtml(src, startTime) {
     let htmlPanel = $("#center_content")[0];
@@ -116,7 +116,7 @@ function setHtml(src, startTime) {
     c.onload = () => {
         let endTime = Date.now();
         let sleep = 1000 - ((endTime - startTime) % 1000);
-        setTimeout(() => {$("#bord")[0].className = "";}, sleep);
+        setTimeout(() => {document.body.className = "";}, sleep);
     };
     c.setAttribute("src", src);
     htmlPanel.append(c);
@@ -172,12 +172,12 @@ window.addEventListener("click", e => {
 		expandCode(e.target);
 	} else if (clk == "clear") {
 	    /* 擦除 */
-	    $("#bord")[0].className = "loading";
+	    document.body.className = "loading";
 		setTimeout(() => {
     		let panel = $("#center_content")[0];
             panel.innerHTML = "";
             panel.className = "content-panel";
-		    $("#bord")[0].className = "";
+		    document.body.className = "";
         }, 1000);
 	    let currentInfo = {src: "", title: "", date: "", keywords: "", desc: "", id: stringToHashKey("#{FilePath}")};
 	    currentInfo.src = "index.html";

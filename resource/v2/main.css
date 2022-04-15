@@ -25,7 +25,7 @@ body {
 #bord > div {height: 100%;}
 #bord #left {width: 40rem;height: calc(100% + 0.5rem);position: absolute;margin-top: -0.4rem;background-color: #508360;margin-left: -8rem;border-radius: 3px;box-shadow: inset 0 0 0.1rem 1rem #b2a176;transition: margin-left 300ms 200ms;z-index: 3;}
 #bord #left:hover {margin-left: 8rem;}
-#bord.loading #left {margin-left: 30rem !important;}
+.loading #bord #left {margin-left: 30rem !important;}
 #bord #center {width: calc(100% - 31rem + 2px);min-width: 40rem;right: 0;height: 100%;position: absolute;z-index: 1;}
 #bord #center .content-panel > iframe {width: 100%;height: 100%;border: none;}
 #bord #tips {position: absolute;left: 5rem;width: calc(26rem + 2px);}
@@ -63,13 +63,14 @@ body {
     100% {opacity: 0;}
 }
 
-#bord.loading #eraser {
+.loading #bord #eraser {
     animation: clean_center_eraser 1s infinite;
 }
-#bord.loading #center_content {
+.loading #bord #center_content {
     animation: clean_center_content 1s forwards;
 }
 
 /* 评论 */
 #talk {position: fixed;margin-top: -2.8rem;z-index: 3;width: 60%;right: 25%;height: 80%;background-color: white;border-radius: 5px;padding: 0 1rem;transition: margin-top 300ms 200ms;}
+.loading #talk {margin-top: -5rem;}
 #talk:hover {margin-top: -40%;}
