@@ -15,8 +15,8 @@ cd $DIR
 # 代码保持最新
 git pull origin master
 # 生成博文
-node "./src/compile.js" "$POSTS_DIR" "$DIR" ".v1"
-node "./src/compile.js" "$POSTS_DIR" "$DIR" ".v2"
+node "./src/compile.js" "$POSTS_DIR" "$DIR" "v1"
+node "./src/compile.js" "$POSTS_DIR" "$DIR" "v2"
 # 推送更新
 git add *
 git add .posts/

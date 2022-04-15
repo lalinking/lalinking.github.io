@@ -144,10 +144,10 @@ function compilePostFile(postInfo, htmlRoot) {
     if (postInfo.PostPath) {
         // 之前处理的时候排除了内容，所以需要重新读取
         postInfo.Content = getPostFileMetaInfo(postInfo.PostPath).Content;
-        var mdPath = path.resolve(dirRepo + "/.posts/" + postInfo.FilePath, '..');
+        var mdPath = dirRepo + "/.posts/" + postInfo.FilePath;
         console.log("save .md to: {}", mdPath);
-        mkdirsSync(mdPath);
-        fs.writeFileSync(mdPath + "/.posts/" + postInfo.FilePath, postInfo.Content);
+        mkdirsSync(path.resolve(mdPath, '..'));
+        fs.writeFileSync(mdPath, postInfo.Content);
     }
     // 编译 html
     postInfo.CompileTime = new Date().toISOString();
@@ -170,13 +170,13 @@ function compilePostFile(postInfo, htmlRoot) {
 		}
 		_txts[_index] = _line;
 	}
-	var htmlPath = path.resolve(dirRepo + "/" + htmlRoot + postInfo.FilePath, '..');
+	var htmlPath = dirRepo + "/" + htmlRoot + postInfo.FilePath + ".html";
 	console.log("save .html to: {}", htmlPath);
-	mkdirsSync(htmlPath);
+	mkdirsSync(path.resolve(htmlPath, '..'));
 	// 生成带版本号的，用于存档
-	fs.writeFileSync(htmlPath + "/" + postInfo.FilePath + ".html", _txts.join("\n"));
+	fs.writeFileSync(htmlPath, _txts.join("\n"));
 	// 生成不带版本号的
-	fs.writeFileSync(htmlPath + "/" + postInfo.FilePath + "." + version + ".html", _txts.join("\n"));
+	fs.writeFileSync(htmlPath + "." + version, _txts.join("\n"));
 	console.log("compilePostFile done, path: {}", postInfo.FilePath);
 }
 
