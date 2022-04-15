@@ -1,6 +1,6 @@
 .marked-panel {
 	font-size: 0.8rem;
-	padding: 1rem;
+	padding: 0 1rem;
 	display: block;
 	overflow: auto;
 }

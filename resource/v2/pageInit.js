@@ -10,7 +10,7 @@ let gitalkConfig = {
 };
 function initTalk(info) {
     if (document.getElementById("talk") == null) {return}
-	let newId = stringToHashKey(info.src);
+	let newId = info.id || stringToHashKey(info.src);
 	if (newId == gitalkConfig.id) {return}
 	document.getElementById("talk").innerHTML = "";
 	gitalkConfig.id = newId;
