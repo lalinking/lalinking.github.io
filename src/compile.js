@@ -152,7 +152,7 @@ function compilePostFile(postInfo, htmlRoot) {
     // 编译 html
     postInfo.CompileTime = new Date().toISOString();
     // 读取 html 模板
-    var _txts = fs.readFileSync(dirRepo + "/src/page" + version +".html").toString().split(new RegExp("[\r\n]"));
+    var _txts = fs.readFileSync(dirRepo + "/src/page." + version +".html").toString().split(new RegExp("[\r\n]"));
 	// 替换模板中的变量
 	var param = {};
 	param.Content = postInfo.Content || "";
