@@ -46,108 +46,160 @@ const mkdirsSync = function mkdirsSync(dirname) {
 console.log("posts path:\t{}", dirPosts);
 console.log("repo path:\t{}", dirRepo);
 
-const bookInfos = JSON.parse(fs.readFileSync(dirRepo + "/src/metaInfo.json",'utf-8'));
+// 先将所有博文元数据读取到 postInfos
+// 再将 postInfos 排序，信息写到 bookInfos
 
-// 遍历博文
-function listPostFiles(_path, _callBack) {
+const postInfos = [];
+// 这个变量是为了兼容老版本
+const bookInfos = {};
+
+// 遍历博文，获取列表
+function listPostFiles(_path) {
+    console.log("listPostFiles start, path: {}", _path);
 	fs.readdirSync(_path).forEach(function(_item) {
 		var _fullpath = path.join(_path, _item);
 		var _stats = fs.statSync(_fullpath);
 		if(_stats.isFile()) {
-			_callBack(_fullpath);
+		    var post = getPostFileMetaInfo(_fullpath);
+		    post.Content = null;
+			postInfos.push(post);
 		} else if(_stats.isDirectory() && _item != ".git") {
 			listPostFiles(_fullpath, _callBack);
 		}
 	});
+	console.log("listPostFiles done, path: {}", _path);
 }
-
 function getPostFileMetaInfo(postPath) {
-	if (!fs.existsSync(postPath)) {return {};}
+    console.log("getPostFileMetaInfo start, path: {}", postPath);
+	if (!fs.existsSync(postPath)) {
+	    throw "path not exists: " + postPath;
+	}
 	var _txts = fs.readFileSync(postPath).toString().split(new RegExp("[\r\n]"));
 	var _flag = 0;
 	var _reg = new RegExp("^\-{5,}$");
 	var _meta = {};
-	_meta.FileTitle = "杂记一则"; 
-	_meta.BookName = "杂记";
+	_meta.FileTitle = "未定义";
+	_meta.BookName = "未命名";
+	// 读取标签
 	while(true) {
 		var _line = _txts.shift();
 		if (_reg.test(_line)) {
 			_flag ++;
 			continue;
 		}
+		// _读取到标签结束标记，则停止循环。 _txts 剩余内容是博文的正文
 		if (_flag > 1) {break;}
 		var _sp = _line.trim().split(new RegExp("\\s*:\\s*"));
 		_meta[_sp[0]] = _sp[1];
 	}
 	_meta.Description = _meta.Description || _meta.FileTitle;
 	_meta.FilePath = postPath.substr(dirPosts.length);
-	var _bookKey = stringToHashKey(_meta.BookName);
-	return {bookKey: _bookKey, meta: _meta, content: _txts.join("\n")};
+	_meta.PostPath = postPath;
+	_meta.Keywords = _meta.Keywords || _meta.BookName;
+	_meta.Content = _txts.join("\n");
+	_meta.BookId = stringToHashKey(_meta.BookName);
+	console.log("getPostFileMetaInfo done, path: {}", postPath);
+	return _meta;
 }
-
-// 读取博文元数据，并编译博文
-function compilePostFileToMD(postPath) {
-	var _res = getPostFileMetaInfo(postPath);
-	var _bookKey = _res.bookKey;
-	if (bookInfos[_bookKey]) {
-		bookInfos[_bookKey].contents.push(_res.meta);
-		// 按时间倒序排列博文
-		bookInfos[_bookKey].contents.sort(function(p1, p2) {
-			return new Date(p2["Date"]).getTime() - new Date(p1["Date"]).getTime();
-		});
-	} else {
-		bookInfos[_bookKey] = {BookId: _bookKey, BookName: _res.meta.BookName, contents: [_res.meta]};
-	}
-	var _fullPath = path.resolve(dirRepo + "/.posts/" + _res.meta.FilePath, '..');
-	mkdirsSync(_fullPath);
-	fs.writeFileSync(dirRepo + "/.posts/" + _res.meta.FilePath, _res.content);
-	bookInfos.maxThickness = Math.max(bookInfos[_res.bookKey].contents.length, bookInfos.maxThickness);
-	bookInfos.maxHeight = Math.max(bookInfos[_res.bookKey].BookName.length, bookInfos.maxHeight);
+// 获取预定义的页面
+function loadSrcMetaInfo() {
+    console.log("loadSrcMetaInfo start");
+    var srcMetaInfo = JSON.parse(fs.readFileSync(dirRepo + "/src/metaInfo.json",'utf-8'));
+    for (var b in srcMetaInfo) {
+        var book = srcMetaInfo[b];
+        if (typeof book != "object" || !book.BookName) {
+            bookInfos[b] = book;
+            continue;
+        }
+        // 遍历博文
+        book.contents.forEach(function(p){
+            p.BookId = b;
+            p.BookName = book.BookName;
+            p.FromSrc = true;
+            postInfos.push(p);
+        });
+    }
+    console.log("loadSrcMetaInfo done");
 }
-
-// 博文转译成 html 文件
-function compilePostFileToHTML(postPath) {
-	var _res = getPostFileMetaInfo(postPath);
-	var _ms = _res.meta;
-	_ms.BookKey = _res.bookKey;
-	_ms.Content = _res.content;
-	_ms.Keywords = _ms.Keywords || _ms.BookName;
-	_ms.bookInfos = JSON.stringify(bookInfos);
-	_ms.compileTime = new Date().toISOString();
-	var _txts = fs.readFileSync(dirRepo + "/src/page" + version +".html").toString().split(new RegExp("[\r\n]"));
+// 赋值到 bookInfos
+function setToBookInfos() {
+    console.log("setToBookInfos start");
+    bookInfos.maxThickness = 1;
+    bookInfos.maxHeight = 1;
+    postInfos.forEach(function(info) {
+        var _bookKey = info.BookId;
+        if (bookInfos[_bookKey]) {
+            bookInfos[_bookKey].contents.push(info);
+        } else {
+            bookInfos[_bookKey] = {BookId: _bookKey, BookName: info.BookName, contents: [info]};
+        }
+    });
+    console.log("setToBookInfos done");
+}
+// 编译
+function compilePostFile(postInfo, htmlRoot) {
+    if (postInfo.FromSrc) {return;}
+    console.log("compilePostFile start, path: {}", postInfo.FilePath);
+    // 复制 md 文本
+    if (postInfo.PostPath) {
+        // 之前处理的时候排除了内容，所以需要重新读取
+        postInfo.Content = getPostFileMetaInfo(postInfo.PostPath).Content;
+        var mdPath = path.resolve(dirRepo + "/.posts/" + postInfo.FilePath, '..');
+        console.log("save .md to: {}", mdPath);
+        mkdirsSync(mdPath);
+        fs.writeFileSync(mdPath + "/.posts/" + postInfo.FilePath, postInfo.Content);
+    }
+    // 编译 html
+    postInfo.CompileTime = new Date().toISOString();
+    // 读取 html 模板
+    var _txts = fs.readFileSync(dirRepo + "/src/page" + version +".html").toString().split(new RegExp("[\r\n]"));
+	// 替换模板中的变量
+	var param = {};
+	param.Content = postInfo.Content || "";
+	param.bookInfos = JSON.stringify(bookInfos);
+	param.FilePath = postInfo.FilePath || "";
+	param.FileTitle = postInfo.FileTitle || "";
+	param.Date = postInfo.Date || "";
+	param.Keywords = postInfo.Keywords || "";
+	param.Description = postInfo.Description || "";
 	for (var _index = 0; _index < _txts.length; _index ++) {
 		var _line = _txts[_index];
-		for (var _p in _ms) {
+		for (var _p in param) {
 			if (!_p) {continue;}
-			_line = _line.replace(new RegExp("\#\{" + _p + "\}", "g"), _ms[_p]);
+			_line = _line.replace(new RegExp("\#\{" + _p + "\}", "g"), param[_p]);
 		}
 		_txts[_index] = _line;
 	}
-	var _fullPath = path.resolve(dirRepo + "/page/" + version + "/" + _res.meta.FilePath, '..');
-	mkdirsSync(_fullPath);
-	fs.writeFileSync(dirRepo + "/page/" + version + "/" + _res.meta.FilePath + ".html", _txts.join("\n"));
-	fs.writeFileSync(dirRepo + "/page/" + _res.meta.FilePath + ".html", _txts.join("\n"));
+	var htmlPath = path.resolve(dirRepo + "/" + htmlRoot + postInfo.FilePath, '..');
+	console.log("save .html to: {}", htmlPath);
+	mkdirsSync(htmlPath);
+	// 生成带版本号的，用于存档
+	fs.writeFileSync(htmlPath + "/" + postInfo.FilePath + ".html", _txts.join("\n"));
+	// 生成不带版本号的
+	fs.writeFileSync(htmlPath + "/" + postInfo.FilePath + "." + version + ".html", _txts.join("\n"));
+	console.log("compilePostFile done, path: {}", postInfo.FilePath);
 }
 
 // 获取元数据 & 编译博文
-listPostFiles(dirPosts, compilePostFileToMD);
-listPostFiles(dirPosts, compilePostFileToHTML);
+listPostFiles(dirPosts);
+// 加载预定义的博文
+loadSrcMetaInfo();
+// 按时间排序
+postInfos.sort(function(p1, p2) {
+    return new Date(p2["Date"]).getTime() - new Date(p1["Date"]).getTime();
+});
+// bookInfos 赋值
+setToBookInfos();
+// 编译内容
+postInfos.forEach(function(pinfo) {
+    compilePostFile(pinfo, "page/");
+});
 // 生成 index
-var _ms = {};
-_ms.BookKey = null;
-_ms.Description = "蓝领王的个人笔记博客";
-_ms.Content = "";
-_ms.Keywords = "蓝领王,笔记";
-_ms.bookInfos = JSON.stringify(bookInfos);
-var _txts = fs.readFileSync(dirRepo + "/src/page" + version + ".html").toString().split(new RegExp("[\r\n]"));
-for (var _index = 0; _index < _txts.length; _index ++) {
-	var _line = _txts[_index];
-	for (var _p in _ms) {
-		if (!_p) {continue;}
-		_line = _line.replace(new RegExp("\#\{" + _p + "\}", "g"), _ms[_p]);
-	}
-	_txts[_index] = _line;
-}
-fs.writeFileSync(dirRepo + "/index" + version + ".html", _txts.join("\n"));
-fs.writeFileSync(dirRepo + "/index.html", _txts.join("\n"));
+var indexInfo = {};
+indexInfo.FilePath = "index.html";
+indexInfo.Description = "蓝领王的个人笔记博客";
+indexInfo.Content = "";
+indexInfo.Keywords = "蓝领王,笔记";
+compilePostFile(indexInfo, "");
+
 console.log("compile done.");

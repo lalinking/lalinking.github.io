@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "myFont";
+  src: url("/resource/ZhiMangXing-Regular.ttf");
+}
 /* 大背景 */
 body {
     background-color: silver;
@@ -25,7 +29,7 @@ body {
 #bord #center {width: calc(100% - 31rem + 2px);min-width: 40rem;right: 0;height: 100%;position: absolute;z-index: 1;}
 #bord #center .content-panel > iframe {width: 100%;height: 100%;border: none;}
 #bord #tips {position: absolute;left: 5rem;width: calc(26rem + 2px);}
-#bord #tips #tips_content {padding: 1rem 2rem;font-size: 2rem;font-family: 华文行楷;}
+#bord #tips #tips_content {padding: 1rem 2rem;font-size: 2rem;font-family: STXingkai,myFont;}
 #bord #tips #tips_content small {font-size: 10px;color: #4ba4a4;}
 #left_content, #center_content, #tips_content {color: aliceblue;border-radius: 3px;border: 2px solid #8a7d7d;margin: 1rem;height: calc(100% - 2rem);width: calc(100% - 2rem);}
 /* 黑板擦 */
@@ -33,12 +37,12 @@ body {
 
 /* 目录样式 */
 .post_type {padding: 0.3rem;}
-.post_type .post_title {padding: 0.3rem;color: #adc451;font-family: 华文行楷;}
+.post_type .post_title {padding: 0.3rem;color: #adc451;font-family: STXingkai,myFont;}
 .post_type ul {margin: 0.3rem 0;padding: 0 1rem 0 2rem;list-style: none;font-size: 1rem;font-weight: 100;}
 .post_type ul li {cursor: pointer;font-size: 0.8rem;display: table-row;padding: 0;margin: 0;}
 .post_type ul li:hover {color: aquamarine;/* border-bottom: 1px solid gray; */}
-.post_type ul li::before {content: attr(data-date) " ";margin-left: -1rem;color: #ddd4c8;pointer-events: none;font-weight: bolder;padding-right: 0.3rem;/* font-family: 华文行楷; */}
-#left_content li.active::after {content: "√";/* position: absolute; */right: 2rem;color: red;font-weight: bold;font-size: 1rem;font-style: italic;margin-left: 1rem;line-height: 0.8rem;}
+.post_type ul li::before {content: attr(data-date) " ";margin-left: -1rem;color: #ddd4c8;pointer-events: none;font-weight: bolder;padding-right: 0.3rem;/* font-family: myFont; */}
+#left_content li.active::after {content: "√";/* position: absolute; */right: 2rem;color: red;font-weight: bold;font-size: 1rem;font-style: italic;margin-left: 1rem;line-height: 0.8rem;pointer-events: none;}
 
 /* 动画 */
 @keyframes clean_center_eraser {
