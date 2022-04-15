@@ -150,7 +150,7 @@ function compilePostFile(postInfo, htmlRoot) {
         fs.writeFileSync(mdPath, content);
     }
     // 编译 html
-    postInfo.CompileTime = new Date().toISOString();
+//    postInfo.CompileTime = new Date().toISOString();
     // 读取 html 模板
     var _txts = fs.readFileSync(dirRepo + "/src/page." + version +".html").toString().split(new RegExp("[\r\n]"));
 	// 替换模板中的变量
