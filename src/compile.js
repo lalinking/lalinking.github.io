@@ -64,7 +64,7 @@ function listPostFiles(_path) {
 		    post.Content = null;
 			postInfos.push(post);
 		} else if(_stats.isDirectory() && _item != ".git") {
-			listPostFiles(_fullpath, _callBack);
+			listPostFiles(_fullpath);
 		}
 	});
 	console.log("listPostFiles done, path: {}", _path);
