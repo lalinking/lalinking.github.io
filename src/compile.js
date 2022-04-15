@@ -107,8 +107,7 @@ function loadSrcMetaInfo() {
     var srcMetaInfo = JSON.parse(fs.readFileSync(dirRepo + "/src/metaInfo.json",'utf-8'));
     for (var b in srcMetaInfo) {
         var book = srcMetaInfo[b];
-        if (typeof book != "object" || !book.BookName) {
-            bookInfos[b] = book;
+        if (!book.contents) {
             continue;
         }
         // 遍历博文
