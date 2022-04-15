@@ -139,14 +139,15 @@ function setToBookInfos() {
 function compilePostFile(postInfo, htmlRoot) {
     if (postInfo.FromSrc) {return;}
     console.log("compilePostFile start, path: {}", postInfo.FilePath);
+    var content = "";
     // 复制 md 文本
     if (postInfo.PostPath) {
         // 之前处理的时候排除了内容，所以需要重新读取
-        postInfo.Content = getPostFileMetaInfo(postInfo.PostPath).Content;
+        content = getPostFileMetaInfo(postInfo.PostPath).Content;
         var mdPath = dirRepo + "/.posts/" + postInfo.FilePath;
         console.log("save .md to: {}", mdPath);
         mkdirsSync(path.resolve(mdPath, '..'));
-        fs.writeFileSync(mdPath, postInfo.Content);
+        fs.writeFileSync(mdPath, content);
     }
     // 编译 html
     postInfo.CompileTime = new Date().toISOString();
@@ -154,7 +155,7 @@ function compilePostFile(postInfo, htmlRoot) {
     var _txts = fs.readFileSync(dirRepo + "/src/page." + version +".html").toString().split(new RegExp("[\r\n]"));
 	// 替换模板中的变量
 	var param = {};
-	param.Content = postInfo.Content || "";
+	param.Content = content;
 	param.bookInfos = JSON.stringify(bookInfos);
 	param.FilePath = postInfo.FilePath || "";
 	param.FileTitle = postInfo.FileTitle || "";
@@ -197,7 +198,6 @@ postInfos.forEach(function(pinfo) {
 var indexInfo = {};
 indexInfo.FilePath = "index";
 indexInfo.Description = "蓝领王的个人笔记博客";
-indexInfo.Content = "";
 indexInfo.Keywords = "蓝领王,笔记";
 compilePostFile(indexInfo, "");
 
