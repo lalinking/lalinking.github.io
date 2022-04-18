@@ -4,6 +4,7 @@ const path = require('path');
 const dirPosts = process.argv[2];
 const dirRepo = process.argv[3];
 const version = process.argv[4];
+const domain = process.argv[5];
 
 // 控制日志格式
 (function() {
@@ -181,6 +182,22 @@ function compilePostFile(postInfo, htmlRoot) {
 	fs.writeFileSync(htmlPath.replace(/\.html$/, "." + version + ".html"), _txts.join("\n"));
 	console.log("compilePostFile done, path: {}", postInfo.FilePath);
 }
+// 生成站点地图
+function loadSiteMap() {
+    var mapStr = "";
+    mapStr += '<?xml version="1.0" encoding="UTF-8"?>';
+    mapStr += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+    postInfos.forEach(function(postInfo) {
+        mapStr += '<url>'
+        mapStr += '<loc>' + domain + "page/" + postInfo.FilePath + ".html</loc>";
+        mapStr += '<lastmod>' + postInfo.Date + '</lastmod>';
+        mapStr += '<changefreq>yearly</changefreq>';
+        mapStr += '<priority>0.5</priority>';
+        mapStr += '</url>';
+    });
+    mapStr += '</urlset>';
+    fs.writeFileSync(dirRepo + "/sitemap.xml", mapStr);
+}
 
 // 获取元数据 & 编译博文
 listPostFiles(dirPosts);
@@ -196,6 +213,8 @@ setToBookInfos();
 postInfos.forEach(function(pinfo) {
     compilePostFile(pinfo, "page/");
 });
+// 生成网站地图
+loadSiteMap();
 // 生成 index
 var indexInfo = {};
 indexInfo.FilePath = "index";
