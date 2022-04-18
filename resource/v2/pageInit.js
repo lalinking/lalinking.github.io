@@ -114,11 +114,15 @@ function setHtml(src, startTime) {
     c.onload = () => {
         let endTime = Date.now();
         let sleep = 1000 - ((endTime - startTime) % 1000);
-        setTimeout(() => {document.body.className = "";htmlPanel.innerHTML = "";document.body.removeChild(c);htmlPanel.append(c);c.className = "";}, sleep);
+        setTimeout(() => {
+            document.body.className = "";
+            $("#center_content > *").forEach((res) => {res == c || htmlPanel.removeChild(res)})
+            c.className = "";
+        }, sleep);
     };
     c.setAttribute("src", src);
     c.className = "hide";
-    document.body.append(c);
+    htmlPanel.append(c);
 }
 
 /* 渲染的工具函数 */
