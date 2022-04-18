@@ -21,7 +21,7 @@ v1 (2021) 首页：[https://lalinking.github.io/index.v1.html](https://lalinking
   高中书桌主题，3D 风格。
 
 v2 (2022) 首页：[https://lalinking.github.io/index.v2.html](https://lalinking.github.io/index.v2.html)
-  大学教室推拉黑板风格，2D 风格。
+  大学教室推拉黑板主题，2D 风格。
 
 v3 （未实现）
   也许应该做一个科幻主题玩玩，参考一下星际迷途里面的黑洞时间戳？待定。
