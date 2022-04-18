@@ -114,7 +114,7 @@ function setHtml(src, startTime) {
     c.onload = () => {
         let endTime = Date.now();
         let sleep = 1000 - ((endTime - startTime) % 1000);
-        setTimeout(() => {document.body.className = "";htmlPanel.innerHTML = "";htmlPanel.append(c);c.className = "";}, sleep);
+        setTimeout(() => {document.body.className = "";htmlPanel.innerHTML = "";document.body.removeChild(c);htmlPanel.append(c);c.className = "";}, sleep);
     };
     c.setAttribute("src", src);
     c.className = "hide";
