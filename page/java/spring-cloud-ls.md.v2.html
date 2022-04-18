@@ -2,8 +2,8 @@
 <html lang="zh">
 <head>
 	<meta charset="UTF-8">
-	<meta name="keywords" content="蓝领王,笔记">
-	<meta name="description" content="蓝领王的个人笔记博客">
+	<meta name="keywords" content="java,spring cloud,概念">
+	<meta name="description" content="spring cloud 微服务概念总结">
 	<meta name="author" content="lalinking">
 	<meta name="copyright" content="lalinking">
 	<link href="/resource/upgrade.css" type="text/css" rel="stylesheet">
@@ -14,7 +14,33 @@
 	<title>打工姿态 -> 学习姿态</title>
 </head>
 <body>
-<noscript></noscript>
+<noscript># Spring-Cloud 微服务学习日志
+
+[TOC]
+
+## 各种概念与组件
+
+### 服务发现 eureka/nacos
+服务发现有三个角色，服务提供者、服务消费者和服务中介。
+服务中介是联系服务提供者和服务消费者的桥梁。
+服务提供者将自己提供的服务地址注册到服务中介，服务消费者从服务中介那里查找自己想要的服务的地址，然后享受这个服务。
+服务中介提供多个服务，每个服务对应多个服务提供者。
+
+### 配置管理 spring-cloud-config/nacos
+在统一的地方管理配置文件。
+通过 svn、git 或控制台管理配置文件（nacos 是 mysql）。
+nacos 示例：https://github.com/alibaba/spring-cloud-alibaba/blob/master/spring-cloud-alibaba-examples/nacos-example/nacos-config-example/readme-zh.md
+
+### 服务网关 Spring Cloud Gateway
+使用非阻塞 API，支持 WebSockets，支持限流等新特性。
+介绍说明：https://cloud.tencent.com/developer/article/1540535
+
+### 服务熔断
+
+### 负载均衡
+
+
+</noscript>
 <div id="header">好好学习  天天向上</div>
 <div id="main">
 	<div id="bord">
@@ -39,7 +65,7 @@
 <script data-runat="init">
 	// 初始化文本
 	var mdContent = $("noscript")[0].innerText;
-	var currentInfo = {src: "index", title: "", date: "", keywords: "蓝领王,笔记", desc: "蓝领王的个人笔记博客", id: stringToHashKey("index")};
+	var currentInfo = {src: "java/spring-cloud-ls.md", title: "Spring-Cloud 微服务各种概念", date: "2019-11-21", keywords: "java,spring cloud,概念", desc: "spring cloud 微服务概念总结", id: stringToHashKey("java/spring-cloud-ls.md")};
 	if (mdContent.length) {
 		setTimeout(() => {showPost(currentInfo, mdContent)}, 200);
 	} else {
