@@ -95,7 +95,7 @@ function getPostFileMetaInfo(postPath) {
 	}
 	_meta.Description = _meta.Description || _meta.FileTitle;
 	_meta.FilePath = postPath.substr(dirPosts.length);
-	_meta.PostPath = postPath;
+	_meta.IsPost = true;
 	_meta.Keywords = _meta.Keywords || _meta.BookName;
 	_meta.Content = _txts.join("\n");
 	_meta.BookId = stringToHashKey(_meta.BookName);
@@ -144,9 +144,9 @@ function compilePostFile(postInfo, htmlRoot) {
     console.log("compilePostFile start, path: {}", postInfo.FilePath);
     var content = "";
     // 复制 md 文本
-    if (postInfo.PostPath) {
+    if (postInfo.IsPost) {
         // 之前处理的时候排除了内容，所以需要重新读取
-        content = getPostFileMetaInfo(postInfo.PostPath).Content;
+        content = getPostFileMetaInfo(dirPosts + "/" + postInfo.FilePath).Content;
         var mdPath = dirRepo + "/.posts/" + postInfo.FilePath;
         console.log("save .md to: {}", mdPath);
         mkdirsSync(path.resolve(mdPath, '..'));
@@ -211,15 +211,9 @@ postInfos.sort(function(p1, p2) {
 setToBookInfos();
 // 编译内容
 postInfos.forEach(function(pinfo) {
-    compilePostFile(pinfo, "page/");
+    compilePostFile(pinfo, pinfo.FilePath == "index.md" ? "" : "page/");
 });
 // 生成网站地图
 loadSiteMap();
-// 生成 index
-var indexInfo = {};
-indexInfo.FilePath = "index";
-indexInfo.Description = "蓝领王的个人笔记博客";
-indexInfo.Keywords = "蓝领王,笔记";
-compilePostFile(indexInfo, "");
 
 console.log("compile done.");
