@@ -97,7 +97,6 @@ function setMdTxt(txt, startTime) {
 	});
 	let markedPanel = $("#center_content")[0];
     markedPanel.className = "marked-panel content-panel";
-    markedPanel.innerHTML = html;
     if (window.needMermaid) {
         addJs('/3rd-lib/mermaid/mermaid.js', true, () => {
             mermaid.init();
@@ -106,20 +105,20 @@ function setMdTxt(txt, startTime) {
     }
     let endTime = Date.now();
     let sleep = 1000 - ((endTime - startTime) % 1000);
-    setTimeout(() => {document.body.className = "";}, sleep);
+    setTimeout(() => {document.body.className = "";markedPanel.innerHTML = html;}, sleep);
 }
 function setHtml(src, startTime) {
     let htmlPanel = $("#center_content")[0];
-    htmlPanel.innerHTML = "";
     htmlPanel.className = "content-panel";
     let c = document.createElement("IFRAME");
     c.onload = () => {
         let endTime = Date.now();
         let sleep = 1000 - ((endTime - startTime) % 1000);
-        setTimeout(() => {document.body.className = "";}, sleep);
+        setTimeout(() => {document.body.className = "";htmlPanel.innerHTML = "";htmlPanel.append(c);c.className = "";}, sleep);
     };
     c.setAttribute("src", src);
-    htmlPanel.append(c);
+    c.className = "hide";
+    document.body.append(c);
 }
 
 /* 渲染的工具函数 */
