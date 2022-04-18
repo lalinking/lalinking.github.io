@@ -31,7 +31,7 @@ body {
 #bord #tips {position: absolute;left: 5rem;width: calc(26rem + 2px);}
 #bord #tips #tips_content {padding: 1rem 2rem;font-size: 2rem;font-family: STXingkai,myFont;}
 #bord #tips #tips_content small {font-size: 10px;color: #4ba4a4;}
-#left_content, #center_content, #tips_content {color: aliceblue;border-radius: 3px;border: 2px solid #8a7d7d;margin: 1rem;height: calc(100% - 2rem);width: calc(100% - 2rem);}
+#left_content, #center_content, #tips_content {overflow: auto;color: aliceblue;border-radius: 3px;border: 2px solid #8a7d7d;margin: 1rem;height: calc(100% - 2rem);width: calc(100% - 2rem);}
 /* 黑板擦 */
 #bord #eraser{position: absolute;height: 2rem;width: 1.6rem;border-radius: 3px;margin: 1.5rem 1.5rem 1.5rem 33rem;background-color: #e1dbe4;box-shadow: inset 0 0 1rem 0.3rem #583720;z-index: 2;transform: rotate(339deg);bottom: -0.3rem;right: 0;cursor: pointer;transition: right,bottom 1s;}
 
