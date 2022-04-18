@@ -179,7 +179,7 @@ window.addEventListener("click", e => {
             panel.className = "content-panel";
 		    document.body.className = "";
         }, 1000);
-	    let currentInfo = {src: "", title: "", date: "", keywords: "", desc: "", id: stringToHashKey("#{FilePath}")};
+	    let currentInfo = {src: "", title: "", date: "", keywords: "", desc: "", id: stringToHashKey("index.html")};
 	    currentInfo.src = "index.html";
         currentInfo.title = "首页";
         currentInfo.desc = "这里是首页";
