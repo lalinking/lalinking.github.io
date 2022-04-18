@@ -161,6 +161,7 @@ function compilePostFile(postInfo, htmlRoot) {
 	param.Content = content;
 	param.bookInfos = JSON.stringify(bookInfos);
 	param.FilePath = postInfo.FilePath || "";
+	param.BookKey = postInfo.BookId || "";
 	param.FileTitle = postInfo.FileTitle || "";
 	param.Date = postInfo.Date || "";
 	param.Keywords = postInfo.Keywords || "";
