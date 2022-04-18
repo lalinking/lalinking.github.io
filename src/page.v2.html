@@ -43,6 +43,7 @@
 	if (mdContent.length) {
 		setTimeout(() => {showPost(currentInfo, mdContent)}, 200);
 	} else {
+		currentInfo.id = null;
 		currentInfo.src = "index.html";
 		currentInfo.title = "首页";
 		currentInfo.desc = "这里是首页";

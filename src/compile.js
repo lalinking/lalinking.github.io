@@ -176,7 +176,7 @@ function compilePostFile(postInfo, htmlRoot) {
 	// 生成带版本号的，用于存档
 	fs.writeFileSync(htmlPath, _txts.join("\n"));
 	// 生成不带版本号的
-	fs.writeFileSync(htmlPath + "." + version, _txts.join("\n"));
+	fs.writeFileSync(htmlPath.replace(/\.html$/, "." + version + ".html"), _txts.join("\n"));
 	console.log("compilePostFile done, path: {}", postInfo.FilePath);
 }
 
