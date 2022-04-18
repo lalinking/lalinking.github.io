@@ -173,7 +173,7 @@ function compilePostFile(postInfo, htmlRoot) {
 		}
 		_txts[_index] = _line;
 	}
-	var htmlPath = dirRepo + "/" + htmlRoot + postInfo.FilePath + ".html";
+	var htmlPath = dirRepo + "/" + htmlRoot + (postInfo.FilePath == "index.md" ? "index" : postInfo.FilePath) + ".html";
 	console.log("save .html to: {}", htmlPath);
 	mkdirsSync(path.resolve(htmlPath, '..'));
 	// 生成带版本号的，用于存档
