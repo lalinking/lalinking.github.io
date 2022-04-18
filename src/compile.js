@@ -133,7 +133,7 @@ function setToBookInfos() {
             bookInfos[_bookKey] = {BookId: _bookKey, BookName: info.BookName, contents: [info]};
         }
         bookInfos.maxThickness = Math.max(bookInfos[_bookKey].contents.length, info.maxThickness);
-        bookInfos.maxHeight = Math.max(bookInfos_bookKey].BookName.length, info.maxHeight);
+        bookInfos.maxHeight = Math.max(bookInfos[_bookKey].BookName.length, info.maxHeight);
     });
     console.log("setToBookInfos done");
 }
