@@ -129,7 +129,7 @@ fi
 <script data-runat="init">
 	var mdContent = $("noscript")[0].innerText;
 	if (mdContent.length) {
-		$("##{BookKey}").setAttribute("data-status", "post_loading");
+		$("#M-154268230").setAttribute("data-status", "post_loading");
 		setTimeout(() => {showPost("java/GrepJavaLog.md", "bash 脚本实现按关键字搜索日志，并按线程号分组显示且支持高亮", "2021-11-17", mdContent);}, 200);
 	} else {
 		var page = location.search.replace(/^.*path=([^&]*).*$/, "$1");
