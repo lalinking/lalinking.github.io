@@ -14,7 +14,7 @@ body {
 }
 
 #header {font-size: 4rem;color: #423c3c;margin: 0rem;padding: 0 3rem;position: fixed;top: -4.2rem;right: 40%;background-color: #d17b7b;z-index: 0;}
-#main {height: 100%;width: 100%;min-width: 75rem;/* font-family: 华文行楷; */}
+#main {height: 100%;width: 100%;min-width: 75rem;min-height: 40rem;/* font-family: 华文行楷; */}
 #bord {box-sizing: border-box;overflow: visible;height: calc(100% - 6rem);width: 100%;min-width: 80rem;margin-top: 1rem;margin-left: -6rem;background-color: #40684d;/* border: 10px solid darkgrey; *//* border-image: linear-gradient(to right, #65655e, #c8ccc1) 1; */border-radius: 5px;box-shadow: inset 0 0 0.2rem 1rem #8a7b57;position: relative;}
 /* 阴影修饰 */
 #bord::before {content: "";position: absolute;top: 0;height: 0;width: 100%;box-shadow: -0.5rem 0 0.5rem 0.2rem grey;}
@@ -71,6 +71,6 @@ body {
 }
 
 /* 评论 */
-#talk {position: fixed;margin-top: -2.8rem;z-index: 3;width: 60%;right: 25%;height: 80%;background-color: white;border-radius: 5px;padding: 0 1rem;transition: margin-top 300ms 200ms;}
+#talk {position: fixed;margin-top: -2.8rem;z-index: 3;width: 60%;right: 25%;height: 40rem;background-color: white;border-radius: 5px;padding: 0 1rem;transition: margin-top 300ms 200ms;}
 .loading #talk {margin-top: -5rem;}
-#talk:hover {margin-top: -40%;}
+#talk:hover {margin-top: -40rem;}
