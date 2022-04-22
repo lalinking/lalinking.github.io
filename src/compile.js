@@ -128,6 +128,8 @@ function setToBookInfos() {
     bookInfos.maxHeight = 1;
     postInfos.forEach(function(info) {
         var _bookKey = info.BookId;
+        // 忽略首页
+        if ("P112461875" == _bookKey) {return;}
         if (bookInfos[_bookKey]) {
             bookInfos[_bookKey].contents.push(info);
         } else {
@@ -190,7 +192,13 @@ function loadSiteMap() {
     mapStr += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
     postInfos.forEach(function(postInfo) {
         mapStr += '<url>'
-        mapStr += '<loc>' + domain + (postInfo.IsPost ? ("page/" + postInfo.FilePath  + ".html") : postInfo.FilePath) + "</loc>";
+        var postPath = postInfo.FilePath;
+        if (postInfo.FilePath == "index.md") {
+            postPath = "index.html";
+        } else if (postInfo.IsPost) {
+            postPath = "page/" + postInfo.FilePath  + ".html";
+        }
+        mapStr += '<loc>' + domain +  + "</loc>";
         mapStr += '<lastmod>' + postInfo.Date + '</lastmod>';
         mapStr += '<changefreq>yearly</changefreq>';
         mapStr += '<priority>0.5</priority>';
