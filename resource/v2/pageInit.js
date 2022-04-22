@@ -186,6 +186,7 @@ window.addEventListener("click", e => {
 	    currentInfo.src = "index.html";
         currentInfo.title = "首页";
         currentInfo.desc = "这里是首页";
+        $("#left_content li.active").delClass("active");
         initTalk(currentInfo);
 	} else {
 		console.log(clk);
