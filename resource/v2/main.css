@@ -43,7 +43,8 @@ body {
 .post_type ul li {cursor: pointer;font-size: 0.8rem;display: table-row;padding: 0;margin: 0;}
 .post_type ul li:hover {color: aquamarine;/* border-bottom: 1px solid gray; */}
 .post_type ul li::before {content: attr(data-date) " ";margin-left: -1rem;color: #ddd4c8;pointer-events: none;font-weight: bolder;padding-right: 0.3rem;/* font-family: myFont; */}
-#left_content li.active::after {content: "√";/* position: absolute; */right: 2rem;color: red;font-weight: bold;font-size: 1rem;font-style: italic;margin-left: 1rem;line-height: 0.8rem;pointer-events: none;}
+#left:not(:hover) #left_content li.active {display: list-item; text-align: right;}
+#left #left_content li.active::after {content: "√";/* position: absolute; */right: 2rem;color: red;font-weight: bold;font-size: 1rem;font-style: italic;margin-left: 1rem;line-height: 0.8rem;pointer-events: none;}
 
 /* 动画 */
 @keyframes clean_center_eraser {
