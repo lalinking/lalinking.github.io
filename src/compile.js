@@ -127,9 +127,9 @@ function setToBookInfos() {
     bookInfos.maxThickness = 1;
     bookInfos.maxHeight = 1;
     postInfos.forEach(function(info) {
-        var _bookKey = info.BookId;
         // 忽略首页
-        if ("P112461875" == _bookKey) {return;}
+        if ("index.md" == info.PostPath) {return;}
+        var _bookKey = info.BookId;
         if (bookInfos[_bookKey]) {
             bookInfos[_bookKey].contents.push(info);
         } else {
