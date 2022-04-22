@@ -3,7 +3,7 @@
 蓝领王的个人笔记博客
 这是一个用于练手、学习以及玩乐的博客。因为需要部署在免费的 page service 上，所以各个页面都是纯静态的。
 因为想做得更个性化，我放弃了 jekyll 引擎，自己用 node.js 写了一个编译程序，将一些 markdown 文件转换成 html 文件。
-另外我还力所能及地做了 seo 优化地工作。 keywords、describe、noscript 标签统统都用上了，虽然因为我太懒写的文档很少，但谁让这是用来玩的站点呢？
+另外我还力所能及地做了 seo 优化地工作。 keywords、describe、noscript 标签统统都用上了。
 
 ### 用到的第三方项目
 
@@ -23,5 +23,5 @@ v1 (2021) 首页：[https://lalinking.github.io/index.v1.html](https://lalinking
 v2 (2022) 首页：[https://lalinking.github.io/index.v2.html](https://lalinking.github.io/index.v2.html)
   大学教室推拉黑板主题，2D 风格。
 
-v3 （未实现）
-  也许应该做一个科幻主题玩玩，参考一下星际迷途里面的黑洞时间戳？待定。
+v3 （将来）
+  下一版计划做成科幻主题。
