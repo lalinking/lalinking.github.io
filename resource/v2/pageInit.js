@@ -184,6 +184,8 @@ window.addEventListener("click", e => {
 		setTimeout(() => {
     		let panel = $("#center_content")[0];
             panel.innerHTML = "";
+            $("#left_content li.active").delClass("active");
+            $("#center_content").setAttribute("data-title", "休息中");
             panel.className = "content-panel";
 		    document.body.className = "";
         }, 1000);
@@ -191,8 +193,6 @@ window.addEventListener("click", e => {
 	    currentInfo.src = "index.html";
         currentInfo.title = "首页";
         currentInfo.desc = "这里是首页";
-        $("#left_content li.active").delClass("active");
-        $("#center_content").setAttribute("data-title", "");
         initTalk(currentInfo);
 	} else {
 		console.log(clk);

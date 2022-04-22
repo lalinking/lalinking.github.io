@@ -35,7 +35,7 @@
 
 .marked-panel pre:hover .tool-bar {
 	background-color: #e4d5c6;
-}
+width: auto;}
 
 .marked-panel .line-start {
 	min-width: 35px;
@@ -54,7 +54,7 @@
 	display: table-cell;
 	padding-left: 8px;
 	padding-right: 8px;
-}
+width: 100%;}
 
 .marked-panel > p, .marked-panel pre {
 	margin: 0 0 3px 1.2em;
@@ -110,16 +110,22 @@
 	color: red;
 }
 
+.marked-panel pre::after {content: "";height: 0.1rem;position: absolute;bottom: 1.2rem;width: 100%;background-color: #000000a8;box-shadow: 0 0.2rem 0.3rem 0;}
+
+.marked-panel pre div {
+    background-color: whitesmoke;
+}
+
 .marked-panel code .expandMsg {
-	font-weight: bolder;
-	text-align: center;
-	opacity: 0.95;
-	width: 100%;
-	box-shadow: 0 0 3rem 2rem rgb(241 230 230 / 70%);
-	height: 0;
-	color: black;
-	margin: -0.5rem 0 0.2rem 0;
-	cursor: pointer;
+    font-weight: bolder;
+    text-align: center;
+    /* opacity: 0.95; */
+    width: 100%;
+    box-shadow: 0px -1rem 1rem 9px rgb(241 230 230);
+    line-height: 1rem;
+    color: black;
+    background-color: rgb(241 230 230) !important;margin: -0.3rem 0 0 0;
+    cursor: pointer;
 }
 
 .marked-panel code .expandMsg ~ div {
@@ -127,10 +133,10 @@
 }
 
 .marked-panel pre {
-	word-break: break-word;
+	position: relative;word-break: break-word;
 	white-space: pre-wrap;
 	border-radius: 2px;
-	box-shadow: 0 0 15px -10px;
+	box-shadow: 0 -0.5rem 0.3rem -0.5rem;
 	margin: 1.5rem 2rem;
 	overflow: hidden;
 	line-height: 1.5;
@@ -139,7 +145,7 @@
 	font-size: 1em;
 	text-align: left;
 	tab-size: 4;
-background-color: whitesmoke;color: black;}
+/* background-color: whitesmoke; */color: black;}
 
 .marked-panel pre > code > div > div:last-child > div.line-start {
 	border-radius: 0 0 0 8px;
