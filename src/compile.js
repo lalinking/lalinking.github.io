@@ -128,7 +128,7 @@ function setToBookInfos() {
     bookInfos.maxHeight = 1;
     postInfos.forEach(function(info) {
         // 忽略首页
-        if ("index.md" == info.PostPath) {return;}
+        if ("index.md" == info.FilePath) {return;}
         var _bookKey = info.BookId;
         if (bookInfos[_bookKey]) {
             bookInfos[_bookKey].contents.push(info);
