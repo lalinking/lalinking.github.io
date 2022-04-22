@@ -192,13 +192,13 @@ function loadSiteMap() {
     mapStr += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
     postInfos.forEach(function(postInfo) {
         mapStr += '<url>'
-        var postPath = postInfo.FilePath;
+        var pagePath = postInfo.FilePath;
         if (postInfo.FilePath == "index.md") {
-            postPath = "index.html";
+            pagePath = "index.html";
         } else if (postInfo.IsPost) {
-            postPath = "page/" + postInfo.FilePath  + ".html";
+            pagePath = "page/" + postInfo.FilePath  + ".html";
         }
-        mapStr += '<loc>' + domain + postPath + "</loc>";
+        mapStr += '<loc>' + domain + pagePath + "</loc>";
         mapStr += '<lastmod>' + postInfo.Date + '</lastmod>';
         mapStr += '<changefreq>yearly</changefreq>';
         mapStr += '<priority>0.5</priority>';
