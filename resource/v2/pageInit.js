@@ -84,6 +84,7 @@ function showPost(info, txt) {
         // 加载 iframe
         setHtml(filePath, startTime);
     }
+    $("#center_content").setAttribute("data-title", info.title);
     initTalk(info);
 }
 
