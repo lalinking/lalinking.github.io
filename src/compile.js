@@ -198,7 +198,7 @@ function loadSiteMap() {
         } else if (postInfo.IsPost) {
             postPath = "page/" + postInfo.FilePath  + ".html";
         }
-        mapStr += '<loc>' + domain +  + "</loc>";
+        mapStr += '<loc>' + domain + postPath + "</loc>";
         mapStr += '<lastmod>' + postInfo.Date + '</lastmod>';
         mapStr += '<changefreq>yearly</changefreq>';
         mapStr += '<priority>0.5</priority>';
