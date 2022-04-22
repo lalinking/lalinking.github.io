@@ -76,20 +76,19 @@ function showPost(info, txt) {
     if (filePath.endsWith(".md")) {
         // markdown 文件
         if (txt) {
-            setMdTxt(txt, startTime);
+            setMdTxt(info.title, txt, startTime);
         } else {
-            ajax("/.posts/" + filePath).then((txt) => setMdTxt(txt, startTime)).catch(showError);
+            ajax("/.posts/" + filePath).then((txt) => setMdTxt(info.title, txt, startTime)).catch(showError);
         }
     } else if (filePath.endsWith(".html")) {
         // 加载 iframe
-        setHtml(filePath, startTime);
+        setHtml(info.title, filePath, startTime);
     }
-    $("#center_content").setAttribute("data-title", info.title);
     initTalk(info);
 }
 
 /* 两种渲染函数 */
-function setMdTxt(txt, startTime) {
+function setMdTxt(title, txt, startTime) {
 	let html = marked(txt, {
 		breaks: true,
 		smartLists: true,
@@ -106,9 +105,13 @@ function setMdTxt(txt, startTime) {
     }
     let endTime = Date.now();
     let sleep = 1000 - ((endTime - startTime) % 1000);
-    setTimeout(() => {document.body.className = "";markedPanel.innerHTML = html;}, sleep);
+    setTimeout(() => {
+        markedPanel.setAttribute("data-title", title);
+        markedPanel.innerHTML = html;
+        document.body.className = "";
+    }, sleep);
 }
-function setHtml(src, startTime) {
+function setHtml(title, src, startTime) {
     let htmlPanel = $("#center_content")[0];
     htmlPanel.className = "content-panel";
     let c = document.createElement("IFRAME");
@@ -116,9 +119,10 @@ function setHtml(src, startTime) {
         let endTime = Date.now();
         let sleep = 1000 - ((endTime - startTime) % 1000);
         setTimeout(() => {
-            document.body.className = "";
+            htmlPanel.setAttribute("data-title", title);
             $("#center_content > *").forEach((res) => {res == c || htmlPanel.removeChild(res)})
             c.className = "";
+            document.body.className = "";
         }, sleep);
     };
     c.setAttribute("src", src);
@@ -188,6 +192,7 @@ window.addEventListener("click", e => {
         currentInfo.title = "首页";
         currentInfo.desc = "这里是首页";
         $("#left_content li.active").delClass("active");
+        $("#center_content").setAttribute("data-title", "");
         initTalk(currentInfo);
 	} else {
 		console.log(clk);
