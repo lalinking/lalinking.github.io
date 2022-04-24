@@ -97,18 +97,18 @@ function setMdTxt(title, txt, startTime) {
 	});
 	let markedPanel = $("#center_content")[0];
     markedPanel.className = "marked-panel content-panel";
-    if (window.needMermaid) {
-        addJs('/3rd-lib/mermaid/mermaid.js', true, () => {
-            $(".marked-panel .mermaid").setAttribute("data-status", "loaded");
-            mermaid.init();
-        });
-    }
     let endTime = Date.now();
     let sleep = 1000 - ((endTime - startTime) % 1000);
     setTimeout(() => {
         markedPanel.setAttribute("data-title", title);
         markedPanel.innerHTML = html;
         document.body.className = "";
+        if (window.needMermaid) {
+            addJs('/3rd-lib/mermaid/mermaid.js', true, () => {
+                $(".marked-panel .mermaid").setAttribute("data-status", "loaded");
+                mermaid.init();
+            });
+        }
     }, sleep);
 }
 function setHtml(title, src, startTime) {
