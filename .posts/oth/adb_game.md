@@ -14,7 +14,7 @@ adb 最好从谷歌官方下载安装。
 
 关键代码
 
-```cmd
+```batch
 # 自己真机操作之前，清除手机运行日志，方便看用到的日志
 adb logcat -c
 # 自己真机操作完之后，查看操作过程中产生的日志，从中获取到 游戏应用包名、获得点击位置等。
@@ -29,7 +29,7 @@ timeout /t 1 /nobreak > nul
 
 全部代码如下
 
-```cmd
+```batch
 @echo off
 SETLOCAL ENABLEDELAYEDEXPANSION
 
