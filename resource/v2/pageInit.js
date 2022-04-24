@@ -99,8 +99,8 @@ function setMdTxt(title, txt, startTime) {
     markedPanel.className = "marked-panel content-panel";
     if (window.needMermaid) {
         addJs('/3rd-lib/mermaid/mermaid.js', true, () => {
-            mermaid.init();
             $(".marked-panel .mermaid").setAttribute("data-status", "loaded");
+            mermaid.init();
         });
     }
     let endTime = Date.now();
