@@ -187,25 +187,31 @@ function compilePostFile(postInfo, htmlRoot) {
 }
 // 生成站点地图
 function loadSiteMap() {
-    var mapStr = "";
-    mapStr += '<?xml version="1.0" encoding="UTF-8"?>';
-    mapStr += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+    var mapXmlStr = "";
+    var mapTxtStr = "";
+    mapXmlStr += '<?xml version="1.0" encoding="UTF-8"?>';
+    mapXmlStr += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
     postInfos.forEach(function(postInfo) {
-        mapStr += '<url>'
+        mapXmlStr += '<url>'
         var pagePath = postInfo.FilePath;
         if (postInfo.FilePath == "index.md") {
             pagePath = "index.html";
         } else if (postInfo.IsPost) {
             pagePath = "page/" + postInfo.FilePath  + ".html";
         }
-        mapStr += '<loc>' + domain + pagePath + "</loc>";
-        mapStr += '<lastmod>' + postInfo.Date + '</lastmod>';
-        mapStr += '<changefreq>yearly</changefreq>';
-        mapStr += '<priority>0.5</priority>';
-        mapStr += '</url>';
+        if (mapTxtStr.length != 0) {
+            mapTxtStr += "\n";
+        }
+        mapTxtStr += domain + pagePath;
+        mapXmlStr += '<loc>' + domain + pagePath + "</loc>";
+        mapXmlStr += '<lastmod>' + postInfo.Date + '</lastmod>';
+        mapXmlStr += '<changefreq>yearly</changefreq>';
+        mapXmlStr += '<priority>0.5</priority>';
+        mapXmlStr += '</url>';
     });
-    mapStr += '</urlset>';
-    fs.writeFileSync(dirRepo + "/sitemap.xml", mapStr);
+    mapXmlStr += '</urlset>';
+    fs.writeFileSync(dirRepo + "/sitemap.xml", mapXmlStr);
+    fs.writeFileSync(dirRepo + "/sitemap.txt", mapTxtStr);
 }
 
 // 获取元数据 & 编译博文
