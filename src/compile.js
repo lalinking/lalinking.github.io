@@ -210,8 +210,8 @@ function loadSiteMap() {
         mapXmlStr += '</url>';
     });
     mapXmlStr += '</urlset>';
-    fs.writeFileSync(dirRepo + "/sitemap.XML", mapXmlStr);
-    fs.writeFileSync(dirRepo + "/sitemap.TXT", mapTxtStr);
+    fs.writeFileSync(dirRepo + "/sitemap_1.XML", mapXmlStr);
+    fs.writeFileSync(dirRepo + "/sitemap_1.TXT", mapTxtStr);
 }
 
 // 获取元数据 & 编译博文
