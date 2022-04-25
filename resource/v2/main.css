@@ -33,12 +33,15 @@ body {
 .post_type {padding: 0.3rem;}
 .post_type .post_title {padding: 0.3rem;color: #adc451;font-family: STXingkai,myFont;}
 .post_type ul {margin: 0.3rem 0;padding: 0 1rem 0 2rem;list-style: none;font-size: 1rem;font-weight: 100;}
-.post_type ul li {cursor: pointer;font-size: 0.8rem;display: table-row;padding: 0;margin: 0;}
+.post_type ul li {cursor: pointer;font-size: 0.8rem;display: block;width: max-content;padding: 0;margin: 0;}
 .post_type ul li:hover {color: aquamarine;/* border-bottom: 1px solid gray; */}
 .post_type ul li::before {content: attr(data-date) " ";margin-left: -1rem;color: #ddd4c8;pointer-events: none;font-weight: bolder;padding-right: 0.3rem;/* font-family: myFont; */}
+#left #left_content li.active {margin-left: 12rem;}
 #left #left_content li.active::after {content: "√";/* position: absolute; */right: 2rem;color: red;font-weight: bold;font-size: 1rem;font-style: italic;margin-left: 1rem;line-height: 0.8rem;pointer-events: none;}
 /* 黑板内容版面 */
+/*
 #bord #center #center_content::before {white-space: normal;vertical-align: middle;content: attr(data-title);padding: 0.4rem;margin: 0.4rem;font-size: 1.2rem;line-height: 2rem;height: 2rem;position: absolute;text-align: right;right: 2rem;z-index: 9;color: aqua;background-color: #f5f5f56b;border-radius: 3px;}
+*/
 #bord #center {width: calc(100% - 31rem + 2px);min-width: 40rem;right: 0;height: 100%;position: absolute;z-index: 1;}
 #bord #center .content-panel > iframe {width: 100%;height: 100%;border: none;}
 /* 黑板左侧标语版面 */
@@ -47,7 +50,6 @@ body {
 #bord #tips #tips_content small {font-size: 10px;color: #4ba4a4;}
 /* 黑板擦 */
 #bord #eraser{position: absolute;height: 2rem;width: 1.6rem;border-radius: 3px;margin: 1.5rem 1.5rem 1.5rem 33rem;background-color: #e1dbe4;box-shadow: inset 0 0 1rem 0.3rem #583720;z-index: 2;transform: rotate(339deg);bottom: -0.3rem;right: 0;cursor: pointer;transition: right,bottom 1s;}
-
 
 /* 动画 */
 @keyframes clean_center_eraser {
