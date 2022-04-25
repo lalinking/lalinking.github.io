@@ -33,11 +33,12 @@ body {
 .post_type {padding: 0.3rem;}
 .post_type .post_title {padding: 0.3rem;color: #adc451;font-family: STXingkai,myFont;}
 .post_type ul {margin: 0.3rem 0;padding: 0 1rem 0 2rem;list-style: none;font-size: 1rem;font-weight: 100;}
-.post_type ul li {cursor: pointer;font-size: 0.8rem;display: block;width: max-content;padding: 0;margin: 0;transition: margin-left 800ms;}
+.post_type ul li {cursor: pointer;font-size: 0.8rem;display: block;width: max-content;padding: 0;margin: 0;transition: all 800ms;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
 .post_type ul li:hover {color: aquamarine;/* border-bottom: 1px solid gray; */}
 .post_type ul li::before {content: attr(data-date) " ";margin-left: -1rem;color: #ddd4c8;pointer-events: none;font-weight: bolder;padding-right: 0.3rem;/* font-family: myFont; */}
-body:not(.loading) #left:not(:hover) #left_content li.active {margin-left: 12rem;}
+body:not(.loading) #left:not(:hover) #left_content li.active {margin-left: 12rem;margin-left: 12rem;width: calc(100% - 12rem);color: aquamarine;}
 #left #left_content li.active::after {content: "√";/* position: absolute; */right: 2rem;color: red;font-weight: bold;font-size: 1rem;font-style: italic;margin-left: 1rem;line-height: 0.8rem;pointer-events: none;}
+body:not(.loading) #left:not(:hover) #left_content li.active::after {display: none;}
 /* 黑板内容版面 */
 /*
 #bord #center #center_content::before {white-space: normal;vertical-align: middle;content: attr(data-title);padding: 0.4rem;margin: 0.4rem;font-size: 1.2rem;line-height: 2rem;height: 2rem;position: absolute;text-align: right;right: 2rem;z-index: 9;color: aqua;background-color: #f5f5f56b;border-radius: 3px;}
