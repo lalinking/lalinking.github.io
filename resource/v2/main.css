@@ -32,8 +32,8 @@ body {
 /* 目录样式 */
 .post_type {padding: 0.3rem;}
 .post_type .post_title {padding: 0.3rem;color: #adc451;font-family: STXingkai,myFont;}
-.post_type ul {margin: 0.3rem 0;padding: 0 1rem 0 2rem;list-style: none;font-size: 1rem;font-weight: 100;transition: margin-left 800ms;}
-.post_type ul li {cursor: pointer;font-size: 0.8rem;display: block;width: max-content;padding: 0;margin: 0;}
+.post_type ul {margin: 0.3rem 0;padding: 0 1rem 0 2rem;list-style: none;font-size: 1rem;font-weight: 100;}
+.post_type ul li {cursor: pointer;font-size: 0.8rem;display: block;width: max-content;padding: 0;margin: 0;transition: margin-left 800ms;}
 .post_type ul li:hover {color: aquamarine;/* border-bottom: 1px solid gray; */}
 .post_type ul li::before {content: attr(data-date) " ";margin-left: -1rem;color: #ddd4c8;pointer-events: none;font-weight: bolder;padding-right: 0.3rem;/* font-family: myFont; */}
 :not(.loading) #left #left_content li.active {margin-left: 12rem;}
