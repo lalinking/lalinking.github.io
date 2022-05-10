@@ -80,4 +80,4 @@ body:not(.loading) #left:not(:hover) #left_content li.active {margin-left: 6rem;
 /* 评论 */
 #talk {position: fixed;margin-top: -2.8rem;z-index: 3;width: 60%;right: 25%;height: 40rem;background-color: white;border-radius: 5px;padding: 0 1rem;transition: margin-top 300ms 200ms;}
 .loading #talk {margin-top: -5rem;}
-#talk:hover {margin-top: -40rem;}
+#talk:hover, #talk:focus, #talk:focus-within {margin-top: -40rem;}
