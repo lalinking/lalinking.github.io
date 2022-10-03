@@ -97,6 +97,13 @@ window.$F = (obj, dom) => {
 		})
 	}
 };
+window.$C = (html) => {
+    let nod = document.createElement("DIV");
+    if (html) {
+        nod.innerHTML = html;
+    }
+    return nod.childElementCount == 1 ? nod.firstElementChild : nod;
+};
 window.addJs = (src, async, cb) => {
 	let jid = stringToHashKey(src);
     let j = document.getElementById(jid);
