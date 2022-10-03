@@ -14,4 +14,5 @@ https://lalinking.github.io/page/web/js_class.md.html
 https://lalinking.github.io/page/java/dateFormatter.md.html
 https://lalinking.github.io/page/java/java-ls.md.html
 https://lalinking.github.io/page/web/nodejs_template.md.html
+https://lalinking.github.io/page/web/cssrole.md.html
 https://lalinking.github.io/page/wx_yuki/wx.html

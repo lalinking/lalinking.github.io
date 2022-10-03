@@ -1,6 +1,6 @@
-这是一个 demo，在这里写入博文正文。博文遵循 markdown 语法，支持 mermaid 作图。
-
 # markdown 语法
+
+这是一个 demo，在这里写入博文正文。博文遵循 markdown 语法，支持 mermaid 作图。
 
 # h1 标题
 ## h2 标题
