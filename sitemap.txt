@@ -9,6 +9,7 @@ https://lalinking.github.io/page/demo.md.html
 https://lalinking.github.io/page/java/spring-cloud-eureka.md.html
 https://lalinking.github.io/page/magnet/mag.html
 https://lalinking.github.io/page/pic/pic.html
+https://lalinking.github.io/page/web/jspanel.md.html
 https://lalinking.github.io/page/web/js_class.md.html
 https://lalinking.github.io/page/java/dateFormatter.md.html
 https://lalinking.github.io/page/java/java-ls.md.html

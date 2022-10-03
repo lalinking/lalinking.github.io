@@ -2,8 +2,8 @@
 <html lang="zh">
 <head>
 	<meta charset="UTF-8">
-	<meta name="keywords" content="js,class">
-	<meta name="description" content="JS 简单实现类与继承">
+	<meta name="keywords" content="js,jspanel">
+	<meta name="description" content="自己写一个 JS View 框架">
 	<meta name="author" content="lalinking">
 	<meta name="copyright" content="lalinking">
 	<link href="/resource/upgrade.css" type="text/css" rel="stylesheet">
@@ -14,71 +14,11 @@
 	<title>打工姿态 -> 学习姿态</title>
 </head>
 <body>
-<noscript>## 实现代码
-
-  有几个特点：
-1. 这种实现的机制是先执行 superClass 构造函数，再执行自己的构造函数，因此能拷贝 superClass 的属性到子类的示例上。但也意味着不能在父类构造器中执行太耗性能的动作，父类构造器应该以定义属性字段和实例方法为主功能。
-2. 只能有一个 superClass。
-3. 支持 super 参数。
-4. 可以定义一个 init 方法。
-
-```javascript
-// 引入 Class 的定义
-module.exports = function(superClass, constructor) {
-    let fun = function() {
-        superClass.apply(this);
-        if (constructor) {
-            let _supper = {...this};
-            constructor.call(this, _supper);
-        }
-        if (this.init)  {
-            let init = this.init.apply(this, arguments);
-            if (init instanceof fun) {
-                return init;
-            }
-        }
-        return this;
-    };
-    fun.toString = null;
-    return fun;
-}
-```
-
-## 使用示例
-
-  常见使用方法，以及缺陷展示
-
-```javascript
-let Class = require('./class');
-var Animal = new Class(function () {
-    this.type = "animal";
-    this.say = function (words) {
-        console.log(this.type + " say: " + words);
-    }
-});
-Animal instanceof Class                    // false
-var Dog = new Class(Animal, function () {
-    this.type = "Dog";
-});
-var myDogInstance = new Dog();
-myDogInstance instanceof Dog               // true
-myDogInstance instanceof Animal            // false （一个小缺陷，按理来说应该返回 true）
-myDogInstance.say("汪汪汪");               // Dog say: 汪汪汪
-
-var Cat = new Class(Animal, function (_super) {
-    this.type = "Cat";
-    this.init = function (name) {
-        // _super 是 Animal 的实例
-        // _super instanceof Animal == false (一个小缺陷，按理来说应该返回 true)
-        _super.say("i am a cat, name is " + name)
-    }
-});
-// 执行了 init 方法
-var myCatInstance = new Cat("凯瑟琳");     // animal say: i am a cat, name is 凯瑟琳
-myCatInstance instanceof Cat               // true
-myCatInstance instanceof Animal            // false
-myCatInstance.say("喵喵喵");               // Cat say: 喵喵喵
-```</noscript>
+<noscript>  接到一个小需求，需要写一个内部管理系统的web页面。我现在是个后端开发，前端的框架已经若干年没关注了。以前倒是用extjs写过很多后台系统的页面，但这个框架现在已经是收费的东西了。
+  我只好和需求方讨论了一下，对方意思是不管实现过程只看结果，不用框架都行。既然没那么多要求，那就不去学那些前端框架了，毕竟脑容量有限啊。
+先用自己掌握的知识造个简便的轮子吧，反正js语法我很熟练，css也学了很多。先写了个示例页面，没想到对方还挺满意的：
+  [页面地址]: https://lalinking.github.io/page/jspanel/index.html 
+看来我还是拥有当web全栈的能力。</noscript>
 <div id="header">好好学习  天天向上</div>
 <div id="main">
 	<div id="bord">
@@ -103,7 +43,7 @@ myCatInstance.say("喵喵喵");               // Cat say: 喵喵喵
 <script data-runat="init">
 	// 初始化文本
 	var mdContent = $("noscript")[0].innerText;
-	var currentInfo = {src: "web/js_class.md", title: "Js 简单实现类与继承", date: "2019-05-27", keywords: "js,class", desc: "JS 简单实现类与继承", id: stringToHashKey("web/js_class.md")};
+	var currentInfo = {src: "web/jspanel.md", title: "自己写一个 JS View 框架", date: "2019-06-28", keywords: "js,jspanel", desc: "自己写一个 JS View 框架", id: stringToHashKey("web/jspanel.md")};
 	if (mdContent.length) {
 		setTimeout(() => {showPost(currentInfo, mdContent)}, 200);
 	}
