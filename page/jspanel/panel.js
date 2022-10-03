@@ -204,13 +204,7 @@ window.FormPanel = new Class(Panel, function(_supper) {
                 handler: e => {
                     let _inp = e.target;
                     let value = _inp.getAttribute("data-value");
-                    let _find = findEnumByKey(value, items);
-                    if (_find) {
-                        _inp.value = _find.value;
-                        _inp.className = "form-input " + _find.class;
-                    } else {
-                        _inp.value = value;
-                    }
+                    _inp.value = value;
                 }
             });
         }
@@ -397,14 +391,7 @@ window.TablePanel = new Class(Panel, function(_supper) {
                 _td["data-fireType"] = _property;
                 _td["data-value"] = JSON.stringify(_data);
             } else if (typeof _tdTransFun == 'object') {
-                let _find = findEnumByKey(_data[_property], _tdTransFun);
-                if (_find) {
-                    _tdData = _find.value;
-                    _td["data-value"] = _find.key;
-                    _td.class = _find.class;
-                } else {
-                    _tdData = `<span class="cell-content">${_data[_property] || "-"}</span>`;
-                }
+				_tdData = `<span class="cell-content">${_data[_property] || "-"}</span>`;
             } else {
                 _tdData = `<span class="cell-content">${_data[_property] || "-"}</span>`;
             }
