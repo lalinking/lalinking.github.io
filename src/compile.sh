@@ -3,10 +3,14 @@
 # 获取脚本运行目录
 DIR=$(dirname $(readlink -f "$0/../"))
 POSTS_DIR=$(dirname $(readlink -f "$DIR"))/posts/
-echo $POSTS_DIR
 
-# 拉取博文
-git -C "$POSTS_DIR" pull origin master
+cd $POSTS_DIR
+# 拉取博文，保持最新
+git pull origin master
+git add *
+git commit -m "from compile.sh"
+git push origin master
+
 cd $DIR
 # 设置代理
 git config http.proxy http://127.0.0.1:20809

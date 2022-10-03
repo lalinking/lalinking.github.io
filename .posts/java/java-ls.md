@@ -40,7 +40,7 @@ Spring-Cloud-Stream：消息驱动微服务。用于与具体消息中间件解�
 
 ### 关系型
 Oracle：付费可靠
-MySQL/MariaDB：开源免费
+MySQL/MariaDB：开源免费。被Sun收购后，Sun又被Oracle收购
 SQL Server：微软的，只能在 windows server使用
 PostgrcSQL：没用过
 DB2：IBM的，与Oracle竞争
@@ -53,12 +53,15 @@ HBase：宽列数据库。一行中的列数允许动态变化，且列的数目
 
 ## 中间件
 
-## 消息队列
+### 消息队列
 RabbitMQ：通过 virtual host 进行业务隔离。消息是发送到 Exchange 交换机，消息会附带一个 RoutingKey。Exchange 下可以绑定具体的 queue 队列。绑定方式有三种：1. 广播，即绑定到 Exchange 的所有队列都能收到消息；2. 直连，即根据消息的 RoutingKey 将消息发到唯一的一个队列中。3. 订阅，即 RoutingKey 能匹配到的消息队列能接受到消息。队列支持优先级排序。
 RocketMQ：阿里开源项目，分布式消息系统
 Kafka：大数据系统常用队列，吞吐量很高。
 ActiveMQ：基于JMS，Apache项目
 
+### 搜索引擎
+Solr：基于Lucene。专注文本搜索。使用ZooKeeper实现分布式部署。
+Elasticsearch：基于Lucene。提供RESTful API。内置Zen组件实现分布式。
 
 ## 其他
 Alibaba-Dubbo：Java RPC 框架，用于实现服务通信。采用传输层 tcp 协议，占用带宽小。采用 jdk 自带的序列化协议。
