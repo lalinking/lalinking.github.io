@@ -54,7 +54,12 @@ HBase：宽列数据库。一行中的列数允许动态变化，且列的数目
 ## 中间件
 
 ### 消息队列
-RabbitMQ：通过 virtual host 进行业务隔离。消息是发送到 Exchange 交换机，消息会附带一个 RoutingKey。Exchange 下可以绑定具体的 queue 队列。绑定方式有三种：1. 广播，即绑定到 Exchange 的所有队列都能收到消息；2. 直连，即根据消息的 RoutingKey 将消息发到唯一的一个队列中。3. 订阅，即 RoutingKey 能匹配到的消息队列能接受到消息。队列支持优先级排序。
+RabbitMQ：通过 virtual host 进行业务隔离。队列支持优先级排序。
+  消息是发送到 Exchange 交换机，消息会附带一个 RoutingKey。
+  Exchange 下可以绑定具体的 queue 队列。绑定方式有三种：
+   1. 广播，即绑定到 Exchange 的所有队列都能收到消息；
+   2. 直连，即根据消息的 RoutingKey 将消息发到唯一的一个队列中。
+   3. 订阅，即 RoutingKey 能匹配到的消息队列能接受到消息。
 RocketMQ：阿里开源项目，分布式消息系统
 Kafka：大数据系统常用队列，吞吐量很高。
 ActiveMQ：基于JMS，Apache项目
