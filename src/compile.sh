@@ -9,8 +9,8 @@ echo $POSTS_DIR
 git -C "$POSTS_DIR" pull origin master
 cd $DIR
 # 设置代理
-#git config http.proxy http://127.0.0.1:10809
-#git config https.proxy https://127.0.0.1:10809
+git config http.proxy http://127.0.0.1:20809
+git config https.proxy http://127.0.0.1:20809
 
 # 代码保持最新
 git pull origin master
@@ -25,4 +25,4 @@ git add page/
 git add resource/
 git add src/
 git commit -m "from compile.sh"
-git push
+git push origin master
