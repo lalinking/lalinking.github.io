@@ -8,6 +8,17 @@
 	background-color: #c9d6f0;
 	border-radius: 3px;
 }
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('/resource/fontawesome-webfont.eot?v=4.7.0');
+  src: url('/resource/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('/resource/fontawesome-webfont.woff2') format('woff2'), url('/resource/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('/resource/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('/resource/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.icon {
+    font-family: FontAwesome;
+    user-select: none;
+}
 html {
 	* {
 		scrollbar-color:#f33 green;

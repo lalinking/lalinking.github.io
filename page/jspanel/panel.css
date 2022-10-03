@@ -1,3 +1,40 @@
+.btn,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+button {
+    /* height: 1.6rem; */
+    padding: 0 0.6rem;
+    /* min-width: 3.5rem; */
+    /* text-align: justify; */
+    /* text-align-last: justify; */
+    font-weight: bolder;
+    border-radius: 2px;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    color: white;
+}
+.btn:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+button:hover {
+    /* font-weight: normal; */
+    background-color: #b97f7f;
+}
+input[type="submit"],
+input[type="button"] {
+    background-color: #0066fe;
+}
+input[type="reset"] {
+    background-color: #16d799;
+}
+.btn,
+button {
+    color: #377aeb;
+}
+
 .panel-select {
     position: absolute;
     margin-top: 0.3rem;
