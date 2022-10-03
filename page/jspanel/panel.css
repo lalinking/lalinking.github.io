@@ -1,0 +1,249 @@
+.panel-select {
+    position: absolute;
+    margin-top: 0.3rem;
+    padding-top: 0.3rem;
+    line-height: 1rem;
+    background-color: white;
+    box-shadow: 0 0 3px 0 #476699;
+    border-radius: 0.3rem;
+    z-index: 2;
+    max-height: 26.5rem;
+    overflow-y: auto;
+    /* overflow-x: hidden; */
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.panel-select:before {
+    /* content: ""; */
+    position: absolute;
+    background-color: #4e4646;
+    display: block;
+    height: 1rem;
+    width: 3rem;
+    margin-top: -1rem;
+    margin-left: 30%;
+    /* border: 1rem solid #bfb5b5; */
+}
+
+.panel-select-item {
+    padding: 0.1rem 0.3rem;
+    cursor: pointer;
+    height: 1.3rem;
+    font-weight: 300;
+    font-size: 1rem;
+}
+.panel-select-item:hover {background-color: aliceblue;}
+
+.panel-form, .panel-table {
+    margin: 1rem;
+    padding: 1rem;
+    line-height: 2rem;
+    box-shadow: 0 0 5px 0 #dcd7e3;
+    box-sizing: border-box;
+    border-radius: 0.3rem;
+    background-color: #282a2f05;
+}
+/* 表单 */
+.form-title, .table-title {
+    font-size: 0.8rem;
+    margin: -0.5rem 0 0.5rem 0;
+    color: #1d2321;
+}
+.form-control {
+    display: inline-block;
+    margin: 0 0 0 2rem;
+}
+.form-control > * {margin: 0.3rem 0.5rem;line-height: 1.5rem;border: none;cursor: pointer;}
+.panel-form > form [readonly='true'] {
+    border: none;
+    resize: none;
+    outline-color: aliceblue;
+    box-shadow: none;
+}
+.panel-form [class^='form-field'] {
+    display: inline-block;
+}
+
+.form-field-input {
+    position: relative;
+}
+.search-form .form-label {
+    display: none;
+}
+.search-form .form-input {
+    width: calc(100% - 1rem);
+}
+.form-label {
+    width: 5rem;
+    text-align: right;
+    padding-right: 0.4rem;
+    display: inline-block;
+    color: #b93636;
+}
+.form-input, .form-area {
+    width: calc(100% - 6.6rem);
+    font-size: smaller;
+    color: black;
+    min-height: 1.6rem;
+    border: hidden;
+    padding: 0 0.3rem;
+    margin: 0 0.5rem;
+    box-shadow: 0 0 2px 1px #bdc1e0;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 4px;
+    outline-color: #5e6b95;
+}
+.form-field-area {
+    width: 100%;
+}
+.form-field-area .form-label {
+    height: 100%;
+    vertical-align: top;
+}
+.form-area {
+    width: 80%;
+    min-height: 4.8rem;
+    resize: vertical;
+    font-size: smaller;
+    color: black;
+    padding: 0.6rem 0.5rem;
+    box-shadow: 0 0 1px 0 #a6a6ba;
+    margin: 0.8rem 0.2rem;
+    overflow: hidden;
+}
+.form-clear-btn {
+    display: none;
+    position: absolute;
+    font-size: 12px;
+    top: 0.15rem;
+    right: 1rem;
+    width: 1rem;
+    font-weight: bolder;
+    color: #f13a0e;
+    cursor: pointer;
+}
+.search-form .form-field-input:hover .form-clear-btn {
+    display: block;
+}
+.panel-form .form-field-input.cols-1 {width: 10%;}
+.panel-form .form-field-input.cols-2 {width: 20%;}
+.panel-form .form-field-input.cols-3 {width: 30%;}
+.panel-form .form-field-input.cols-4 {width: 40%;}
+.panel-form .form-field-input.cols-5 {width: 50%;}
+.panel-form .form-field-input.cols-6 {width: 60%;}
+.panel-form .form-field-input.cols-7 {width: 70%;}
+.panel-form .form-field-input.cols-8 {width: 80%;}
+.panel-form .form-field-input.cols-9 {width: 90%;}
+.panel-form .form-field-input.cols-10 {width: 100%;}
+
+/* 表格 */
+.panel-table table {
+    width: 100%;
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+.form-hr {
+    font-size: 0;
+    height: 0.1rem;
+    margin: 0.65rem 1rem;
+    border: none;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(130 152 155 / 75%), rgba(0, 0, 0, 0));
+    position: relative;
+}
+.form-hr[data-text] {
+    margin: 1.65rem 1rem 0.5rem;
+    position: unset;
+    text-align: center;
+}
+.form-hr:before {
+    content: attr(data-text);
+    display: inline-block;
+    font-size: 0.1rem;
+    position: absolute;
+    color: #374350;
+    margin: -1rem 0;
+}
+.panel-table thead {background-color: #dde1e9;line-height: 2rem;user-select: none;}
+.panel-table thead > tr > * {
+    /* border-right: 0.1px darkgrey dashed; */
+    padding: 0 0.3rem;
+    text-align: center;
+    white-space: nowrap;
+}
+.panel-table tbody > tr {
+    /* line-height: 1rem; */
+    height: 1rem;
+}
+.panel-table tbody > tr > td:hover {
+    overflow: visible;
+}
+.panel-table tbody > tr > td:hover > .cell-content {
+    margin: 0 0%;
+    padding: 0.1rem 0.3rem;
+    display: inline-block;
+    position: absolute;
+    background-color: antiquewhite;
+    z-index: 2;
+    width: max-content;
+    min-width: calc(100% - 0.6rem);
+    top: 0;
+    left: 0;
+}
+.panel-table tbody tr:nth-child(even) {
+    background-color: #f2f6f6;
+}
+.panel-table tbody > tr:hover {background-color: #9c99b4;}
+.panel-table tbody > tr > * {
+    padding: 0.1rem 0.3rem;
+    text-align: center;
+    font-size: smaller;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    position: relative;
+}
+.panel-table tbody td[name] .btn {padding: 0.15rem;}
+.panel-table tfoot td {
+    text-align: right;
+    padding: 0.5rem 5% 0 0;
+    user-select: none;
+}
+.panel-table tfoot .page-btn {
+    margin: 0 0.4rem;
+}
+.panel-table tfoot .page-btn.current {margin: 0 0.5rem;color: black;font-weight: bolder;pointer-events: none;}
+
+/* 文字容器 */
+.panel-text {
+    padding: 0.1rem 1.3rem;
+    white-space: pre-wrap;
+    line-height: 1rem;
+    color: #231a1a;
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+.panel-text .panel-text-item {
+    margin: 0.3rem 0;
+}
+
+/* 全屏容器 */
+.panel-full-out{
+    position: fixed;
+    background-color: snow;
+    opacity: 0.96;
+    z-index: 10;
+}
+.panel-full{
+    position: fixed;
+    top: 25%;
+    z-index: 11;
+    border: none;
+}
+body > .panel-full-out {
+    z-index: 20;
+}
+body > .panel-full {
+    z-index: 21;
+}
