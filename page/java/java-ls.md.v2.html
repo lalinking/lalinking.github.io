@@ -76,11 +76,18 @@ Kafka：大数据系统常用队列，吞吐量很高。
 ActiveMQ：基于JMS，Apache项目
 
 ### 搜索引擎
-Solr：基于Lucene。专注文本搜索。使用ZooKeeper实现分布式部署。
+Solr：基于Lucene。专注文本搜索。使用ZooKeeper实现分布式部署。与同事讨论得知，Solr在搜索命中大量结果时响应速度会变慢（我没有solr环境未做验证）
 Elasticsearch：基于Lucene。提供RESTful API。内置Zen组件实现分布式。
 
-## 其他
+## 其他中间件
 Alibaba-Dubbo：Java RPC 框架，用于实现服务通信。采用传输层 tcp 协议，占用带宽小。采用 jdk 自带的序列化协议。
+
+
+## 好用的工具
+Lombok：通过注解自动生成 hashCode() 和 equals() 、getter / setter。看了下源码，是通过继承AbstractProcessor在编译期修改了修饰类的代码。公司规范只允许使用在POJO上，实际上还有很多好用的注解如：@Synchronized、@SneakyThrows、@Cleanup。
+MyBatis-Plus：mybatis的一个增强工具，自动添加单表大部分 CRUD 操作。公司规范不允许使用，尤其是mysql分页查询、多表查询禁止使用动态sql。这个工具是使用mybatis Interceptor实现的。因功能太多太重公司项目未引入。
+  我做了一个类似的但是轻量级的工具，里面只有三个类可以不引入直接拷贝类到项目里。解决烦人的单表操作，顺便提供了一个快速配置数据源的注解：https://gitee.com/somestring/mycurd-springboot-starter
+
 </noscript>
 <div id="header">好好学习  天天向上</div>
 <div id="main">
