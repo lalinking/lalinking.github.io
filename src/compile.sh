@@ -26,3 +26,6 @@ git add resource/
 git add src/
 git commit -m "from compile.sh"
 git push origin master
+
+git config http.proxy ""
+git config https.proxy ""
