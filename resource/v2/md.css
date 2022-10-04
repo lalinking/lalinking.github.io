@@ -34,9 +34,9 @@
 	counter-increment: ch4;
 	counter-reset: ch5 ch6;
 }
-/* h4 (a)、(b)、(c) */
+/* h4 (-a)、(-b)、(-c) */
 .marked-panel h4::before {
-	content: '('counter(ch4, lower-alpha)') 、'
+	content: '(-'counter(ch4, lower-alpha)') 、'
 }
 .marked-panel h5 {
 	color: #999999;
