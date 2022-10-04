@@ -8,22 +8,22 @@
 .content-panel a {color: aqua;}
 
 .marked-panel h1 {
-	color: #330000;
+	color: #99FF00;
 }
 .marked-panel h2 {
-	color: #330033;
+	color: #99CC00;
 }
 .marked-panel h3 {
-	color: #330066;
+	color: #999900;
 }
 .marked-panel h4 {
-	color: #333366;
+	color: #999966;
 }
 .marked-panel h5 {
-	color: #333333;
+	color: #999999;
 }
 .marked-panel h6 {
-	color: #333300;
+	color: #9999CC;
 }
 
 .marked-panel hr {
