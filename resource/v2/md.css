@@ -12,7 +12,7 @@
 	counter-increment: ch1;
 }
 .marked-panel h1::before {
-	content: counter(ch1, cjk-decimal)
+	content: counter(ch1, cjk-decimal) '、'
 }
 .marked-panel h2 {
 	color: #99CC00;
