@@ -9,6 +9,10 @@
 
 .marked-panel h1 {
 	color: #99FF00;
+	counter-increment: ch1;
+}
+.marked-panel h1::before {
+	content: counter(ch1, cjk-decimal)
 }
 .marked-panel h2 {
 	color: #99CC00;
@@ -68,7 +72,8 @@ width: auto;}
 	display: table-cell;
 	padding-left: 8px;
 	padding-right: 8px;
-width: 100%;}
+	width: 100%;
+}
 
 .marked-panel > p, .marked-panel pre {
 	margin: 0 0 3px 1.2em;
