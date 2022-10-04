@@ -7,9 +7,23 @@
 
 .content-panel a {color: aqua;}
 
-.marked-panel h1, .marked-panel h2 {
-	margin-top: 15px;
-	position: sticky;
+.marked-panel h1 {
+	color: #330000;
+}
+.marked-panel h2 {
+	color: #330033;
+}
+.marked-panel h3 {
+	color: #330066;
+}
+.marked-panel h4 {
+	color: #333366;
+}
+.marked-panel h5 {
+	color: #333333;
+}
+.marked-panel h6 {
+	color: #333300;
 }
 
 .marked-panel hr {
@@ -145,7 +159,9 @@ width: 100%;}
 	font-size: 1em;
 	text-align: left;
 	tab-size: 4;
-/* background-color: whitesmoke; */color: black;}
+/* background-color: whitesmoke; */
+	color: black;
+}
 
 .marked-panel pre > code > div > div:last-child > div.line-start {
 	border-radius: 0 0 0 8px;

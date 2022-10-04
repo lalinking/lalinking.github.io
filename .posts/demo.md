@@ -89,7 +89,7 @@ console.log(foo(5));
 
 [点击查看全部 mermaid 语法 demo]: https://mermaid-js.github.io/mermaid-live-editor
 
-1. 流程图
++ 流程图
 
 ```mermaid
 graph TD
@@ -100,7 +100,7 @@ graph TD
     C -->|Three| F[fa:fa-car Car]
 ```
 
-2. 时序图
++ 时序图
 
 ```mermaid
 sequenceDiagram
@@ -110,7 +110,7 @@ sequenceDiagram
     John-->>-Alice: I feel great!
 ```
 
-3. 甘特图
++ 甘特图
 
 ```mermaid
 gantt
@@ -124,7 +124,7 @@ gantt
     another task      : 24d
 ```
 
-4. 饼图
++ 饼图
 
 ```mermaid
 pie title Pets adopted by volunteers
@@ -133,7 +133,7 @@ pie title Pets adopted by volunteers
     "Rats" : 15
 ```
 
-5. ER 图
++ ER 图
 
 ```mermaid
 erDiagram
