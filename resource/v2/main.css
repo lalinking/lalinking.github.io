@@ -31,7 +31,7 @@ body {
 .loading #bord #left {margin-left: 30rem !important;}
 /* 目录样式 */
 .post_type {padding: 0.3rem;overflow: hidden;}
-.post_type .post_title {padding: 0.3rem;color: #adc451;font-family: STXingkai,myFont;}
+.post_type .post_title {padding: 0.3rem;color: #adc451;font-family: myFont,STXingkai;font-size: 1.2rem;}
 .post_type ul {margin: 0.3rem 0;padding: 0 1rem 0 2rem;list-style: none;font-size: 1rem;font-weight: 100;}
 .post_type ul li {cursor: pointer;font-size: 0.8rem;display: block;width: max-content;padding: 0;margin: 0;transition: all 300ms 200ms;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
 .post_type ul li:hover {color: aquamarine;/* border-bottom: 1px solid gray; */}
