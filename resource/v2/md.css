@@ -9,51 +9,48 @@
 
 .marked-panel h1 {
 	color: #99FF00;
-	counter-increment: ch1;
 	counter-reset: ch2 ch3 ch4 ch5 ch6;
-}
-.marked-panel h1::before {
-	content: counter(ch1, cjk-decimal) '、'
 }
 .marked-panel h2 {
 	color: #99CC00;
 	counter-increment: ch2;
 	counter-reset: ch3 ch4 ch5 ch6;
 }
+/* h2 一、二、三 */
 .marked-panel h2::before {
-	content: counter(ch2, decimal)') 、'
+	content: counter(ch2, cjk-decimal) '、'
 }
 .marked-panel h3 {
 	color: #999900;
 	counter-increment: ch3;
 	counter-reset: ch4 ch5 ch6;
 }
+/* h3 (1)、(2)、(3) */
 .marked-panel h3::before {
-	content: '  ('counter(ch3, decimal)') 、'
+	content: '('counter(ch3, decimal)') 、'
 }
 .marked-panel h4 {
 	color: #999966;
 	counter-increment: ch4;
 	counter-reset: ch5 ch6;
 }
+/* h4 (a)、(b)、(c) */
 .marked-panel h4::before {
-	content: counter(ch4, decimal)') 、'
+	content: '('counter(ch4, lower-alpha)') 、'
 }
 .marked-panel h5 {
 	color: #999999;
 	counter-increment: ch5;
 	counter-reset: ch6;
 }
+/* h5 (a.1)、(a.2)、(a.3) */
 .marked-panel h5::before {
-	content: counter(ch5, decimal)') 、'
+	content: '('counter(ch4, lower-alpha)'.'counter(ch5, decimal)') 、'
 }
 .marked-panel h6 {
 	color: #9999CC;
-	counter-increment: ch6;
 }
-.marked-panel h6::before {
-	content: counter(ch6, decimal)') 、'
-}
+
 
 .marked-panel hr {
 	font-size: 0;
