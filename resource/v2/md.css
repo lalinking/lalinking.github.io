@@ -27,16 +27,16 @@
 }
 /* h3 (1)、(2)、(3) */
 .marked-panel h3::before {
-	content: '('counter(ch3, decimal)') 、'
+	content: '('counter(ch3, decimal)'). '
 }
 .marked-panel h4 {
 	color: #999966;
 	counter-increment: ch4;
 	counter-reset: ch5 ch6;
 }
-/* h4 (-a)、(-b)、(-c) */
+/* h4 (a)、(b)、(c) */
 .marked-panel h4::before {
-	content: '( - 'counter(ch4, lower-alpha)') 、'
+	content: '('counter(ch4, lower-alpha)') '
 }
 .marked-panel h5 {
 	color: #999999;
@@ -45,7 +45,7 @@
 }
 /* h5 (a.1)、(a.2)、(a.3) */
 .marked-panel h5::before {
-	content: '('counter(ch4, lower-alpha)'.'counter(ch5, decimal)') 、'
+	content: '('counter(ch4, lower-alpha)'.'counter(ch5, decimal)') '
 }
 .marked-panel h6 {
 	color: #9999CC;
