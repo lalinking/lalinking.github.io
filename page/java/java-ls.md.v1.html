@@ -72,6 +72,8 @@ Feign基础上的再一层封装。能解析 SpringMVC 的 RequestMapping 注解
 ###### Spring-Cloud-Stream
 消息驱动微服务。用于与具体消息中间件解耦合
 
+------
+
 ## 数据库
 
 ### 关系型
@@ -95,6 +97,8 @@ Key-Value数据库。数据存储在内存中。
 文档数据库。无固定结构，不同的记录允许有不同的列数和列类型。列允许包含多值，记录允许嵌套。利用 find 可以根据条件查询数据，类似于关系型数据库的查找。
 ###### HBase
 宽列数据库。一行中的列数允许动态变化，且列的数目可达数百万。每条记录有唯一的rowkey。支持 scan 模糊查找和 get 精确查找。
+
+------
 
 ## 中间件
 
@@ -130,12 +134,16 @@ Java RPC 框架，用于实现服务通信。采用传输层 tcp 协议，占用
   4. 分布式锁，zk保证数据在集群中的强一致性。可以通过创建节点来实现分布式锁，所有客户端都去创建 /distribute_lock 节点，最终成功创建的那个客户端也即拥有了这把锁。
   5. 集群管理，zk可以创建EPHEMERAL类型的节点，一旦客户端和服务器的会话结束或过期，那么该节点就会消失。因此可以通过EPHEMERAL节点和watcher机制实现集群管理。
 
+------
+
 ## 好用的工具
 ###### Lombok
 通过注解自动生成 hashCode() 和 equals() 、getter / setter。看了下源码，是通过继承AbstractProcessor在编译期修改了修饰类的代码。公司规范只允许使用在POJO上，实际上还有很多好用的注解如：@Synchronized、@SneakyThrows、@Cleanup。
 ###### MyBatis-Plus
 mybatis的一个增强工具，自动添加单表大部分 CRUD 操作。公司规范不允许使用，尤其是mysql分页查询、多表查询禁止使用动态sql。这个工具是使用mybatis Interceptor实现的。
     因功能太多太重公司项目未引入，所以我做了一个类似的但是轻量级的工具，里面只有三个类可以不引入直接拷贝类到项目里。解决烦人的单表操作，顺便提供了一个快速配置数据源的注解：https://gitee.com/somestring/mycurd-springboot-starter
+
+------
 
 未完待续</noscript>
 <div id="header"></div>
