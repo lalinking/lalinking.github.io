@@ -61,6 +61,7 @@ Feign基础上的再一层封装。能解析 SpringMVC 的 RequestMapping 注解
 ## 数据库
 
 ### 关系型
+
 ###### Oracle
 付费可靠
 ###### MySQL/MariaDB
@@ -73,6 +74,7 @@ Feign基础上的再一层封装。能解析 SpringMVC 的 RequestMapping 注解
 IBM的，与Oracle竞争
 
 ### 非关系型
+
 ###### Redis
 Key-Value数据库。数据存储在内存中，读写性能很高，可以刷到磁盘永久存储。单线程单进程，多路IO复用。
 ###### Memcached
@@ -87,6 +89,7 @@ Key-Value数据库。数据存储在内存中。
 ## 中间件
 
 ### 消息队列
+
 ###### RabbitMQ
 通过 virtual host 进行业务隔离。队列支持优先级排序。
   消息是发送到 Exchange 交换机，消息会附带一个 RoutingKey。
@@ -94,6 +97,7 @@ Key-Value数据库。数据存储在内存中。
    1. 广播，即绑定到 Exchange 的所有队列都能收到消息；
    2. 直连，即根据消息的 RoutingKey 将消息发到唯一的一个队列中。
    3. 订阅，即 RoutingKey 能匹配到的消息队列能接受到消息。
+
 ###### RocketMQ
 阿里开源项目，分布式消息系统
 ###### Kafka
@@ -102,12 +106,14 @@ Key-Value数据库。数据存储在内存中。
 基于JMS，Apache项目
 
 ### 搜索引擎
+
 ###### Solr
 基于Lucene。专注文本搜索。使用ZooKeeper实现分布式部署。与同事讨论得知，Solr在搜索命中大量结果时响应速度会变慢（我没有solr环境未做验证）
 ###### Elasticsearch
 基于Lucene。提供RESTful API。内置Zen组件实现分布式。
 
 ## 其他中间件
+
 ###### Alibaba-Dubbo
 Java RPC 框架，用于实现服务通信。采用传输层 tcp 协议，占用带宽小。采用 jdk 自带的序列化协议。
 ###### ZooKeeper
