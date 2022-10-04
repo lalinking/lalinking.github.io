@@ -1,5 +1,5 @@
 // 表单测试
-let formSearch = new FormPanel("测试表格");
+let formSearch = new FormPanel("测试表单");
 formSearch.rootClass += " search-form";
 formSearch.appendField("名字1", {name: "merchantId", placeholder: "名字1", cols: 2});
 formSearch.appendField("名字2", {name: "channelId", placeholder: "名字2", cols: 1, role: "admin"});

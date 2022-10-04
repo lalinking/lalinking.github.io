@@ -27,7 +27,7 @@
 }
 /* h3 (1)、(2)、(3) */
 .marked-panel h3::before {
-	content: '('counter(ch3, decimal)'). '
+	content: '('counter(ch3, decimal)') '
 }
 .marked-panel h4 {
 	color: #999966;
