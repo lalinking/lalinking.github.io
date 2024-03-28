@@ -19,12 +19,6 @@
     font-family: FontAwesome;
     user-select: none;
 }
-html {
-	* {
-		scrollbar-color:#f33 green;
-		scrollbar-width:thin;
-	}
-}
 
 html {
 	 font-size: 16px;
