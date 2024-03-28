@@ -193,7 +193,6 @@ function loadSiteMap() {
     postInfos.forEach(function(postInfo) {
         mapXmlStr += '<url>'
         var pagePath = postInfo.FilePath;
-        console.log("197: " + postInfo.FilePath);
         if (postInfo.FilePath == "index.md") {
             pagePath = "index.html";
         } else if (postInfo.IsPost) {
