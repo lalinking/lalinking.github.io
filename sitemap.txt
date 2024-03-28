@@ -1,4 +1,3 @@
-https://lalinking.github.io/page/oth/bash_httpd.md.html
 https://lalinking.github.io/index.html
 https://lalinking.github.io/page/oth/adb_game.md.html
 https://lalinking.github.io/page/java/RestTemplateConfig.md.html
@@ -7,13 +6,13 @@ https://lalinking.github.io/page/java/GrepJavaLog.md.html
 https://lalinking.github.io/page/java/spring-cloud-nacos.md.html
 https://lalinking.github.io/page/java/docker-jre8.md.html
 https://lalinking.github.io/page/java/spring-cloud-eureka.md.html
-https://lalinking.github.io/page/magnet/mag.html
-https://lalinking.github.io/page/pic/pic.html
+https://lalinking.github.io//page/magnet/mag.html
+https://lalinking.github.io//page/pic/pic.html
 https://lalinking.github.io/page/web/jspanel.md.html
 https://lalinking.github.io/page/web/js_class.md.html
 https://lalinking.github.io/page/java/dateFormatter.md.html
 https://lalinking.github.io/page/java/java-ls.md.html
 https://lalinking.github.io/page/web/nodejs_template.md.html
-https://lalinking.github.io/page/demo.md.html
 https://lalinking.github.io/page/web/cssrole.md.html
-https://lalinking.github.io/page/wx_yuki/wx.html
+https://lalinking.github.io/page/demo.md.html
+https://lalinking.github.io//page/wx_yuki/wx.html
