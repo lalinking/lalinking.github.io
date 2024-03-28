@@ -77,14 +77,13 @@ function getPostFileMetaInfo(postPath) {
 	}
 	var _txts = fs.readFileSync(postPath).toString().split(new RegExp("[\r\n]"));
 	var _flag = 0;
-	var _reg = new RegExp("^\-{5,}$");
 	var _meta = {};
 	_meta.FileTitle = "未定义";
 	_meta.BookName = "未命名";
 	// 读取标签
 	while(true) {
 		var _line = _txts.shift();
-		if (_reg.test(_line)) {
+		if (/^<!-{5,}/.test(_line) || /-{5,}>$/.test(_line)) {
 			_flag ++;
 			continue;
 		}
@@ -94,7 +93,7 @@ function getPostFileMetaInfo(postPath) {
 		_meta[_sp[0]] = _sp[1];
 	}
 	_meta.Description = _meta.Description || _meta.FileTitle;
-	_meta.FilePath = postPath.substr(dirPosts.length);
+	_meta.FilePath = postPath.substr(dirPosts.length).replaceAll("\\", "/").replace(/^\//, "");
 	_meta.IsPost = true;
 	_meta.Keywords = _meta.Keywords || _meta.BookName;
 	_meta.Content = _txts.join("\n");
