@@ -8,19 +8,19 @@
                 "Date": "2019-10-08",
                 "Description": "magnet 魔链增加 tracker，更新服务器信息，获取更快的下载速度",
                 "Keywords": "magnet,tracker",
-                "FilePath": "/page/magnet/mag.html"
+                "FilePath": "page/magnet/mag.html"
             }, {
                 "FileTitle": "图片转字符画",
                 "Date": "2019-10-08",
                 "Description": "图片转字符画",
                 "Keywords": "图片,字符画",
-                "FilePath": "/page/pic/pic.html"
+                "FilePath": "page/pic/pic.html"
             }, {
                 "FileTitle": "图灵机器人试用",
                 "Date": "2015-10-12",
                 "Description": "调用图灵机器人的api实现自动聊天",
                 "Keywords": "图灵机器人",
-                "FilePath": "/page/wx_yuki/wx.html"
+                "FilePath": "page/wx_yuki/wx.html"
             }
         ]
     }
