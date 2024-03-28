@@ -14,8 +14,7 @@
 	<title>打工姿态 -> 学习姿态</title>
 </head>
 <body>
-<noscript><![CDATA[
-# 功能
+<noscript># 功能
 
 1. 基于 openjdk 编辑一个可运行 jre8 的镜像。（保证镜像体积最小）
 2. 容器启动时，自动启动 jar 包。约定容器内 /usr/java/workpath/ 路径作为 jar 的路径，并且支持多个 jar 的情况。 jar 可以直接放在 /usr/java/workpath/ 也可以在 /usr/java/workpath/\*/ 。*更新* ：这种方式不够灵活，改为使用脚本指定 jar 路径进行启动操作。
@@ -180,8 +179,7 @@ docker build -f ./Dockerfile -t jar_runner:open-jre8 .
 # --name : 容器名字
 # 参数一个横杠 表示用的缩写，两个横杠 表示不是缩写
 docker run -p 2001:80 -m 256m -v ~/docker/volume/eureka:/usr/java/workpath --name eureka_01 -d jar_runner:open-jre8
-```
-]]></noscript>
+```</noscript>
 <div id="header"></div>
 <div id="main">
 	<div id="board" class="curb">

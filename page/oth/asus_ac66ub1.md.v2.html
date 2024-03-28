@@ -14,8 +14,7 @@
 	<title>打工姿态 -> 学习姿态</title>
 </head>
 <body>
-<noscript><![CDATA[
-# 说明
+<noscript># 说明
 下面这些玩法基本上都是看教程做出来的。
 我在路由器上做成了以下事情：
 1. 安装 entware
@@ -787,7 +786,7 @@ _getpid()
 }
 _log()
 {
-	echo "$(printf '[%5d]-' $)[$(TZ=UTC-8 date '+%Y-%m-%d %H:%M:%S')]: $@"
+	echo "$(printf '[%5d]-' $$)[$(TZ=UTC-8 date '+%Y-%m-%d %H:%M:%S')]: $@"
 }
 # 利用文件锁，让程序同一时间只有一个在运行
 lockit()
@@ -1175,8 +1174,7 @@ for log in ${logs}; do
 done
 ```
 
-// TODO 今天先记好流水账，改天有情绪了再整理。
-]]></noscript>
+// TODO 今天先记好流水账，改天有情绪了再整理。</noscript>
 <div id="header">好好学习  天天向上</div>
 <div id="main">
 	<div id="bord">

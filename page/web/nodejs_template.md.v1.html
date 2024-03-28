@@ -14,8 +14,7 @@
 	<title>打工姿态 -> 学习姿态</title>
 </head>
 <body>
-<noscript><![CDATA[
-## 前言
+<noscript>## 前言
 
   前段时间一朋友突然找我，让我帮忙做个微信后台，实现一波抽奖活动。正好我正学习了一周 Node 于是妥妥的拍胸脯答应了。
   本人是 Java code 出身，平时也没太注意 JS 这一块，这个项目我需要动态地执行一些 SQL、提供一些动态的 HTML 页面，才发现前端框架多到看不过来一时半会没发现自己用得惯的模板工具，而我又答应别人一周内要实现功能，索性都不看，索性把之前 Java 里面造的轮子改一下对付一下得了。 -_-
@@ -272,7 +271,7 @@ function TemplatePackage() {
     }
     split = argPackageText.replace(TemplatePackage.initReg, "$4").replace(/\\n/g, "\n");
     tpText = argPackageText.replace(TemplatePackage.initReg, "$5");
-    let _subReg = new RegExp(`^.*?(${TemplateArg.initReg.toString().substring(1,TemplateArg.initReg.toString().length-1)}).*?);
+    let _subReg = new RegExp(`^.*?(${TemplateArg.initReg.toString().substring(1,TemplateArg.initReg.toString().length-1)}).*?$`);
     while (_subReg.test(tpText)) {
       let arg = new TemplateArg();
       arg.setBelong(this);
@@ -368,7 +367,7 @@ function TemplateLine() {
   let lineText;
   this.initLine = function (line) {
     lineText = line;
-    let _subReg = new RegExp(`^.*?(${TemplatePackage.initReg.toString().substring(1,TemplatePackage.initReg.toString().length-1)}).*?);
+    let _subReg = new RegExp(`^.*?(${TemplatePackage.initReg.toString().substring(1,TemplatePackage.initReg.toString().length-1)}).*?$`);
     while (_subReg.test(lineText)) {
       let argPackageText = lineText.replace(_subReg, "$1");
       let argPack = new TemplatePackage();
@@ -501,8 +500,7 @@ setTimeout(() => {
   });
 }, 100);
 ```
-
-]]></noscript>
+</noscript>
 <div id="header"></div>
 <div id="main">
 	<div id="board" class="curb">

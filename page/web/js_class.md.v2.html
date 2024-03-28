@@ -14,8 +14,7 @@
 	<title>打工姿态 -> 学习姿态</title>
 </head>
 <body>
-<noscript><![CDATA[
-## 实现代码
+<noscript>## 实现代码
 
   有几个特点：
 1. 这种实现的机制是先执行 superClass 构造函数，再执行自己的构造函数，因此能拷贝 superClass 的属性到子类的示例上。但也意味着不能在父类构造器中执行太耗性能的动作，父类构造器应该以定义属性字段和实例方法为主功能。
@@ -79,8 +78,7 @@ var myCatInstance = new Cat("凯瑟琳");     // animal say: i am a cat, name is
 myCatInstance instanceof Cat               // true
 myCatInstance instanceof Animal            // false
 myCatInstance.say("喵喵喵");               // Cat say: 喵喵喵
-```
-]]></noscript>
+```</noscript>
 <div id="header">好好学习  天天向上</div>
 <div id="main">
 	<div id="bord">
