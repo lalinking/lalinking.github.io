@@ -171,7 +171,7 @@ function compilePostFile(postInfo, htmlRoot) {
 		var _line = _txts[_index];
 		for (var _p in param) {
 			if (!_p) {continue;}
-			_line = _line.replace(new RegExp("\#\{" + _p + "\}", "g"), param[_p]);
+			_line = _line.replace(new RegExp("\\#\\{" + _p + "\\}", "g"), param[_p]);
 		}
 		_txts[_index] = _line;
 	}
