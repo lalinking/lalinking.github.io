@@ -201,8 +201,9 @@ function loadSiteMap() {
         if (mapTxtStr.length != 0) {
             mapTxtStr += "\n";
         }
-        mapTxtStr += domain + pagePath;
-        mapXmlStr += '<loc>' + domain + pagePath + "</loc>";
+        pagePath = (domain + pagePath).replace(/(?<!https?:)\/+/g, "/");
+        mapTxtStr += pagePath;
+        mapXmlStr += '<loc>' + pagePath + "</loc>";
         mapXmlStr += '<lastmod>' + postInfo.Date + '</lastmod>';
         mapXmlStr += '<changefreq>yearly</changefreq>';
         mapXmlStr += '<priority>0.5</priority>';
