@@ -167,12 +167,12 @@ function highlight(code, lan) {
 		let c = Prism.languages[lan] ? Prism.highlight(code, Prism.languages[lan], lan) : code;
 		let rs = c.split(/\n/);
 		let result = `<div><div class='line-start'></div><div class="line-body tool-bar" data-codeid="${_id}"><a data-click="copyCode" >copy</a>`
-		if (rs.length > 20) {
+		if (rs.length > 30) {
 			result += "<a data-click='expandCode'>expand</a>";
 		}
 		result += "</div></div>";
 		rs.forEach((e, i) => {
-			if (i == 20) {result += "<div data-click='expandCode' class='expandMsg'>... ...</div>";}
+			if (i == 30) {result += "<div data-click='expandCode' class='expandMsg'>... ...</div>";}
 			result += `<div><div class='line-start'>${i + 1}</div><div class="line-body">${e}</div></div>`;
 		});
 		return result;
